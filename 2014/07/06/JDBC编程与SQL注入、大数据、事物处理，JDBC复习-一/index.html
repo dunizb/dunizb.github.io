@@ -5,20 +5,20 @@
   
   <title>JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)  | Dunizb</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录一、什么是JDBC 一、什么是JDBC SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。 JDBC 是一种用于执行SQL 语句的 Java API.是 Java DataBase java数据库连接)的缩写.  它由一组用 java编程语言编写的类和接口组成. JDBC 为工具/数据库开发人员提供了一个标准的API,使得他们能够用纯 Java API 来编写">
+  <meta name="description" content="目录一、什么是JDBC二、JDBC驱动三、数据库驱动四、应用程序、JDBC API、数据库驱动及数据库之间的关系五、连接数据库的6步骤六、规范和封装JDBC代码七、对数据库进行CRUD操作八、Statement的SQL注入问题九、使用JDBC处理数据十、JDBC事物处理 一、什么是JDBC SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。 JDBC 是一种用于执">
 <meta name="keywords" content="java,jdbc,sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) ">
 <meta property="og:url" content="http://dunizb.com/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="目录一、什么是JDBC 一、什么是JDBC SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。 JDBC 是一种用于执行SQL 语句的 Java API.是 Java DataBase java数据库连接)的缩写.  它由一组用 java编程语言编写的类和接口组成. JDBC 为工具/数据库开发人员提供了一个标准的API,使得他们能够用纯 Java API 来编写">
+<meta property="og:description" content="目录一、什么是JDBC二、JDBC驱动三、数据库驱动四、应用程序、JDBC API、数据库驱动及数据库之间的关系五、连接数据库的6步骤六、规范和封装JDBC代码七、对数据库进行CRUD操作八、Statement的SQL注入问题九、使用JDBC处理数据十、JDBC事物处理 一、什么是JDBC SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。 JDBC 是一种用于执">
 <meta property="og:image" content="http://img1.ph.126.net/W8X6UYnbh3Z0Jl3fQ6vEwA==/6608410129586287978.jpg">
 <meta property="og:image" content="http://img1.ph.126.net/IHo8eEw6bYxGakhajqSXyA==/6608903810306050402.png">
 <meta property="og:image" content="http://img0.ph.126.net/UPhnDJtmQsIi_CshZ7WDTQ==/6608186928725852934.png">
-<meta property="og:updated_time" content="2017-04-13T16:10:15.000Z">
+<meta property="og:updated_time" content="2017-04-13T16:26:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) ">
-<meta name="twitter:description" content="目录一、什么是JDBC 一、什么是JDBC SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。 JDBC 是一种用于执行SQL 语句的 Java API.是 Java DataBase java数据库连接)的缩写.  它由一组用 java编程语言编写的类和接口组成. JDBC 为工具/数据库开发人员提供了一个标准的API,使得他们能够用纯 Java API 来编写">
+<meta name="twitter:description" content="目录一、什么是JDBC二、JDBC驱动三、数据库驱动四、应用程序、JDBC API、数据库驱动及数据库之间的关系五、连接数据库的6步骤六、规范和封装JDBC代码七、对数据库进行CRUD操作八、Statement的SQL注入问题九、使用JDBC处理数据十、JDBC事物处理 一、什么是JDBC SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。 JDBC 是一种用于执">
 <meta name="twitter:image" content="http://img1.ph.126.net/W8X6UYnbh3Z0Jl3fQ6vEwA==/6608410129586287978.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Dunizb" type="application/atom+xml">
@@ -98,7 +98,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><a href="#一、什么是JDBC">一、什么是JDBC</a></p>
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><a href="./#一、什么是JDBC">一、什么是JDBC</a><br><a href="./#二、JDBC驱动">二、JDBC驱动</a><br><a href="./#三、数据库驱动">三、数据库驱动</a><br><a href="./#四、应用程序、JDBC API、数据库驱动及数据库之间的关系">四、应用程序、JDBC API、数据库驱动及数据库之间的关系</a><br><a href="./#五、连接数据库的6步骤">五、连接数据库的6步骤</a><br><a href="./#六、规范和封装JDBC代码">六、规范和封装JDBC代码</a><br><a href="./#七、对数据库进行CRUD操作">七、对数据库进行CRUD操作</a><br><a href="./#八、Statement的SQL注入问题">八、Statement的SQL注入问题</a><br><a href="./#九、使用JDBC处理数据">九、使用JDBC处理数据</a><br><a href="./#十、JDBC事物处理">十、JDBC事物处理</a></p>
 <h2 id="一、什么是JDBC"><a href="#一、什么是JDBC" class="headerlink" title="一、什么是JDBC"></a>一、什么是JDBC</h2><ol>
 <li>SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。</li>
 <li>JDBC 是一种用于执行SQL 语句的 Java API.是 Java DataBase java数据库连接)的缩写. </li>
