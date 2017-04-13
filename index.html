@@ -68,6 +68,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-System-out-println与System-err-println的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/10/29/System-out-println与System-err-println的区别/" class="article-date">
+  <time datetime="2013-10-29T07:17:21.000Z" itemprop="datePublished">2013-10-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>System.out.println</code>能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而<code>System.err.println</code>只能在屏幕上实现打印，即使你重定向了也一样。</p>
+<p>当向控制台输出信息时，开发者有两个选择：<code>System.out</code>和<code>System.err</code>。使用者更倾向于输出的是<code>System.out</code>，而如果是<code>System.err</code>则输出“error”。尽管这看起来是显而易见的，但很多开发者都不了解为什么出错和调试时使用<code>System.err</code>。</p>
+<p>当输出一个流时，JVM和操作系统共同决定何时输出这个流。也就是说，尽管开发者键入了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.print(<span class="string">"Test   Output:"</span>);</div></pre></td></tr></table></figure></p>
+<p>JVM和操作系统的组合体并不会立即输出这个流。相反，它将保持等待状态直到将要输出的东西达到一定的量。   </p>
+<p>假设输入以下指令：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.println(<span class="string">"Debugging Info."</span>);</div></pre></td></tr></table></figure></p>
+<p>JVM可能同意输出；然而，操作系统可能决定暂不输出。   </p>
+<p>由于这个原因，在调试程序时想要发现出错的位置就有可能成为问题。考虑以下的程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span>   i=<span class="number">0</span>;   i&lt;<span class="number">56</span>;   i++)   &#123;   </div><div class="line">    System.out.println(i);   </div><div class="line">    ...   </div><div class="line">    <span class="comment">//   containing   an   error   </span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>错误可能出现在i等于54时，但是可能JVM在i等于49时就结束输出了。50到54仍然存在于缓存中，结果也就丢失了。使用<code>System.err</code>来报告错误、调试程序就可以避免这种情况出现，它将使每一次操作的结果都输出出来。例如以下程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span>   i=<span class="number">0</span>;   i&lt;<span class="number">56</span>;   i++)   &#123;   </div><div class="line">     System.err.println(i);   </div><div class="line">     ...   </div><div class="line">     <span class="comment">//   containing   an   error   </span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在每一次i等于54时都将显示错误信息。</p>
+<p><code>System.out.println</code>可能会被缓冲,而<code>System.err.println</code>不会.</p>
+<p><code>System.err和System.out</code>就是错误输出和标准输出。如果你用LOG4J记录日志的话,且设定错误等级的话，<code>System.err</code>的输出是将记录到日志中。</p>
+<p>输出设备是一样的所以你看到的是一样的<code>System.setErr()</code>，<code>System.setOut()</code>是重定向两个流的方法。</p>
+<p><code>System.err.println()</code>是要缓冲的,所以优先级会高点,而<code>System.out.println()</code>是不需要缓冲的,所以优先级会低点.</p>
+<p>另外，特别的，当你使用MyEclipse和Tomcat6以上时，输出<code>System.err.println(&quot;aaaa&quot;)</code>到控制台是红色显示的，在控制台很显眼，一下就能找到，非常适合输出调试信息，这个我个人比较喜欢用，比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    System.err.println(<span class="string">"aaaaaaaaaaaaaaaa"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://img2.ph.126.net/2QNPPl8D_-byOjzPHYzKKA==/6599275386981696242.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dunizb.com/2013/10/29/System-out-println与System-err-println的区别/" data-id="cj1gk6rcx0004z45w45tgig8f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-BigDecimal-conversion-Integer" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2013/10/26/BigDecimal-conversion-Integer/" class="article-date">
@@ -144,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dunizb.com/2013/10/26/BigDecimal-conversion-Integer/" data-id="cj1gjic0c0001m95w17s9i11k" class="article-share-link">Share</a>
+      <a data-url="http://dunizb.com/2013/10/26/BigDecimal-conversion-Integer/" data-id="cj1gk6rcq0001z45wi5dwlm0d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘/">备忘</a></li></ul>
@@ -244,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dunizb.com/2012/09/08/abstract-class-and-interface/" data-id="cj1gjic0j0004m95wtuxrwng9" class="article-share-link">Share</a>
+      <a data-url="http://dunizb.com/2012/09/08/abstract-class-and-interface/" data-id="cj1gk6rcz0005z45wucszohuo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
@@ -307,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dunizb.com/2012/09/02/==和equals方法终极解析/" data-id="cj1gjic060000m95wltq7tygh" class="article-share-link">Share</a>
+      <a data-url="http://dunizb.com/2012/09/02/==和equals方法终极解析/" data-id="cj1gk6rcl0000z45w4ptq7prx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
@@ -368,6 +425,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a>
+          </li>
         
           <li>
             <a href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a>

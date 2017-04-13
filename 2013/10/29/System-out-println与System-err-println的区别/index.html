@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>System.out.println与System.err.println的区别 | Dunizb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="System.out.println能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而System.err.println只能在屏幕上实现打印，即使你重定向了也一样。 当向控制台输出信息时，开发者有两个选择：System.out和System.err。使用者更倾向于输出的是System.out，而如果是System.err则输出“error”。尽管这看起来是显而易见的，但很多开发者">
+<meta name="keywords" content="java,javase">
+<meta property="og:type" content="article">
+<meta property="og:title" content="System.out.println与System.err.println的区别">
+<meta property="og:url" content="http://dunizb.com/2013/10/29/System-out-println与System-err-println的区别/index.html">
+<meta property="og:site_name" content="Dunizb">
+<meta property="og:description" content="System.out.println能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而System.err.println只能在屏幕上实现打印，即使你重定向了也一样。 当向控制台输出信息时，开发者有两个选择：System.out和System.err。使用者更倾向于输出的是System.out，而如果是System.err则输出“error”。尽管这看起来是显而易见的，但很多开发者">
+<meta property="og:image" content="http://img2.ph.126.net/2QNPPl8D_-byOjzPHYzKKA==/6599275386981696242.png">
+<meta property="og:updated_time" content="2017-04-13T15:27:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="System.out.println与System.err.println的区别">
+<meta name="twitter:description" content="System.out.println能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而System.err.println只能在屏幕上实现打印，即使你重定向了也一样。 当向控制台输出信息时，开发者有两个选择：System.out和System.err。使用者更倾向于输出的是System.out，而如果是System.err则输出“error”。尽管这看起来是显而易见的，但很多开发者">
+<meta name="twitter:image" content="http://img2.ph.126.net/2QNPPl8D_-byOjzPHYzKKA==/6599275386981696242.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Dunizb" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dunizb</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">这世间唯有梦想和好姑娘不可辜负！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dunizb.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-System-out-println与System-err-println的区别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/10/29/System-out-println与System-err-println的区别/" class="article-date">
+  <time datetime="2013-10-29T07:17:21.000Z" itemprop="datePublished">2013-10-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      System.out.println与System.err.println的区别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>System.out.println</code>能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而<code>System.err.println</code>只能在屏幕上实现打印，即使你重定向了也一样。</p>
+<p>当向控制台输出信息时，开发者有两个选择：<code>System.out</code>和<code>System.err</code>。使用者更倾向于输出的是<code>System.out</code>，而如果是<code>System.err</code>则输出“error”。尽管这看起来是显而易见的，但很多开发者都不了解为什么出错和调试时使用<code>System.err</code>。</p>
+<p>当输出一个流时，JVM和操作系统共同决定何时输出这个流。也就是说，尽管开发者键入了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.print(<span class="string">"Test   Output:"</span>);</div></pre></td></tr></table></figure></p>
+<p>JVM和操作系统的组合体并不会立即输出这个流。相反，它将保持等待状态直到将要输出的东西达到一定的量。   </p>
+<p>假设输入以下指令：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.println(<span class="string">"Debugging Info."</span>);</div></pre></td></tr></table></figure></p>
+<p>JVM可能同意输出；然而，操作系统可能决定暂不输出。   </p>
+<p>由于这个原因，在调试程序时想要发现出错的位置就有可能成为问题。考虑以下的程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span>   i=<span class="number">0</span>;   i&lt;<span class="number">56</span>;   i++)   &#123;   </div><div class="line">    System.out.println(i);   </div><div class="line">    ...   </div><div class="line">    <span class="comment">//   containing   an   error   </span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>错误可能出现在i等于54时，但是可能JVM在i等于49时就结束输出了。50到54仍然存在于缓存中，结果也就丢失了。使用<code>System.err</code>来报告错误、调试程序就可以避免这种情况出现，它将使每一次操作的结果都输出出来。例如以下程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span>   i=<span class="number">0</span>;   i&lt;<span class="number">56</span>;   i++)   &#123;   </div><div class="line">     System.err.println(i);   </div><div class="line">     ...   </div><div class="line">     <span class="comment">//   containing   an   error   </span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在每一次i等于54时都将显示错误信息。</p>
+<p><code>System.out.println</code>可能会被缓冲,而<code>System.err.println</code>不会.</p>
+<p><code>System.err和System.out</code>就是错误输出和标准输出。如果你用LOG4J记录日志的话,且设定错误等级的话，<code>System.err</code>的输出是将记录到日志中。</p>
+<p>输出设备是一样的所以你看到的是一样的<code>System.setErr()</code>，<code>System.setOut()</code>是重定向两个流的方法。</p>
+<p><code>System.err.println()</code>是要缓冲的,所以优先级会高点,而<code>System.out.println()</code>是不需要缓冲的,所以优先级会低点.</p>
+<p>另外，特别的，当你使用MyEclipse和Tomcat6以上时，输出<code>System.err.println(&quot;aaaa&quot;)</code>到控制台是红色显示的，在控制台很显眼，一下就能找到，非常适合输出调试信息，这个我个人比较喜欢用，比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    System.err.println(<span class="string">"aaaaaaaaaaaaaaaa"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://img2.ph.126.net/2QNPPl8D_-byOjzPHYzKKA==/6599275386981696242.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dunizb.com/2013/10/29/System-out-println与System-err-println的区别/" data-id="cj1gk6rcx0004z45w45tgig8f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/10/26/BigDecimal-conversion-Integer/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          BigDecimal互转Integer
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javase/">javase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/备忘/">备忘</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/javase/" style="font-size: 20px;">javase</a> <a href="/tags/备忘/" style="font-size: 10px;">备忘</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">October 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/09/">September 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a>
+          </li>
+        
+          <li>
+            <a href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a>
+          </li>
+        
+          <li>
+            <a href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a>
+          </li>
+        
+          <li>
+            <a href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Dunizb<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
