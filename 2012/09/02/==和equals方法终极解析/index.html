@@ -22,7 +22,7 @@
 <meta property="og:url" content="http://dunizb.com/2012/09/02/==和equals方法终极解析/index.html">
 <meta property="og:site_name" content="Dunizb">
 <meta property="og:description" content="Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。 当使用==来判断两个变量是否相等时，如果两个变量都是基本类型变量，且都是数字类型（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。 但对于两个引用类型变量，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来">
-<meta property="og:updated_time" content="2017-04-13T14:32:49.000Z">
+<meta property="og:updated_time" content="2017-04-13T17:33:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="==和equals方法终极解析">
 <meta name="twitter:description" content="Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。 当使用==来判断两个变量是否相等时，如果两个变量都是基本类型变量，且都是数字类型（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。 但对于两个引用类型变量，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来">
@@ -97,7 +97,7 @@
 <div class="intrude-less">
     <header id="header" class="inner">
         <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
+            <img src="/img/avatar.gif" class="animated zoomIn">
         </a>
         <hgroup>
           <h1 class="header-author"><a href="/">张兵</a></h1>
@@ -224,7 +224,7 @@
     <div class="intrude-less">
         <header id="header" class="inner">
             <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
+                <img src="/img/avatar.gif" class="animated zoomIn">
             </a>
             <hgroup>
               <h1 class="header-author"><a href="/" title="回到主页">张兵</a></h1>
@@ -307,7 +307,7 @@
           
         <p>Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。</p>
 <p>当使用==来判断两个变量是否相等时，<strong>如果两个变量都是基本类型变量，且都是数字类型</strong>（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。</p>
-<p><strong>但对于两个引用类型变量</strong>，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来判断两种类型变量对否相等的结果。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> it = <span class="number">65</span>;</div><div class="line">        <span class="keyword">float</span> fl=<span class="number">65.0f</span>;</div><div class="line">        System.out.println(<span class="string">"65和65.0f是否相等？"</span>+(it == fl));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        <span class="keyword">char</span> ch = <span class="string">'A'</span>;</div><div class="line">        System.out.println(<span class="string">"65和'A'是否相等？"</span>+(it == ch));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        String str1= <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line">        String str2 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line">        System.out.println(<span class="string">"str1和str2是否相等？"</span>+(str1 == str2));      <span class="comment">//输出false;</span></div><div class="line">        System.out.println(<span class="string">"str1是否equals str2？"</span>+(str1.equals(str2)));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        <span class="comment">//由于java.lang.string与EqualsTest类没有继承关系</span></div><div class="line">        <span class="comment">//所以下面的语句导致编译错误</span></div><div class="line">        <span class="comment">// System.out.println("hello"==new EqualsTest());</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>但对于两个引用类型变量</strong>，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来判断两种类型变量对否相等的结果。<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> it = <span class="number">65</span>;</div><div class="line">        <span class="keyword">float</span> fl=<span class="number">65.0f</span>;</div><div class="line">        System.out.println(<span class="string">"65和65.0f是否相等？"</span>+(it == fl));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        <span class="keyword">char</span> ch = <span class="string">'A'</span>;</div><div class="line">        System.out.println(<span class="string">"65和'A'是否相等？"</span>+(it == ch));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        String str1= <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line">        String str2 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line">        System.out.println(<span class="string">"str1和str2是否相等？"</span>+(str1 == str2));      <span class="comment">//输出false;</span></div><div class="line">        System.out.println(<span class="string">"str1是否equals str2？"</span>+(str1.equals(str2)));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        <span class="comment">//由于java.lang.string与EqualsTest类没有继承关系</span></div><div class="line">        <span class="comment">//所以下面的语句导致编译错误</span></div><div class="line">        <span class="comment">// System.out.println("hello"==new EqualsTest());</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>运行上面的程序，可以看到65、65.0f和’A’相等。但对于str1和str2，因为他们都是引用类型变量，他们分别指向两个通过new关键字创建的String对象，因此str1和str2两个变量不相等。</p>
 <p>对于Java菜鸟而言，String还有一个非常容易迷惑人的地方：’’hello’’直接量和 new String(“hello”)有什么区别呢？当Java程序中直接使用形如“hello”的字符串直接量（包括子编译时就可以计算出来的字符串值）时，JVM将会使用常量池来管理这些字符串；当使用new String(“hello”)时，JVM先会使用常量池来管理”hello”直接量，再调用String类的构造器来创建一个新的String对象，新创建的String对象被保存在对内存中。换句话说<code>new String(&quot;hello&quot;)</code>一共产生了两个对象。</p>
 <p><strong>提示</strong> </p>
@@ -337,7 +337,7 @@
         <p><span>本文标题:</span><a href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
         <p><span>发布时间:</span>2012-09-02, 11:38:57</p>
-        <p><span>最后更新:</span>2017-04-13, 22:32:49</p>
+        <p><span>最后更新:</span>2017-04-14, 01:33:55</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2012/09/02/==和equals方法终极解析/" title="==和equals方法终极解析">http://dunizb.com/2012/09/02/==和equals方法终极解析/</a>
             <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2012/09/02/==和equals方法终极解析/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

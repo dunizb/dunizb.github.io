@@ -15,20 +15,20 @@
 
 
 
-<meta name="description" content="目录一、什么是JDBC二、JDBC驱动三、数据库驱动四、应用程序、JDBC API、数据库驱动及数据库之间的关系五、连接数据库的6步骤六、规范和封装JDBC代码七、对数据库进行CRUD操作八、Statement的SQL注入问题九、使用JDBC处理数据十、JDBC事物处理 一、什么是JDBC SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。 JDBC 是一种用于执">
+<meta name="description" content="目录一、什么是JDBC二、JDBC驱动三、数据库驱动四、应用程序、JDBC API、数据库驱动及数据库之间的关系五、连接数据库的6步骤六、规范和封装JDBC代码七、对数据库进行CRUD操作八、Statement的SQL注入问题九、使用JDBC处理数据十、JDBC事物处理">
 <meta name="keywords" content="java,jdbc,sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) ">
 <meta property="og:url" content="http://dunizb.com/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="目录一、什么是JDBC二、JDBC驱动三、数据库驱动四、应用程序、JDBC API、数据库驱动及数据库之间的关系五、连接数据库的6步骤六、规范和封装JDBC代码七、对数据库进行CRUD操作八、Statement的SQL注入问题九、使用JDBC处理数据十、JDBC事物处理 一、什么是JDBC SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。 JDBC 是一种用于执">
+<meta property="og:description" content="目录一、什么是JDBC二、JDBC驱动三、数据库驱动四、应用程序、JDBC API、数据库驱动及数据库之间的关系五、连接数据库的6步骤六、规范和封装JDBC代码七、对数据库进行CRUD操作八、Statement的SQL注入问题九、使用JDBC处理数据十、JDBC事物处理">
 <meta property="og:image" content="http://img1.ph.126.net/W8X6UYnbh3Z0Jl3fQ6vEwA==/6608410129586287978.jpg">
 <meta property="og:image" content="http://img1.ph.126.net/IHo8eEw6bYxGakhajqSXyA==/6608903810306050402.png">
 <meta property="og:image" content="http://img0.ph.126.net/UPhnDJtmQsIi_CshZ7WDTQ==/6608186928725852934.png">
-<meta property="og:updated_time" content="2017-04-13T16:26:22.000Z">
+<meta property="og:updated_time" content="2017-04-13T17:34:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) ">
-<meta name="twitter:description" content="目录一、什么是JDBC二、JDBC驱动三、数据库驱动四、应用程序、JDBC API、数据库驱动及数据库之间的关系五、连接数据库的6步骤六、规范和封装JDBC代码七、对数据库进行CRUD操作八、Statement的SQL注入问题九、使用JDBC处理数据十、JDBC事物处理 一、什么是JDBC SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。 JDBC 是一种用于执">
+<meta name="twitter:description" content="目录一、什么是JDBC二、JDBC驱动三、数据库驱动四、应用程序、JDBC API、数据库驱动及数据库之间的关系五、连接数据库的6步骤六、规范和封装JDBC代码七、对数据库进行CRUD操作八、Statement的SQL注入问题九、使用JDBC处理数据十、JDBC事物处理">
 <meta name="twitter:image" content="http://img1.ph.126.net/W8X6UYnbh3Z0Jl3fQ6vEwA==/6608410129586287978.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -101,7 +101,7 @@
 <div class="intrude-less">
     <header id="header" class="inner">
         <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
+            <img src="/img/avatar.gif" class="animated zoomIn">
         </a>
         <hgroup>
           <h1 class="header-author"><a href="/">张兵</a></h1>
@@ -228,7 +228,7 @@
     <div class="intrude-less">
         <header id="header" class="inner">
             <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
+                <img src="/img/avatar.gif" class="animated zoomIn">
             </a>
             <hgroup>
               <h1 class="header-author"><a href="/" title="回到主页">张兵</a></h1>
@@ -309,7 +309,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><a href="./#一、什么是JDBC">一、什么是JDBC</a><br><a href="./#二、JDBC驱动">二、JDBC驱动</a><br><a href="./#三、数据库驱动">三、数据库驱动</a><br><a href="./#四、应用程序、JDBC API、数据库驱动及数据库之间的关系">四、应用程序、JDBC API、数据库驱动及数据库之间的关系</a><br><a href="./#五、连接数据库的6步骤">五、连接数据库的6步骤</a><br><a href="./#六、规范和封装JDBC代码">六、规范和封装JDBC代码</a><br><a href="./#七、对数据库进行CRUD操作">七、对数据库进行CRUD操作</a><br><a href="./#八、Statement的SQL注入问题">八、Statement的SQL注入问题</a><br><a href="./#九、使用JDBC处理数据">九、使用JDBC处理数据</a><br><a href="./#十、JDBC事物处理">十、JDBC事物处理</a></p>
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><a href="./#一、什么是JDBC">一、什么是JDBC</a><br><a href="./#二、JDBC驱动">二、JDBC驱动</a><br><a href="./#三、数据库驱动">三、数据库驱动</a><br><a href="./#四、应用程序、JDBC API、数据库驱动及数据库之间的关系">四、应用程序、JDBC API、数据库驱动及数据库之间的关系</a><br><a href="./#五、连接数据库的6步骤">五、连接数据库的6步骤</a><br><a href="./#六、规范和封装JDBC代码">六、规范和封装JDBC代码</a><br><a href="./#七、对数据库进行CRUD操作">七、对数据库进行CRUD操作</a><br><a href="./#八、Statement的SQL注入问题">八、Statement的SQL注入问题</a><br><a href="./#九、使用JDBC处理数据">九、使用JDBC处理数据</a><br><a href="./#十、JDBC事物处理">十、JDBC事物处理</a><br><a id="more"></a></p>
 <h2 id="一、什么是JDBC"><a href="#一、什么是JDBC" class="headerlink" title="一、什么是JDBC"></a>一、什么是JDBC</h2><ol>
 <li>SUN公司为统一对数据库的操作，定义了一套Java操作数据库的规范，称之为JDBC。</li>
 <li>JDBC 是一种用于执行SQL 语句的 Java API.是 Java DataBase java数据库连接)的缩写. </li>
@@ -447,7 +447,7 @@
         <p><span>本文标题:</span><a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
         <p><span>发布时间:</span>2014-07-06, 18:44:07</p>
-        <p><span>最后更新:</span>2017-04-14, 00:26:22</p>
+        <p><span>最后更新:</span>2017-04-14, 01:34:43</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/" title="JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) ">http://dunizb.com/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/</a>
             <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
