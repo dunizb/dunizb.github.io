@@ -3,17 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Dunizb</title>
+  <title>抽象类与接口完全释疑 | Dunizb</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dunizb">
-<meta property="og:url" content="http://dunizb.com/index.html">
+  <meta name="description" content="抽象类抽象方法和抽象类抽象类与抽象方法必须使用abstract修饰符来定义，有抽象方法的类只能被定义成抽象类，抽象类里可以没有抽象方法。 抽象方法和抽象类的规则如下：  抽象类必须使用abstract修饰符来修饰，抽象方法也必须使用abstract修饰符来修饰，抽象方法不能有方法体。 抽象类不能被实例化，无法使用new关键字来调用抽象类的构造器创建抽象类的实例。即使抽象类里不包含抽象方法，这个抽象">
+<meta name="keywords" content="java,javase">
+<meta property="og:type" content="article">
+<meta property="og:title" content="抽象类与接口完全释疑">
+<meta property="og:url" content="http://dunizb.com/2012/09/08/abstract-class-and-interface/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
+<meta property="og:description" content="抽象类抽象方法和抽象类抽象类与抽象方法必须使用abstract修饰符来定义，有抽象方法的类只能被定义成抽象类，抽象类里可以没有抽象方法。 抽象方法和抽象类的规则如下：  抽象类必须使用abstract修饰符来修饰，抽象方法也必须使用abstract修饰符来修饰，抽象方法不能有方法体。 抽象类不能被实例化，无法使用new关键字来调用抽象类的构造器创建抽象类的实例。即使抽象类里不包含抽象方法，这个抽象">
+<meta property="og:updated_time" content="2017-04-13T14:50:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dunizb">
-<meta name="twitter:description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
+<meta name="twitter:title" content="抽象类与接口完全释疑">
+<meta name="twitter:description" content="抽象类抽象方法和抽象类抽象类与抽象方法必须使用abstract修饰符来定义，有抽象方法的类只能被定义成抽象类，抽象类里可以没有抽象方法。 抽象方法和抽象类的规则如下：  抽象类必须使用abstract修饰符来修饰，抽象方法也必须使用abstract修饰符来修饰，抽象方法不能有方法体。 抽象类不能被实例化，无法使用new关键字来调用抽象类的构造器创建抽象类的实例。即使抽象类里不包含抽象方法，这个抽象">
   
     <link rel="alternate" href="/atom.xml" title="Dunizb" type="application/atom+xml">
   
@@ -66,9 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-abstract-class-and-interface" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-abstract-class-and-interface" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2012/09/08/abstract-class-and-interface/" class="article-date">
   <time datetime="2012-09-08T07:24:06.000Z" itemprop="datePublished">2012-09-08</time>
@@ -85,8 +85,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a>
+    <h1 class="article-title" itemprop="name">
+      抽象类与接口完全释疑
     </h1>
   
 
@@ -164,73 +164,23 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-==和equals方法终极解析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/09/02/==和equals方法终极解析/" class="article-date">
-  <time datetime="2012-09-02T03:38:57.000Z" itemprop="datePublished">2012-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2012/09/02/==和equals方法终极解析/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
+          ==和equals方法终极解析
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a>
-    </h1>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。</p>
-<p>当使用==来判断两个变量是否相等时，<strong>如果两个变量都是基本类型变量，且都是数字类型</strong>（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。</p>
-<p><strong>但对于两个引用类型变量</strong>，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来判断两种类型变量对否相等的结果。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> it = <span class="number">65</span>;</div><div class="line">        <span class="keyword">float</span> fl=<span class="number">65.0f</span>;</div><div class="line">        System.out.println(<span class="string">"65和65.0f是否相等？"</span>+(it == fl));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        <span class="keyword">char</span> ch = <span class="string">'A'</span>;</div><div class="line">        System.out.println(<span class="string">"65和'A'是否相等？"</span>+(it == ch));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        String str1= <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line">        String str2 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line">        System.out.println(<span class="string">"str1和str2是否相等？"</span>+(str1 == str2));      <span class="comment">//输出false;</span></div><div class="line">        System.out.println(<span class="string">"str1是否equals str2？"</span>+(str1.equals(str2)));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        <span class="comment">//由于java.lang.string与EqualsTest类没有继承关系</span></div><div class="line">        <span class="comment">//所以下面的语句导致编译错误</span></div><div class="line">        <span class="comment">// System.out.println("hello"==new EqualsTest());</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>运行上面的程序，可以看到65、65.0f和’A’相等。但对于str1和str2，因为他们都是引用类型变量，他们分别指向两个通过new关键字创建的String对象，因此str1和str2两个变量不相等。</p>
-<p>对于Java菜鸟而言，String还有一个非常容易迷惑人的地方：’’hello’’直接量和 new String(“hello”)有什么区别呢？当Java程序中直接使用形如“hello”的字符串直接量（包括子编译时就可以计算出来的字符串值）时，JVM将会使用常量池来管理这些字符串；当使用new String(“hello”)时，JVM先会使用常量池来管理”hello”直接量，再调用String类的构造器来创建一个新的String对象，新创建的String对象被保存在对内存中。换句话说<code>new String(&quot;hello&quot;)</code>一共产生了两个对象。</p>
-<p><strong>提示</strong> </p>
-<blockquote>
-<p>常量池，专门用于管理在编译期被确定并保存在编译的.class文件中的一些数据，它包括了关于类、方法、接口中的常量，还包括字符串常量。</p>
-</blockquote>
-<p>下面程序示范了JVM使用常量池管理字符串直接量的情形。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">stringCompareTest</span></span>&#123;</div><div class="line">    <span class="comment">//下面程序示范了JVM使用常量池管理字符串直接量的情形</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="comment">//s1直接引用常量池中的''你好Java"</span></div><div class="line">        String s1 = <span class="string">"你好Java"</span>;</div><div class="line">        String s2 = <span class="string">"你好"</span>;</div><div class="line">        String s3 = <span class="string">"Java"</span>;</div><div class="line"></div><div class="line">            <span class="comment">//s4后面的字符串值可以在编译期就确定下来</span></div><div class="line">            <span class="comment">//s4直接引用常量池中的“你好Java”</span></div><div class="line">        String  s4=<span class="string">"你好"</span>+<span class="string">"Java"</span>;</div><div class="line"></div><div class="line">        <span class="comment">//s5后面的字符串值可以在编译期就确定下来</span></div><div class="line">        <span class="comment">//s5直接引用常量池中的“你好Java”</span></div><div class="line">        String s5 = <span class="string">"你"</span> + <span class="string">"好"</span> + <span class="string">"Java"</span>;</div><div class="line"></div><div class="line">        <span class="comment">//s6后面的字符串值不能在编译期就确定下来</span></div><div class="line">        <span class="comment">//不能引用常量池中字符串</span></div><div class="line">        String s6 =s2+s3;</div><div class="line"></div><div class="line">        <span class="comment">//使用new调用构造器将会创建一个新的string对象</span></div><div class="line">        <span class="comment">//s7引用对内存中新创建的string对象</span></div><div class="line">        String s7 = <span class="keyword">new</span> String(<span class="string">"你好Java"</span>);</div><div class="line"></div><div class="line">        System.out.println(s1==s4);   <span class="comment">//true</span></div><div class="line">        System.out.println(s1==s5);   <span class="comment">//true</span></div><div class="line">        System.out.println(s1==s6);   <span class="comment">//false</span></div><div class="line">        System.out.println(s1==s7);   <span class="comment">//false</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>JVM常量池保证相同的字符串直接量只有一个，不会产生多个副本。例子中的s1、s4、s5所引用的字符串可以在编译期就确定下来，因此他们都讲引用常量池的同一个字符窜对象。</p>
-<p>使用<code>new String()</code>创建的字符串对象是运行时创建出来的，他被保存在运行时内存内（即对内存），不会放入常量池中。</p>
-<p>但在很多时候，程序判断两个引用变量是否相等时，也希望有一种类似于“值相等”的判断规则，并不严格要求两个引用变量指向同一个对象。例如对于两个字符串变量，可能只是要求他们的引用字符串对象里包含的字符串序列相同即可认为相等。此时就可以利用String对象的equals反法来进行判断，例如上面程序中<code>str1.equals(str2)</code>将返回true。</p>
-<p>equals方法是Object类提供的一个实例方法，因此所有引用变量都可以调用该方法来判断是否与其他引用变量相等。但是用这个方法判断两个对象相等的标准与==运输符没有区别，同样要求两个引用变量指向同一个对象才会返回true。因此这个Object类提供的equals反法没有太大的意义，如果希望采用自定义的相等标准，则可采用重写equals方法来实现。  </p>
-<p><strong>提示</strong></p>
-<blockquote>
-<p>String已经重写了Object的equals()方法，String的equals()方法判断两个字符串相等的标准是：只要两个字符串所包含的字符序列相同，通过equals比较将返回true，否则将返回false。</p>
-<p>网上很多地方和书上都说equals反法是判断两个对象值相等。这个说法是相当错误的，什么叫对象值呢？对象的值如何相等？实际上，重写equals方法就提供了自定义相等标准，你认为怎样是相等，那就怎样相等，一切都是你做主！</p>
-</blockquote>
-<p>重写equals反法就不再说明，写着太累了、、、。</p>
-<p>Object默认提供的<code>equals()</code>只是比较地址，即Object类的equals方法比较的结果与==比较的结果完全相同。因此，在实际应用中常常需要重写equals方法，重写equals方法时，相等条件是又系统要求决定的，因此equals方法的实现也是又系统要求决定的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://dunizb.com/2012/09/02/==和equals方法终极解析/" data-id="cj1gix04m0000f95wnphv1m2a" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
 
 </section>
         
