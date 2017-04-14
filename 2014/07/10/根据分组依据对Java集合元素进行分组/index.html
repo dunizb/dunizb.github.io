@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=http://dunizb.com/browseupdate/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="张兵" />
+
+
+
+<meta name="description" content="业务背景：在项目中有个“分账”功能，就是支付的钱一部分要根据不同商品的分账金额自动分给平台提供商。">
+<meta name="keywords" content="集合,字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="根据分组依据对Java集合元素进行分组(模拟电信翼支付分账功能调用接口的参数字符串)">
+<meta property="og:url" content="http://dunizb.com/2014/07/10/根据分组依据对Java集合元素进行分组/index.html">
+<meta property="og:site_name" content="Dunizb">
+<meta property="og:description" content="业务背景：在项目中有个“分账”功能，就是支付的钱一部分要根据不同商品的分账金额自动分给平台提供商。">
+<meta property="og:updated_time" content="2017-04-14T18:06:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="根据分组依据对Java集合元素进行分组(模拟电信翼支付分账功能调用接口的参数字符串)">
+<meta name="twitter:description" content="业务背景：在项目中有个“分账”功能，就是支付的钱一部分要根据不同商品的分账金额自动分给平台提供商。">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Dunizb" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>根据分组依据对Java集合元素进行分组(模拟电信翼支付分账功能调用接口的参数字符串) | Dunizb</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.gif" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">张兵</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:dunizb@foxmail.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="//weibo.com/dunio" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                                <a class="fa 微信" href="http://mp.weixin.qq.com/profile?src=3&timestamp=1492107936&ver=1&signature=lkkdEPpQh*gpzJhFUMj7iJ2bUXRcKvd0C2Vhlaow4cYyzFgXuj1Iq3Bpo*3nOjSHkTYcQUEDV4ey45etQPVBkw==" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileZill/">FileZill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftp/">ftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javase/">javase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/备忘/">备忘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储过程/">存储过程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张兵</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.gif" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张兵</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:dunizb@foxmail.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="//weibo.com/dunio" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" target="_blank" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="http://mp.weixin.qq.com/profile?src=3&timestamp=1492107936&ver=1&signature=lkkdEPpQh*gpzJhFUMj7iJ2bUXRcKvd0C2Vhlaow4cYyzFgXuj1Iq3Bpo*3nOjSHkTYcQUEDV4ey45etQPVBkw==" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-根据分组依据对Java集合元素进行分组" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/07/10/根据分组依据对Java集合元素进行分组/" class="article-date">
+      <time datetime="2014-07-10T06:19:23.000Z" itemprop="datePublished">2014-07-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      根据分组依据对Java集合元素进行分组(模拟电信翼支付分账功能调用接口的参数字符串)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串/">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/集合/">集合</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>业务背景：在项目中有个“分账”功能，就是支付的钱一部分要根据不同商品的分账金额自动分给平台提供商。<br><a id="more"></a><br>有以下业务模型：</p>
+<ul>
+<li>商户号：提供给每个商家的一种凭证号码。</li>
+<li>分销商：平台上的卖家。每个分销商拥有一个商户号。</li>
+<li>主商户号：平台提供商的商户号，对应的，每个卖家的商户号被称为子商户号。</li>
+<li>订单好和订单总金额：一个订单的总金额。</li>
+<li>分账金额：每个商品被要求设置一个字段，存储分账金额。</li>
+</ul>
+<p>下面模拟一个业务模型：</p>
+<ul>
+<li><p>有如下分销商：<br>10001的商户号：0018888881<br>10002的商户号：0018888882<br>主商户号：1200000016</p>
+</li>
+<li><p>有如下订单：<br>2000020140530000672，总金额：600<br>订单下有三个物品：</p>
+<ul>
+<li>物品A：属于分销商10001，物品价格：100，分账：50</li>
+<li>物品B：属于分销商10001，物品价格：200，分账：70</li>
+<li>物品C：属于分销商10002，物品价格：300，分账：100</li>
+</ul>
+</li>
+<li><p>计算后的10001商户分账总金额：70+50=120</p>
+</li>
+<li>计算后的10002商户分账总金额：100</li>
+<li>计算后的主商户分账总金额：(100-50)+(200-70)+(300-100)=380</li>
+</ul>
+<p>那么，经过计算后，应该要得到一个如下的字符串参数，以用来传递给支付工具接口调用。<br>最后得出的分账参数字符串：1200000016：380 | 0018888881：120 | 0018888882：100</p>
+<p>也就是，每个订单要分解成一个主商户号（平台提供商），若干个子商户号（卖家），而且每个字商户号只能出现一次，但分解后通常会出现一个订单中会有同一个商户号的若干商品，所以，必须要对分解出来的数据进行分组统计。</p>
+<p>下面贴出模拟过程的完整代码，由于是模拟，所以部分地方数据直接自己构造进去了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 模拟中国电信翼支付的分账功能接口调用的参数字符串</div><div class="line"> * 根据分组依据对集合进行分组</div><div class="line"> * <span class="doctag">@author</span> ZhangBing</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CollectionGroupTest</span> </span>&#123;</div><div class="line">    <span class="comment">/***</span></div><div class="line">     * 分组依据接口，用于集合分组时，获取分组依据</div><div class="line">     * <span class="doctag">@author</span> ZhangBing</div><div class="line">     * <span class="doctag">@date</span> 20140530</div><div class="line">     * <span class="doctag">@param</span> &lt;T&gt;</div><div class="line">     */</div><div class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">GroupBy</span>&lt;<span class="title">T</span>&gt;</span>&#123;</div><div class="line">        <span class="function">T <span class="title">groupBy</span><span class="params">(Object obj)</span></span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 模拟订单实体类</div><div class="line">     * <span class="doctag">@author</span> ZhangBing</div><div class="line">     *</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ItemInfo</span></span>&#123;</div><div class="line">        <span class="keyword">private</span> String id;<span class="comment">//订单ID</span></div><div class="line">        <span class="keyword">private</span> String shopid;<span class="comment">//店铺ID</span></div><div class="line">        <span class="keyword">private</span> String fxSplitMoney;<span class="comment">//分账金额</span></div><div class="line">        <span class="keyword">private</span> String itemValue;<span class="comment">//物品价格</span></div><div class="line">        <span class="comment">/** 省略getter setter方法 */</span></div><div class="line">        .....</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 集合临时转换类,跟模拟订单实体类对应</div><div class="line">     * <span class="doctag">@author</span> ZhangBing</div><div class="line">     * <span class="doctag">@date</span> 2014-5-30 上午10:38:48</div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyData</span></span>&#123;</div><div class="line">        <span class="keyword">private</span> String id ;</div><div class="line">        <span class="keyword">private</span> String shopId ;</div><div class="line">        <span class="keyword">private</span> String itemValue;</div><div class="line">        <span class="keyword">private</span> String fxMoney;</div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getFxMoney</span><span class="params">()</span></span>&#123;</div><div class="line">            <span class="keyword">return</span> fxMoney;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> MyData <span class="title">setFxMoney</span><span class="params">(String fxMoney)</span></span>&#123;</div><div class="line">            <span class="keyword">this</span>.fxMoney = fxMoney;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getItemValue</span><span class="params">()</span></span>&#123;</div><div class="line">            <span class="keyword">return</span> itemValue;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> MyData <span class="title">setItemValue</span><span class="params">(String itemValue)</span></span>&#123;</div><div class="line">            <span class="keyword">this</span>.itemValue = itemValue;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> id;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> MyData <span class="title">setId</span><span class="params">(String id)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.id = id;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getShopId</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> shopId;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> MyData <span class="title">setShopId</span><span class="params">(String shopId)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.shopId = shopId;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 分组依据实现</div><div class="line">     * <span class="doctag">@param</span> &lt;T&gt;</div><div class="line">     * <span class="doctag">@param</span> &lt;D&gt;</div><div class="line">     * <span class="doctag">@param</span> colls</div><div class="line">     * <span class="doctag">@param</span> gb</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> &lt;T extends Comparable&lt;T&gt;,D&gt; Map&lt;T,List&lt;D&gt;&gt; group(Collection&lt;D&gt; colls,GroupBy&lt;T&gt; gb)&#123;</div><div class="line">        <span class="keyword">if</span>(colls == <span class="keyword">null</span> || colls.isEmpty())&#123;</div><div class="line">            System.out.println(<span class="string">"分组集合不能为空!"</span>);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(gb == <span class="keyword">null</span>)&#123;</div><div class="line">            System.out.println(<span class="string">"分组依据接口不能为Null!"</span>);</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        Iterator&lt;D&gt; iter = colls.iterator();</div><div class="line">        Map&lt;T,List&lt;D&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;T, List&lt;D&gt;&gt;();</div><div class="line">        <span class="keyword">while</span>(iter.hasNext())&#123;</div><div class="line">            D d = iter.next();</div><div class="line">            T t = gb.groupBy(d);</div><div class="line">            <span class="keyword">if</span>(map.containsKey(t))&#123;</div><div class="line">                map.get(t).add(d);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                List&lt;D&gt; list = <span class="keyword">new</span> ArrayList&lt;D&gt;();</div><div class="line">                list.add(d);</div><div class="line">                map.put(t, list);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> map;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 根据店铺号返回该店铺的商户号</div><div class="line">     * <span class="doctag">@param</span> shopId 店铺号</div><div class="line">     * <span class="doctag">@return</span> 商户号</div><div class="line">     * <span class="doctag">@throws</span> Exception</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getByShopID</span><span class="params">(String shopId)</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="string">"10001"</span>.equals(shopId))&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"0018888881"</span>;</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"10002"</span>.equals(shopId))&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"0018888882"</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"找不到改店铺的商户号！"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/***</span></div><div class="line">     * 设置分账信息、组装分账信息参数字符串</div><div class="line">     * <span class="doctag">@param</span> orderIds 订单号码</div><div class="line">     * <span class="doctag">@param</span> ordersAmount 订单总金额</div><div class="line">     * <span class="doctag">@return</span> 分账信息参数字符串</div><div class="line">     * <span class="doctag">@throws</span> Exception </div><div class="line">     * <span class="doctag">@author</span> ZhangBing</div><div class="line">     * <span class="doctag">@date</span> 20140527</div><div class="line">     * <span class="doctag">@version</span> 2</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getPaymentDivDetails</span><span class="params">(List&lt;ItemInfo&gt; items,String ordersAmount)</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">        <span class="comment">//分账字符串</span></div><div class="line">        String divs = <span class="string">""</span>;            </div><div class="line">        String div =<span class="string">""</span>;</div><div class="line">        </div><div class="line">        <span class="comment">//主商户号1200000016</span></div><div class="line">        String mainSid = <span class="string">"1200000016"</span>;    </div><div class="line">        </div><div class="line">        List&lt;MyData&gt; list = <span class="keyword">new</span> ArrayList&lt;MyData&gt;();</div><div class="line">        <span class="keyword">for</span>(ItemInfo item : items)&#123;</div><div class="line">            list.add(<span class="keyword">new</span> MyData().setId(item.getId()).setShopId(item.getShopid())</div><div class="line">                .setFxMoney(item.getFxSplitMoney()).setItemValue(item.getItemValue())) ;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//对得到的集合进行分组</span></div><div class="line">        Map&lt;String ,List&lt;MyData&gt;&gt; map = group(list, <span class="keyword">new</span> GroupBy&lt;String&gt;() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> String <span class="title">groupBy</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">                MyData d = (MyData)obj;</div><div class="line">                <span class="keyword">return</span> d.getShopId();    <span class="comment">// 分组依据为店铺ID</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="comment">//主商户分账总金额</span></div><div class="line">        Double mainMoney = <span class="number">0.0</span>;</div><div class="line">        Set&lt;String&gt; set = map.keySet();</div><div class="line">        <span class="keyword">for</span>(Object key : set)&#123;</div><div class="line">            <span class="comment">//System.out.println(key);</span></div><div class="line">            String shopId = (String)key;</div><div class="line">            <span class="comment">//System.out.println("子商户号："+shop.getFxshopSid());</span></div><div class="line">            List&lt;MyData&gt; datas = map.get(key);</div><div class="line">            Double fxMoney = <span class="number">0.0</span>;</div><div class="line">            <span class="comment">//子商户号</span></div><div class="line">            String subSid = getByShopID(shopId);</div><div class="line">            <span class="keyword">for</span>(MyData d : datas)&#123;</div><div class="line">                <span class="comment">//System.out.println("价格:"+d.getItemValue());</span></div><div class="line">                <span class="comment">//System.out.println("分账:"+d.fxMoney);</span></div><div class="line">                </div><div class="line">                <span class="comment">//获取商品的子商户分账金额</span></div><div class="line">                Double fxSplitMoney = Double.parseDouble(d.fxMoney);</div><div class="line">                <span class="comment">//计算主商户分账总金额</span></div><div class="line">                mainMoney += Double.parseDouble(d.getItemValue()) - fxSplitMoney;</div><div class="line">                <span class="comment">//计算子商户分账金额</span></div><div class="line">                fxMoney += fxSplitMoney;</div><div class="line">                <span class="comment">//System.out.println("子商户号:"+subSid+" 子商号分账总金额:"+fxMoney);</span></div><div class="line">            &#125;</div><div class="line">            divs += subSid+<span class="string">":"</span>+fxMoney+<span class="string">"|"</span>;</div><div class="line">            <span class="comment">//System.out.println(divs);</span></div><div class="line">        &#125;</div><div class="line">        <span class="comment">//System.out.println("主商户号:"+mainSid+" 主商号分账总金额:"+mainMoney);</span></div><div class="line">        div = mainSid+<span class="string">":"</span>+mainMoney+<span class="string">"|"</span>+divs;</div><div class="line">        <span class="comment">//System.out.println(div);</span></div><div class="line">        div = div.substring(<span class="number">0</span>, div.length()-<span class="number">1</span>);</div><div class="line">        <span class="comment">//System.out.println(div);</span></div><div class="line">        <span class="keyword">return</span> div;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 模拟有一个订单，订单下有三个物品</div><div class="line">         * ItemInfo+ordersAmount组成了一个订单信息</div><div class="line">         */</div><div class="line">        <span class="comment">//订单总金额/元</span></div><div class="line">        String ordersAmount = <span class="string">"3000"</span>;</div><div class="line">        </div><div class="line">        <span class="comment">//物品1</span></div><div class="line">        ItemInfo ii = <span class="keyword">new</span> ItemInfo();</div><div class="line">        ii.setId(<span class="string">"1"</span>);                <span class="comment">//订单表ID</span></div><div class="line">        ii.setFxSplitMoney(<span class="string">"100"</span>);    <span class="comment">//分账金额，比如这个物品1价格为1000元，需要分给平台100元</span></div><div class="line">        ii.setItemValue(<span class="string">"1000"</span>);    <span class="comment">//物品价格</span></div><div class="line">        ii.setShopid(<span class="string">"10001"</span>);        <span class="comment">//店铺号</span></div><div class="line">        <span class="comment">//物品2</span></div><div class="line">        ItemInfo ii2 = <span class="keyword">new</span> ItemInfo();</div><div class="line">        ii2.setId(<span class="string">"2"</span>);</div><div class="line">        ii2.setFxSplitMoney(<span class="string">"300"</span>);</div><div class="line">        ii2.setItemValue(<span class="string">"1000"</span>);</div><div class="line">        ii2.setShopid(<span class="string">"10001"</span>);</div><div class="line">        <span class="comment">//物品3</span></div><div class="line">        ItemInfo ii3 = <span class="keyword">new</span> ItemInfo();</div><div class="line">        ii3.setId(<span class="string">"3"</span>);</div><div class="line">        ii3.setFxSplitMoney(<span class="string">"200"</span>);</div><div class="line">        ii3.setItemValue(<span class="string">"1000"</span>);</div><div class="line">        ii3.setShopid(<span class="string">"10002"</span>);</div><div class="line">        </div><div class="line">        List&lt;ItemInfo&gt; items = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        items.add(ii);</div><div class="line">        items.add(ii2);</div><div class="line">        items.add(ii3);</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">//得到这样的字符串：1200000016:2400.0|0018888881:400.0|0018888882:200.0</span></div><div class="line">            String divDetails = getPaymentDivDetails(items, ordersAmount);</div><div class="line">            System.out.println(divDetails);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;       </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>运行后正好能得到1200000016:2400.0|0018888881:400.0|0018888882:200.0。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2014/07/10/根据分组依据对Java集合元素进行分组/">根据分组依据对Java集合元素进行分组(模拟电信翼支付分账功能调用接口的参数字符串)</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
+        <p><span>发布时间:</span>2014-07-10, 14:19:23</p>
+        <p><span>最后更新:</span>2017-04-15, 02:06:45</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2014/07/10/根据分组依据对Java集合元素进行分组/" title="根据分组依据对Java集合元素进行分组(模拟电信翼支付分账功能调用接口的参数字符串)">http://dunizb.com/2014/07/10/根据分组依据对Java集合元素进行分组/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2014/07/10/根据分组依据对Java集合元素进行分组/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">
+                    JDBC操作数据库的元数据信息，JDBC复习(四) 
+                </a>
+            </div>
+        
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"根据分组依据对Java集合元素进行分组(模拟电信翼支付分账功能调用接口的参数字符串)　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/" title="上一篇: JDBC操作数据库的元数据信息，JDBC复习(四) ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2014/07/10/根据分组依据对Java集合元素进行分组/">根据分组依据对Java集合元素进行分组(模拟电信翼支付分账功能调用接口的参数字符串)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">JDBC操作数据库的元数据信息，JDBC复习(四) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/">JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/">使用JDBC调用存储过程，JDBC复习(二) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/07/Java-io-FTP-FileZill-Server设置/">Java I/O FTP同步代码及FileZilla Server设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017 张兵
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

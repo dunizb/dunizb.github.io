@@ -14,11 +14,14 @@
 <meta name="author" content="张兵" />
 
 
+    
+    
+
 
 <meta name="description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Dunizb">
-<meta property="og:url" content="http://dunizb.com/archives/2014/07/index.html">
+<meta property="og:url" content="http://dunizb.com/page/2/index.html">
 <meta property="og:site_name" content="Dunizb">
 <meta property="og:description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
 <meta name="twitter:card" content="summary">
@@ -51,11 +54,13 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
+    <style> .article { opacity: 0;} </style>
+
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2014/7 | Dunizb</title>
+<title>Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -64,9 +69,9 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: false,
+        isHome: true,
         isPost: false,
-        isArchive: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -279,206 +284,81 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-==和equals方法终极解析" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2012/09/02/==和equals方法终极解析/" class="article-date">
+      <time datetime="2012-09-02T03:38:57.000Z" itemprop="datePublished">2012-09-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。</p>
+<p>当使用==来判断两个变量是否相等时，<strong>如果两个变量都是基本类型变量，且都是数字类型</strong>（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。</p>
+<p><strong>但对于两个引用类型变量</strong>，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来判断两种类型变量对否相等的结果。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2014/07/10/根据分组依据对Java集合元素进行分组/" class="archive-article-date">
-      <time datetime="2014-07-10T06:19:23.000Z" itemprop="datePublished">07-10</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/07/10/根据分组依据对Java集合元素进行分组/">根据分组依据对Java集合元素进行分组(模拟电信翼支付分账功能调用接口的参数字符串)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/Java/">Java</a>
     </div>
 
 
-          
+      
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串/">字符串</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/集合/">集合</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a href="/2012/09/02/==和equals方法终极解析/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/" class="archive-article-date">
-      <time datetime="2014-07-09T04:14:07.000Z" itemprop="datePublished">07-09</time>
-</a>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">JDBC操作数据库的元数据信息，JDBC复习(四) </a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
 
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/" class="archive-article-date">
-      <time datetime="2014-07-08T05:11:52.000Z" itemprop="datePublished">07-08</time>
-</a>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/">JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
 
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/" class="archive-article-date">
-      <time datetime="2014-07-07T02:41:26.000Z" itemprop="datePublished">07-07</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/">使用JDBC调用存储过程，JDBC复习(二) </a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/存储过程/">存储过程</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/" class="archive-article-date">
-      <time datetime="2014-07-06T10:44:07.000Z" itemprop="datePublished">07-06</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/">sql</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
-
-    
-
 </div>
       <footer id="footer">
     <div class="outer">
