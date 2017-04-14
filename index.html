@@ -144,13 +144,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>菜單</li>
-                        <li>標籤</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>友情鏈接</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>關於我</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -280,7 +280,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="標籤" friends="友情鏈接" about="關於我"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
   
@@ -313,23 +313,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>当不直接使用SQL语句,而是调用数据库中的Store Procedure时,要用到<code>Callable Statement</code>，<code>CallabelStatement</code>从<code>PreparedStatement</code>继承。</p>
-<p><strong>案例一：编写一个过程，可以学生名，新年龄，可修改学生的年龄</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">PROCEDURE</span> pro1(prname VARCHAR2,newage <span class="built_in">NUMBER</span>) <span class="keyword">IS</span></div><div class="line"><span class="keyword">BEGIN</span></div><div class="line">   <span class="keyword">UPDATE</span> tb_student <span class="keyword">SET</span> age=newage <span class="keyword">WHERE</span> <span class="keyword">name</span>=prname;</div><div class="line"><span class="keyword">END</span>;</div></pre></td></tr></table></figure></p>
-<p>演示JAVA如何让调用Oracle的存储过程示例<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">callOracleProTest</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">	    <span class="comment">//1.加载驱动</span></div><div class="line">	    Class.forName(<span class="string">"oracle.jdbc.driver.OracleDriver"</span>);</div><div class="line">			</div><div class="line">	    <span class="comment">//2.得到连接</span></div><div class="line">	    Connection conn=DriverManager.getConnection(<span class="string">"jdbc:oracle:thin:@localhost:1521:ORCL"</span>, <span class="string">"root"</span>, <span class="string">"root"</span>);</div><div class="line">			</div><div class="line">            <span class="comment">//3.创建CallableStatment</span></div><div class="line">	    CallableStatement call=conn.prepareCall(<span class="string">"&#123;call pro1(?,?)&#125;"</span>);</div><div class="line">			</div><div class="line">	    <span class="comment">//4.给？号赋值</span></div><div class="line">	    call.setString(<span class="number">1</span>,<span class="string">"小强"</span>);</div><div class="line">	    call.setInt(<span class="number">2</span>,<span class="number">30</span>);</div><div class="line">			</div><div class="line">	    <span class="comment">//5.执行</span></div><div class="line">	    call.execute();</div><div class="line">			</div><div class="line">	    <span class="comment">//6.关闭资源</span></div><div class="line">	    call.close();</div><div class="line">	    conn.close();</div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">	    System.out.println(<span class="string">"出错了，程序异常，可能没导入JDBC驱动jar文件哦！"</span>);</div><div class="line">	    e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>案例二：有返回值的存储过程</strong></p>
-<p>编写一个过程，可以输入学生的编号，返回该学生的地址，并用Java程序调用执行<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">PROCEDURE</span> pro2(v_ID <span class="keyword">IN</span> <span class="built_in">NUMBER</span>,v_address <span class="keyword">OUT</span> VARCHAR2) <span class="keyword">IS</span></div><div class="line"><span class="keyword">BEGIN</span></div><div class="line">   <span class="keyword">SELECT</span> address <span class="keyword">INTO</span> v_address <span class="keyword">FROM</span> tb_student <span class="keyword">WHERE</span> <span class="keyword">ID</span>=v_ID;</div><div class="line"><span class="keyword">END</span>;</div></pre></td></tr></table></figure></p>
-<p>演示JAVA如何让调用Oracle带返回值的存储过程示例<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">callOracleReturnValueProcedure</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">returnOne</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">	Connection conn = getConnection();</div><div class="line">		</div><div class="line">	<span class="comment">//3.创建CallableStatment</span></div><div class="line">        CallableStatement call=conn.prepareCall(<span class="string">"&#123;call pro2(?,?)&#125;"</span>);</div><div class="line">		</div><div class="line">	<span class="comment">//4.给第一个？号赋值</span></div><div class="line">	call.setInt(<span class="number">1</span>,<span class="number">2</span>);</div><div class="line">	<span class="comment">//4.给第二个？号赋值</span></div><div class="line">	call.registerOutParameter(<span class="number">2</span>,oracle.jdbc.OracleTypes.CHAR);</div><div class="line">			</div><div class="line">	<span class="comment">//5.执行</span></div><div class="line">	call.execute();</div><div class="line">			</div><div class="line">	<span class="comment">//6.取出返回值，注意？号的顺序</span></div><div class="line">	String address=call.getString(<span class="number">2</span>);</div><div class="line">	System.out.println(<span class="string">"编号为2的学生的地址是："</span>+address);</div><div class="line">			</div><div class="line">	<span class="comment">//7.关闭资源</span></div><div class="line">	call.close();</div><div class="line">	conn.close();</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">	System.out.println(<span class="string">"出错了，程序异常，可能没导入JDBC驱动jar文件哦！"</span>);</div><div class="line">	e.printStackTrace();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>案例三：有返回值的存储过程（返回多个值）</strong></p>
-<p>编写一个过程，可以输入学生的编号，返回该学生的地址，年龄，性别，并用Java程序调用执行。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">PROCEDURE</span> pro3(v_ID <span class="keyword">IN</span> <span class="built_in">NUMBER</span>,v_sex <span class="keyword">OUT</span> varchar2,v_age <span class="keyword">OUT</span> <span class="built_in">INT</span>, v_address <span class="keyword">OUT</span> VARCHAR2) <span class="keyword">IS</span></div><div class="line"><span class="keyword">BEGIN</span></div><div class="line">   <span class="keyword">SELECT</span> sex,age,address <span class="keyword">INTO</span> v_sex,v_age,v_address <span class="keyword">FROM</span> tb_student <span class="keyword">WHERE</span> <span class="keyword">ID</span>=v_ID;</div><div class="line"><span class="keyword">END</span>;</div></pre></td></tr></table></figure></p>
-<p>我们在callOracleReturnValueProcedure类中继续添加方法。</p>
-<p>演示有返回值的存储过程（返回多个值）:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">returnMore</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">	Connection conn=<span class="keyword">this</span>.getConnection();</div><div class="line">			</div><div class="line">	CallableStatement call=conn.prepareCall(<span class="string">"&#123;call pro3(?,?,?,?)&#125;"</span>);</div><div class="line">	</div><div class="line">	call.setInt(<span class="number">1</span>,<span class="number">2</span>);</div><div class="line">	call.registerOutParameter(<span class="number">2</span>,oracle.jdbc.OracleTypes.CHAR);</div><div class="line">	call.registerOutParameter(<span class="number">3</span>,oracle.jdbc.OracleTypes.INTEGER);</div><div class="line">	call.registerOutParameter(<span class="number">4</span>,oracle.jdbc.OracleTypes.CHAR);</div><div class="line">			</div><div class="line">	call.execute();</div><div class="line">			</div><div class="line">	String sex=call.getString(<span class="number">2</span>);</div><div class="line">	<span class="keyword">int</span> age=call.getInt(<span class="number">3</span>);</div><div class="line">	String address=call.getString(<span class="number">4</span>);</div><div class="line">			</div><div class="line">	System.out.println(<span class="string">"编号为2的学生性别是："</span>+sex);</div><div class="line">	System.out.println(<span class="string">"编号为2的学生年龄是："</span>+age);</div><div class="line">	System.out.println(<span class="string">"编号为2的学生地址是："</span>+address);</div><div class="line">			</div><div class="line">	call.close();</div><div class="line">	conn.close();</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">	<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">	e.printStackTrace();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>案例四：返回结果集的存储过程</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">PROCEDURE</span> pro4(v_type <span class="keyword">IN</span> VARCHAR2,p_cur <span class="keyword">OUT</span> mypackage.my_cur) <span class="keyword">IS</span></div><div class="line"><span class="keyword">BEGIN</span></div><div class="line">  <span class="keyword">OPEN</span> p_cur <span class="keyword">FOR</span></div><div class="line">     <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tb_prod <span class="keyword">WHERE</span> <span class="keyword">TYPE</span>=v_type;</div><div class="line"><span class="keyword">END</span>;</div></pre></td></tr></table></figure></p>
-<p>演示返回结果集的存储过程:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">returnResultSet</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">	Connection conn=<span class="keyword">this</span>.getConnection();</div><div class="line">	CallableStatement call=conn.prepareCall(<span class="string">"&#123;call pro4(?,?)&#125;"</span>);</div><div class="line">			</div><div class="line">	call.setString(<span class="number">1</span>,<span class="string">"笔记本"</span>);</div><div class="line">	call.registerOutParameter(<span class="number">2</span>,oracle.jdbc.OracleTypes.CURSOR);</div><div class="line">			</div><div class="line">	call.execute();</div><div class="line">	<span class="comment">//得到结果集</span></div><div class="line">	ResultSet rs=(ResultSet)call.getObject(<span class="number">2</span>);</div><div class="line">	<span class="keyword">while</span>(rs.next())&#123;</div><div class="line">    	    System.out.println(<span class="string">"ID:"</span>+rs.getInt(<span class="number">1</span>)+<span class="string">" type:"</span>+rs.getString(<span class="number">2</span>)+<span class="string">" mark:"</span>+rs.getString(<span class="number">3</span>)+<span class="string">" spec:"</span>+rs.getString(<span class="number">4</span>));</div><div class="line">	&#125;</div><div class="line">			</div><div class="line">	call.close();</div><div class="line">	conn.close();</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">	<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">	e.printStackTrace();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>案例五，编写一个分页的存储过程</strong></p>
-<p>要求：输入表名，每页显示的记录数，当前页,返回总记录数、总页数、结果集<br>定义一个包，建立游标：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">PACKAGE</span> mypackage <span class="keyword">AS</span> <span class="keyword">TYPE</span> my_cur <span class="keyword">IS</span> <span class="keyword">REF</span> <span class="keyword">CURSOR</span>;</div></pre></td></tr></table></figure></p>
-<p>建立存储过程如下:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function">CREATE OR REPLACE PROCEDURE <span class="title">fenye</span><span class="params">(</span></span></div><div class="line">     tableName IN VARCHAR2,        --表名</div><div class="line">     pageSize IN NUMBER,           --每页显示的记录数</div><div class="line">     pageNow IN NUMBER,            --当前页</div><div class="line">     rowsCount OUT NUMBER,         --总记录数</div><div class="line">     pageCount OUT NUMBER,         --总页数</div><div class="line">     page_cur OUT mypackage.my_cur --结果集的游标</div><div class="line">) IS</div><div class="line">--定义一个变量拼接分页SQL语句</div><div class="line">v_sql <span class="title">VARCHAR2</span><span class="params">(<span class="number">1000</span>)</span>;</div><div class="line">--定义两个整数，计算起始页和终止页</div><div class="line">v_begin NUMBER:=(pageNow-<span class="number">1</span>)*pageSize+<span class="number">1</span>;</div><div class="line">v_end NUMBER:=pageNow*pageSize;</div><div class="line">BEGIN</div><div class="line">    --执行</div><div class="line">    v_sql:=<span class="string">'SELECT * FROM (SELECT t.*,ROWNUM rn FROM (SELECT * FROM '</span>||tableName||<span class="string">') t WHERE ROWNUM&lt;='</span>||v_end||<span class="string">') WHERE rn&gt;='</span>||v_begin||;</div><div class="line">    --打开游标，把游标和sql关联起来</div><div class="line">    OPEN page_cur FOR v_sql;</div><div class="line">    --组织一个SQL，计算总记录数(rowsCount)和总页数(pageCount)</div><div class="line">    v_sql:=<span class="string">'select count(*) from'</span>||tableName;</div><div class="line">    --执行SQL,并把返回的结果赋值给rowsCount(总记录数)</div><div class="line">    EXECUTE IMMEDIATE v_sql INTO rowsCount;</div><div class="line">    --计算总页数(pageCount)</div><div class="line">    <span class="function">IF <span class="title">MOD</span><span class="params">(rowsCount,pageSize)</span></span>=<span class="number">0</span> THEN</div><div class="line">    	pageCount:=rowsCount/pageSize;</div><div class="line">    ELSE</div><div class="line">    	pageCount:=rowsCount/pageSize+<span class="number">1</span>;</div><div class="line">    END IF;</div><div class="line">    --关闭游标</div><div class="line">    --CLOSE page_cur;</div><div class="line">END;</div></pre></td></tr></table></figure></p>
-<p>调用存储过程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">	<span class="comment">//1.加载驱动</span></div><div class="line">	Class.forName(<span class="string">"oracle.jdbc.driver.OracleDriver"</span>);</div><div class="line">	<span class="comment">//2.得到连接</span></div><div class="line">	Connection conn=DriverManager.getConnection(<span class="string">"jdbc:oracle:thin:@localhost:1521:ORCL"</span>, <span class="string">"scott"</span>, <span class="string">"scott"</span>);</div><div class="line">			</div><div class="line">	CallableStatement call=conn.prepareCall(<span class="string">"&#123;call fenye(?,?,?,?,?,?)&#125;"</span>);</div><div class="line">        <span class="comment">//给输入参数?号赋值</span></div><div class="line">	call.setString(<span class="number">1</span>,<span class="string">"emp"</span>);	<span class="comment">//查询哪个表</span></div><div class="line">	call.setInt(<span class="number">2</span>,<span class="number">5</span>);			<span class="comment">//要显示几页</span></div><div class="line">	call.setInt(<span class="number">3</span>,<span class="number">1</span>);			<span class="comment">//从第几页开始显示</span></div><div class="line">	</div><div class="line">	<span class="comment">//给输出参数？号赋值</span></div><div class="line">	call.registerOutParameter(<span class="number">4</span>, oracle.jdbc.OracleTypes.INTEGER);	<span class="comment">//接收总记录数</span></div><div class="line">	call.registerOutParameter(<span class="number">5</span>, oracle.jdbc.OracleTypes.INTEGER);	<span class="comment">//接收总页数</span></div><div class="line">	call.registerOutParameter(<span class="number">6</span>, oracle.jdbc.OracleTypes.CURSOR);	<span class="comment">//接收结果集</span></div><div class="line">			</div><div class="line">	call.execute();</div><div class="line">			</div><div class="line">	<span class="keyword">int</span> rowCount=call.getInt(<span class="number">4</span>);	<span class="comment">//取出总记录数</span></div><div class="line">        <span class="keyword">int</span> pageCount=call.getInt(<span class="number">5</span>);	<span class="comment">//取出总页数</span></div><div class="line">	ResultSet rs=(ResultSet)call.getObject(<span class="number">6</span>);	<span class="comment">//取出结果集</span></div><div class="line">			</div><div class="line">	<span class="comment">//显示一下看对不对</span></div><div class="line">	System.out.println(<span class="string">"总记录数:"</span>+rowCount);</div><div class="line">	System.out.println(<span class="string">"总页数:"</span>+pageCount);</div><div class="line">	<span class="keyword">while</span>(rs.next())&#123;</div><div class="line">    	    System.out.println(<span class="string">"编号:"</span>+rs.getInt(<span class="number">1</span>)+<span class="string">" 名字:"</span>+rs.getString(<span class="number">2</span>)+<span class="string">" 职位:"</span>+rs.getString(<span class="number">3</span>));	</div><div class="line">        &#125;</div><div class="line">			</div><div class="line">	call.close();</div><div class="line">	conn.close();</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">	<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">	e.printStackTrace();</div><div class="line">    &#125;		</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
+              <p>当不直接使用SQL语句,而是调用数据库中的Store Procedure时,要用到<code>Callable Statement</code>，<code>CallabelStatement</code>从<code>PreparedStatement</code>继承。<br>
+          
       
     </div>
     
@@ -346,6 +331,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/存储过程/">存储过程</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2014/07/07/使用JDBC调用存储过程，JDBC复习-二/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -412,7 +401,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/#more">查看全文 >></a>
+          <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -480,7 +469,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/10/29/System-out-println与System-err-println的区别/#more">查看全文 >></a>
+          <a href="/2013/10/29/System-out-println与System-err-println的区别/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -548,7 +537,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/10/26/BigDecimal-conversion-Integer/#more">查看全文 >></a>
+          <a href="/2013/10/26/BigDecimal-conversion-Integer/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -596,20 +585,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong>String 字符串常量<br>StringBuffer 字符串变量（线程安全）<br>StringBuilder 字符串变量（非线程安全）</strong></p>
-<p>简要的说，<code>String</code>类型和<code>StringBuffer</code>类型的主要性能区别其实在于<code>String</code>是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要用 String ，因为每次生成对象都会对系统性能产生影响，特别当内存中无引用对象多了以后， JVM 的 GC 就会开始工作，那速度是一定会相当慢的。</p>
-<p>而如果是使用 StringBuffer 类则结果就不一样了，每次结果都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，再改变对象引用。所以在一般情况下我们推荐使用 StringBuffer ，特别是字符串对象经常改变的情况下。而在某些特别情况下， String 对象的字符串拼接其实是被 JVM 解释成了 StringBuffer 对象的拼接，所以这些时候 String 对象的速度并不会比 StringBuffer 对象慢，而特别是以下的字符串对象生成中， String 效率是远要比 StringBuffer 快的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String S1 = “This is only a” + “ simple” + “ test”;</div><div class="line">StringBuffer Sb = <span class="keyword">new</span> StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</div></pre></td></tr></table></figure></p>
-<p>你会很惊讶的发现，生成 String S1 对象的速度简直太快了，而这个时候 StringBuffer 居然速度上根本一点都不占优势。其实这是 JVM 的一个把戏，在 JVM 眼里，这个<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String S1 = “This is only a” + “ simple” + “test”;</div></pre></td></tr></table></figure></p>
-<p>其实就是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String S1 = “This is only a simple test”;</div></pre></td></tr></table></figure></p>
-<p>所以当然不需要太多的时间了。但大家这里要注意的是，如果你的字符串是来自另外的 String 对象的话，速度就没那么快了，譬如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String S2 = “This is only a”;</div><div class="line">String S3 = “ simple”;</div><div class="line">String S4 = “ test”;</div><div class="line">String S1 = S2 +S3 + S4;</div></pre></td></tr></table></figure></p>
-<p>这时候 JVM 会规规矩矩的按照原来的方式去做<br>在大部分情况下 <code>StringBuffer &gt; String</code></p>
-<p><strong>Java.lang.StringBuffer</strong><br>线程安全的可变字符序列。一个类似于 String 的字符串缓冲区，但不能修改。虽然在任意时间点上它都包含某种特定的字符序列，但通过某些方法调用可以改变该序列的长度和内容。</p>
-<p>可将字符串缓冲区安全地用于多个线程。可以在必要时对这些方法进行同步，因此任意特定实例上的所有操作就好像是以串行顺序发生的，该顺序与所涉及的每个线程进行的方法调用顺序一致。</p>
-<p>StringBuffer 上的主要操作是 append 和 insert 方法，可重载这些方法，以接受任意类型的数据。每个方法都能有效地将给定的数据转换成字符串，然后将该字符串的字符追加或插入到字符串缓冲区中。append 方法始终将这些字符添加到缓冲区的末端；而 insert 方法则在指定的点添加字符。</p>
-<p>例如，如果 z 引用一个当前内容是“start”的字符串缓冲区对象，则此方法调用 <code>z.append(&quot;le&quot;)</code> 会使字符串缓冲区包含“startle”，而 <code>z.insert(4, &quot;le&quot;)</code> 将更改字符串缓冲区，使之包含“starlet”。</p>
-<p>在大部分情况下 <code>StringBuilder &gt; StringBuffer</code></p>
-<p><strong>java.lang.StringBuilde</strong><br>java.lang.StringBuilder一个可变的字符序列是5.0新增的。此类提供一个与 StringBuffer 兼容的 API，但不保证同步。该类被设计用作 StringBuffer 的一个简易替换，用在字符串缓冲区被单个线程使用的时候（这种情况很普遍）。如果可能，建议优先采用该类，因为在大多数实现中，它比 StringBuffer 要快。两者的方法基本相同。</p>
-
+              <p>String 字符串常量<br>StringBuffer 字符串变量（线程安全）<br>StringBuilder 字符串变量（非线程安全）</p>
+<p>简要的说，<code>String</code>类型和<code>StringBuffer</code>类型的主要性能区别其实在于<code>String</code>是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要用 String ，因为每次生成对象都会对系统性能产生影响，特别当内存中无引用对象多了以后， JVM 的 GC 就会开始工作，那速度是一定会相当慢的。<br>
+          
       
     </div>
     
@@ -626,6 +604,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2013/08/18/String、StringBuffer、StringBuilder/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -692,7 +674,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2012/09/08/abstract-class-and-interface/#more">查看全文 >></a>
+          <a href="/2012/09/08/abstract-class-and-interface/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -762,7 +744,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2012/09/02/==和equals方法终极解析/#more">查看全文 >></a>
+          <a href="/2012/09/02/==和equals方法终极解析/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -791,14 +773,14 @@
                 2017 张兵
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、簡潔且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="簡而不減 Hexo 雙欄博客主題  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到訪數"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -807,7 +789,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本頁閱讀量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -840,9 +822,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="返回頂部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看評論"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="轉到底部"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
