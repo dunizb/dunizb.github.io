@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=http://dunizb.com/browseupdate/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="张兵" />
+
+
+
+<meta name="description" content="假设现在有两台机器，一个是你本地开发的机器，一台是服务器，而你本地又有两个应用，需要从shopManage同步到fxShop,如下图.">
+<meta name="keywords" content="ftp,FileZill">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-io-FTP-FileZill-Server设置">
+<meta property="og:url" content="http://dunizb.com/2013/12/07/Java-io-FTP-FileZill-Server设置/index.html">
+<meta property="og:site_name" content="Dunizb">
+<meta property="og:description" content="假设现在有两台机器，一个是你本地开发的机器，一台是服务器，而你本地又有两个应用，需要从shopManage同步到fxShop,如下图.">
+<meta property="og:image" content="http://img2.ph.126.net/JpLDOQR5tmUvud6vQPrb_Q==/1984680060887185808.png">
+<meta property="og:image" content="http://img1.ph.126.net/uZOLgZpHBVw7VxngO7PFVA==/6608208918957013228.png">
+<meta property="og:image" content="http://img1.ph.126.net/q2dCitSNWuSmEfZOLC8eYQ==/3791467936392758896.png">
+<meta property="og:image" content="http://img1.ph.126.net/rsrLREs2ZoWnroC5gmjlRA==/779404210611813346.png">
+<meta property="og:image" content="http://img0.ph.126.net/YeQ28mHLYyu91js-4UmRdw==/6599325964516682538.png">
+<meta property="og:image" content="http://img1.ph.126.net/mncDGDxD3_GL51ezRvSEoA==/6597281972402231761.png">
+<meta property="og:image" content="http://img0.ph.126.net/q69xqdAuOBuEr8NcrfsNzA==/3191644761022136823.png">
+<meta property="og:updated_time" content="2017-04-14T17:54:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java-io-FTP-FileZill-Server设置">
+<meta name="twitter:description" content="假设现在有两台机器，一个是你本地开发的机器，一台是服务器，而你本地又有两个应用，需要从shopManage同步到fxShop,如下图.">
+<meta name="twitter:image" content="http://img2.ph.126.net/JpLDOQR5tmUvud6vQPrb_Q==/1984680060887185808.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Dunizb" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Java-io-FTP-FileZill-Server设置 | Dunizb</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.gif" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">张兵</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:dunizb@foxmail.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="//weibo.com/dunio" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                                <a class="fa 微信" href="http://mp.weixin.qq.com/profile?src=3&timestamp=1492107936&ver=1&signature=lkkdEPpQh*gpzJhFUMj7iJ2bUXRcKvd0C2Vhlaow4cYyzFgXuj1Iq3Bpo*3nOjSHkTYcQUEDV4ey45etQPVBkw==" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileZill/">FileZill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftp/">ftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javase/">javase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/备忘/">备忘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储过程/">存储过程</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张兵</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.gif" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张兵</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:dunizb@foxmail.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="//weibo.com/dunio" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" target="_blank" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="http://mp.weixin.qq.com/profile?src=3&timestamp=1492107936&ver=1&signature=lkkdEPpQh*gpzJhFUMj7iJ2bUXRcKvd0C2Vhlaow4cYyzFgXuj1Iq3Bpo*3nOjSHkTYcQUEDV4ey45etQPVBkw==" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Java-io-FTP-FileZill-Server设置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/12/07/Java-io-FTP-FileZill-Server设置/" class="article-date">
+      <time datetime="2013-12-07T10:34:06.000Z" itemprop="datePublished">2013-12-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java-io-FTP-FileZill-Server设置
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FileZill/">FileZill</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ftp/">ftp</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>假设现在有两台机器，一个是你本地开发的机器，一台是服务器，而你本地又有两个应用，需要从shopManage同步到fxShop,如下图.<br><a id="more"></a><br><img src="http://img2.ph.126.net/JpLDOQR5tmUvud6vQPrb_Q==/1984680060887185808.png" alt=""></p>
+<p>在2的时间节点还要同时同步到右边的服务器上，二本地两个应用之间使用I\O拷贝。</p>
+<p>新建一个工具类如下：<br>第一个方法用IO流方式进行本地拷贝<br>第二个方法才是FTP方式<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileSynchronousUtil</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 文件本机拷贝</div><div class="line">     * <span class="doctag">@param</span> localPath 源路径</div><div class="line">     * <span class="doctag">@param</span> yinPath 目标路径</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">copy</span><span class="params">(String localPath, String yinPath)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">int</span> bytesum = <span class="number">0</span>; </div><div class="line">            <span class="keyword">int</span> byteread = <span class="number">0</span>;</div><div class="line">            File oldfile = <span class="keyword">new</span> File(localPath); </div><div class="line">            <span class="keyword">if</span> (oldfile.exists()) &#123; <span class="comment">// 文件存在时 </span></div><div class="line">                InputStream inStream = <span class="keyword">new</span> FileInputStream(localPath); </div><div class="line">                String wenjianName = localPath.substring(localPath.lastIndexOf(<span class="string">"\\"</span>));</div><div class="line">                System.out.println(wenjianName); </div><div class="line">                System.out.println(yinPath + wenjianName);</div><div class="line">                <span class="comment">// 读入原文件</span></div><div class="line">                FileOutputStream fs = <span class="keyword">new</span> FileOutputStream(yinPath + wenjianName);</div><div class="line">                <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1444</span>];</div><div class="line">                <span class="keyword">while</span> ((byteread = inStream.read(buffer)) != -<span class="number">1</span>) &#123;</div><div class="line">                    bytesum += byteread; <span class="comment">// 字节数 文件大小</span></div><div class="line">                    System.out.println(bytesum);</div><div class="line">                    fs.write(buffer, <span class="number">0</span>, byteread);</div><div class="line">                &#125;</div><div class="line">                inStream.close();</div><div class="line">           &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            System.out.println(<span class="string">"复制单个文件操作出错"</span>);</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 使用FTP方式同步文件到远程服务器</div><div class="line">     * <span class="doctag">@param</span> localPath 本地路径</div><div class="line">     * <span class="doctag">@param</span> FtpPath 远程FTP服务器路径</div><div class="line">     * <span class="doctag">@param</span> FtpPathName 远程FTP服务器登录名</div><div class="line">     * <span class="doctag">@param</span> FtpPathPass 远程FTP服务器登录密码</div><div class="line">     * <span class="doctag">@param</span> FtpIp 远程FTP服务器IP地址</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copy</span><span class="params">(String localPath, String FtpPath, String FtpPathName,</span></span></div><div class="line">        String FtpPathPass, String FtpIp) &#123;</div><div class="line">        <span class="comment">//链接FTP</span></div><div class="line">        FTPClient ftpClient = <span class="keyword">new</span> FTPClient();</div><div class="line">        FileInputStream fis = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">int</span> reply;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            ftpClient.connect(FtpIp, <span class="number">21</span>);</div><div class="line">            ftpClient.login(FtpPathName, FtpPathPass);</div><div class="line">            reply = ftpClient.getReplyCode();</div><div class="line">            <span class="keyword">if</span> (!FTPReply.isPositiveCompletion(reply)) &#123;</div><div class="line">                ftpClient.disconnect();</div><div class="line">            &#125;</div><div class="line">            fis = <span class="keyword">new</span> FileInputStream(localPath);</div><div class="line">            ftpClient.setBufferSize(<span class="number">10240000</span>);</div><div class="line">            String wenjianName = localPath.substring(localPath.lastIndexOf(<span class="string">"\\"</span>)+<span class="number">1</span>); </div><div class="line">            ftpClient.makeDirectory(FtpPath);</div><div class="line">            ftpClient.changeWorkingDirectory(FtpPath);</div><div class="line">            ftpClient.setControlEncoding(<span class="string">"GBK"</span>);</div><div class="line">            ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);</div><div class="line">            <span class="comment">//被动模式传输</span></div><div class="line">            ftpClient.enterLocalPassiveMode();</div><div class="line"><span class="comment">//          ftpClient.storeFile(new String(wenjianName.getBytes("GBK"), "iso-8859-1") , fis);</span></div><div class="line">            ftpClient.storeFile(wenjianName, fis);</div><div class="line">            fis.close();</div><div class="line">        <span class="comment">/*  String finalRemoteFileName = FtpPath.replaceAll(".ing", "");</span></div><div class="line">            ftpClient.rename(FtpPath, finalRemoteFileName);*/</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            <span class="keyword">if</span> (ftpClient.isConnected()) &#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    ftpClient.disconnect();</div><div class="line">                &#125; <span class="keyword">catch</span> (IOException ioe) &#123;</div><div class="line">                    ioe.getMessage();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>同时准备一个ftp.propertis文件，主要参数都在这里配置，需要读取这个文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#本地IP</div><div class="line">localIp=127.0.0.1</div><div class="line">##本地目标地址</div><div class="line">local_targetPath=D\:\\tomcat\\apache-tomcat-6.0.16\\webapps\\fxShop</div><div class="line">##远程目标地址</div><div class="line">remote_targetPath=</div><div class="line">#远程FTP服务器IP</div><div class="line">remote_ftpIp=127.0.0.1</div><div class="line">#远程FTP服务器登录名</div><div class="line">remote_ftpServerName=test</div><div class="line">#远程FTP服务器登录密码</div><div class="line">remote_ftpServerPassWord=123</div></pre></td></tr></table></figure></p>
+<p>写一个主调（Main）方法，就可以进行调用测试了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">//读取配置文件，</span></div><div class="line">        InputStream stream = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">//stream = new BufferedInputStream(new FileInputStream(new File("src/common.properties")));</span></div><div class="line">            stream = NowFirst.class.getResourceAsStream(<span class="string">"/common.properties"</span>);</div><div class="line">            System.err.println(stream);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            System.out.println(<span class="string">"配置文件未找到！"</span>);</div><div class="line">        &#125;</div><div class="line">         Properties p = <span class="keyword">new</span> Properties();</div><div class="line">         <span class="keyword">try</span> &#123;</div><div class="line">            p.load(stream);</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            System.out.println(<span class="string">"文件未加载"</span>);</div><div class="line">        &#125;</div><div class="line">        String localPath=p.getProperty(<span class="string">"localPath"</span>);</div><div class="line">        String targetPath=p.getProperty(<span class="string">"targetPath"</span>);</div><div class="line">        String FtpOnePath=p.getProperty(<span class="string">"FtpOnePath"</span>);</div><div class="line">        System.err.println(FtpOnePath);</div><div class="line">        String FtpOnePathName=p.getProperty(<span class="string">"FtpOnePathName"</span>);</div><div class="line">        String FtpOnePathPass=p.getProperty(<span class="string">"FtpOnePathPass"</span>);</div><div class="line">        String FtpTwoPath=p.getProperty(<span class="string">"FtpTwoPath"</span>);</div><div class="line">        String FtpTwoPathName=p.getProperty(<span class="string">"FtpTwoPathName"</span>);</div><div class="line">        String FtpTwoPathPass=p.getProperty(<span class="string">"FtpTwoPathPass"</span>);</div><div class="line">        String FtpOneIp=p.getProperty(<span class="string">"FtpOneIp"</span>);</div><div class="line">        String FtpTwoIp=p.getProperty(<span class="string">"FtpTwoIp"</span>)；</div><div class="line">        serviceDao dao=<span class="keyword">new</span> serviceDao();</div><div class="line">        <span class="comment">//同步本地</span></div><div class="line">        <span class="comment">//dao.copy(localPath, targetPath);</span></div><div class="line">        <span class="comment">//同步Ftp</span></div><div class="line">        <span class="comment">//第一台</span></div><div class="line">        dao.copy(localPath, FtpOnePath, FtpOnePathName, FtpOnePathPass,FtpOneIp);</div><div class="line">        <span class="comment">//第二台</span></div><div class="line">        <span class="comment">//dao.copy(localPath, FtpTwoPath, FtpTwoPathName, FtpTwoPathPass,FtpTwoIp);</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当然了，是用FTP同步需要FTP服务器支持，你要建立一个FTP服务，比较方便的是使用FileZilla Server</p>
+<p>FileZilla Server设置：<br>首先需要新建一个用户：</p>
+<p><img src="http://img1.ph.126.net/uZOLgZpHBVw7VxngO7PFVA==/6608208918957013228.png" alt=""></p>
+<p>直接填一个用户名就好了：</p>
+<p><img src="http://img1.ph.126.net/q2dCitSNWuSmEfZOLC8eYQ==/3791467936392758896.png" alt=""></p>
+<p>然后账号设置这里，你可以给给他分配一个密码，也可以不写，去掉勾就好了：</p>
+<p><img src="http://img1.ph.126.net/rsrLREs2ZoWnroC5gmjlRA==/779404210611813346.png" alt=""></p>
+<p>接下来就是制定一个共享目录，这个目录就是用来同步到的目标地址：</p>
+<p><img src="http://img0.ph.126.net/YeQ28mHLYyu91js-4UmRdw==/6599325964516682538.png" alt=""></p>
+<p>这里假设建在F盘的FTPTest目录下。<br>注意：这里的Read、Write必须勾选，否则FTP就没法写入文件了</p>
+<p><img src="http://img1.ph.126.net/mncDGDxD3_GL51ezRvSEoA==/6597281972402231761.png" alt=""></p>
+<p>还要设置这个文件夹为系统共享的，右键-属性-共享这个文件夹：</p>
+<p><img src="http://img0.ph.126.net/q69xqdAuOBuEr8NcrfsNzA==/3191644761022136823.png" alt=""></p>
+<p>好了，就弄完了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2013/12/07/Java-io-FTP-FileZill-Server设置/">Java-io-FTP-FileZill-Server设置</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
+        <p><span>发布时间:</span>2013-12-07, 18:34:06</p>
+        <p><span>最后更新:</span>2017-04-15, 01:54:53</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2013/12/07/Java-io-FTP-FileZill-Server设置/" title="Java-io-FTP-FileZill-Server设置">http://dunizb.com/2013/12/07/Java-io-FTP-FileZill-Server设置/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2013/12/07/Java-io-FTP-FileZill-Server设置/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2013/10/29/System-out-println与System-err-println的区别/">
+                    System.out.println与System.err.println的区别
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/">
+                    JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) 
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Java-io-FTP-FileZill-Server设置　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2013/10/29/System-out-println与System-err-println的区别/" title="上一篇: System.out.println与System.err.println的区别">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/" title="下一篇: JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) ">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">JDBC操作数据库的元数据信息，JDBC复习(四) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/">JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/">使用JDBC调用存储过程，JDBC复习(二) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/07/Java-io-FTP-FileZill-Server设置/">Java-io-FTP-FileZill-Server设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017 张兵
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
