@@ -14,19 +14,18 @@
 <meta name="author" content="张兵" />
 
 
-    
-    
 
-
-<meta name="description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dunizb">
-<meta property="og:url" content="http://dunizb.com/index.html">
+<meta name="description" content="当不直接使用SQL语句,而是调用数据库中的Store Procedure时,要用到Callable Statement，CallabelStatement从PreparedStatement继承。 案例一：编写一个过程，可以学生名，新年龄，可修改学生的年龄1234CREATE OR REPLACE PROCEDURE pro1(prname VARCHAR2,newage NUMBER) ISBE">
+<meta name="keywords" content="javase,jdbc,存储过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用JDBC调用存储过程，JDBC复习(二) ">
+<meta property="og:url" content="http://dunizb.com/2014/07/07/使用JDBC调用存储过程，JDBC复习-二/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
+<meta property="og:description" content="当不直接使用SQL语句,而是调用数据库中的Store Procedure时,要用到Callable Statement，CallabelStatement从PreparedStatement继承。 案例一：编写一个过程，可以学生名，新年龄，可修改学生的年龄1234CREATE OR REPLACE PROCEDURE pro1(prname VARCHAR2,newage NUMBER) ISBE">
+<meta property="og:updated_time" content="2017-04-14T16:54:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dunizb">
-<meta name="twitter:description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
+<meta name="twitter:title" content="使用JDBC调用存储过程，JDBC复习(二) ">
+<meta name="twitter:description" content="当不直接使用SQL语句,而是调用数据库中的Store Procedure时,要用到Callable Statement，CallabelStatement从PreparedStatement继承。 案例一：编写一个过程，可以学生名，新年龄，可修改学生的年龄1234CREATE OR REPLACE PROCEDURE pro1(prname VARCHAR2,newage NUMBER) ISBE">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,13 +53,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Dunizb</title>
+<title>使用JDBC调用存储过程，JDBC复习(二)  | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -69,8 +66,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -282,9 +279,7 @@
     </div>
     <link class="menu-list" tags="標籤" friends="友情鏈接" about="關於我"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-使用JDBC调用存储过程，JDBC复习-二" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-使用JDBC调用存储过程，JDBC复习-二" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2014/07/07/使用JDBC调用存储过程，JDBC复习-二/" class="article-date">
@@ -302,12 +297,27 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习-二/">使用JDBC调用存储过程，JDBC复习(二) </a>
+    <h1 class="article-title" itemprop="name">
+      使用JDBC调用存储过程，JDBC复习(二) 
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/存储过程/">存储过程</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -333,444 +343,85 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/存储过程/">存储过程</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/" class="article-date">
-      <time datetime="2014-07-06T10:44:07.000Z" itemprop="datePublished">2014-07-06</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><a href="./#一、什么是JDBC">一、什么是JDBC</a><br><a href="./#二、JDBC驱动">二、JDBC驱动</a><br><a href="./#三、数据库驱动">三、数据库驱动</a><br><a href="./#四、应用程序、JDBC API、数据库驱动及数据库之间的关系">四、应用程序、JDBC API、数据库驱动及数据库之间的关系</a><br><a href="./#五、连接数据库的6步骤">五、连接数据库的6步骤</a><br><a href="./#六、规范和封装JDBC代码">六、规范和封装JDBC代码</a><br><a href="./#七、对数据库进行CRUD操作">七、对数据库进行CRUD操作</a><br><a href="./#八、Statement的SQL注入问题">八、Statement的SQL注入问题</a><br><a href="./#九、使用JDBC处理数据">九、使用JDBC处理数据</a><br><a href="./#十、JDBC事物处理">十、JDBC事物处理</a><br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/">sql</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/#more">查看全文 >></a>
+    <div class="copyright">
+        <p><span>本文標題:</span><a href="/2014/07/07/使用JDBC调用存储过程，JDBC复习-二/">使用JDBC调用存储过程，JDBC复习(二) </a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主頁">张兵</a></p>
+        <p><span>發布時間:</span>2014-07-07, 10:41:26</p>
+        <p><span>最後更新:</span>2017-04-15, 00:54:51</p>
+        <p>
+            <span>原始鏈接:</span><a class="post-url" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习-二/" title="使用JDBC调用存储过程，JDBC复习(二) ">http://dunizb.com/2014/07/07/使用JDBC调用存储过程，JDBC复习-二/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2014/07/07/使用JDBC调用存储过程，JDBC复习-二/　　作者: 张兵" title="點擊複製文章鏈接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-System-out-println与System-err-println的区别" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2013/10/29/System-out-println与System-err-println的区别/" class="article-date">
-      <time datetime="2013-10-29T07:17:21.000Z" itemprop="datePublished">2013-10-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><code>System.out.println</code>能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而<code>System.err.println</code>只能在屏幕上实现打印，即使你重定向了也一样。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2013/10/29/System-out-println与System-err-println的区别/#more">查看全文 >></a>
+        <p>
+            <span>許可協議:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"姓名標示-非商業性-相同方式分享 4.0 國際"</a> 轉載請保留原文鏈接及作者。
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
-  
-</article>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-BigDecimal-conversion-Integer" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2013/10/26/BigDecimal-conversion-Integer/" class="article-date">
-      <time datetime="2013-10-26T12:57:51.000Z" itemprop="datePublished">2013-10-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <nav id="article-nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="一、Integer类型"><a href="#一、Integer类型" class="headerlink" title="一、Integer类型"></a>一、Integer类型</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Integer a=<span class="keyword">new</span> Integer(<span class="keyword">int</span> value); </div><div class="line">Integer a=<span class="keyword">new</span> Integer(String value);</div></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘/">备忘</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2013/10/26/BigDecimal-conversion-Integer/#more">查看全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-String、StringBuffer、StringBuilder" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2013/08/18/String、StringBuffer、StringBuilder/" class="article-date">
-      <time datetime="2013-08-18T02:18:23.000Z" itemprop="datePublished">2013-08-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/">
+                    JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) 
+                </a>
+            </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>String 字符串常量<br>StringBuffer 字符串变量（线程安全）<br>StringBuilder 字符串变量（非线程安全）</strong></p>
-<p>简要的说，<code>String</code>类型和<code>StringBuffer</code>类型的主要性能区别其实在于<code>String</code>是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要用 String ，因为每次生成对象都会对系统性能产生影响，特别当内存中无引用对象多了以后， JVM 的 GC 就会开始工作，那速度是一定会相当慢的。</p>
-<p>而如果是使用 StringBuffer 类则结果就不一样了，每次结果都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，再改变对象引用。所以在一般情况下我们推荐使用 StringBuffer ，特别是字符串对象经常改变的情况下。而在某些特别情况下， String 对象的字符串拼接其实是被 JVM 解释成了 StringBuffer 对象的拼接，所以这些时候 String 对象的速度并不会比 StringBuffer 对象慢，而特别是以下的字符串对象生成中， String 效率是远要比 StringBuffer 快的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String S1 = “This is only a” + “ simple” + “ test”;</div><div class="line">StringBuffer Sb = <span class="keyword">new</span> StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</div></pre></td></tr></table></figure></p>
-<p>你会很惊讶的发现，生成 String S1 对象的速度简直太快了，而这个时候 StringBuffer 居然速度上根本一点都不占优势。其实这是 JVM 的一个把戏，在 JVM 眼里，这个<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String S1 = “This is only a” + “ simple” + “test”;</div></pre></td></tr></table></figure></p>
-<p>其实就是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String S1 = “This is only a simple test”;</div></pre></td></tr></table></figure></p>
-<p>所以当然不需要太多的时间了。但大家这里要注意的是，如果你的字符串是来自另外的 String 对象的话，速度就没那么快了，譬如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String S2 = “This is only a”;</div><div class="line">String S3 = “ simple”;</div><div class="line">String S4 = “ test”;</div><div class="line">String S1 = S2 +S3 + S4;</div></pre></td></tr></table></figure></p>
-<p>这时候 JVM 会规规矩矩的按照原来的方式去做<br>在大部分情况下 <code>StringBuffer &gt; String</code></p>
-<p><strong>Java.lang.StringBuffer</strong><br>线程安全的可变字符序列。一个类似于 String 的字符串缓冲区，但不能修改。虽然在任意时间点上它都包含某种特定的字符序列，但通过某些方法调用可以改变该序列的长度和内容。</p>
-<p>可将字符串缓冲区安全地用于多个线程。可以在必要时对这些方法进行同步，因此任意特定实例上的所有操作就好像是以串行顺序发生的，该顺序与所涉及的每个线程进行的方法调用顺序一致。</p>
-<p>StringBuffer 上的主要操作是 append 和 insert 方法，可重载这些方法，以接受任意类型的数据。每个方法都能有效地将给定的数据转换成字符串，然后将该字符串的字符追加或插入到字符串缓冲区中。append 方法始终将这些字符添加到缓冲区的末端；而 insert 方法则在指定的点添加字符。</p>
-<p>例如，如果 z 引用一个当前内容是“start”的字符串缓冲区对象，则此方法调用 <code>z.append(&quot;le&quot;)</code> 会使字符串缓冲区包含“startle”，而 <code>z.insert(4, &quot;le&quot;)</code> 将更改字符串缓冲区，使之包含“starlet”。</p>
-<p>在大部分情况下 <code>StringBuilder &gt; StringBuffer</code></p>
-<p><strong>java.lang.StringBuilde</strong><br>java.lang.StringBuilder一个可变的字符序列是5.0新增的。此类提供一个与 StringBuffer 兼容的 API，但不保证同步。该类被设计用作 StringBuffer 的一个简易替换，用在字符串缓冲区被单个线程使用的时候（这种情况很普遍）。如果可能，建议优先采用该类，因为在大多数实现中，它比 StringBuffer 要快。两者的方法基本相同。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-abstract-class-and-interface" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2012/09/08/abstract-class-and-interface/" class="article-date">
-      <time datetime="2012-09-08T07:24:06.000Z" itemprop="datePublished">2012-09-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a>
-    </h1>
-  
+    </nav>
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><h3 id="抽象方法和抽象类"><a href="#抽象方法和抽象类" class="headerlink" title="抽象方法和抽象类"></a>抽象方法和抽象类</h3><p>抽象类与抽象方法必须使用<code>abstract</code>修饰符来定义，有抽象方法的类只能被定义成抽象类，抽象类里可以没有抽象方法。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2012/09/08/abstract-class-and-interface/#more">查看全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
   
 </article>
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-==和equals方法终极解析" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2012/09/02/==和equals方法终极解析/" class="article-date">
-      <time datetime="2012-09-02T03:38:57.000Z" itemprop="datePublished">2012-09-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目錄</strong>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a>
-    </h1>
-  
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
 
-      </header>
-      
+    <input type="button" id="tocButton" value="隱藏目錄"  title="點擊按鈕隱藏或者顯示文章目錄">
+
+    <script>
+        yiliaConfig.toc = ["隱藏目錄", "顯示目錄", !!"false"];
+    </script>
+
+
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。</p>
-<p>当使用==来判断两个变量是否相等时，<strong>如果两个变量都是基本类型变量，且都是数字类型</strong>（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。</p>
-<p><strong>但对于两个引用类型变量</strong>，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来判断两种类型变量对否相等的结果。<br>
-          
-      
-    </div>
+<div class="share">
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2012/09/02/==和equals方法终极解析/#more">查看全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"使用JDBC调用存储过程，JDBC复习(二) 　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
     
-  </div>
-  
-</article>
+
+    
+</div>
 
 
 
@@ -778,10 +429,33 @@
 
 
 
+    
 
 
-  
-  
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/" title="上一篇: JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) ">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="回到主頁"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习-二/">使用JDBC调用存储过程，JDBC复习(二) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习-一/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
