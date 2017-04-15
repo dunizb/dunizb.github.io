@@ -15,19 +15,17 @@
 
 
 
-<meta name="description" content="System.out.println能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而System.err.println只能在屏幕上实现打印，即使你重定向了也一样。">
-<meta name="keywords" content="java,javase">
+<meta name="description" content="struts2中转发类型有很多，即内部请求转发，类似于forward的方，比如：dispatcher方式、redirect方式、redirectAction、chain等等，有常用的也有不常用的">
+<meta name="keywords" content="备忘,struts,总节">
 <meta property="og:type" content="article">
-<meta property="og:title" content="System.out.println与System.err.println的区别">
-<meta property="og:url" content="http://dunizb.com/2013/10/29/System-out-println与System-err-println的区别/index.html">
+<meta property="og:title" content="Struts2的视图转发类型总结">
+<meta property="og:url" content="http://dunizb.com/2013/09/21/Struts2-view-forwarding-type-summary/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="System.out.println能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而System.err.println只能在屏幕上实现打印，即使你重定向了也一样。">
-<meta property="og:image" content="http://img2.ph.126.net/2QNPPl8D_-byOjzPHYzKKA==/6599275386981696242.png">
-<meta property="og:updated_time" content="2017-04-13T17:34:52.000Z">
+<meta property="og:description" content="struts2中转发类型有很多，即内部请求转发，类似于forward的方，比如：dispatcher方式、redirect方式、redirectAction、chain等等，有常用的也有不常用的">
+<meta property="og:updated_time" content="2017-04-15T14:51:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="System.out.println与System.err.println的区别">
-<meta name="twitter:description" content="System.out.println能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而System.err.println只能在屏幕上实现打印，即使你重定向了也一样。">
-<meta name="twitter:image" content="http://img2.ph.126.net/2QNPPl8D_-byOjzPHYzKKA==/6599275386981696242.png">
+<meta name="twitter:title" content="Struts2的视图转发类型总结">
+<meta name="twitter:description" content="struts2中转发类型有很多，即内部请求转发，类似于forward的方，比如：dispatcher方式、redirect方式、redirectAction、chain等等，有常用的也有不常用的">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>System.out.println与System.err.println的区别 | Dunizb</title>
+<title>Struts2的视图转发类型总结 | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +279,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-System-out-println与System-err-println的区别" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Struts2-view-forwarding-type-summary" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2013/10/29/System-out-println与System-err-println的区别/" class="article-date">
-      <time datetime="2013-10-29T07:17:21.000Z" itemprop="datePublished">2013-10-29</time>
+      <a href="/2013/09/21/Struts2-view-forwarding-type-summary/" class="article-date">
+      <time datetime="2013-09-21T04:51:21.000Z" itemprop="datePublished">2013-09-21</time>
 </a>
 
 
@@ -300,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      System.out.println与System.err.println的区别
+      Struts2的视图转发类型总结
     </h1>
   
 
@@ -315,7 +313,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struts/">struts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/备忘/">备忘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总节/">总节</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -325,20 +323,35 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><code>System.out.println</code>能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而<code>System.err.println</code>只能在屏幕上实现打印，即使你重定向了也一样。<br><a id="more"></a><br>当向控制台输出信息时，开发者有两个选择：<code>System.out</code>和<code>System.err</code>。使用者更倾向于输出的是<code>System.out</code>，而如果是<code>System.err</code>则输出“error”。尽管这看起来是显而易见的，但很多开发者都不了解为什么出错和调试时使用<code>System.err</code>。</p>
-<p>当输出一个流时，JVM和操作系统共同决定何时输出这个流。也就是说，尽管开发者键入了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.print(<span class="string">"Test   Output:"</span>);</div></pre></td></tr></table></figure></p>
-<p>JVM和操作系统的组合体并不会立即输出这个流。相反，它将保持等待状态直到将要输出的东西达到一定的量。   </p>
-<p>假设输入以下指令：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.println(<span class="string">"Debugging Info."</span>);</div></pre></td></tr></table></figure></p>
-<p>JVM可能同意输出；然而，操作系统可能决定暂不输出。   </p>
-<p>由于这个原因，在调试程序时想要发现出错的位置就有可能成为问题。考虑以下的程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span>   i=<span class="number">0</span>;   i&lt;<span class="number">56</span>;   i++)   &#123;   </div><div class="line">    System.out.println(i);   </div><div class="line">    ...   </div><div class="line">    <span class="comment">//   containing   an   error   </span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>错误可能出现在i等于54时，但是可能JVM在i等于49时就结束输出了。50到54仍然存在于缓存中，结果也就丢失了。使用<code>System.err</code>来报告错误、调试程序就可以避免这种情况出现，它将使每一次操作的结果都输出出来。例如以下程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span>   i=<span class="number">0</span>;   i&lt;<span class="number">56</span>;   i++)   &#123;   </div><div class="line">     System.err.println(i);   </div><div class="line">     ...   </div><div class="line">     <span class="comment">//   containing   an   error   </span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在每一次i等于54时都将显示错误信息。</p>
-<p><code>System.out.println</code>可能会被缓冲,而<code>System.err.println</code>不会.</p>
-<p><code>System.err和System.out</code>就是错误输出和标准输出。如果你用LOG4J记录日志的话,且设定错误等级的话，<code>System.err</code>的输出是将记录到日志中。</p>
-<p>输出设备是一样的所以你看到的是一样的<code>System.setErr()</code>，<code>System.setOut()</code>是重定向两个流的方法。</p>
-<p><code>System.err.println()</code>是要缓冲的,所以优先级会高点,而<code>System.out.println()</code>是不需要缓冲的,所以优先级会低点.</p>
-<p>另外，特别的，当你使用MyEclipse和Tomcat6以上时，输出<code>System.err.println(&quot;aaaa&quot;)</code>到控制台是红色显示的，在控制台很显眼，一下就能找到，非常适合输出调试信息，这个我个人比较喜欢用，比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    System.err.println(<span class="string">"aaaaaaaaaaaaaaaa"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="http://img2.ph.126.net/2QNPPl8D_-byOjzPHYzKKA==/6599275386981696242.png" alt=""></p>
+        <h2 id="dispatcher方式"><a href="#dispatcher方式" class="headerlink" title="dispatcher方式"></a>dispatcher方式</h2><p>这种方式是struts2中默认的转发类型，即内部请求转发，类似于forward的方式。用于指定使用JSP作为视图的结果类型。</p>
+<h2 id="redirect方式"><a href="#redirect方式" class="headerlink" title="redirect方式"></a>redirect方式</h2><p>用于直接跳转到其他URL的结果类型。这种结果类型与dispatcher结果类相对，dispatcher结果类型是将请求forword（转发）到指定的JSP资源；而redirect结果类型，则意味着将请求redirect（重定向）到指定的视图资源。</p>
+<p>dispatcher与redirect的差别就是重定向和转发的差别：重定向会丢失所以的参数、请求属性–当然也就丢失了Action的出来结果。</p>
+<p>使用redirect结果类型的效果是，系统将调用<code>HttpServletResponse</code>的s<code>endRedirect（String）</code>方法来重定向指定视图资源，这种重定向的效果就是重新产生一个请求，因此所有的请求参数、请求属性、Action实例和Action中封装的属性全部丢失。地址栏的URL会发生改变。</p>
+<p>配置一个redirect类型结果，可以指定如下两个参数。</p>
+<ul>
+<li>location：改参数指定Action处理完用户请求后跳转的地址。</li>
+<li>parse：改参数指定是否允许在location参数值中使用表达式，改参数默认为true。与前面的类似，通常无需指定parse属性值。</li>
+</ul>
+<p>使用这个类型也可以指定跳到一个Action，只是需要添加<code>.action</code>后缀，已达到redirectAction结果类型效果。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;action name="redirect"&gt;</div><div class="line">    &lt;result type="redirect"&gt;/add.jsp&lt;/result&gt;</div><div class="line">&lt;/action&gt;</div><div class="line"></div><div class="line">&lt;action name="redirect"&gt;</div><div class="line">    &lt;result type="redirect"&gt;addUser.action&lt;/result&gt;</div><div class="line">&lt;/action&gt;</div></pre></td></tr></table></figure>
+<h2 id="redirectAction"><a href="#redirectAction" class="headerlink" title="redirectAction"></a>redirectAction</h2><p>这种方式可以简单的理解成转向到另一个Action。这种配置往往在下面的情况下需要用到：例如，当管理员添加完一个用户后，系统自动跳转到用户列表的界面。</p>
+<p>这种结果类型与redirect类型非常相似，一样是重新生成一个全新的请求。但与redirect结果类型区别在于：redirectAction使用ActionMapperFactory提供的ActionMapper来重定向请求。</p>
+<p>配置一个redirect类型的结果，可以指定如下两个参数。（针对不在同一个配置文件中）</p>
+<ul>
+<li>actionName：该参数指定重定向的Action名。</li>
+<li>namespace：该参数需要指定需要重定向的Action所在命名空间。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;action name="redirectAction"&gt;</div><div class="line">   &lt;result type="redirectAction"&gt;listAction&lt;/result&gt;</div><div class="line">&lt;/action&gt;</div></pre></td></tr></table></figure>
+<p>该action必须和redirectAction处在同一个package下面。那么如果不在同一个包下，则需进行如下配置：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;result type="redirectAction"&gt;</div><div class="line">   &lt;param name="actionName"&gt;XXX&lt;/param&gt;</div><div class="line">   &lt;param name="namespace"&gt;YYY&lt;/param&gt;</div><div class="line">&lt;/result&gt;</div></pre></td></tr></table></figure></p>
+<p>使用redirectAction结果类型时，系统将重新生成一个请求，只是改请求的URL不是一个具体的视图资源，而是另一个Action。因此前一个Action处理结果、请求参数、请求属性会全部丢失。</p>
+<h2 id="chain"><a href="#chain" class="headerlink" title="chain"></a>chain</h2><p>这个视图类型也用了跳转到另一个Action，与前面的不同的是，他的请求参数和属性都可以保留，比如，系统中的删除功能，回到之前查询的action，要保存页码回到之前删除记录的当前页，用<code>chain</code>就可以做到，几乎几乎就是前面两种的增强版。推荐开发中直接忽略redirect和redirectAction类型，直接用这个chain就好了。但很奇怪，在MyEclipse8.6下会报错，这个可能就比较坑爹了，令人郁闷！但并不影响运行结果。可能是Myeclipse8.6的Bug吧。</p>
+<h2 id="plainText"><a href="#plainText" class="headerlink" title="plainText"></a>plainText</h2><p>这种方式一般来说使用的比较少，可能用到的情况：原样输出源代码。配置如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;action name="abc" &gt;</div><div class="line">   &lt;result type="plainText"&gt;</div><div class="line">       &lt;param name="location"&gt;/index.jsp&lt;/param&gt;</div><div class="line">       &lt;param name="charSet"&gt;UTF-8&lt;/param&gt;</div><div class="line">   &lt;/result&gt;</div><div class="line">&lt;/action&gt;</div></pre></td></tr></table></figure></p>
+<p>这时，index.jsp的源代码则会以文本方式显示在浏览器中。</p>
+<h2 id="freeMarker、Velocity"><a href="#freeMarker、Velocity" class="headerlink" title="freeMarker、Velocity"></a>freeMarker、Velocity</h2><p>用于指定使用FreeMarker、Velocity模板作为视图结果类型。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;result name="success"type="freemarker"&gt;foo.ftl&lt;/result&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="HttpHeader"><a href="#HttpHeader" class="headerlink" title="HttpHeader"></a>HttpHeader</h2><p>用来控制特殊的Http行为。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;result name="success"type="httpheader"&gt;   </div><div class="line">       &lt;paramname="status"&gt;204&lt;/param&gt; </div><div class="line">       &lt;paramname="headers.a"&gt;a custom header value&lt;/param&gt;  </div><div class="line">       &lt;paramname="headers.b"&gt;another custom header value&lt;/param&gt;  </div><div class="line">&lt;/result&gt;  </div><div class="line"></div><div class="line">&lt;result name="proxyRequired"type="httpheader"&gt;   </div><div class="line">       &lt;paramname="error"&gt;305&lt;/param&gt; </div><div class="line">      &lt;paramname="errorMessage"&gt;this action must be accessed through aprozy&lt;/param&gt;  </div><div class="line">&lt;/result&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><p>向浏览器发送InputSream对象，通常用来处理文件下载。<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;result name="success"type="stream"&gt;   </div><div class="line">      &lt;paramname="contentType"&gt;image/jpeg&lt;/param&gt;  </div><div class="line">      &lt;paramname="inputName"&gt;imageStream&lt;/param&gt;  </div><div class="line">      &lt;paramname="contentDisposition"&gt;attachment;filename="document.pdf"&lt;/param&gt;   </div><div class="line">      &lt;paramname="bufferSize"&gt;1024&lt;/param&gt;  </div><div class="line">&lt;/result&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="xslt"><a href="#xslt" class="headerlink" title="xslt"></a>xslt</h2><p>用于与XML/XSLT整合的结果类型。</p>
+<p>以上这么多，对于普通的项目来说，一般开发中直接用chain类型就好了，其他的本人认为几乎就是鸡肋。。。。</p>
 
       
     </div>
@@ -347,13 +360,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a></p>
+        <p><span>Title:</span><a href="/2013/09/21/Struts2-view-forwarding-type-summary/">Struts2的视图转发类型总结</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">张兵</a></p>
-        <p><span>Created:</span>2013-10-29, 15:17:21</p>
-        <p><span>Updated:</span>2017-04-14, 01:34:52</p>
+        <p><span>Created:</span>2013-09-21, 12:51:21</p>
+        <p><span>Updated:</span>2017-04-15, 22:51:30</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2013/10/29/System-out-println与System-err-println的区别/" title="System.out.println与System.err.println的区别">http://dunizb.com/2013/10/29/System-out-println与System-err-println的区别/</a>
-            <span class="copy-path" data-clipboard-text="From http://dunizb.com/2013/10/29/System-out-println与System-err-println的区别/　　By 张兵" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2013/09/21/Struts2-view-forwarding-type-summary/" title="Struts2的视图转发类型总结">http://dunizb.com/2013/09/21/Struts2-view-forwarding-type-summary/</a>
+            <span class="copy-path" data-clipboard-text="From http://dunizb.com/2013/09/21/Struts2-view-forwarding-type-summary/　　By 张兵" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -366,15 +379,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2013/10/26/BigDecimal-conversion-Integer/">
-                    BigDecimal互转Integer
+                <a href="/2013/08/18/String、StringBuffer、StringBuilder/">
+                    String、StringBuffer、StringBuilder的性能区别
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2013/12/07/Java-io-FTP-FileZill-Server设置/">
-                    Java I/O FTP同步代码及FileZilla Server设置
+                <a href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/">
+                    Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)
                 </a>
             </div>
         
@@ -386,7 +399,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#dispatcher方式"><span class="toc-number">1.</span> <span class="toc-text">dispatcher方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redirect方式"><span class="toc-number">2.</span> <span class="toc-text">redirect方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redirectAction"><span class="toc-number">3.</span> <span class="toc-text">redirectAction</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chain"><span class="toc-number">4.</span> <span class="toc-text">chain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#plainText"><span class="toc-number">5.</span> <span class="toc-text">plainText</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#freeMarker、Velocity"><span class="toc-number">6.</span> <span class="toc-text">freeMarker、Velocity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HttpHeader"><span class="toc-number">7.</span> <span class="toc-text">HttpHeader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream"><span class="toc-number">8.</span> <span class="toc-text">Stream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xslt"><span class="toc-number">9.</span> <span class="toc-text">xslt</span></a></li></ol>
         
     </div>
     <style>
@@ -422,7 +435,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"System.out.println与System.err.println的区别　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Struts2的视图转发类型总结　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -442,7 +455,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2013/10/26/BigDecimal-conversion-Integer/" title="Pre: BigDecimal互转Integer">
+            <a href="/2013/08/18/String、StringBuffer、StringBuilder/" title="Pre: String、StringBuffer、StringBuilder的性能区别">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -450,7 +463,7 @@
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2013/12/07/Java-io-FTP-FileZill-Server设置/" title="Next: Java I/O FTP同步代码及FileZilla Server设置">
+            <a href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/" title="Next: Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
