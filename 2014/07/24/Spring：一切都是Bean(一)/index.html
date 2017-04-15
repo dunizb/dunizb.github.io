@@ -15,23 +15,17 @@
 
 
 
-<meta name="description" content="AOP是一个很成熟的技术，假如项目中有方法A、方法B、方法C……等多个方法，如果项目需要为方法A、方法B、方法C……这批方法增加具有通用性质的横切处理。">
+<meta name="description" content="Bean的别名何谓别名？ 就是外号。 Spring容器中的Bean，为什么要有别名？ XML配置文件中id属性值必须是一个有效的标识符， id属性值不能有特殊字符，否则XML就报错了；但有些时候，程序需要【为Bean起一个包含特殊字符的名字】。此时用id就不行了，只能起别名。">
 <meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="漫谈AOP开发之初探AOP及AspectJ的用法">
-<meta property="og:url" content="http://dunizb.com/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/index.html">
+<meta property="og:title" content="Spring：一切都是Bean(一)">
+<meta property="og:url" content="http://dunizb.com/2014/07/24/Spring：一切都是Bean(一)/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="AOP是一个很成熟的技术，假如项目中有方法A、方法B、方法C……等多个方法，如果项目需要为方法A、方法B、方法C……这批方法增加具有通用性质的横切处理。">
-<meta property="og:image" content="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/wpsD3C5.tmp3cfdfc77-43e2-4d1c-ac14-ffbf40c41c12.png">
-<meta property="og:image" content="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/fd543e0f-a031-46d6-8db3-525fa893f15f.png">
-<meta property="og:image" content="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/wps784F.tmp27792296-746a-45d1-aa46-4813d419e942.png">
-<meta property="og:image" content="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/wps4E5.tmp27877a68-a55f-4960-982c-588848d8ac56.png">
-<meta property="og:image" content="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/wps4B96.tmp1d5122e1-9afe-4446-9cbe-76464a2ee9f1.png">
-<meta property="og:updated_time" content="2017-04-15T16:25:56.000Z">
+<meta property="og:description" content="Bean的别名何谓别名？ 就是外号。 Spring容器中的Bean，为什么要有别名？ XML配置文件中id属性值必须是一个有效的标识符， id属性值不能有特殊字符，否则XML就报错了；但有些时候，程序需要【为Bean起一个包含特殊字符的名字】。此时用id就不行了，只能起别名。">
+<meta property="og:updated_time" content="2017-04-15T16:36:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="漫谈AOP开发之初探AOP及AspectJ的用法">
-<meta name="twitter:description" content="AOP是一个很成熟的技术，假如项目中有方法A、方法B、方法C……等多个方法，如果项目需要为方法A、方法B、方法C……这批方法增加具有通用性质的横切处理。">
-<meta name="twitter:image" content="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/wpsD3C5.tmp3cfdfc77-43e2-4d1c-ac14-ffbf40c41c12.png">
+<meta name="twitter:title" content="Spring：一切都是Bean(一)">
+<meta name="twitter:description" content="Bean的别名何谓别名？ 就是外号。 Spring容器中的Bean，为什么要有别名？ XML配置文件中id属性值必须是一个有效的标识符， id属性值不能有特殊字符，否则XML就报错了；但有些时候，程序需要【为Bean起一个包含特殊字符的名字】。此时用id就不行了，只能起别名。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -63,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>漫谈AOP开发之初探AOP及AspectJ的用法 | Dunizb</title>
+<title>Spring：一切都是Bean(一) | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -285,11 +279,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-漫谈AOP开发之初探AOP及AspectJ的用法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Spring：一切都是Bean(一)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/" class="article-date">
-      <time datetime="2014-10-26T05:39:55.000Z" itemprop="datePublished">2014-10-26</time>
+      <a href="/2014/07/24/Spring：一切都是Bean(一)/" class="article-date">
+      <time datetime="2014-07-24T14:20:50.000Z" itemprop="datePublished">2014-07-24</time>
 </a>
 
 
@@ -304,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      漫谈AOP开发之初探AOP及AspectJ的用法
+      Spring：一切都是Bean(一)
     </h1>
   
 
@@ -329,64 +323,41 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="一、为什么需要AOP技术"><a href="#一、为什么需要AOP技术" class="headerlink" title="一、为什么需要AOP技术"></a>一、为什么需要AOP技术</h2><p>AOP 是一个很成熟的技术。</p>
-<p>假如项目中有方法A、方法B、方法C……等多个方法，</p>
-<p>如果项目需要为方法A、方法B、方法C……这批方法增加具有通用性质的横切处理。</p>
-<p>下图可以形象的说明具有通用性质的横切处理的思想：</p>
-<p><img src="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/wpsD3C5.tmp3cfdfc77-43e2-4d1c-ac14-ffbf40c41c12.png" alt=""></p>
-<p><strong>在以前传统的做法是</strong></p>
+        <h2 id="Bean的别名"><a href="#Bean的别名" class="headerlink" title="Bean的别名"></a>Bean的别名</h2><p>何谓别名？ 就是外号。</p>
+<p>Spring容器中的Bean，为什么要有别名？</p>
+<p>XML配置文件中id属性值必须是一个有效的标识符， id属性值不能有特殊字符，否则XML就报错了；但有些时候，程序需要【为Bean起一个包含特殊字符的名字】。此时用id就不行了，只能起别名。<br><a id="more"></a><br>起别名的两种方式：</p>
 <ol>
-<li>先定义一个Advice方法，该方法实现这个通用性质的横切处理。</li>
-<li>打开方法A、方法B、方法C……的源代码修改，使得方法A、方法B、方法C……去调用Advice方法。</li>
+<li>在<code>&lt;bean .../&gt;</code>元素中通过name属性来指定别名，多个别名之间用逗号隔开。</li>
+<li>专门用<code>&lt;alias.../&gt;</code>元素来起别名。</li>
 </ol>
-<p>客户电话： 为每个方法都增加日志。<br>客户电话： 为每个方法前都增加权限控制。<br>客户电话： 为每个方法都加……<br>….  </p>
-<p>如果使用AOP，可以做到程序员无需修改方法A、方法B、方法C……，但又可以为方法A、方法B、方法C增加调用Advice方法。</p>
-<p><strong>面向切面编程（AOP）是作为面向对象编程（OOP）的补充</strong><br>AOP框架具有如下两个特征：</p>
-<ol>
-<li>各步骤之间的良好隔离性。</li>
-<li>源代码无关性。</li>
-</ol>
-<h2 id="二、AOP的功能"><a href="#二、AOP的功能" class="headerlink" title="二、AOP的功能"></a>二、AOP的功能</h2><p>保证程序员不修改方法A、方法B、方法C……的前提下，可以为方法A、方法B、方法C……增加通用处理。</p>
-<p>AOP的本质：依然要去【修改】方法A、方法B、方法C……</p>
-<p>—— 只是这个修改由AOP框架完成，程序员不需要改。</p>
-<p>AOP要求去修改，到底怎么去修改方法A、方法B、方法……</p>
-<p><strong>AOP的实现方式有两种</strong></p>
-<p>AOP框架在编译阶段，就对目标类进行修改，得到的class文件已经是被修改过的。生成静态的AOP代理类（生成*.class文件已经被改掉了，需要使用特定的编译器）。以AspectJ为代表 —— 静态AOP框架。</p>
-<p>AOP框架在运行阶段，动态生成AOP代理（在内存中动态地生成AOP代理类），以实现对目标对象的增强。它不需要特殊的编译器。以Spring AOP为代表。—— 动态AOP框架。</p>
-<p>上面两种，哪种性能更好？很明显静态的AOP框架更好。</p>
-<p>下面我们进入AspectJ的学习</p>
-<h2 id="三、实战AspectJ"><a href="#三、实战AspectJ" class="headerlink" title="三、实战AspectJ"></a>三、实战AspectJ</h2><p>AspectJ是一个基于Java语言的AOP框架，提供了强大的AOP功能，其他很多AOP框架都借鉴或采纳其中的一些思想。</p>
-<p><strong>下载和安装AspectJ</strong></p>
-<ol>
-<li>运行、下载得到的安装JAR包。在命令行窗口启动下载得到的jar文件：java -jar aspectj-1.6.10.jar，在弹出的安装界面会先让你选择Java，选择你安装的Java目录 即可。将该软件(绝对绿色）安装到指定目录下（笔者安装在C盘）。</li>
-<li>系统还应该将<code>C:\Java\aspectj1.6\bin</code>路径添加到PATH环境变量中，将C:\Java\aspectj1.6\lib\aspectjrt.jar和aspectjtools.jar添加到 CLASSPATH环境变量中。</li>
-</ol>
-<p>成功安装了AspectJ之后，将会在<code>E:\Java\AOP\aspectj1.6</code>路径下（AspectJ的安装路径）看到如下文件结构：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"us"</span> <span class="attr">name</span>=<span class="string">"aa"</span> <span class="attr">class</span>=<span class="string">"com.idealsh.test.service.UserService"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">alias</span> <span class="attr">name</span>=<span class="string">"us"</span> <span class="attr">alias</span>=<span class="string">"bb"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>上面的配置下面的配置将会让us对象有三个名字：us、aa、bb</p>
+<h2 id="Bean获取Spring容器"><a href="#Bean获取Spring容器" class="headerlink" title="Bean获取Spring容器"></a>Bean获取Spring容器</h2><p>在某些时候，当Bean要实现某个功能时，该Bean必须借助于Spring容器才能完成。</p>
+<p>比如说，某个Bean需要提供国际化支持，这就必须通过Spring容器来获得国际化支持。</p>
+<p>此时，该Bean就必须获取它所处的容器。</p>
+<p>方法： <strong>让Bean实现ApplicationContextAware接口即可。</strong></p>
+<p>实现该接口后，必须实现setApplicationContext方法。</p>
+<blockquote>
+<p>Spring会通过反射检测所有Bean的实现类是否实现ApplicationContextAware接口，只要实现了该接口，Spring会自动调用该Bean的setApplicationContext方法，并将容器自身作为参数传入。</p>
+</blockquote>
+<h2 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h2><p>通俗的的讲就是说Bean活多久，通过scope属性来指定。Bean的作用域，一共有如下几个：</p>
 <ul>
-<li>bin：该路径下存放了aj、aj5、ajc、ajdoc、ajbrowser等命令，其中ajc命令最常用，它的作用类似于javac，用于对普通Java类进行编译时增强。</li>
-<li>docs：该路径下存放了AspectJ的使用说明、参考手册、API文档等文档。</li>
-<li>lib：该路径下的4个JAR文件是AspectJ的核心类库。</li>
-<li>相关授权文件。</li>
+<li>singleton：单例，所有从Spring容器中取出的总是同一个实例。Spring默认采用该模式。</li>
 </ul>
-<p>打开DOS窗口，输入ajc命令，可以看到输出ajc命令的所有信息，即可知安装和环境变量配置成功：</p>
-<p><img src="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/fd543e0f-a031-46d6-8db3-525fa893f15f.png" alt=""></p>
-<p><strong>使用AspectJ</strong></p>
-<p>接下来我们模拟一个普通程序：<br>UserService：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.mybry.aop.service;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">addUser</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"模拟添加用户的方法。"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="number">20</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">validateLogin</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"验证用户登录。"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>BookServce：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.mybry.aop.service;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookService</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">addBook</span><span class="params">(String name,<span class="keyword">int</span> price)</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"正在添加图书，书名是："</span>+name+<span class="string">",价格是："</span>+price);</div><div class="line">		<span class="keyword">return</span> <span class="number">100</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>编译运行结果：</p>
-<p><img src="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/wps784F.tmp27792296-746a-45d1-aa46-4813d419e942.png" alt=""></p>
-<p>这两个类正好相当于我们的方法A，方法B…..</p>
-<p>假如客户现在要求在每个方法前面增加权限检查功能，那么该如何做呢？下面我们就是用AspectJ来实现这个功能。</p>
-<p>现在我们在这个模拟程序基础上增加这个AOP功能</p>
-<p>我们先写一个权限检查的Aspectj类:</p>
-<p>实例1，AuthAspect：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.mybry.aop.aspectj;</div><div class="line"><span class="keyword">public</span> aspect AuthAspect&#123;</div><div class="line">	<span class="comment">// Advice</span></div><div class="line">	<span class="comment">// execution(* com.mybry.aop.service.*.*(..)执行 任意返回值 改包下的任意类的任意方法形参不限</span></div><div class="line">	before():execution(* com.mybry.aop.service.*.*(..))&#123;</div><div class="line">		<span class="comment">// 对原来方法进行修改、增强。</span></div><div class="line">		System.out.println(<span class="string">"----------模拟执行权限检查----------"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>注意这个类色声明类型：aspect，没错，这是写Aspect必须声明的类型，只有AspectJ编译器可以识别。<br>再用<code>ajc –d *.java</code>命令编译执行：</p>
-<p><img src="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/wps4E5.tmp27877a68-a55f-4960-982c-588848d8ac56.png" alt=""></p>
-<p>太开心了，搞定了！</p>
-<p>假如此时客户又要求在每个方法中增加事物处理呢？也好办，下面是事物处理类：<br>实例1，TxAspect：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.mybry.aop.aspectj;</div><div class="line"><span class="keyword">public</span> aspect TxAspect&#123;</div><div class="line">    <span class="comment">//around的意思就是在方法的前面和后面都加</span></div><div class="line">	<span class="function">Object <span class="title">around</span><span class="params">()</span>:<span class="title">execution</span><span class="params">(* com.mybry.aop.service.*.*(..)</span>)</span>&#123;</div><div class="line">		<span class="comment">// 对原来方法进行修改、增强。</span></div><div class="line">		System.out.println(<span class="string">"====模拟开启事务===="</span>);</div><div class="line">		Object rvtVal = proceed();</div><div class="line">		System.out.println(<span class="string">"====模拟结束事务===="</span>);</div><div class="line">		<span class="keyword">return</span> rvtVal;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>好了，我们再来编译运行它：</p>
-<p><img src="file:///var/folders/xc/nyykbxjj4w938ntjcjymx0rm0000gn/T/WizNote/d46a5cab-2910-4fed-abf3-94bf91c31a10/index_files/wps4B96.tmp1d5122e1-9afe-4446-9cbe-76464a2ee9f1.png" alt=""></p>
-<p>OK!我们的Aspect AOP程序到此为止！</p>
+<p>“与天地同寿，与日月同庚”</p>
+<ul>
+<li>只要容器不死，singleton Bean就不死。</li>
+<li>容器创建之后，singleton Bean默认会被预初始化</li>
+</ul>
+<ul>
+<li>prototype：不会预初始化。每次通过Spring容器中获取实例，Spring都会new一个新的实例返回。对于prototype Bean而言，Spring每次都new一个实例，new出来之后根本不管这个prototype Bean。</li>
+<li>request：对应web应用中的request作用域。只对Web应用才有效，在一次请求中相当于singleton。</li>
+<li>session：对应web应用中的session作用域。只对Web应用才有效，在一次用户会话中相当于singleton。</li>
+<li>global session：仅在使用portlet context的时候才有效。</li>
+</ul>
+<p>一般来说，singleton Bean的性能更好，因为singleton Bean创建成本低，内存开销小。</p>
+<h2 id="beans元素的属性与bean元素的属性的规律"><a href="#beans元素的属性与bean元素的属性的规律" class="headerlink" title="beans元素的属性与bean元素的属性的规律"></a>beans元素的属性与bean元素的属性的规律</h2><p>假如bean元素有abc属性，beans元素通常可能有default-abc属性。</p>
+<p>如果在bean元素中指定的属性，仅对该Bean起作用；但在beans元素上指定的属性，对所有Bean都起作用。如果他们起冲突了，范围小的胜利。  </p>
 
       
     </div>
@@ -395,13 +366,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/">漫谈AOP开发之初探AOP及AspectJ的用法</a></p>
+        <p><span>本文标题:</span><a href="/2014/07/24/Spring：一切都是Bean(一)/">Spring：一切都是Bean(一)</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
-        <p><span>发布时间:</span>2014-10-26, 13:39:55</p>
-        <p><span>最后更新:</span>2017-04-16, 00:25:56</p>
+        <p><span>发布时间:</span>2014-07-24, 22:20:50</p>
+        <p><span>最后更新:</span>2017-04-16, 00:36:50</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/" title="漫谈AOP开发之初探AOP及AspectJ的用法">http://dunizb.com/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2014/07/24/Spring：一切都是Bean(一)/" title="Spring：一切都是Bean(一)">http://dunizb.com/2014/07/24/Spring：一切都是Bean(一)/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2014/07/24/Spring：一切都是Bean(一)/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -414,15 +385,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2014/07/27/Spring：一切都是Bean(二)/">
-                    Spring：一切都是Bean(二)
+                <a href="/2014/07/13/把头像图片以二进制形式保存到数据库（Hibernate实现）/">
+                    把头像图片以二进制形式保存到数据库（Hibernate实现）
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2014/10/28/漫谈AOP开发之谈谈AOP那些学术概念/">
-                    漫谈AOP开发之谈谈AOP那些学术概念
+                <a href="/2014/07/27/Spring：一切都是Bean(二)/">
+                    Spring：一切都是Bean(二)
                 </a>
             </div>
         
@@ -434,7 +405,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、为什么需要AOP技术"><span class="toc-number">1.</span> <span class="toc-text">一、为什么需要AOP技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、AOP的功能"><span class="toc-number">2.</span> <span class="toc-text">二、AOP的功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、实战AspectJ"><span class="toc-number">3.</span> <span class="toc-text">三、实战AspectJ</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean的别名"><span class="toc-number">1.</span> <span class="toc-text">Bean的别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean获取Spring容器"><span class="toc-number">2.</span> <span class="toc-text">Bean获取Spring容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean的作用域"><span class="toc-number">3.</span> <span class="toc-text">Bean的作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#beans元素的属性与bean元素的属性的规律"><span class="toc-number">4.</span> <span class="toc-text">beans元素的属性与bean元素的属性的规律</span></a></li></ol>
         
     </div>
     <style>
@@ -470,7 +441,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"漫谈AOP开发之初探AOP及AspectJ的用法　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Spring：一切都是Bean(一)　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -490,7 +461,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2014/07/27/Spring：一切都是Bean(二)/" title="上一篇: Spring：一切都是Bean(二)">
+            <a href="/2014/07/13/把头像图片以二进制形式保存到数据库（Hibernate实现）/" title="上一篇: 把头像图片以二进制形式保存到数据库（Hibernate实现）">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -498,7 +469,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2014/10/28/漫谈AOP开发之谈谈AOP那些学术概念/" title="下一篇: 漫谈AOP开发之谈谈AOP那些学术概念">
+            <a href="/2014/07/27/Spring：一切都是Bean(二)/" title="下一篇: Spring：一切都是Bean(二)">
                 <i class="fa fa-angle-right"></i>
             </a>
         
