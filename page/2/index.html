@@ -144,13 +144,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -280,7 +280,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
   
@@ -313,20 +313,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>页面如下：<br><img src="http://img1.ph.126.net/TVKU0tPhhtVlVvBH3D4mlw==/2249548013971633168.png" alt=""></p>
-<p>需求：</p>
-<ol>
-<li>选中店铺后，选中上传LOGO或者页脚、或者一次LOGO和页脚都上传</li>
-<li>上传后，LOGO和页脚保存到表的两个列</li>
-</ol>
-<p>关键：<br>单张图上传、怎么判断上传的是LOGO还是页脚</p>
-<p>表如下：<br><img src="http://img1.ph.126.net/EbZYUj6vb_vtr18JVa1ZBQ==/6597968067658220923.png" alt=""></p>
-<p>upload.jsp<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">……….</div><div class="line">&lt;s:hidden id="img_type" name="imgType" value="" /&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td class="STYLE1"&gt;上传LOGO：&lt;s:file id="img" name="img"/&gt;&lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td class="STYLE1"&gt;上传页脚：&lt;s:file id="foot" name="img"/&gt;&lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td align="left"&gt;</div><div class="line">    &lt;input type="button" id="img_btn" value="上传" /&gt;</div><div class="line">    &lt;span style="color:red;"&gt;</div><div class="line">    &lt;s:actionerror/&gt;</div><div class="line">    &lt;s:fielderror /&gt;</div><div class="line">    &lt;s:if test="message!= null"&gt;</div><div class="line">    &lt;s:property value="message" /&gt;</div><div class="line">    &lt;/s:if&gt;</div><div class="line">    &lt;/span&gt;</div><div class="line">    &lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td class="STYLE1" align="left"&gt;预览：&lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td class="STYLE1" align="left"&gt;</div><div class="line">    &lt;img src="$&#123;pageContext.request.contextPath&#125;/$&#123;imgSrcLogo&#125;" alt="这是LOGO" title="这是LOGO" width="100" height="100" /&gt;</div><div class="line">&lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td class="STYLE1" align="left"&gt;</div><div class="line">    &lt;img src="$&#123;pageContext.request.contextPath&#125;/$&#123;imgSrcFoot&#125;" alt="这是页脚" title="这是页脚" width="600" height="350" /&gt;</div><div class="line">    &lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div></pre></td></tr></table></figure></p>
-<p>这里面有个隐藏表单域<code>&lt;s:hidden id=&quot;img_type&quot; name=&quot;imgType&quot; value=&quot;&quot; /&gt;</code>，用来区分上传的是logo还是foot页脚</p>
-<p>这些控制需要用JS来做：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** 图片上传 */</span></div><div class="line">$(<span class="string">"#img_btn"</span>).click(function()&#123;</div><div class="line">  var img = $(<span class="string">"#img"</span>);</div><div class="line">  var foot = $(<span class="string">"#foot"</span>);</div><div class="line">  var shopId = $(<span class="string">"#shopIdSelect"</span>);</div><div class="line">  var msg=<span class="string">""</span>;</div><div class="line">  <span class="keyword">if</span>(shopId.val()&lt;<span class="string">"0"</span>)&#123;</div><div class="line">     msg += <span class="string">"请选择店铺！"</span>;</div><div class="line">     shopId.focus();</div><div class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(img.val()==<span class="string">""</span> &amp;&amp; foot.val()==<span class="string">""</span>)&#123;</div><div class="line">     msg += <span class="string">"请选择要上传的图片！"</span>;</div><div class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(img.val()!=<span class="string">""</span> &amp;&amp; foot.val()==<span class="string">""</span>)&#123;    <span class="comment">//如果上传的是LOGO</span></div><div class="line">     document.getElementById(<span class="string">'img_type'</span>).value=<span class="string">"logo"</span>;</div><div class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(img.val()==<span class="string">""</span> &amp;&amp; foot.val()!=<span class="string">""</span>)&#123;    <span class="comment">//如果上传的是页脚</span></div><div class="line">     document.getElementById(<span class="string">'img_type'</span>).value=<span class="string">"foot"</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (msg != <span class="string">""</span>)&#123;</div><div class="line">     alert(msg);</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">  <span class="comment">// 表单提交</span></div><div class="line">     $(<span class="string">"#uploadForm"</span>).submit();</div><div class="line">  &#125;        </div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>在这里使用<code>document.getElementById(&#39;img_type&#39;).value=&quot;logo&quot;;</code>进行复制，传递到后台</p>
-<p>Action：uploadLogoAction.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">uploadLogoAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span></span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1590947402900249195L</span>;</div><div class="line"><span class="comment">/** 注入业务层*/</span></div><div class="line"><span class="keyword">private</span> SystemManageService systemManageService;</div><div class="line"><span class="keyword">private</span> ShoppingMerchantShop shoppingMerchantShop;</div><div class="line"><span class="keyword">private</span> List&lt;ShoppingMerchantShop&gt; shoppingMerchantShopList;</div><div class="line"><span class="comment">/** 图片上传的三个属性 */</span></div><div class="line"><span class="keyword">private</span> File[] img;</div><div class="line"><span class="keyword">private</span> String[] imgFileName;</div><div class="line"><span class="keyword">private</span> String[] imgContentType;</div><div class="line"><span class="comment">/** 店铺ID */</span></div><div class="line"><span class="keyword">private</span> String shopId;</div><div class="line"><span class="keyword">private</span> String imgType;</div><div class="line"><span class="comment">/** 图片上传 只要一张不符合要求另一张也不能上传*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">uploadPic</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">//设定拖存储在服务器的路径</span></div><div class="line">        String realPath = <span class="string">"/skin/"</span>+shopId+<span class="string">"/sitemesh"</span>;</div><div class="line">        String savePath = ServletActionContext.getServletContext().getRealPath(realPath);</div><div class="line">        System.err.println(<span class="string">"项目部署的路径："</span>+savePath);</div><div class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(File file : img)&#123;</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.filterTypes(imgContentType))&#123;</div><div class="line">                </div><div class="line">                FileUtils.copyFile(file, <span class="keyword">new</span> File(savePath+File.separator+imgFileName[index]));</div><div class="line">                <span class="comment">//图片路径</span></div><div class="line">                String picPath = realPath+<span class="string">"/"</span>+imgFileName[index];</div><div class="line">                </div><div class="line">                ActionContext.getContext().put(<span class="string">"shopId"</span>,shopId );                </div><div class="line">                <span class="comment">//上传成功后保存图片路劲到店铺表</span></div><div class="line">                shoppingMerchantShop = <span class="keyword">new</span> ShoppingMerchantShop();</div><div class="line">                shoppingMerchantShop.setShopId(shopId);</div><div class="line">                <span class="keyword">if</span>(index == <span class="number">0</span>)&#123;    <span class="comment">//如果是LOGO</span></div><div class="line">                    <span class="keyword">if</span>(imgType.equals(<span class="string">"foot"</span>))&#123;    <span class="comment">//如果只上传了一个，如果上传的是页脚</span></div><div class="line">                        shoppingMerchantShop.setShopFoot(picPath);</div><div class="line">                        <span class="comment">//保存上传后的路径、用于页面上回显</span></div><div class="line">                        ActionContext.getContext().put(<span class="string">"imgSrcFoot"</span>,picPath);</div><div class="line">                    &#125;<span class="keyword">else</span>&#123;</div><div class="line">                        shoppingMerchantShop.setShopLogo(picPath);                        </div><div class="line">                        <span class="comment">//保存上传后的路径、用于页面上回显</span></div><div class="line">                        ActionContext.getContext().put(<span class="string">"imgSrcLogo"</span>,picPath);</div><div class="line">                    &#125;</div><div class="line">                &#125;<span class="keyword">else</span>&#123;    <span class="comment">//如果是页脚</span></div><div class="line">                    shoppingMerchantShop.setShopFoot(picPath);</div><div class="line">                    ActionContext.getContext().put(<span class="string">"imgSrcFoot"</span>,picPath);</div><div class="line">                &#125;</div><div class="line">                index++;                </div><div class="line"></div><div class="line">                systemManageService.updateMerchantShop(shoppingMerchantShop);</div><div class="line">                setMessage(<span class="string">"上传成功！"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">        setMessage(<span class="string">"上传失败！"</span>);</div><div class="line">        log(ex);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> SUCCESS;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 判断图片格式是否符合要求</div><div class="line"> * <span class="doctag">@param</span> types 图片格式</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">filterTypes</span><span class="params">(String[] types)</span></span>&#123;</div><div class="line">    <span class="comment">//WebConstant.uploadImgTypes是一个数组，存放图片格式&#123;"image/png","image/jpeg"...&#125;</span></div><div class="line">    String[] imgTypes = WebConstant.uploadImgTypes;</div><div class="line">    Boolean flag =<span class="keyword">true</span>;</div><div class="line">    <span class="keyword">for</span>(String type : types)&#123;</div><div class="line">        <span class="keyword">for</span>(String trueType : imgTypes)&#123;</div><div class="line">            <span class="keyword">if</span>(!trueType.equals(type))&#123;</div><div class="line">                flag = <span class="keyword">false</span>;</div><div class="line">                setMessage(<span class="string">"上传的图片类型是不被允许的！"</span>);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                flag = <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> flag;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/** get and set  */</span></div><div class="line">......</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
+              需求：1. 选中店铺后，选中上传LOGO或者页脚、或者一次LOGO和页脚都上传。2. 上传后，LOGO和页脚保存到表的两个列
+          
       
     </div>
     
@@ -343,6 +331,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struts/">struts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件上传/">文件上传</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -409,7 +401,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/09/21/Struts2-view-forwarding-type-summary/#more">more >></a>
+          <a href="/2013/09/21/Struts2-view-forwarding-type-summary/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -478,7 +470,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/08/18/String、StringBuffer、StringBuilder/#more">more >></a>
+          <a href="/2013/08/18/String、StringBuffer、StringBuilder/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -546,7 +538,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2012/09/08/abstract-class-and-interface/#more">more >></a>
+          <a href="/2012/09/08/abstract-class-and-interface/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -616,7 +608,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2012/09/02/==和equals方法终极解析/#more">more >></a>
+          <a href="/2012/09/02/==和equals方法终极解析/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -649,14 +641,14 @@
                 2017 张兵
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -665,7 +657,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -698,9 +690,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
