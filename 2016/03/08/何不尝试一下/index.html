@@ -15,17 +15,19 @@
 
 
 
-<meta name="description" content="String 字符串常量StringBuffer 字符串变量（线程安全）StringBuilder 字符串变量（非线程安全） 简要的说，String类型和StringBuffer类型的主要性能区别其实在于String是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要">
-<meta name="keywords" content="java,javase">
+<meta name="description" content="似乎颓废了很久，这段日子突如沐浴春风、鸡汤满满般，有了好好学习天天向上的劲头了，系上红领巾到飘扬的血红的国旗下去敬个礼、鞠个躬，我天朝大好青年张又复苏了！">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="String、StringBuffer、StringBuilder的性能区别">
-<meta property="og:url" content="http://dunizb.com/2013/08/18/String、StringBuffer、StringBuilder/index.html">
+<meta property="og:title" content="何不尝试一下?">
+<meta property="og:url" content="http://dunizb.com/2016/03/08/何不尝试一下/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="String 字符串常量StringBuffer 字符串变量（线程安全）StringBuilder 字符串变量（非线程安全） 简要的说，String类型和StringBuffer类型的主要性能区别其实在于String是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要">
-<meta property="og:updated_time" content="2017-04-14T17:01:36.000Z">
+<meta property="og:description" content="似乎颓废了很久，这段日子突如沐浴春风、鸡汤满满般，有了好好学习天天向上的劲头了，系上红领巾到飘扬的血红的国旗下去敬个礼、鞠个躬，我天朝大好青年张又复苏了！">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-fb270204f614cd7c.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2017-04-16T13:34:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="String、StringBuffer、StringBuilder的性能区别">
-<meta name="twitter:description" content="String 字符串常量StringBuffer 字符串变量（线程安全）StringBuilder 字符串变量（非线程安全） 简要的说，String类型和StringBuffer类型的主要性能区别其实在于String是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要">
+<meta name="twitter:title" content="何不尝试一下?">
+<meta name="twitter:description" content="似乎颓废了很久，这段日子突如沐浴春风、鸡汤满满般，有了好好学习天天向上的劲头了，系上红领巾到飘扬的血红的国旗下去敬个礼、鞠个躬，我天朝大好青年张又复苏了！">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-fb270204f614cd7c.gif?imageMogr2/auto-orient/strip">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>String、StringBuffer、StringBuilder的性能区别 | Dunizb</title>
+<title>何不尝试一下? | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -279,11 +281,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-String、StringBuffer、StringBuilder" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-何不尝试一下" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2013/08/18/String、StringBuffer、StringBuilder/" class="article-date">
-      <time datetime="2013-08-18T02:18:23.000Z" itemprop="datePublished">2013-08-18</time>
+      <a href="/2016/03/08/何不尝试一下/" class="article-date">
+      <time datetime="2016-03-07T23:04:00.000Z" itemprop="datePublished">2016-03-08</time>
 </a>
 
 
@@ -298,7 +300,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      String、StringBuffer、StringBuilder的性能区别
+      何不尝试一下?
     </h1>
   
 
@@ -307,15 +309,11 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
+    <a class="article-category-link" href="/categories/随笔扯谈/">随笔扯谈</a>
     </div>
 
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -323,18 +321,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>String 字符串常量<br>StringBuffer 字符串变量（线程安全）<br>StringBuilder 字符串变量（非线程安全）</p>
-<p>简要的说，<code>String</code>类型和<code>StringBuffer</code>类型的主要性能区别其实在于<code>String</code>是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要用 String ，因为每次生成对象都会对系统性能产生影响，特别当内存中无引用对象多了以后， JVM 的 GC 就会开始工作，那速度是一定会相当慢的。<br><a id="more"></a><br>而如果是使用 StringBuffer 类则结果就不一样了，每次结果都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，再改变对象引用。所以在一般情况下我们推荐使用 StringBuffer ，特别是字符串对象经常改变的情况下。而在某些特别情况下， String 对象的字符串拼接其实是被 JVM 解释成了 StringBuffer 对象的拼接，所以这些时候 String 对象的速度并不会比 StringBuffer 对象慢，而特别是以下的字符串对象生成中， String 效率是远要比 StringBuffer 快的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String S1 = “This is only a” + “ simple” + “ test”;</div><div class="line">StringBuffer Sb = <span class="keyword">new</span> StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</div></pre></td></tr></table></figure></p>
-<p>你会很惊讶的发现，生成 String S1 对象的速度简直太快了，而这个时候 StringBuffer 居然速度上根本一点都不占优势。其实这是 JVM 的一个把戏，在 JVM 眼里，这个<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String S1 = “This is only a” + “ simple” + “test”;</div></pre></td></tr></table></figure></p>
-<p>其实就是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String S1 = “This is only a simple test”;</div></pre></td></tr></table></figure></p>
-<p>所以当然不需要太多的时间了。但大家这里要注意的是，如果你的字符串是来自另外的 String 对象的话，速度就没那么快了，譬如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String S2 = “This is only a”;</div><div class="line">String S3 = “ simple”;</div><div class="line">String S4 = “ test”;</div><div class="line">String S1 = S2 +S3 + S4;</div></pre></td></tr></table></figure></p>
-<p>这时候 JVM 会规规矩矩的按照原来的方式去做<br>在大部分情况下 <code>StringBuffer &gt; String</code></p>
-<p><strong>Java.lang.StringBuffer</strong><br>线程安全的可变字符序列。一个类似于 String 的字符串缓冲区，但不能修改。虽然在任意时间点上它都包含某种特定的字符序列，但通过某些方法调用可以改变该序列的长度和内容。</p>
-<p>可将字符串缓冲区安全地用于多个线程。可以在必要时对这些方法进行同步，因此任意特定实例上的所有操作就好像是以串行顺序发生的，该顺序与所涉及的每个线程进行的方法调用顺序一致。</p>
-<p>StringBuffer 上的主要操作是 append 和 insert 方法，可重载这些方法，以接受任意类型的数据。每个方法都能有效地将给定的数据转换成字符串，然后将该字符串的字符追加或插入到字符串缓冲区中。append 方法始终将这些字符添加到缓冲区的末端；而 insert 方法则在指定的点添加字符。</p>
-<p>例如，如果 z 引用一个当前内容是“start”的字符串缓冲区对象，则此方法调用 <code>z.append(&quot;le&quot;)</code> 会使字符串缓冲区包含“startle”，而 <code>z.insert(4, &quot;le&quot;)</code> 将更改字符串缓冲区，使之包含“starlet”。</p>
-<p>在大部分情况下 <code>StringBuilder &gt; StringBuffer</code></p>
-<p><strong>java.lang.StringBuilde</strong><br>java.lang.StringBuilder一个可变的字符序列是5.0新增的。此类提供一个与 StringBuffer 兼容的 API，但不保证同步。该类被设计用作 StringBuffer 的一个简易替换，用在字符串缓冲区被单个线程使用的时候（这种情况很普遍）。如果可能，建议优先采用该类，因为在大多数实现中，它比 StringBuffer 要快。两者的方法基本相同。</p>
+        <p>似乎颓废了很久，这段日子突如沐浴春风、鸡汤满满般，有了好好学习天天向上的劲头了，系上红领巾到飘扬的血红的国旗下去敬个礼、鞠个躬，我天朝大好青年张又复苏了！<br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/68937-fb270204f614cd7c.gif?imageMogr2/auto-orient/strip" alt="111111.gif"></p>
+<p>今天上班路上哼着小调了，开始是：“我有一头小毛驴啊我从来不敢骑，有一天我心血来潮骑着去赶集，我手里拿着小皮鞭啊，心里正得意…..”然后突然乱入一句“啊…我们血染的风采…….”。</p>
+<p>长期在一种状态下生活久了，会变得麻木，再加上拖延症，人渐渐的变得容易颓废。在微信公众号自由探索者的小董君的影响下，我决定健康的、积极的面对当前的生活、面对此后的生活、在青春年华的尾巴上给自己留点回忆，不需要很伟大，也不需要多高大上，只想一点点的去改变，去刻意改变。</p>
+<p>去尝试一下你想做的事情，去尝试过一下紧张忙碌的生活，或坚持做一些不管有没有意义的事情，比如坚持早起、坚持阅读、坚持写作等等。哪怕你只坚持了几个月、一个月、甚至几天，但做了总比没做好，循序渐进，从低频率到高频率，正确认识，不好高骛远，也不拖沓磨蹭，过好每一天。调整心情，去理个发，买一套新衣服，从头到脚，包括内裤，都是新的，从头开始，归零。</p>
+<p>小董君说到，你的坚持可能需要靠谱的小伙伴，没错，群体激励比个人焖干要靠谱，尽量不要做独行侠，喜欢跑步的一般都是有一个圈子，喜欢阅读的也有圈子、喜欢写文字的也有圈子，你有圈子吗？</p>
+<p>何不勇敢的尝试下，试着去掉那些虚妄的借口，撸起袖子写代码，扯起脚步奔跑吧，拿起书本品读吧，打开笔记写作吧。</p>
 
       
     </div>
@@ -343,13 +335,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a></p>
+        <p><span>本文标题:</span><a href="/2016/03/08/何不尝试一下/">何不尝试一下?</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
-        <p><span>发布时间:</span>2013-08-18, 10:18:23</p>
-        <p><span>最后更新:</span>2017-04-15, 01:01:36</p>
+        <p><span>发布时间:</span>2016-03-08, 07:04:00</p>
+        <p><span>最后更新:</span>2017-04-16, 21:34:56</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2013/08/18/String、StringBuffer、StringBuilder/" title="String、StringBuffer、StringBuilder的性能区别">http://dunizb.com/2013/08/18/String、StringBuffer、StringBuilder/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2013/08/18/String、StringBuffer、StringBuilder/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/03/08/何不尝试一下/" title="何不尝试一下?">http://dunizb.com/2016/03/08/何不尝试一下/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/03/08/何不尝试一下/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -362,15 +354,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2012/09/08/abstract-class-and-interface/">
-                    抽象类与接口完全释疑
+                <a href="/2016/03/02/Talking-about-literature-reading-and-writing/">
+                    谈文学、读书和写作
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/">
-                    Spring IOC(依赖注入、控制反转)概念理解
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
                 </a>
             </div>
         
@@ -418,7 +410,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"String、StringBuffer、StringBuilder的性能区别　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"何不尝试一下?　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -438,7 +430,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2012/09/08/abstract-class-and-interface/" title="上一篇: 抽象类与接口完全释疑">
+            <a href="/2016/03/02/Talking-about-literature-reading-and-writing/" title="上一篇: 谈文学、读书和写作">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -446,7 +438,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/" title="下一篇: Spring IOC(依赖注入、控制反转)概念理解">
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="下一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
                 <i class="fa fa-angle-right"></i>
             </a>
         
