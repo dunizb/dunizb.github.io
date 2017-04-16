@@ -284,6 +284,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JavaScript-this" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/16/JavaScript-this/" class="article-date">
+      <time datetime="2014-04-16T09:15:58.000Z" itemprop="datePublished">2014-04-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/16/JavaScript-this/">JavaScript中的this妙用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>JavaScript关键字this始JS脚本能够根据使用这个关键字的上下文将值传递给函数。</p>
+<p>我们先来看如下一个网页，在用户单击链接之后，弹出一个alert框，然后再转到href属性所指的网页<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/">this</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2014/04/16/JavaScript-this/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Tomcat-study-notes" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -935,75 +1004,6 @@
       
         <p class="article-more-link">
           <a href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-String、StringBuffer、StringBuilder" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2013/08/18/String、StringBuffer、StringBuilder/" class="article-date">
-      <time datetime="2013-08-18T02:18:23.000Z" itemprop="datePublished">2013-08-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>String 字符串常量<br>StringBuffer 字符串变量（线程安全）<br>StringBuilder 字符串变量（非线程安全）</p>
-<p>简要的说，<code>String</code>类型和<code>StringBuffer</code>类型的主要性能区别其实在于<code>String</code>是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要用 String ，因为每次生成对象都会对系统性能产生影响，特别当内存中无引用对象多了以后， JVM 的 GC 就会开始工作，那速度是一定会相当慢的。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2013/08/18/String、StringBuffer、StringBuilder/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
