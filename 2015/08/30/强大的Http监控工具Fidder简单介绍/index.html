@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=http://dunizb.com/browseupdate/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="张兵" />
+
+
+
+<meta name="description" content="1、简介与安装Fiddler是一个http调试代理，它能 够记录所有的你电脑和互联网之间的http通讯，Fiddler 可以也可以让你检查所有的http通讯，设置断点，以及Fiddle 所有的“进出”的数据（指cookie,html,js,css等文件，这些都可以让你胡乱修改的意思）。 Fiddler 要比其他的网络调试器要更加简单，因为它仅仅暴露http通讯还有提供一个用户友好的格式。 Fidd">
+<meta name="keywords" content="http,工具使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强大的Http监控工具Fidder简单介绍">
+<meta property="og:url" content="http://dunizb.com/2015/08/30/强大的Http监控工具Fidder简单介绍/index.html">
+<meta property="og:site_name" content="Dunizb">
+<meta property="og:description" content="1、简介与安装Fiddler是一个http调试代理，它能 够记录所有的你电脑和互联网之间的http通讯，Fiddler 可以也可以让你检查所有的http通讯，设置断点，以及Fiddle 所有的“进出”的数据（指cookie,html,js,css等文件，这些都可以让你胡乱修改的意思）。 Fiddler 要比其他的网络调试器要更加简单，因为它仅仅暴露http通讯还有提供一个用户友好的格式。 Fidd">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-1f34ea39f933a9cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-943a4c4d72c90ab7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-10dc95c17bb76c61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-7ea08c3508a1acbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-f604a869aa803692.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-04-16T12:51:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="强大的Http监控工具Fidder简单介绍">
+<meta name="twitter:description" content="1、简介与安装Fiddler是一个http调试代理，它能 够记录所有的你电脑和互联网之间的http通讯，Fiddler 可以也可以让你检查所有的http通讯，设置断点，以及Fiddle 所有的“进出”的数据（指cookie,html,js,css等文件，这些都可以让你胡乱修改的意思）。 Fiddler 要比其他的网络调试器要更加简单，因为它仅仅暴露http通讯还有提供一个用户友好的格式。 Fidd">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-1f34ea39f933a9cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Dunizb" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>强大的Http监控工具Fidder简单介绍 | Dunizb</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.gif" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">张兵</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:dunizb@foxmail.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="//weibo.com/dunio" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                                <a class="fa 微信" href="http://mp.weixin.qq.com/profile?src=3&timestamp=1492107936&ver=1&signature=lkkdEPpQh*gpzJhFUMj7iJ2bUXRcKvd0C2Vhlaow4cYyzFgXuj1Iq3Bpo*3nOjSHkTYcQUEDV4ey45etQPVBkw==" title="微信"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileZill/">FileZill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Myybatis/">Myybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftp/">ftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javase/">javase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts/">struts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/备忘/">备忘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储过程/">存储过程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总节/">总节</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件上传/">文件上传</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/规范/">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张兵</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.gif" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张兵</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:dunizb@foxmail.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="//weibo.com/dunio" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" target="_blank" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                                <a class="fa 微信" target="_blank" href="http://mp.weixin.qq.com/profile?src=3&timestamp=1492107936&ver=1&signature=lkkdEPpQh*gpzJhFUMj7iJ2bUXRcKvd0C2Vhlaow4cYyzFgXuj1Iq3Bpo*3nOjSHkTYcQUEDV4ey45etQPVBkw==" title="微信"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-强大的Http监控工具Fidder简单介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/30/强大的Http监控工具Fidder简单介绍/" class="article-date">
+      <time datetime="2015-08-30T10:47:07.000Z" itemprop="datePublished">2015-08-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      强大的Http监控工具Fidder简单介绍
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具使用/">工具使用</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="1、简介与安装"><a href="#1、简介与安装" class="headerlink" title="1、简介与安装"></a>1、简介与安装</h2><p>Fiddler是一个http调试代理，它能 够记录所有的你电脑和互联网之间的http通讯，Fiddler 可以也可以让你检查所有的http通讯，设置断点，以及Fiddle 所有的“进出”的数据（指cookie,html,js,css等文件，这些都可以让你胡乱修改的意思）。 Fiddler 要比其他的网络调试器要更加简单，因为它仅仅暴露http通讯还有提供一个用户友好的格式。</p>
+<p>Fiddler 包含一个简单却功能强大的基于JScript .NET 事件脚本子系统，他非常灵活性非常棒，可以支持众多的http调试任务。Fiddler 是用C#写出来的。</p>
+<p>软件下载：<br><a href="http://fiddler2.com/get-fiddler" target="_blank" rel="external">http://fiddler2.com/get-fiddler</a></p>
+<p>软件学习：<br><a href="http://www.cnblogs.com/TankXiao/archive/2012/02/06/2337728.html#request" target="_blank" rel="external">http://www.cnblogs.com/TankXiao/archive/2012/02/06/2337728.html#request</a></p>
+<p>Fiddler还支持丰富的插件，官方也停供大量的插件：<br><a href="http://www.telerik.com/fiddler/add-on" target="_blank" rel="external">http://www.telerik.com/fiddler/add-on</a></p>
+<h2 id="2、Fiddler工作原理"><a href="#2、Fiddler工作原理" class="headerlink" title="2、Fiddler工作原理"></a>2、Fiddler工作原理</h2><p><img src="http://upload-images.jianshu.io/upload_images/68937-1f34ea39f933a9cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Fiddler工作原理"></p>
+<p>两种代理模式：</p>
+<ul>
+<li>流模式（streaming）：更接近浏览器的真实情况</li>
+<li>缓冲模式（buffering）：HTTP请求所有的数据都准备好之后才把数据返回给客户端</li>
+</ul>
+<h2 id="3、使用场景"><a href="#3、使用场景" class="headerlink" title="3、使用场景"></a>3、使用场景</h2><ul>
+<li>开发环境HOST配置：通常情况下配置host需要修改系统文件，很不方便；</li>
+<li>在多个环境下切换很低效;Fiddler提供了先对高效的配置方法；</li>
+<li>前后端接口调试：通常情况下调试前后端接口需要真实的环境、一大堆的假<br>数据、写JavaScript代码。Fiddler只需一个UI界面配置即可。</li>
+<li>线上bug fix：Fiddler可将发布文件代理到本地，快速定位线上Bug。</li>
+<li>性能分析和优化：Fiddler会提供请求的实际图，清晰明了网站需要优化的地方。</li>
+</ul>
+<h2 id="4、工具条、状态栏常用功能"><a href="#4、工具条、状态栏常用功能" class="headerlink" title="4、工具条、状态栏常用功能"></a>4、工具条、状态栏常用功能</h2><p>工具条:<br><img src="http://upload-images.jianshu.io/upload_images/68937-943a4c4d72c90ab7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="工具条"></p>
+<p>状态栏:<br><img src="http://upload-images.jianshu.io/upload_images/68937-10dc95c17bb76c61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="状态栏"></p>
+<h2 id="5、监控面板的使用"><a href="#5、监控面板的使用" class="headerlink" title="5、监控面板的使用"></a>5、监控面板的使用</h2><p><img src="http://upload-images.jianshu.io/upload_images/68937-7ea08c3508a1acbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="监控面板的使用"></p>
+<h2 id="6、文件、文件夹代理和Host配置"><a href="#6、文件、文件夹代理和Host配置" class="headerlink" title="6、文件、文件夹代理和Host配置"></a>6、文件、文件夹代理和Host配置</h2><p><img src="http://upload-images.jianshu.io/upload_images/68937-f604a869aa803692.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Host配置"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/08/30/强大的Http监控工具Fidder简单介绍/">强大的Http监控工具Fidder简单介绍</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
+        <p><span>发布时间:</span>2015-08-30, 18:47:07</p>
+        <p><span>最后更新:</span>2017-04-16, 20:51:17</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/08/30/强大的Http监控工具Fidder简单介绍/" title="强大的Http监控工具Fidder简单介绍">http://dunizb.com/2015/08/30/强大的Http监控工具Fidder简单介绍/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2015/08/30/强大的Http监控工具Fidder简单介绍/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/08/29/jQuery-Core-Style-Guide/">
+                    jQuery Core Style Guide（规范）
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1、简介与安装"><span class="toc-number">1.</span> <span class="toc-text">1、简介与安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2、Fiddler工作原理"><span class="toc-number">2.</span> <span class="toc-text">2、Fiddler工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、使用场景"><span class="toc-number">3.</span> <span class="toc-text">3、使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、工具条、状态栏常用功能"><span class="toc-number">4.</span> <span class="toc-text">4、工具条、状态栏常用功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5、监控面板的使用"><span class="toc-number">5.</span> <span class="toc-text">5、监控面板的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6、文件、文件夹代理和Host配置"><span class="toc-number">6.</span> <span class="toc-text">6、文件、文件夹代理和Host配置</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"强大的Http监控工具Fidder简单介绍　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/08/29/jQuery-Core-Style-Guide/" title="上一篇: jQuery Core Style Guide（规范）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="下一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">使用SpringMVC+Mybatis搭建高性能安全站点</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/强大的Http监控工具Fidder简单介绍/">强大的Http监控工具Fidder简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/29/jQuery-Core-Style-Guide/">jQuery Core Style Guide（规范）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/26/CSS常见问题(三)/">CSS常见问题(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/25/CSS的常见问题(二)/">CSS的常见问题(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/">CSS的低权重原则—避免滥用子选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/24/CSS的常见问题(一)/">CSS的常见问题(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/18/JavaScript中的继承入门/">JavaScript中的继承入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/15/利用jQuery克隆对象实例/">利用jQuery克隆对象实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/11/08/cookie-and-session-distinction-and-contact/">Cookie和Session的区别与联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/Talking-about-the-development-of-AOP-development/">漫谈AOP开发之开发Spring AOP程序</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/28/漫谈AOP开发之谈谈AOP那些学术概念/">漫谈AOP开发之谈谈AOP那些学术概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/">漫谈AOP开发之初探AOP及AspectJ的用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/09/06/javascript-event/">JavaScript事件探秘</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/27/Spring：一切都是Bean(二)/">Spring：一切都是Bean(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/24/Spring：一切都是Bean(一)/">Spring：一切都是Bean(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/13/把头像图片以二进制形式保存到数据库（Hibernate实现）/">把头像图片以二进制形式保存到数据库（Hibernate实现）</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/10/根据分组依据对Java集合元素进行分组/">根据分组依据对Java集合元素进行分组</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">JDBC操作数据库的元数据信息，JDBC复习(四) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/">JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/">使用JDBC调用存储过程，JDBC复习(二) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/06/24/localhost-and-12-0-0-1-and-ip/">localhost、127.0.0.1和本机ip三者的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/16/JavaScript-this/">JavaScript中的this妙用</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/28/Tomcat-study-notes/">Tomcat学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/08/Struts2-xml-result-in-the-transmission-of-multiple-parameters/">Struts2.xml的result里传多个参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/07/Java-io-FTP-FileZill-Server设置/">Java I/O FTP同步代码及FileZilla Server设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/11/30/小米活塞耳机1代开箱图鉴/">小米活塞耳机1代开箱图鉴</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/">Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/09/21/Struts2-view-forwarding-type-summary/">Struts2的视图转发类型总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/">Spring IOC(依赖注入、控制反转)概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/08/02/手把手教你GlassFish与Eclipse的集成安装、配置/">手把手教你GlassFish与Eclipse的集成安装、配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2010/07/25/可怜的钱学森，可怜的中国/">可怜的钱学森，可怜的中国</a></li><li class="post-list-item"><a class="post-list-link" href="/2010/03/08/372的忧伤/">372的忧伤</a></li><li class="post-list-item"><a class="post-list-link" href="/2010/01/04/小镇脾气与新貌/">小镇脾气与新貌</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017 张兵
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
