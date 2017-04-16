@@ -15,19 +15,17 @@
 
 
 
-<meta name="description" content="第一层次，基础阅读（初级阅读、基本阅读或初步阅读）不管哪一种名称，都指出一个人只要熟练这个层次的阅读，就摆脱了文盲状态，至少一开始认字了。在熟练这个层次的过程中，一个人可以学习到阅读的基本艺术，接受基础阅读训练，活的初步的阅读技巧，这个层次通常在小学时完成的。">
-<meta name="keywords">
+<meta name="description" content="1、什么是索引 索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可以快速访问数据库表中特定的信息。索引也是用来定位的。索引分为聚集索引和非聚集索引两种。">
+<meta name="keywords" content="性能优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《如何阅读一本书》之阅读一本书的四个层次">
-<meta property="og:url" content="http://dunizb.com/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/index.html">
+<meta property="og:title" content="数据库优化(一)：索引及索引合理利用">
+<meta property="og:url" content="http://dunizb.com/2013/08/14/数据库优化(一)索引及索引合理利用/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="第一层次，基础阅读（初级阅读、基本阅读或初步阅读）不管哪一种名称，都指出一个人只要熟练这个层次的阅读，就摆脱了文盲状态，至少一开始认字了。在熟练这个层次的过程中，一个人可以学习到阅读的基本艺术，接受基础阅读训练，活的初步的阅读技巧，这个层次通常在小学时完成的。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-93d4654b7fe97343.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-04-16T13:55:32.000Z">
+<meta property="og:description" content="1、什么是索引 索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可以快速访问数据库表中特定的信息。索引也是用来定位的。索引分为聚集索引和非聚集索引两种。">
+<meta property="og:updated_time" content="2017-04-16T14:35:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《如何阅读一本书》之阅读一本书的四个层次">
-<meta name="twitter:description" content="第一层次，基础阅读（初级阅读、基本阅读或初步阅读）不管哪一种名称，都指出一个人只要熟练这个层次的阅读，就摆脱了文盲状态，至少一开始认字了。在熟练这个层次的过程中，一个人可以学习到阅读的基本艺术，接受基础阅读训练，活的初步的阅读技巧，这个层次通常在小学时完成的。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-93d4654b7fe97343.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="数据库优化(一)：索引及索引合理利用">
+<meta name="twitter:description" content="1、什么是索引 索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可以快速访问数据库表中特定的信息。索引也是用来定位的。索引分为聚集索引和非聚集索引两种。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>《如何阅读一本书》之阅读一本书的四个层次 | Dunizb</title>
+<title>数据库优化(一)：索引及索引合理利用 | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +279,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-《如何阅读一本书》之阅读一本书的四个层次" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-数据库优化(一)索引及索引合理利用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/" class="article-date">
-      <time datetime="2016-03-26T13:13:00.000Z" itemprop="datePublished">2016-03-26</time>
+      <a href="/2013/08/14/数据库优化(一)索引及索引合理利用/" class="article-date">
+      <time datetime="2013-08-14T15:01:01.000Z" itemprop="datePublished">2013-08-14</time>
 </a>
 
 
@@ -300,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      《如何阅读一本书》之阅读一本书的四个层次
+      数据库优化(一)：索引及索引合理利用
     </h1>
   
 
@@ -309,11 +307,15 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+    <a class="article-category-link" href="/categories/数据库-SQL/">数据库&SQL</a>
     </div>
 
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -321,39 +323,29 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="第一层次，基础阅读（初级阅读、基本阅读或初步阅读）"><a href="#第一层次，基础阅读（初级阅读、基本阅读或初步阅读）" class="headerlink" title="第一层次，基础阅读（初级阅读、基本阅读或初步阅读）"></a>第一层次，基础阅读（初级阅读、基本阅读或初步阅读）</h2><p>不管哪一种名称，都指出一个人只要熟练这个层次的阅读，就摆脱了文盲状态，至少一开始认字了。在熟练这个层次的过程中，一个人可以学习到阅读的基本艺术，接受基础阅读训练，活的初步的阅读技巧，这个层次通常在小学时完成的。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-93d4654b7fe97343.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="如何阅读一本书"></p>
-<p>这一层次阅读你所要问得问题是：“这个句子在说什么？”</p>
-<h2 id="第二层次，检视阅读"><a href="#第二层次，检视阅读" class="headerlink" title="第二层次，检视阅读"></a>第二层次，检视阅读</h2><p>特点在强调时间，在这个阅读层次，学生必须在规定的时间内完成一项阅读的功课。也可以用另外一种方式来形容这个层次的阅读，就是在一定时间内抓住一本书的重点——通常是很短的，而且总是（就其定义上说）过短，很难掌握一本书所有重点。这个层次的阅读也可以用其他称呼，譬如略读或预读，我们并不是说略读就是随意或随便浏览一本书。检视阅读是系统化略读的一门艺术。</p>
-<p>用检视阅读完一本书后，无论你用了多长时间，你都该回答得出这样的问题：“这本书在谈什么？这是哪一类的书？这本书包含哪些部分？”</p>
-<h3 id="检视阅读一：有系统的略读或粗读。"><a href="#检视阅读一：有系统的略读或粗读。" class="headerlink" title="检视阅读一：有系统的略读或粗读。"></a>检视阅读一：有系统的略读或粗读。</h3><ol>
-<li>先看书名页，然后如果有序言就先看序。</li>
-<li>研究目录页。对这本书的基础架构做概括性的理解。</li>
-<li>如果书中附有索引，也要检阅一下——大多数论说类的书籍都有索引。</li>
-<li>读一下出版者的介绍。</li>
-<li>开始挑几个看来跟主题息息相关的篇章来看。</li>
-<li>最后一步，把书打开来，东翻翻西翻翻，念一个片段，有时候连续读几页，但不要太多。</li>
+        <p><strong>1、什么是索引</strong></p>
+<p>索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可以快速访问数据库表中特定的信息。<br>索引也是用来定位的。<br>索引分为聚集索引和非聚集索引两种。<br><a id="more"></a><br><strong>2、索引的优点</strong></p>
+<p>聚集索引是按照数据存放的物理位置为顺序的，而非聚集索引就不样了；聚集索引能提高多行检索的速度，而非聚集索引对单行索引的速度很快。</p>
+<ol>
+<li>通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性；</li>
+<li>可以大大加快数据的检索速度，这也是创建索引的最主要的原因；</li>
+<li>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义；</li>
+<li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间；</li>
+<li>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</li>
 </ol>
-<h3 id="检视阅读二：粗浅的阅读。"><a href="#检视阅读二：粗浅的阅读。" class="headerlink" title="检视阅读二：粗浅的阅读。"></a>检视阅读二：粗浅的阅读。</h3><p>这个规则很简单：头一次面对一本难读的书的时候，从头到尾读完一遍，碰到不懂得地方不要停下来查询或思索。只注意您能理解的部分，不要为一些没法立即了解的东西而停顿，不要被一个看不懂的章节、注解、评论或参考资料阻扰或泄气。</p>
-<ul>
-<li><strong>阅读的速度</strong></li>
-</ul>
-<p>许多书其实连略读都不值得的，另外一写书只需要快速读过就行了，有少数书需要用某种速度，通常是相当慢的速度，才能完全理解。所谓阅读速度，理想上来说，不只是要能读的快，还要能用不同的速度来阅读，要知道什么时候用什么样的速度是恰当的。</p>
-<p>李笑来在他的《新生，七年就是一辈子》中说道：“阅读速度”是个没用的概念，在我眼里，只有“理解速度”，理解速度快，才能有效提高阅读量。遇到好书，我会抽时间朗读完，一本二十万字左右的书朗读完，也不过十几个小时，中间断断续续，也能一个星期内搞定。更多的时候，时间花在那些需要停下来认真思考的部分，需要停下来心平气和地开开脑洞的部分，需要反复搜索寻找更多资料与关联的部分……反正，眼球快速移动本身，没有任何意义。</p>
-<ul>
-<li><strong>逗留与倒退</strong></li>
-</ul>
-<p>要矫正眼睛逗留与一点的工具有很多种，有些很复杂又很昂贵。无论如何，任何复杂的工具其实都比不上你的一双手来得有用，你可以利用双手训练自己的眼睛，跟着章节段落移动得越来越快。</p>
-<ul>
-<li><strong>理解的问题</strong></li>
-</ul>
-<p>无论速度如何，理解是最重要的。</p>
-<h2 id="第三层次，分析阅读"><a href="#第三层次，分析阅读" class="headerlink" title="第三层次，分析阅读"></a>第三层次，分析阅读</h2><p>比起前两种这种阅读要更复杂，更系统化。分析阅读就是全盘阅读、完整阅读，或是说优质阅读——你能做到的最好的阅读方式。如果说检视阅读是在有限的时间内最好也最完整的阅读，那么分析阅读就是在无线的时间里，最好也最完整的阅读。</p>
-<p>分析阅读是一种专注的活动，在这个层次的阅读中，读者要读到这本书成为他自己为止，分析阅读就是咀嚼与消化一本书。</p>
-<h2 id="第四层次，主题阅读"><a href="#第四层次，主题阅读" class="headerlink" title="第四层次，主题阅读"></a>第四层次，主题阅读</h2><p>这是最高层次的阅读，也是阅读中最复杂也最系统化的阅读。也可以用另外的名称来形容这样的阅读，如比较阅读。</p>
-<p>在做主题阅读时阅读者通常会读很多书而不是一本书，并列举出这些书之间的相关之处，提出一个所有的书都谈到的主题。借助他所阅读的书籍，主题阅读者要能够架构出一个可能在哪一本书里都没有提到过的主题阅读分析。因此，很显然的，主题阅读是最主动、也是最话力气的一种阅读。</p>
-<hr>
-<p>本文是《如何阅读一本书》的札记之一</p>
+<p><strong>3、索引的缺点</strong></p>
+<p>一是增加了数据库的存储空间，二是在插入和修改数据时要花费较多的时间(因为索引也要随之变动)。</p>
+<ol>
+<li>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加;</li>
+<li>索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚集索引，那么需要的空间就会更大。</li>
+<li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。</li>
+</ol>
+<p><strong>4、哪些列适合建索引？</strong></p>
+<p>1）在经常需要搜索的列上，可以加快搜索的速度；<br>2）在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；<br>3）在经常用在连接的列上，这些列主要是一些外键，可以加快连接的速度；<br>4）在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；<br>5）在经常需要排序的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间；<br>6）在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。  </p>
+<p><strong>5、不应该创建索引的的这些列具有下列特点</strong><br>1）对于那些在查询中很少使用或者参考的列不应该创建索引。这是因为，既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求。</p>
+<p>2）对于那些只有很少数据值的列也不应该增加索引。这是因为，由于这些列的取值很少，例如人事表的性别列，在查询的结果中，结果集的数据行占了表中数据行的很大比例，即需要在表中搜索的数据行的比例很大。增加索引，并不能明显加快检索速度。</p>
+<p>3）对于那些定义为text, image和bit数据类型的列不应该增加索引。这是因为，这些列的数据量要么相当大，要么取值很少,不利于使用索引。</p>
+<p>4）当修改性能远远大于检索性能时，不应该创建索引。这是因为，修改性能和检索性能是互相矛盾的。当增加索引时，会提高检索性能，但是会降低修改性能。当减少索引时，会提高修改性能，降低检索性能。因此，当修改操作远远多于检索操作时，不应该创建索引。</p>
 
       
     </div>
@@ -362,13 +354,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/">《如何阅读一本书》之阅读一本书的四个层次</a></p>
+        <p><span>Title:</span><a href="/2013/08/14/数据库优化(一)索引及索引合理利用/">数据库优化(一)：索引及索引合理利用</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">张兵</a></p>
-        <p><span>Created:</span>2016-03-26, 21:13:00</p>
-        <p><span>Updated:</span>2017-04-16, 21:55:32</p>
+        <p><span>Created:</span>2013-08-14, 23:01:01</p>
+        <p><span>Updated:</span>2017-04-16, 22:35:20</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/" title="《如何阅读一本书》之阅读一本书的四个层次">http://dunizb.com/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/</a>
-            <span class="copy-path" data-clipboard-text="From http://dunizb.com/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/　　By 张兵" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2013/08/14/数据库优化(一)索引及索引合理利用/" title="数据库优化(一)：索引及索引合理利用">http://dunizb.com/2013/08/14/数据库优化(一)索引及索引合理利用/</a>
+            <span class="copy-path" data-clipboard-text="From http://dunizb.com/2013/08/14/数据库优化(一)索引及索引合理利用/　　By 张兵" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -381,15 +373,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/03/24/主动选择与方法论/">
-                    主动选择与方法论
+                <a href="/2012/09/08/abstract-class-and-interface/">
+                    抽象类与接口完全释疑
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/03/28/《如何阅读一本书》之如何透视一本书/">
-                    《如何阅读一本书》之如何透视一本书
+                <a href="/2013/08/18/String、StringBuffer、StringBuilder/">
+                    String、StringBuffer、StringBuilder的性能区别
                 </a>
             </div>
         
@@ -401,7 +393,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一层次，基础阅读（初级阅读、基本阅读或初步阅读）"><span class="toc-number">1.</span> <span class="toc-text">第一层次，基础阅读（初级阅读、基本阅读或初步阅读）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二层次，检视阅读"><span class="toc-number">2.</span> <span class="toc-text">第二层次，检视阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#检视阅读一：有系统的略读或粗读。"><span class="toc-number">2.1.</span> <span class="toc-text">检视阅读一：有系统的略读或粗读。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检视阅读二：粗浅的阅读。"><span class="toc-number">2.2.</span> <span class="toc-text">检视阅读二：粗浅的阅读。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三层次，分析阅读"><span class="toc-number">3.</span> <span class="toc-text">第三层次，分析阅读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四层次，主题阅读"><span class="toc-number">4.</span> <span class="toc-text">第四层次，主题阅读</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -437,7 +429,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"《如何阅读一本书》之阅读一本书的四个层次　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"数据库优化(一)：索引及索引合理利用　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -457,7 +449,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/03/24/主动选择与方法论/" title="Pre: 主动选择与方法论">
+            <a href="/2012/09/08/abstract-class-and-interface/" title="Pre: 抽象类与接口完全释疑">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -465,7 +457,7 @@
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/03/28/《如何阅读一本书》之如何透视一本书/" title="Next: 《如何阅读一本书》之如何透视一本书">
+            <a href="/2013/08/18/String、StringBuffer、StringBuilder/" title="Next: String、StringBuffer、StringBuilder的性能区别">
                 <i class="fa fa-angle-right"></i>
             </a>
         
