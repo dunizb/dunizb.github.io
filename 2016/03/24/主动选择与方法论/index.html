@@ -15,22 +15,17 @@
 
 
 
-<meta name="description" content="很多时候，CSS在IE下的解释十分奇怪，明明在Firefox下显示的非常正确，但到了IE下却出现了问题，有时候，这些问题甚至表的非常诡异——例如，一个比较经典的BUG就是设置`border`的时候，有时候`border`会断开，刷新页面或者滚动页面的时候，断掉的部分又会重新连接起来。">
-<meta name="keywords" content="css">
+<meta name="description" content="可能你很早就听说过这么一句话：选择比努力更重要！">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS的常见问题(二)">
-<meta property="og:url" content="http://dunizb.com/2015/05/25/CSS的常见问题(二)/index.html">
+<meta property="og:title" content="主动选择与方法论">
+<meta property="og:url" content="http://dunizb.com/2016/03/24/主动选择与方法论/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="很多时候，CSS在IE下的解释十分奇怪，明明在Firefox下显示的非常正确，但到了IE下却出现了问题，有时候，这些问题甚至表的非常诡异——例如，一个比较经典的BUG就是设置`border`的时候，有时候`border`会断开，刷新页面或者滚动页面的时候，断掉的部分又会重新连接起来。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-6a8369f91245e8fb.png">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-559a5012de973dcf.png">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-1d071a966396c018.png">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-ec80ce3a0608ca5f.png">
-<meta property="og:updated_time" content="2017-04-16T10:03:56.000Z">
+<meta property="og:description" content="可能你很早就听说过这么一句话：选择比努力更重要！">
+<meta property="og:updated_time" content="2017-04-16T13:51:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS的常见问题(二)">
-<meta name="twitter:description" content="很多时候，CSS在IE下的解释十分奇怪，明明在Firefox下显示的非常正确，但到了IE下却出现了问题，有时候，这些问题甚至表的非常诡异——例如，一个比较经典的BUG就是设置`border`的时候，有时候`border`会断开，刷新页面或者滚动页面的时候，断掉的部分又会重新连接起来。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-6a8369f91245e8fb.png">
+<meta name="twitter:title" content="主动选择与方法论">
+<meta name="twitter:description" content="可能你很早就听说过这么一句话：选择比努力更重要！">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -62,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>CSS的常见问题(二) | Dunizb</title>
+<title>主动选择与方法论 | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -284,11 +279,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-CSS的常见问题(二)" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-主动选择与方法论" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/05/25/CSS的常见问题(二)/" class="article-date">
-      <time datetime="2015-05-25T10:47:10.000Z" itemprop="datePublished">2015-05-25</time>
+      <a href="/2016/03/24/主动选择与方法论/" class="article-date">
+      <time datetime="2016-03-24T14:57:05.000Z" itemprop="datePublished">2016-03-24</time>
 </a>
 
 
@@ -303,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CSS的常见问题(二)
+      主动选择与方法论
     </h1>
   
 
@@ -312,15 +307,11 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
     </div>
 
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -328,28 +319,48 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="hasLayout"><a href="#hasLayout" class="headerlink" title="hasLayout"></a>hasLayout</h2><p>很多时候，CSS在IE下的解释十分奇怪，明明在Firefox下显示的非常正确，但到了IE下却出现了问题，有时候，这些问题甚至表的非常诡异——例如，一个比较经典的BUG就是设置<code>border</code>的时候，有时候<code>border</code>会断开，刷新页面或者滚动页面的时候，断掉的部分又会重新连接起来。</p>
-<p>这些诡异的问题往往大部分和IE下的一个神秘的属性相关——hasLayout。</p>
-<p>hasLayout是IE下的一个转有属性，用于CSS的解释引擎。有时候在IE下一些复杂的CSS设置解释起来会出现BUG，其原因可能是与hasLayout没有被自动触发有关，我们通过一些技巧，手动触发hasLayout属性就可以解决BUG了。这也算是针对IE下疑难杂症的特殊偏方了，很多时候，触发了hasLayout就可以药到病除了。</p>
-<p>hasLayout的触发方法有很多种，例如设置<code>width</code>、<code>height</code>值，设置<code>position</code>为<code>relative</code>等。但如果设置了<code>width</code>、<code>height</code>或<code>position</code>都会触发hasLayout的同时带来一些副作用的。早期的工程师推荐使用<code>height：1%</code>来触发hasLayout，那时候还没有出现IE7，而height属性在IE6下其实是按照<code>min-height</code>来解释的，所以只要针对IE6进行hack，<code>* html{height:1%}</code>就可以触发hasLayout，同时又不带来副作用。后来出现的IE7任然存在很多hasLayout方面的问题，但IE7已经能够正确识别height属性了，<code>height：1%</code>的方法也就不再适用了。</p>
-<p>于是，一个更好的方法开始流行了，它使用了一个生僻的CSS属性zoom来触发hasLayout——<code>zoom：1</code>可以触发hasLayout，并且不会像height等属性一样引入副作用，更妙的是，我们可以不用CSS hack了。但<code>zoom</code>并不是一定可以触发hasLayout的，在极少数的情况下，例如非常复杂的CSS设置，特别是使用DHTML的时候，使用“zoom：1”有时候也会无效，这时，我们可能需要借助更为强大的<code>position：relative</code>来帮助触发hasLayout，总之，<code>zoom</code>是最常用、最安全、成本最小的触发hasLayout的方式，一般情况下，使用它完全可以触发hasLayout了。如果遇到很特殊的情况，<code>zoom：1</code>无效的情况下，我们可以通过设置<code>position：relative</code>来触发hasLayout，尽管他会带来一点副作用。</p>
-<p>值得强调的是，hasLayout的涉及初衷是用于辅助块级元素的盒模型解释的，他是用于块级元素的。如果用于行内元素，会引发一些特殊的效果。</p>
-<p>值得庆幸的是，随着微软window10的推出，与之相伴的新浏览器斯巴达横空出世，IE成为永远的历史，不得不说，专治IE的各种私人解决方案会失效，我们不再需要为IE的各种诡异问题感到头痛，拥抱Webkit等新浏览器内核，相信前端WEB页面的工作会随Firefox一样，令人舒服（本人觉得Firefox是最懂开发者心的浏览器）。</p>
-<h2 id="块级元素和行内元素的区别"><a href="#块级元素和行内元素的区别" class="headerlink" title="块级元素和行内元素的区别"></a>块级元素和行内元素的区别</h2><p>块级元素和行内元素是布局的最基本的两种元素，常见的块级元素有<code>div</code>、<code>p</code>、<code>form</code>、<code>ul</code>、<code>li</code>、<code>ol</code>等，常见的额行内元素有<code>span</code>、<code>strong</code>、<code>em</code>等。</p>
-<p>块级元素和行内元素有什么区别呢？块级元素会独占一行，默认情况下，其宽度自动填满其父容器元素宽度，行内元素不会独占一行，相邻的元素排列在同一行中，直到一行拍不下才会换行，其宽度随元素的内容而变化。如如下代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;style type="text/css"&gt;</div><div class="line">p&#123;background-color: red;&#125;</div><div class="line">div&#123;background-color: yellow&#125;</div><div class="line">span&#123;background-color: blue&#125;</div><div class="line">strong&#123;background-color: green&#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">&lt;p&gt;块级元素P&lt;/p&gt;&lt;div&gt;块级元素DIV&lt;/div&gt;&lt;span&gt;行内元素span&lt;/span&gt;&lt;strong&gt;行内元素strong&lt;/strong&gt;</div></pre></td></tr></table></figure></p>
-<p>在浏览器中的效果如下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-6a8369f91245e8fb.png" alt="Paste_Image.png"></p>
-<p>块级元素可以设置width、height属性，行内元素设置width、height属性无效。如下面代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;style type="text/css"&gt;</div><div class="line">p&#123;background-color: red;width: 200px;height: 200px;&#125;</div><div class="line">div&#123;background-color: yellow;width: 400px;height: 10px;&#125;</div><div class="line">span&#123;background-color: blue;width: 200px;height: 200px;&#125;</div><div class="line">strong&#123;background-color: green;width: 400px;height: 100px;&#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">&lt;p&gt;块级元素P&lt;/p&gt;&lt;div&gt;块级元素DIV&lt;/div&gt;&lt;span&gt;行内元素span&lt;/span&gt;&lt;strong&gt;行内元素strong&lt;/strong&gt;</div></pre></td></tr></table></figure></p>
-<p>在浏览器中的效果如下图:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-559a5012de973dcf.png" alt="Paste_Image.png"></p>
-<p>注意，块级元素即使设置了宽度，任然是独占一行的。</p>
-<p>块级元素可以设置<code>margin</code>和<code>padding</code>属性。行内元素的<code>margin</code>、<code>padding</code>属性很奇怪，水平方向的<code>padding-left</code>、<code>padding-right</code>、<code>margin-left</code>、<code>margin-right</code>都产生边距效果，但 6方向的<code>padding-top</code>、<code>padding-bottom</code>、<code>margin-top</code>、<code>margin-bottom</code>却不会产生边距效果。如下代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;style type="text/css"&gt;</div><div class="line">p&#123;background-color: red;padding: 20px;margin: 20px;&#125;</div><div class="line">div&#123;background-color: yellow;padding: 20px;&#125;</div><div class="line">span&#123;background-color: blue;padding: 20px;margin: 20px;&#125;</div><div class="line">strong&#123;background-color: green;padding: 20px;margin: 20px;&#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">&lt;p&gt;块级元素P&lt;/p&gt;&lt;div&gt;块级元素DIV&lt;/div&gt;&lt;span&gt;行内元素span&lt;/span&gt;&lt;strong&gt;行内元素strong&lt;/strong&gt;</div></pre></td></tr></table></figure></p>
-<p>在浏览器中的效果如图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-1d071a966396c018.png" alt="Paste_Image.png"></p>
-<p>如上图所示，竖直方向的<code>margin</code>看不到任何效果，竖直方向的<code>padding</code>虽然增加了，但却并没有和相邻的元素拉开距离。</p>
-<p>块级元素和行内元素的CSS相关属性是<code>display</code>，其中块级元素对应于<code>display：block</code>，行内元素对应于<code>display：inline</code>。我们可以通过修改display属性来切换块级元素和行内元素，如下面代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;style type="text/css"&gt;</div><div class="line">p&#123;background-color: red;display: inline;&#125;</div><div class="line">div&#123;background-color: yellow;display: inline;&#125;</div><div class="line">span&#123;background-color: blue;display: block;&#125;</div><div class="line">strong&#123;background-color: green;display: block;&#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">&lt;p&gt;块级元素P&lt;/p&gt;&lt;div&gt;块级元素DIV&lt;/div&gt;&lt;span&gt;行内元素span&lt;/span&gt;&lt;strong&gt;行内元素strong&lt;/strong&gt;</div></pre></td></tr></table></figure></p>
-<p>在浏览器中的效果如图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-ec80ce3a0608ca5f.png" alt="Paste_Image.png"></p>
+        <p>可能你很早就听说过这么一句话：选择比努力更重要！<br><a id="more"></a></p>
+<blockquote>
+<p>衡量一个人是否真正活着的根本方法，就是看他是否有意愿、有能力做出主动的选择。</p>
+<p>一生随波逐流，一生逆来顺受，算不上活着，甚至生不如死。在一个关键的节点上，人必须做出主动的选择。只有这样，活着才有意义。</p>
+</blockquote>
+<p>李笑来在《新生——七年就是一辈子》中提出，主动选择，是重生的关键。</p>
+<p>人分为两种，一种是固守型的，一种是进取型的。这两种人的主要区别在于，他们做事的时候，关注的焦点不一样：</p>
+<ol>
+<li>固守型的人更关注自己当时的表现，更在意外界对那表现的看法；</li>
+<li>进取型的人更关注自己当时有无进步，并不在意对外界的看法；</li>
+</ol>
+<p>第一种人过分在意自己当时当刻的表现，直接带来的结果就是，如果“感觉有可能做不好”，就直接不做了 —— 省的丢人。第二种人常常并不在意外界的看法，他们知道自己有可能做得并不好，但这并不妨碍他们进步，只要下一次比这一次更好，就是他们想要的结果。他们更习惯于接受挑战，处理压力，更懂得积累的好处。</p>
+<p>显而易见，第二种人的成长空间更大 —— 他们会变得越来越聪明。第一种人与第二种人不同的地方在于，更底层有很多根深蒂固的概念不同：</p>
+<ul>
+<li>固守型的人更倾向于相信智商是固定的；</li>
+<li>固守型的人更倾向于认为与努力相比天份更重要；</li>
+<li>固守型的人更倾向于认为命运多少是已经安排好的……</li>
+</ul>
+<p>进取型的人也更容易主动做出选择，去改变固有的思维定势和模式。</p>
+<p>当我看到这些理论时，我陷入深思，我的经历，一半属于进取型，一半属于固守型，或者说，某段时期我是进取型，某段时期我是固守型。</p>
+<p>进取型时期的我，不甘落后，不甘命运的捉弄，决心坚定，心向远方，敢于突破外界及内心固有的成见，和家人、自己、朋友的感受与看法，做自己想去做，想去改变的事情。也许是困难总会激发人们的进取心吧，压力产生动力。</p>
+<p>高中学习一直不太好（很不好），无奈我长得一副好学生模样，也这样骗了很多人，包括家人、亲戚朋友，更多的是给我造成了很多压力，所有人都以为你是个学霸是个好学生的时候，其实自己都在默默的诉苦，你们走近我就知道我是什么货色，在学习上我是个学渣，不过那只是读书方面，我本人还是个好孩子的（哈哈~~）。</p>
+<p>没考上大学这就是很自然的事情了，大专我也没去读，志愿被我放弃，漫长的暑假，然后被查出身患重病，不得不在家呆着，对于未来一片迷茫和死一般的黑暗，继而情绪低落，茶饭不思，为什么自己这么蠢，为什么这么渣，现在想想读书时真的一点方法论都没有，方法真的很重要。然而为什么学校从来不教我们方法论呢，都要靠自己摸索，高手都有很好的方法论，我深信（除了天才）。</p>
+<p>这是我第一次的大挫折，我陷入无比的痛苦。</p>
+<p>关于方法论，在《新生——七年就是一辈子》中李笑来老师也提过她母亲小时候教给他的学习方法。</p>
+<blockquote>
+<p>在这一点上，我非常幸运 —— 有个在图书馆工作的母亲。刚上初一的时候，母亲花了几分钟教我如何阅读教科书：<br>你看，这么厚厚一本书，其实就那么几个概念；讲一个概念就要花费一个章节的篇幅，从结构上来看，其实讲的都一样，无非是一个接一个的概念，要说清楚它是什么，它不是什么，它和别的概念有什么异同；然后就是与它相关的方法论，比如，使用的时候需要注意什么，怎样使用是正确的，怎样使用是错误的，容易发生错误的地方是什么…… 这些都弄明白了，一个概念就算是学透了，这些概念都弄明白了，这本书算是看懂了，就这么简单。</p>
+<p>这其实是学习任何概念的方法论啊！我就这样“开窍”了 —— 我母亲只不过用了几分钟而已。我小时候学习成绩很好，绝对源自这几分钟的教育 —— 那一瞬间，我升级了：</p>
+<ul>
+<li>我懂得了概念的重要性；</li>
+<li>我了解了教科书的结构…… </li>
+</ul>
+<p>剩下的就很自然了，我自然而然地发展出了一整套方法论：<br>新学期开始的时候，领回来教材，第一件事儿不是去“包书皮”，而是把每一章的重要概念都抄一遍，随后直接死记硬背到脑子里……</p>
+<p>是否完全理解并不重要。那些将要通过学习、理解、应用、练习等手段消化吸收的概念早已经一个字不差地记在脑子里，所以我可以随时调用，没有死记硬背过的人却不一定能随时调用 —— 他们不去翻一下书断然想不起来完整具体的定义。</p>
+</blockquote>
+<p>不得不得感叹每个牛人背后都有高人指点啊，从上层设计上就跟普通小伙伴不一样，李笑来老师是个不折不扣的牛人，牛人之所以成为牛人都是有理论基础在背后支撑的。</p>
+<p>我回想我的学习生涯，基本上没有什么方法论，也不知道方法论，教育的本质应该是授人以渔而不是授人以鱼，知识本身并不是要教给我们的重点，没有教不好的学生只有不会教的老师，这是很有道理的，只强调个人要努力刻苦学习是一种逃避思想，认为你只要比别人刻苦比别人努力就能获得比别人多的成功，我只能说，这只是必要条件而不是充分条件，这只是一方面而不是全部。</p>
+<p>后来我还是不得不面对未来，我要做什么，我适合做什么已经不是我能想的清楚的事情了，事实上在当时无脑的瞎想可能永远也不会想明白自己是个什么样的人。当时也没有什么已经安排好的可以让我被动选择的事情，我只好主动去选择，于是一开始我选择了自考方式，我的另一个哥们当时和我情况差不多，他最终去了更好的武汉大学读广告学了，我由于凑不齐那么多钱，退而求其次选择了去湖南农业大学读园艺园林专业了，当年参加了成人高考。</p>
+<p>在第一学期，我便深深的失望了，这不是我能承受得起的几年学业，我几乎整天泡在图书馆，对上课毫无兴趣，因为第一学都在备考成人高考，专业课还处于思想政治教育阶段，第一学期结束的寒假，我在家想了好久，终于鼓起勇气跟父母坦白，我不想去读了，当时也是我坚持去的，现在我坚持不读了，第二学期开学我直接卷铺盖回家了，什么手续都没办，剩下的学费也没交了，毅然而然的离开，跟老师和学校招呼也没打，那只当是一场梦，一场无头无尾的梦。</p>
+<p>这是我的第二次大挫折，短短的半年，几乎耗尽我全部的耐心和意志。</p>
+<p>强迫自己休整了一段时间，不得不从新面对，这种事逃避更加痛苦，因为你始终要面对，要面对父母，面对家人，面对别人对你的期盼。在偶然的情况下，我遇到了某IT培训机构，此后我便走上了程序员之路，一直到现在，这是我以前根本没想过的事情，因为在脑子里一直存在着某些固有的思维，认为那不是我能做到的，虽然我现在做的不够好，但如不是这样，我真的不敢想象自己现在会在干嘛，会是在东莞某个小工厂吗？可是我这小身板也是不适合进厂。</p>
+<p>人生便是一念之差。</p>
 
       
     </div>
@@ -358,13 +369,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2015/05/25/CSS的常见问题(二)/">CSS的常见问题(二)</a></p>
+        <p><span>本文标题:</span><a href="/2016/03/24/主动选择与方法论/">主动选择与方法论</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
-        <p><span>发布时间:</span>2015-05-25, 18:47:10</p>
-        <p><span>最后更新:</span>2017-04-16, 18:03:56</p>
+        <p><span>发布时间:</span>2016-03-24, 22:57:05</p>
+        <p><span>最后更新:</span>2017-04-16, 21:51:23</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2015/05/25/CSS的常见问题(二)/" title="CSS的常见问题(二)">http://dunizb.com/2015/05/25/CSS的常见问题(二)/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2015/05/25/CSS的常见问题(二)/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/03/24/主动选择与方法论/" title="主动选择与方法论">http://dunizb.com/2016/03/24/主动选择与方法论/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/03/24/主动选择与方法论/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -377,15 +388,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/">
-                    CSS的低权重原则—避免滥用子选择器
+                <a href="/2016/03/24/《我们怎样读书》之为什么要学，怎么学/">
+                    《我们怎样读书》之为什么要学，怎么学
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2015/05/26/CSS常见问题(三)/">
-                    CSS常见问题(三)
+                <a href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/">
+                    《如何阅读一本书》之阅读一本书的四个层次
                 </a>
             </div>
         
@@ -397,7 +408,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hasLayout"><span class="toc-number">1.</span> <span class="toc-text">hasLayout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块级元素和行内元素的区别"><span class="toc-number">2.</span> <span class="toc-text">块级元素和行内元素的区别</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -433,7 +444,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"CSS的常见问题(二)　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"主动选择与方法论　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -453,7 +464,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/" title="上一篇: CSS的低权重原则—避免滥用子选择器">
+            <a href="/2016/03/24/《我们怎样读书》之为什么要学，怎么学/" title="上一篇: 《我们怎样读书》之为什么要学，怎么学">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -461,7 +472,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2015/05/26/CSS常见问题(三)/" title="下一篇: CSS常见问题(三)">
+            <a href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/" title="下一篇: 《如何阅读一本书》之阅读一本书的四个层次">
                 <i class="fa fa-angle-right"></i>
             </a>
         
