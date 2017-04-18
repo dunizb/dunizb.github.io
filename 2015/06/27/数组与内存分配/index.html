@@ -14,19 +14,30 @@
 <meta name="author" content="张兵" />
 
 
-    
-    
 
-
-<meta name="description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dunizb">
-<meta property="og:url" content="http://dunizb.com/page/3/index.html">
+<meta name="description" content="前言数组是编程语言中最常见的数据结构，可用于存储多个数据，每个数组元素存放一个数据，通常可通过数组元素的索引来访问数组元素，包括为数组元素赋值和取出数组元素的值。Java数组并不是什么很难的知识，如果单从语法角度来看，数组的用法并不不难，只是对Java数组的内存分配可能不是很明白，《Java雇佣兵之数组与内存分配》系列尝试探讨从基础到内存分配的两大方面全面介绍Java的数组知识。 一、数组入门1、">
+<meta name="keywords" content="javase">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组与内存分配">
+<meta property="og:url" content="http://dunizb.com/2015/06/27/数组与内存分配/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
+<meta property="og:description" content="前言数组是编程语言中最常见的数据结构，可用于存储多个数据，每个数组元素存放一个数据，通常可通过数组元素的索引来访问数组元素，包括为数组元素赋值和取出数组元素的值。Java数组并不是什么很难的知识，如果单从语法角度来看，数组的用法并不不难，只是对Java数组的内存分配可能不是很明白，《Java雇佣兵之数组与内存分配》系列尝试探讨从基础到内存分配的两大方面全面介绍Java的数组知识。 一、数组入门1、">
+<meta property="og:image" content="http://dunizb.com/2015/06/27/数组与内存分配/(http://duni-article.stor.sinaapp.com/201506%2Farray%2F0.png">
+<meta property="og:image" content="http://duni-article.stor.sinaapp.com/201506/array/1.png">
+<meta property="og:image" content="http://duni-article.stor.sinaapp.com/201506/array/3.png">
+<meta property="og:image" content="http://duni-article.stor.sinaapp.com/201506/array/4.png">
+<meta property="og:image" content="http://duni-article.stor.sinaapp.com/201506/array/5.png">
+<meta property="og:image" content="http://duni-article.stor.sinaapp.com/201506/array/6.png">
+<meta property="og:image" content="http://duni-article.stor.sinaapp.com/201506/array/7.png">
+<meta property="og:image" content="http://duni-article.stor.sinaapp.com/201506/array/8.png">
+<meta property="og:image" content="http://duni-article.stor.sinaapp.com/201506/array/9.png">
+<meta property="og:image" content="http://duni-article.stor.sinaapp.com/201506/array/10.png">
+<meta property="og:image" content="http://duni-article.stor.sinaapp.com/201506/array/11.png">
+<meta property="og:updated_time" content="2017-04-18T13:26:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dunizb">
-<meta name="twitter:description" content="Dunizb的博客,读你,全栈,Web前端,Vue.js,Node.js,读书笔记,Bootstrap,">
+<meta name="twitter:title" content="数组与内存分配">
+<meta name="twitter:description" content="前言数组是编程语言中最常见的数据结构，可用于存储多个数据，每个数组元素存放一个数据，通常可通过数组元素的索引来访问数组元素，包括为数组元素赋值和取出数组元素的值。Java数组并不是什么很难的知识，如果单从语法角度来看，数组的用法并不不难，只是对Java数组的内存分配可能不是很明白，《Java雇佣兵之数组与内存分配》系列尝试探讨从基础到内存分配的两大方面全面介绍Java的数组知识。 一、数组入门1、">
+<meta name="twitter:image" content="http://dunizb.com/2015/06/27/数组与内存分配/(http://duni-article.stor.sinaapp.com/201506%2Farray%2F0.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,13 +65,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Dunizb</title>
+<title>数组与内存分配 | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -69,8 +78,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -282,236 +291,7 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-JavaScript中的数据类型回顾" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/30/JavaScript中的数据类型回顾/" class="article-date">
-      <time datetime="2015-08-30T11:29:31.000Z" itemprop="datePublished">2015-08-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/30/JavaScript中的数据类型回顾/">JavaScript中的数据类型回顾</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              标志符、数值、字符串、布尔、类型比较、日期
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2015/08/30/JavaScript中的数据类型回顾/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-强大的Http监控工具Fidder简单介绍" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/30/强大的Http监控工具Fidder简单介绍/" class="article-date">
-      <time datetime="2015-08-30T10:47:07.000Z" itemprop="datePublished">2015-08-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/30/强大的Http监控工具Fidder简单介绍/">强大的Http监控工具Fidder简单介绍</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="1、简介与安装"><a href="#1、简介与安装" class="headerlink" title="1、简介与安装"></a>1、简介与安装</h2><p>Fiddler是一个http调试代理，它能 够记录所有的你电脑和互联网之间的http通讯，Fiddler 可以也可以让你检查所有的http通讯，设置断点，以及Fiddle 所有的“进出”的数据（指cookie,html,js,css等文件，这些都可以让你胡乱修改的意思）。 Fiddler 要比其他的网络调试器要更加简单，因为它仅仅暴露http通讯还有提供一个用户友好的格式。</p>
-<p>Fiddler 包含一个简单却功能强大的基于JScript .NET 事件脚本子系统，他非常灵活性非常棒，可以支持众多的http调试任务。Fiddler 是用C#写出来的。</p>
-<p>软件下载：<br><a href="http://fiddler2.com/get-fiddler" target="_blank" rel="external">http://fiddler2.com/get-fiddler</a></p>
-<p>软件学习：<br><a href="http://www.cnblogs.com/TankXiao/archive/2012/02/06/2337728.html#request" target="_blank" rel="external">http://www.cnblogs.com/TankXiao/archive/2012/02/06/2337728.html#request</a></p>
-<p>Fiddler还支持丰富的插件，官方也停供大量的插件：<br><a href="http://www.telerik.com/fiddler/add-on" target="_blank" rel="external">http://www.telerik.com/fiddler/add-on</a></p>
-<h2 id="2、Fiddler工作原理"><a href="#2、Fiddler工作原理" class="headerlink" title="2、Fiddler工作原理"></a>2、Fiddler工作原理</h2><p><img src="http://upload-images.jianshu.io/upload_images/68937-1f34ea39f933a9cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Fiddler工作原理"></p>
-<p>两种代理模式：</p>
-<ul>
-<li>流模式（streaming）：更接近浏览器的真实情况</li>
-<li>缓冲模式（buffering）：HTTP请求所有的数据都准备好之后才把数据返回给客户端</li>
-</ul>
-<h2 id="3、使用场景"><a href="#3、使用场景" class="headerlink" title="3、使用场景"></a>3、使用场景</h2><ul>
-<li>开发环境HOST配置：通常情况下配置host需要修改系统文件，很不方便；</li>
-<li>在多个环境下切换很低效;Fiddler提供了先对高效的配置方法；</li>
-<li>前后端接口调试：通常情况下调试前后端接口需要真实的环境、一大堆的假<br>数据、写JavaScript代码。Fiddler只需一个UI界面配置即可。</li>
-<li>线上bug fix：Fiddler可将发布文件代理到本地，快速定位线上Bug。</li>
-<li>性能分析和优化：Fiddler会提供请求的实际图，清晰明了网站需要优化的地方。</li>
-</ul>
-<h2 id="4、工具条、状态栏常用功能"><a href="#4、工具条、状态栏常用功能" class="headerlink" title="4、工具条、状态栏常用功能"></a>4、工具条、状态栏常用功能</h2><p>工具条:<br><img src="http://upload-images.jianshu.io/upload_images/68937-943a4c4d72c90ab7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="工具条"></p>
-<p>状态栏:<br><img src="http://upload-images.jianshu.io/upload_images/68937-10dc95c17bb76c61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="状态栏"></p>
-<h2 id="5、监控面板的使用"><a href="#5、监控面板的使用" class="headerlink" title="5、监控面板的使用"></a>5、监控面板的使用</h2><p><img src="http://upload-images.jianshu.io/upload_images/68937-7ea08c3508a1acbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="监控面板的使用"></p>
-<h2 id="6、文件、文件夹代理和Host配置"><a href="#6、文件、文件夹代理和Host配置" class="headerlink" title="6、文件、文件夹代理和Host配置"></a>6、文件、文件夹代理和Host配置</h2><p><img src="http://upload-images.jianshu.io/upload_images/68937-f604a869aa803692.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Host配置"></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具使用/">工具使用</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-jQuery-Core-Style-Guide" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/29/jQuery-Core-Style-Guide/" class="article-date">
-      <time datetime="2015-08-29T12:43:04.000Z" itemprop="datePublished">2015-08-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/29/jQuery-Core-Style-Guide/">jQuery Core Style Guide（规范）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml">Google JavaScript Style Guide</a>定义了如下规范：</p>
-<ul>
-<li>除了意图明确的需要创建一个全局变量之外，总是使用var声明变量；</li>
-<li>总是使用分号。只对于压缩代码非常重要；</li>
-<li>常量使用大写，每个单词之间用一个下划线分隔；</li>
-<li>函数、变量和方法名都是用驼峰写法，但整个变量名第一个字母小写；</li>
-<li>类和枚举名也采用驼峰写法，但整个变量名的第一个字母大写。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/规范/">规范</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2015/08/29/jQuery-Core-Style-Guide/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-数组与内存分配" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-数组与内存分配" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/06/27/数组与内存分配/" class="article-date">
@@ -529,12 +309,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/27/数组与内存分配/">数组与内存分配</a>
+    <h1 class="article-title" itemprop="name">
+      数组与内存分配
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -610,441 +401,127 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CSS常见问题(三)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/26/CSS常见问题(三)/" class="article-date">
-      <time datetime="2015-05-26T10:47:10.000Z" itemprop="datePublished">2015-05-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/26/CSS常见问题(三)/">CSS常见问题(三)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              `display`的值除了`block`和`inline`，还有其他的值，比如`list-item`、`table-cell`等，但因为IE6和IE7浏览器支持的display类型很少，所以为了兼容IE，我们真正能用的display类型只有block、inline和none三种。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2015/05/26/CSS常见问题(三)/#more">more >></a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2015/06/27/数组与内存分配/">数组与内存分配</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
+        <p><span>发布时间:</span>2015-06-27, 11:33:46</p>
+        <p><span>最后更新:</span>2017-04-18, 21:26:16</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2015/06/27/数组与内存分配/" title="数组与内存分配">http://dunizb.com/2015/06/27/数组与内存分配/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2015/06/27/数组与内存分配/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CSS的常见问题(二)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/25/CSS的常见问题(二)/" class="article-date">
-      <time datetime="2015-05-25T10:47:10.000Z" itemprop="datePublished">2015-05-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/25/CSS的常见问题(二)/">CSS的常见问题(二)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              很多时候，CSS在IE下的解释十分奇怪，明明在Firefox下显示的非常正确，但到了IE下却出现了问题，有时候，这些问题甚至表的非常诡异——例如，一个比较经典的BUG就是设置`border`的时候，有时候`border`会断开，刷新页面或者滚动页面的时候，断掉的部分又会重新连接起来。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2015/05/25/CSS的常见问题(二)/#more">more >></a>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
-  
-</article>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-CSS的低权重原则—避免滥用子选择器" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/" class="article-date">
-      <time datetime="2015-05-24T10:49:10.000Z" itemprop="datePublished">2015-05-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <nav id="article-nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/">CSS的低权重原则—避免滥用子选择器</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              “CSS的低权重原则”既可以的到`font-size:40px`的样式，又可以得到`color： red`的样式。如果两个不同选择符设置的样式有冲突，又会如何？
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CSS的常见问题(一)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/24/CSS的常见问题(一)/" class="article-date">
-      <time datetime="2015-05-24T10:47:10.000Z" itemprop="datePublished">2015-05-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/05/26/CSS常见问题(三)/">
+                    CSS常见问题(三)
+                </a>
+            </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/24/CSS的常见问题(一)/">CSS的常见问题(一)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              多行式的编码风格可读性强，但缺点是容易使CSS文件的行数过多，编辑样式时，需要来回滚动编辑器，影响开发速度，另外，过多的空白，也会增大CSS的文件大小。一行式编码风格在可读性方面稍差，但可以有效减少CSS文件的行数，有利于提高开发速度，同时也可以减少CSS的大小。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2015/05/24/CSS的常见问题(一)/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JavaScript中的继承入门" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/18/JavaScript中的继承入门/" class="article-date">
-      <time datetime="2015-05-18T10:10:57.000Z" itemprop="datePublished">2015-05-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/18/JavaScript中的继承入门/">JavaScript中的继承入门</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>正统的面相对象的语言都会提供extend之类的方法用于出来类的继承，但Javascript并不提供extend方法，在Javascript中使用继承需要用点技巧。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2015/05/18/JavaScript中的继承入门/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-利用jQuery克隆对象实例" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/15/利用jQuery克隆对象实例/" class="article-date">
-      <time datetime="2014-12-15T05:56:24.000Z" itemprop="datePublished">2014-12-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/08/29/jQuery-Core-Style-Guide/">
+                    jQuery Core Style Guide（规范）
+                </a>
+            </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/15/利用jQuery克隆对象实例/">利用jQuery克隆对象实例</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              当点击右边元素的X时，向左边DIV添加一个，同时右边被设为`disabled`。当点击左边被加入的元素时，删除该元素，同时右边被`disabled`的元素恢复。利用jQuery的对象克隆，轻轻松松一行代码实现。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2014/12/15/利用jQuery克隆对象实例/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
+
   
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、数组入门"><span class="toc-number">2.</span> <span class="toc-text">一、数组入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、首先明确一点：数组也是一种类型"><span class="toc-number">2.1.</span> <span class="toc-text">1、首先明确一点：数组也是一种类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、定义数组"><span class="toc-number">2.2.</span> <span class="toc-text">2、定义数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、数组的初始化"><span class="toc-number">2.3.</span> <span class="toc-text">3、数组的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、数组一定要初始化吗？"><span class="toc-number">2.4.</span> <span class="toc-text">4、数组一定要初始化吗？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、内存中的数组"><span class="toc-number">3.</span> <span class="toc-text">二、内存中的数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、基本类型数组的初始化"><span class="toc-number">3.1.</span> <span class="toc-text">1、基本类型数组的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、引用类型数组的初始化"><span class="toc-number">3.2.</span> <span class="toc-text">2、引用类型数组的初始化</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"数组与内存分配　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/05/26/CSS常见问题(三)/" title="上一篇: CSS常见问题(三)">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2015/08/29/jQuery-Core-Style-Guide/" title="下一篇: jQuery Core Style Guide（规范）">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">使用SpringMVC+Mybatis搭建高性能安全站点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/02/《如何阅读一本书》之公正的评断一本书/">《如何阅读一本书》之公正的评断一本书</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/31/《如何阅读一本书》之主题阅读精华摘要/">《如何阅读一本书》之主题阅读精华摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/30/曼昆《经济学原理•微观经济学分册》内容笔记/">曼昆《经济学原理•微观经济学分册》内容笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/《如何阅读一本书》之如何透视一本书/">《如何阅读一本书》之如何透视一本书</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/">《如何阅读一本书》之阅读一本书的四个层次</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/主动选择与方法论/">主动选择与方法论</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/《我们怎样读书》之为什么要学，怎么学/">《我们怎样读书》之为什么要学，怎么学</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/《我们怎样读书》之为学与做人/">《我们怎样读书》之为学与做人</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/16/告别纸书，读了就扔了吧/">告别纸书，读了就扔了吧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/你为什么要发说说/">你为什么要发说说?</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/11/每天10分钟精通沟通心理学/">每天10分钟精通沟通心理学</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/09/有妖气，不要怕/">有妖气，不要怕</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/08/何不尝试一下/">何不尝试一下?</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/02/Talking-about-literature-reading-and-writing/">谈文学、读书和写作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/20/Sublime-Text3插件安装图文教程/">Sublime Text3插件安装图文教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/31/LESS-CSS使用及语法入门/">LESS CSS使用及语法入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/31/Review-of-2015-年度回顾/">Review of 2015 年度回顾</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/04/JS检测图片的宽高和Image对象/">JS检测图片的宽高和Image对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/02/JavaScript-Object-Oriented-Programming-Basics/">JavaScript面向对象程序设计基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/JavaScript中的数据类型回顾/">JavaScript中的数据类型回顾</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/强大的Http监控工具Fidder简单介绍/">强大的Http监控工具Fidder简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/29/jQuery-Core-Style-Guide/">jQuery Core Style Guide（规范）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/数组与内存分配/">数组与内存分配</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/26/CSS常见问题(三)/">CSS常见问题(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/25/CSS的常见问题(二)/">CSS的常见问题(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/">CSS的低权重原则—避免滥用子选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/24/CSS的常见问题(一)/">CSS的常见问题(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/18/JavaScript中的继承入门/">JavaScript中的继承入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/15/利用jQuery克隆对象实例/">利用jQuery克隆对象实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/11/08/cookie-and-session-distinction-and-contact/">Cookie和Session的区别与联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/Talking-about-the-development-of-AOP-development/">漫谈AOP开发之开发Spring AOP程序</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/28/漫谈AOP开发之谈谈AOP那些学术概念/">漫谈AOP开发之谈谈AOP那些学术概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/">漫谈AOP开发之初探AOP及AspectJ的用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/09/06/javascript-event/">JavaScript事件探秘</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/08/24/数据库设计的一些问题/">数据库设计的一些问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/27/Spring：一切都是Bean(二)/">Spring：一切都是Bean(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/24/Spring：一切都是Bean(一)/">Spring：一切都是Bean(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/13/把头像图片以二进制形式保存到数据库（Hibernate实现）/">把头像图片以二进制形式保存到数据库（Hibernate实现）</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/10/根据分组依据对Java集合元素进行分组/">根据分组依据对Java集合元素进行分组</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">JDBC操作数据库的元数据信息，JDBC复习(四) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/">JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/">使用JDBC调用存储过程，JDBC复习(二) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/06/24/localhost-and-12-0-0-1-and-ip/">localhost、127.0.0.1和本机ip三者的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/16/JavaScript-this/">JavaScript中的this妙用</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/09/使用POI组件导出数据为Excel文件/">使用POI组件导出数据为Excel文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/28/Tomcat-study-notes/">Tomcat学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/08/Struts2-xml-result-in-the-transmission-of-multiple-parameters/">Struts2.xml的result里传多个参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/07/Java-io-FTP-FileZill-Server设置/">Java I/O FTP同步代码及FileZilla Server设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/11/30/小米活塞耳机1代开箱图鉴/">小米活塞耳机1代开箱图鉴</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/11/15/使用JXL组件导入Excel文件数据到数据库/">使用JXL组件导入Excel文件数据到数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/">Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/09/21/Struts2-view-forwarding-type-summary/">Struts2的视图转发类型总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/">Spring IOC(依赖注入、控制反转)概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/14/数据库优化(一)索引及索引合理利用/">数据库优化(一)：索引及索引合理利用</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/08/02/手把手教你GlassFish与Eclipse的集成安装、配置/">手把手教你GlassFish与Eclipse的集成安装、配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2010/07/25/可怜的钱学森，可怜的中国/">可怜的钱学森，可怜的中国</a></li><li class="post-list-item"><a class="post-list-link" href="/2010/03/08/372的忧伤/">372的忧伤</a></li><li class="post-list-item"><a class="post-list-link" href="/2010/01/04/小镇脾气与新貌/">小镇脾气与新貌</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
