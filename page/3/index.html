@@ -284,6 +284,204 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JS检测图片的宽高和Image对象" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/04/JS检测图片的宽高和Image对象/" class="article-date">
+      <time datetime="2016-01-04T14:15:50.000Z" itemprop="datePublished">2016-01-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/04/JS检测图片的宽高和Image对象/">JS检测图片的宽高和Image对象</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              在一些页面中我们需要限制图片的规格，也就是宽、高。我们可有用JS来实现，关键是得到图片的绝对地址src,还有JavaScript的Image()对象，给这个对象指定src属性即可获取这个图片的width、height，我们以下面这个图片为例
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2016/01/04/JS检测图片的宽高和Image对象/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JavaScript-Object-Oriented-Programming-Basics" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/02/JavaScript-Object-Oriented-Programming-Basics/" class="article-date">
+      <time datetime="2015-09-02T14:53:34.000Z" itemprop="datePublished">2015-09-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/02/JavaScript-Object-Oriented-Programming-Basics/">JavaScript面向对象程序设计基础</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一、对象"><a href="#一、对象" class="headerlink" title="一、对象"></a>一、对象</h2><p>JavaScript的简单数据类型包括数字、字符串、布尔值、null值和undefined值。其他所有的值都是对象。数字、字符串和布尔值“貌似”对象，因为它们拥有方法，但它们是不可变的。JavaScript中的对象是可变的键控集合（Keyed collections）。在JavaScript中，数组时对象，函数是对象，正在表达式是对象，当然，对象自然也是对象。</p>
+<p>对象是属性的集合，每一个属性具有一个名称和一个值。数学的名字可以是包括空字符串在内的任意字符串。属性值可以是除undefined值之外的任何值。</p>
+<p>JavaScript里的对象是无类型的（class-free）。它对新属性的名字和值是没有限制的。对象适合用于汇集和管理数据。对象可以保护其他对象，所以它们可以很容易的表示成树状或图形结构。</p>
+<h3 id="1、创建（Create）"><a href="#1、创建（Create）" class="headerlink" title="1、创建（Create）"></a>1、创建（Create）</h3><p>可以采用两种方法来实例化对象。</p>
+<p><strong>第一种方法是使用new关键字</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myObject = <span class="keyword">new</span> <span class="built_in">Object</span>();</div></pre></td></tr></table></figure></p>
+<p>new 关键字调用构造函数，或者更通用的说法是构造器。构造器将初始化新创建的对象。下面的代码演示了一个名为Zombie（僵尸）对象的构造器，构造器初始化该对象的name属性，然后使用new关键字实例化一个Zombie对象。this关键字用于引用当前对象，不能对它进行赋值，但可以将this关键字的值赋给另外一个变量。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//构造函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Zombie</span>(<span class="params"> name </span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> smallZombie = <span class="keyword">new</span> Zombie( <span class="string">"Booger"</span>);</div></pre></td></tr></table></figure></p>
+<p><strong>使用对象字面量创建对象</strong><br>另外一种实例化新对象的方法更加方便：使用对象字面量，这种方式创建的对象更像其他语言中的散列（hash）或关联数组。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myObject = &#123; &#125;;</div><div class="line"><span class="keyword">var</span> webSite= &#123;</div><div class="line">    <span class="string">"url"</span>: <span class="string">"www.mybry.com"</span>,</div><div class="line">    <span class="string">"siteName"</span>: <span class="string">"读你"</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>在属性列表的最后一项值的末尾，请不要使用结尾逗号。不同的浏览器对此的解析并不一致。</p>
+<h3 id="2、检索（Retrieval）"><a href="#2、检索（Retrieval）" class="headerlink" title="2、检索（Retrieval）"></a>2、检索（Retrieval）</h3><p>既可以使用方括号来访问对象的属性，也可以使用点操作符来访问。下面的代码示例了者两种方式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">webSite[<span class="string">'url'</span>];</div><div class="line"><span class="string">"www.mybry.com"</span></div><div class="line">webSite.siteName;</div><div class="line"></div><div class="line"><span class="string">"读你"</span></div></pre></td></tr></table></figure></p>
+<p>采用方括号方式访问属性时，可以使用JavaScript的关键字作为属性名，但不推荐这样做，使用点操作符方式访问属性时则不能使用。使用点操作符方式，代码更加简短。JSLint鼓励开发人员使用点操作符方式。因为属性也可以是对象，可以在任意层次上嵌套对象。 </p>
+<p>下面假设有一个父亲father对象，他有自己的名字name和年龄age，他有两个儿子childrenOne和childrenTwo，两个孩子当然也是对象，也有名字name个年龄age，然后我们访问孩子childrenOne的名字：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> father = &#123;</div><div class="line">  <span class="string">'name'</span>: <span class="string">'zhangsan'</span>,</div><div class="line">  <span class="string">'age'</span>: <span class="number">50</span>,</div><div class="line">  <span class="string">'childrenOne'</span>: &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'zhangsi'</span>,</div><div class="line">    <span class="string">'age'</span>: <span class="number">22</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">'childrenTwo'</span>: &#123;</div><div class="line">    <span class="string">'name'</span>: <span class="string">'zhangwu'</span>,</div><div class="line">    <span class="string">'age'</span>: <span class="number">12</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(father.childrenOne.name);</div><div class="line"><span class="comment">//输出：zhangsi</span></div></pre></td></tr></table></figure></p>
+<p>JavaScript是一种动态的语言，因此更新一个属性只需要重新对属性赋值即可。要从对象中移除一个属性，只需要使用delete操作符。删除一个不存在的属性并不会造成任何危险。要遍历对象的所有属性，可以使用for…in循环，比如下面的代码块：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">  <span class="string">'properties1'</span>: <span class="number">1</span>,</div><div class="line">  <span class="string">'properties2'</span>: <span class="number">2</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> i;</div><div class="line"><span class="keyword">for</span>( i <span class="keyword">in</span> obj1 )&#123;</div><div class="line">  <span class="built_in">console</span>.log( i );</div><div class="line">&#125;</div><div class="line"></div><div class="line">properties1</div><div class="line">properties2</div></pre></td></tr></table></figure></p>
+<h3 id="3、原型（Prototype）"><a href="#3、原型（Prototype）" class="headerlink" title="3、原型（Prototype）"></a>3、原型（Prototype）</h3><p>JavaScript使用原型继承（prototype inheritance），对象直接从其他对象继承，从而创建新的对象。简而言之，对象继承了另外一个对象的属性。JavaScript中没有类，这是与Java和C#等语言相比一个较大的差别。原型就是其他对象的模型（model）。</p>
+<p>每个对象都连接到一个原型对象，并且它可以从中继承属性。所有通过对象字面量创建的对象都连接到Object.prototypr，它是JavaScript中的标配对象。</p>
+<p>当你创建一个新对象时，你可以选择某个对象作为它的原型。JavaScript提供的实现机制杂乱而复杂，但其实可以被明显地简化。我们将给Object对象增加一个create方法。这个方法创建一个使用原型对象作为其原型的新对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Object</span>.beget !== <span class="string">'function'</span>) &#123;</div><div class="line">  <span class="built_in">Object</span>.create = <span class="function"><span class="keyword">function</span> (<span class="params">o</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;;</div><div class="line">    F.prototype = o;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> another = <span class="built_in">Object</span>.create( webSite );</div><div class="line"><span class="built_in">console</span>.log(another);</div><div class="line"><span class="string">``</span><span class="string">`    </span></div><div class="line">在firebug中输出如下结果，正是一个对象。</div><div class="line"></div><div class="line">原型连接在更新时是不起作用的。当我们对某个对象做出改变时，不会触及该对象的原型，原型连接只有在检索值的时候才会被用到。如果我们尝试去获取对象的某个属性值，但该对象没有此属性名，那么JavaScript会试着从原型对象中获取属性值。如果那个原型对象也没有该属性，那么再从他的原型中寻找，以此类推，直到该过程最后到达终点Object.prototype。如果想要的属性完全不存在与原型链中，那么结果就是undefined值。这个过程称为委托。</div><div class="line"></div><div class="line">原型关系是一种动态关系。如果我们添加一个新的属性到原型中，该属性会立即对所有基于该原型创建的对象可见。（更多关于原型链的内容后续文章将会介绍）</div><div class="line"></div><div class="line">### 4、引用（Reference）</div><div class="line">引用是一个指向对象实例位置的指针。Object是引用类型，由于所有对象都是通过引用传递的，，它们永远不会被复制：</div><div class="line">`<span class="string">``</span>js</div><div class="line"><span class="keyword">var</span> x = myObject;</div><div class="line">x.nickname = <span class="string">'这世间唯有梦想和好姑娘不可辜负~~~'</span>;</div><div class="line"><span class="keyword">var</span> nick = myObject.nickname;</div><div class="line"><span class="comment">//因为x和stooge是指向同一个对象的引用，所以nick为‘zhangsan’</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(nick); <span class="comment">//这世间唯有梦想和好姑娘不可辜负~~~</span></div><div class="line"></div><div class="line"><span class="comment">//因为a、b和c每个都引用一个不同的空对象</span></div><div class="line"><span class="keyword">var</span> a = &#123; &#125;, b = &#123; &#125;, c = &#123; &#125;;</div><div class="line"><span class="comment">//a、b和c都引用同一个空对象</span></div><div class="line">a = b = c = &#123; &#125;;</div></pre></td></tr></table></figure></p>
+<p>修改绑定于一个原型的属性，将修改基于该原型的所有其他对对象的原型。</p>
+<p>对象是自知的，或者说对象知道自己的属性。要检查某个属性是否存在，可以使用hasOwnProperty()方法，该方法将返回一个布尔值。</p>
+<h3 id="5、减少全局变量污染"><a href="#5、减少全局变量污染" class="headerlink" title="5、减少全局变量污染"></a>5、减少全局变量污染</h3><p>很多程序员认为，应该避免使用全局变量。有一些办法可以避免扰乱全局名称空间，一种办法是使用单个全局变量作为顶层对象，包含程序或框架中的所有方法和属性。按照惯例，名称空间的字母全部大写，但值得注意的是常量通常也大写格式。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ZOMBIE_GENERATOR = &#123;&#125;;</div><div class="line">ZOMBIE_GENERATOR.Zombies = &#123;</div><div class="line">    <span class="attr">smallZombie</span> : <span class="string">'Booger'</span>,</div><div class="line"></div><div class="line">    <span class="attr">largeZombie</span> : <span class="string">'Bruce'</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>采用上面的代码定义名称空间之后，Zombies就不会与全局名称空间中的任何其他变量冲突。另外一种减少冲突的方式是使用闭包。</p>
+<h3 id="6、反射（Reflection）"><a href="#6、反射（Reflection）" class="headerlink" title="6、反射（Reflection）"></a>6、反射（Reflection）</h3><p>检查对象并确定对象有什么属性时很容易的事情，只要试着去检索该属性并验证取得值。typeof操作符对确定属性的类型很有帮助：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> father.name;                      <span class="comment">// 'string'</span></div><div class="line"><span class="keyword">typeof</span> father.age;                         <span class="comment">// 'number'</span></div><div class="line"><span class="keyword">typeof</span> father.childrenOne;         <span class="comment">// 'object'</span></div><div class="line"><span class="keyword">typeof</span> father.xxx;                         <span class="comment">// 'undefined'</span></div></pre></td></tr></table></figure></p>
+<p>请注意原型链中任何属性都会产生值：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> father.toString;            <span class="comment">// 'function'</span></div><div class="line"><span class="keyword">typeof</span> father.constructor;      <span class="comment">// 'function'</span></div></pre></td></tr></table></figure></p>
+<p>有两种方法去处理掉这些不需要的属性。第一个是让你的程序做检查并丢弃掉值为函数的属性。一般来说，当你想让对象在运行时动态获取自身信息时，你关注更多的时数据，而你应该意识到一些值可能是函数。</p>
+<p>另一个方法时使用hasOwnProperty方法，如果对象拥有独有的属性，它会返回true。hasOwnProperty方法不会检查原型链。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">father.hasOwnProperty(<span class="string">'name'</span>);                <span class="comment">// true</span></div><div class="line">father.hasOwnProperty(<span class="string">'constructor'</span>);     <span class="comment">// false</span></div></pre></td></tr></table></figure></p>
+<h3 id="7、枚举（Enumeraton）"><a href="#7、枚举（Enumeraton）" class="headerlink" title="7、枚举（Enumeraton）"></a>7、枚举（Enumeraton）</h3><p><code>for...in</code>语句可以用来遍历一个对象中的所有属性名。该枚举过程将会列出所有的属性——包括函数和你可能不关心的原型中的属性——所以有必要过滤那些你不想要的值。最为常用的过滤时hasOwnPropery方法，一级使用typeof来排除函数。</p>
+<p>属性名出现的顺序是不确定的，因此要对任何可能出现的顺序有所准备。如果你想要确保属性以特定的顺序出现，最好的办法就是完全避免使用for in语句，而是创建一个数组，在其中以正确的顺序包含属性名：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> properties = [</div><div class="line">  <span class="string">'first-name'</span>,</div><div class="line">  <span class="string">'middle-name'</span>,</div><div class="line">  <span class="string">'last-name'</span>,</div><div class="line">  <span class="string">'profession'</span></div><div class="line">];</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; properties.length; i++)&#123;</div><div class="line">  <span class="built_in">console</span>.info(properties[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>通过使用for而不是for in，可以得到我们想要的属性，而不必担心可能发掘出的原型链中的属性，并且我们按正确的顺序取得了它们的值。</p>
+<h2 id="二、函数"><a href="#二、函数" class="headerlink" title="二、函数"></a>二、函数</h2><p>函数是一个代码块，它封装了一系列的JavaScript语句。函数可以接受参数，也可以返回值。如果一个函数没有返回一个特定的值，则它返回一个undefined值。下面的代码示例定义了一个没有返回值的函数。该函数依然执行了函数体中的操作，将变了x的值乘以2，但由于没有使用return语句返回值，因此在控制台中输出函数的返回值时，返回值为undefined。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">2</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">calc</span>(<span class="params"> </span>)</span>&#123;</div><div class="line">  x = x * <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( calc() );<span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
+<p>这正是函数有趣的地方，与Java不同，JavaScript中的函数时第一类对象。这意味着可以像处理其他JavaScript对象一样处理JavaScript函数。可以将函数赋予给一个变量，或者保存在另外一个数据结构中（比如一个数组或对象）；可以将函数作为参数传递给其他函数；可以将函数作为另一个函数的返回值；函数还可以采用匿名函数的形式：即根本没有绑定于函数名标识符的函数。下面代码定义了一个函数表达式，并将其赋值给一个变量。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> calc = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> x * <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">calc(<span class="number">5</span>);</div><div class="line"><span class="comment">// 10</span></div></pre></td></tr></table></figure></p>
+<p>给函数名使用圆括号，将执行该函数并返回函数的返回值，而不是返回对函数的引用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> calc = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> x * <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> calcValue = calc( <span class="number">5</span> );</div><div class="line"><span class="built_in">console</span>.log( calcValue );</div><div class="line"></div><div class="line"><span class="comment">// 10</span></div></pre></td></tr></table></figure></p>
+<p>第一类函数的另外两个特性时非常重要的。第一个特性就是将函数作为参数传递给其他函数。第二个特性就是匿名函数。下面代码演示了JavaScript中函数的重要特性。reporter函数接收一个函数作为参数，并输出执行该参数函数的返回值。另外两个例子则演示了匿名函数。第一个函数是一个根本不包含任何语句的匿名函数，但根据前面的介绍，该函数将返回一个undefined。第二个函数时一个返回字符串的匿名函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">reporter</span>(<span class="params"> fn </span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log( <span class="string">"这个返回值是你传递过来的函数："</span> + fn() );</div><div class="line">&#125;</div><div class="line">reporter( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;); </div><div class="line"><span class="comment">//这个返回值是你传递过来的函数：undefined</span></div><div class="line">reporter( <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="string">"这是一个简单的字符串"</span> &#125;);</div><div class="line"><span class="comment">//这个返回值是你传递过来的函数：这是一个简单的字符串</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">calc</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="number">2</span> * <span class="number">4</span>;</div><div class="line">&#125;</div><div class="line">reporter( calc );</div><div class="line"><span class="comment">// 这个返回值是你传递过来的函数：8</span></div></pre></td></tr></table></figure></p>
+<p>这是你会看到控制台还输出了一个undefined值，这是reporter函数本身的返回值，也就是说执行任何函数本身，它都会返回一个undefined值。</p>
+<p>关于匿名函数，一个特别重要的变体就是立即调用的函数表达式，或称为自执行匿名函数。无论称为“立即调用的函数表达式”还是“自执行匿名函数”，这一模式的本质就是将一个函数表达式包装在一对圆括号中，然后立即调用该函数。这一技巧非常简单，将函数表达式包装在一对圆括号中，将迫使JavaScript引擎将function(){}块识别为一个函数表达式，而不是一个函数语句的开始。下面的代码示例描述了这一模式，在这个简单的例子中，函数表达式接受两个值并简单地将二者相加。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"> x,y </span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log( x+y );</div><div class="line">&#125;)( <span class="number">5</span>,<span class="number">6</span>);</div><div class="line"><span class="comment">// 11</span></div></pre></td></tr></table></figure></p>
+<p>由于这样的函数表达式将被立即调用，因此该模式用于确保代码块的执行上下文按照预期的效果执行，这是这种模式最重要的用于之一。通过将参数传入函数，在执行时就可以捕获函数所创建闭包中的变量。闭包就是这样的一个函数：它处在一个函数体中，并引用了函数体当前执行上下文中的变量。闭包是一个极为强大的功能，下面的代码描述了闭包的基本应用。在下面的例子中还引入了JavaScript函数另外一个有趣的特性，即在函数中可以将另外一个函数作为返回值返回。</p>
+<p>在下面的例子中，将自执行匿名函数赋给一个变量message。message返回另外一个函数，该函数只是简单的输出变量x的值。有趣的是，当我们把变量x的初始值作为参数传入函数时，可以在函数执行时所创建的闭包中捕获变量x的值。无论在外部作用域中的x的值发生了什么变化，闭包将记住函数执行时变量x的值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">42</span>;</div><div class="line"><span class="built_in">console</span>.log(x);    <span class="comment">// 42</span></div><div class="line"><span class="keyword">var</span> message = (<span class="function"><span class="keyword">function</span> (<span class="params"> x </span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( <span class="string">"x is "</span> + x);</div><div class="line">  &#125;</div><div class="line">&#125;)( x );</div><div class="line">message(); <span class="comment">//x is 42</span></div><div class="line">x = <span class="number">12</span>;</div><div class="line"><span class="built_in">console</span>.log( x ); <span class="comment">// 12</span></div><div class="line">message(); <span class="comment">//x is 42</span></div></pre></td></tr></table></figure></p>
+<p>即使只介绍了这个简单的例子，也应该看到JavaScript函数的强大功能。</p>
+<h2 id="三、作用域和闭包"><a href="#三、作用域和闭包" class="headerlink" title="三、作用域和闭包"></a>三、作用域和闭包</h2><p>当讨论作用域时，考虑定义变量的位置和变量的生存期时非常重要的。作用域指的是在什么地方可以访问该变量。在JavaScript中，作用域维持在函数级别，而并非块级别。因此，参数以及使用var关键字定义的变量，仅在当前函数中可见。</p>
+<p>除了不能访问this关键字和参数之外，嵌套函数可以访问外部函数中定义的变量。这一机制时通过闭包来实现的，它是指：即使在外部函数结束执行之后，内部嵌套的函数继续保持它对外部函数的引用。闭包还有助于减少名称空间的冲突。</p>
+<p>每次调用一个包裹的函数时，虽然函数的代码并没有改变，但是JavaScript将为每一次调用创建一个新的作用域。下面的代码说明了这一行为。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFunction</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> value;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = getFunction(),</div><div class="line">    b = getFunction(),</div><div class="line">    c = getFunction();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(a(<span class="number">0</span>)); <span class="comment">// 0</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(b(<span class="number">1</span>)); <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(c(<span class="number">2</span>)); <span class="comment">// 2</span></div><div class="line"><span class="built_in">console</span>.log(a === b); <span class="comment">// false</span></div></pre></td></tr></table></figure></p>
+<p>当定义一个独立函数时（即不绑定于任何对象）时，this关键字绑定雨全局名称空间。作为一个最直接的结果，<strong>当在一个方法内创建一个内部函数时，内部函数的this关键字将绑定于全局名称空间，而不是绑定于该方法</strong>。为了解决这一问题，可以将包裹方法的this关键字简单的赋值给一个名为that的中间变量。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">obj = &#123;&#125;;</div><div class="line">obj.method = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">this</span>.counter = <span class="number">0</span>;</div><div class="line">  </div><div class="line">  <span class="keyword">var</span> count = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    that.counter += <span class="number">1</span>;</div><div class="line">    <span class="built_in">console</span>.log(that.counter);</div><div class="line">  &#125;</div><div class="line">  count();</div><div class="line">  count();</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.counter);</div><div class="line">&#125;</div><div class="line">obj.method();</div><div class="line"><span class="comment">// 输出：</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure></p>
+<h2 id="四、访问级别"><a href="#四、访问级别" class="headerlink" title="四、访问级别"></a>四、访问级别</h2><p>在JavaScript中并没有官方的访问级别语法，JavaScript没有类似于Java语言中的private或protected这样的访问级别关键字。默认情况下，对象中所有的成员都是公开和可访问的。但在JavaScript中可以实现与私有或专有属性类似的访问级别效果。要实现私有方法或属性，请使用闭包。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">TimeMachine</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="comment">//私有成员</span></div><div class="line">  <span class="keyword">var</span> destination = <span class="string">'ShangHai CAOHEJING'</span>;</div><div class="line">  <span class="comment">//公有成员</span></div><div class="line">  <span class="keyword">this</span>.getDestination = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> destination;</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> zhangsan = <span class="keyword">new</span> TimeMachine();</div><div class="line"><span class="built_in">console</span>.log(zhangsan.getDestination());</div><div class="line"><span class="comment">// ShangHai CAOHEJING</span></div><div class="line"><span class="built_in">console</span>.log(zhangsan.destination);</div><div class="line"><span class="comment">//undefined</span></div></pre></td></tr></table></figure></p>
+<p>getDestination方法是一个专有方法，它可以访问TimeMachine（时间机器）中的私有成员。另外，变量destination 是“私有”的，它只能通过专有方法getDestination进行访问。</p>
+<h2 id="五、模块"><a href="#五、模块" class="headerlink" title="五、模块"></a>五、模块</h2><p>于私有和专有访问级别类似，JavaScript没有内置的包语法。模块模式是一种简单而流行的方式，用于创建自包含的、模块化的代码。要创建一个模块，只需要声明一个名称空间、将有关函数绑定在该名称空间，并定义私有成员和专有成员即可，下面将使用模块重写TimeMachine对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建名称空间对象</span></div><div class="line">TIMEMACCHINE = &#123;&#125;;</div><div class="line">TIMEMACCHINE.createZhangsan = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="comment">//私有成员</span></div><div class="line">  <span class="keyword">var</span> destination = <span class="string">''</span>;</div><div class="line">  <span class="keyword">var</span> model = <span class="string">''</span>;</div><div class="line">  <span class="keyword">var</span> fuel = <span class="string">''</span>;</div><div class="line">  </div><div class="line">  <span class="comment">//公有访问方法</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="comment">//设置器</span></div><div class="line">    setDestination: <span class="function"><span class="keyword">function</span>(<span class="params">dest</span>)</span>&#123;</div><div class="line">      <span class="keyword">this</span>.destination = dest;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">setModel</span>: <span class="function"><span class="keyword">function</span>(<span class="params">model</span>)</span>&#123;</div><div class="line">      <span class="keyword">this</span>.model = model;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">setFuel</span>: <span class="function"><span class="keyword">function</span>(<span class="params">fuel</span>)</span>&#123;</div><div class="line">      <span class="keyword">this</span>.fuel = fuel;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//访问器</span></div><div class="line">    getDestination: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.destination;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">getModel</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.model;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">getFuel</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.fuel;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//其他成员</span></div><div class="line">    toString : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.getModel() + <span class="string">' - Fuel Type：'</span> +</div><div class="line">                 <span class="keyword">this</span>.getFuel() + <span class="string">' - Headed：'</span> + <span class="keyword">this</span>.getDestination());</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line"><span class="keyword">var</span> myTimeMachine = TIMEMACCHINE.createZhangsan;</div><div class="line">myTimeMachine.setModel(<span class="string">'顺丰号'</span>);</div><div class="line">myTimeMachine.setFuel(<span class="string">'钚'</span>);</div><div class="line">myTimeMachine.setDestination(<span class="string">'漕河泾'</span>);</div><div class="line"></div><div class="line">myTimeMachine.toString();</div><div class="line"><span class="comment">// 顺丰号 - Fuel Type：钚 - Headed：漕河泾</span></div></pre></td></tr></table></figure></p>
+<p>该模块具有一个工厂函数，它返回一个带有public/privateAPI的对象。</p>
+<h2 id="六、数组"><a href="#六、数组" class="headerlink" title="六、数组"></a>六、数组</h2><p>数组是一种特殊类型的对象，他作为一个有序的值的集合，这些值称为数组元素。在一个数组内，每一个元素都具有一个索引，或称为一个数字位置。在一个数组中可以存储相同类型或不同类型的元素。不要求数组元素全都具有相同的数据类型。于对象和函数类似，数组也可以任意嵌套。</p>
+<p>与普通对象一样，可以采用两种方式来创建数组。第一种方法就是使用Array()构造函数：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> array1 = <span class="keyword">new</span> <span class="built_in">Array</span>();    <span class="comment">//空数组</span></div><div class="line">array1[<span class="number">0</span>] = <span class="number">1</span>;                        <span class="comment">//在索引为0 的位置添加一个数组元素</span></div><div class="line">array1[<span class="number">1</span>] = <span class="string">'a string'</span>;           <span class="comment">//在索引为1的位置添加一个字符串</span></div></pre></td></tr></table></figure></p>
+<p>更常用的是第二种方式，即使用一个数组字面量来创建数组，它由一对方括号括起来，其中包含了0个或多个一逗号分隔的值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> niceArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>,];</div></pre></td></tr></table></figure></p>
+<p>在数组字面量中混合使用对象字面量，可以提供非常强大的结构，他是JavaScript对象表示法JSON的基础。JSON是一种流行的数据交换格式，它可以用于多种语言而不仅仅时JavaScript语言。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myData = &#123;</div><div class="line">    <span class="string">'root'</span> : &#123;</div><div class="line">         <span class="string">'numbers'</span> : [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</div><div class="line">             <span class="string">'letters'</span> : [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>],</div><div class="line">             <span class="string">'mirepoix'</span> : [<span class="string">'tomatoes'</span>, <span class="string">'carrots'</span>, <span class="string">'potatoes'</span>]   </div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>数组具有一个length属性，它的值总是等于数组中元素的个数减11。在数组中添加新元素将改变数组length属性。要从数组中移除元素，请使用delete操作符。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> list = [<span class="number">1</span>, <span class="string">'2'</span>, <span class="string">'blah'</span>, &#123;&#125;];</div><div class="line"><span class="keyword">delete</span> list[<span class="number">0</span>];</div><div class="line"><span class="built_in">console</span>.log(list);</div><div class="line"><span class="comment">// [undefined, "2", "blah", Object &#123;&#125;]</span></div><div class="line"><span class="built_in">console</span>.log(list.length);</div><div class="line"><span class="comment">// 4</span></div></pre></td></tr></table></figure></p>
+<p>删除一个元素并不会改变数组的长度，只是在数组中留下一个undefined值的元素（空元素）。</p>
+<h2 id="七、扩展类型"><a href="#七、扩展类型" class="headerlink" title="七、扩展类型"></a>七、扩展类型</h2><p>JavaScript支持将方法和其他属性绑定到内置类型。比如字符串、数值和数组类型。于其他任何对象类似，String对象也具有prototype属性。开放人员可以为String对象扩充一些便利的方法。例如，String没有将字符串false或true转换为布尔值的方法。开放人员可以使用下面的代码<br>为String对象添加该功能：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.prototype.boolean = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">"true"</span> == <span class="keyword">this</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> t = <span class="string">'true'</span>.boolean();</div><div class="line"><span class="keyword">var</span> f = <span class="string">'false'</span>.boolean();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.info(t);    <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.info(f);    <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
+<p>显然，每次想为制定类型添加方法时反复输入prototype显得有点累赘》以下提供一段简洁的代码，他使用一个名为method的方法扩充了Function.prototype。下面就是该方法的代码。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span>.prototype.method = <span class="function"><span class="keyword">function</span>(<span class="params">name,func</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.prototype[name] = func;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接下来就可以重写String的boolean方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.method(<span class="string">'boolean'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">"true"</span> == <span class="keyword">this</span>;</div><div class="line">&#125;);</div><div class="line"><span class="string">"true"</span>.boolean();</div></pre></td></tr></table></figure></p>
+<p>对于编写工具方法库并将其包含在项目中，这一技术非常有用。</p>
+<h2 id="八、JavaScript最佳实践"><a href="#八、JavaScript最佳实践" class="headerlink" title="八、JavaScript最佳实践"></a>八、JavaScript最佳实践</h2><p>下面列出了在进行JavaScript开发时，一些应该注意或应该避免的事项：</p>
+<ul>
+<li>使用parseInt()函数将字符串转换为整数，但请确保总是指定基数。更好的办法时使用一元操作符(+)将字符串转化为数值。<br>好的写法：parseInt(“020”,10);    //转化为十进制而不是八进制<br>更好的写法：console.log(+ “010”);    //简单而又高效</li>
+<li>使用等同（===）操作符来比较两个值。避免意料之外的类型转换。</li>
+<li><p>在在定义对象字面量时，在最后一个值的结尾不要使用逗号。例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;</div><div class="line">    <span class="string">"p1"</span> : <span class="number">1</span>,</div><div class="line">    <span class="string">"p2"</span> : <span class="number">2</span>,</div><div class="line">    <span class="comment">//非常糟糕！</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>eval()函数可以接收一个字符串，并将其视为JavaScript代码执行。应该限制eval()函数的使用，它很容易在代码中引入各种各样严重的安全问题。</p>
+</li>
+<li>使用分号作为语句的结尾，当精简代码时这特别有用。</li>
+<li>应该避免使用全局变量。应该总是使用var关键字来声明变量。将代码包裹在匿名函数中，以避免命名冲突，请使用模块来阻止代码。</li>
+<li>对函数名使用首字母大写表示该函数将作为new操作符的构造函数，但请不要对其他任何函数的函数名使用首字母大写。</li>
+<li>不要使用with语句。</li>
+<li>在循环中创建函数应该谨慎小心。这种方式非常低效。</li>
+</ul>
+<blockquote>
+<p>最佳摘自Cesar Otero,Rob Larsen《jQuery高级编程》</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象编程/">面向对象编程</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-JavaScript中的数据类型回顾" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -511,6 +709,74 @@
 
 
   
+    <article id="post-Java的方法详解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/05/Java的方法详解/" class="article-date">
+      <time datetime="2015-07-05T13:48:09.000Z" itemprop="datePublished">2015-07-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/05/Java的方法详解/">Jav的方法详解</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>什么是方法？方法是类或对象的行为特征抽象，是类或对象的最重要组成部分。考试都喜欢考概念，你不是不懂，但就是还差那么一点，就比如问你什么是语文，什么是数学。。。。方法从功能上讲，完全类似于JavaScript等结构化程序设计语言里的函数。值得指出的是，Java中的方法并不能独立存在，所有的方法都必须定义在类里。方法在逻辑上要么属于类本身，要么属于类的对象。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2015/07/05/Java的方法详解/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-数组与内存分配" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -540,73 +806,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数组是编程语言中最常见的数据结构，可用于存储多个数据，每个数组元素存放一个数据，通常可通过数组元素的索引来访问数组元素，包括为数组元素赋值和取出数组元素的值。Java数组并不是什么很难的知识，如果单从语法角度来看，数组的用法并不不难，只是对Java数组的内存分配可能不是很明白，《Java雇佣兵之数组与内存分配》系列尝试探讨从基础到内存分配的两大方面全面介绍Java的数组知识。</p>
-<h2 id="一、数组入门"><a href="#一、数组入门" class="headerlink" title="一、数组入门"></a>一、数组入门</h2><h3 id="1、首先明确一点：数组也是一种类型"><a href="#1、首先明确一点：数组也是一种类型" class="headerlink" title="1、首先明确一点：数组也是一种类型"></a>1、首先明确一点：数组也是一种类型</h3><p>Java数组要求所有的数组元素具有相同的数据类型。因此，在一个数组中，数组元素的类型是唯一的，即要求数组里只能存储一种类型的数据，而不能存储多种数据类型的数据。</p>
-<p>一旦数组的初始化完成，数组在内存中所占的空间将被固定下来，因此数组的长度将不可改变。即使把某个数组元素的数据清空，但它所占的空间依然被保留下来，依然属于该数组，数组的长度依然不变。Java数组既可以存储基本数据类型数据，也可以存储引用类型数据，只要所有的数组元素具有相同的类型即可。</p>
-<p>值得指出的是，数组也是一种数据类型，它本身是一种引用类型。例如int是一个基本类型，但int[]就是一种引用类型了。</p>
-<h3 id="2、定义数组"><a href="#2、定义数组" class="headerlink" title="2、定义数组"></a>2、定义数组</h3><p><strong>关于定义数组的语法</strong><br>Java语言支持两种语法格式来定义数组：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">type[] arrayName;</div><div class="line">type arrayName[];</div></pre></td></tr></table></figure></p>
-<p>对于这种两种语法格式而言，通常推荐使用第一种格式。因为第一种格式不仅具有更好的语意，而且具有更好的可读性。对于<code>type[] arrayName;</code>方式，很容易理解这是定义一个变量，其中变量名是arrayName，而变量类型是<code>type[]</code>。<code>type[]</code>是一种新类型，与type完全不同，例如，int类型是几本类型，但<code>int[]</code>是引用类型，因此，这种方式既容易理解也符合定义变量的语法。但这第二种个事故<code>type arrayname[]</code>的可读性就差了，看起来好像定义了一个类型为type的变量，而变量名是<code>arrayName[]</code>，这与真实的含义相去甚远。Java的这个设计就很糟糕，语法就像数学上的公理和定义，不要让语法产生歧义。</p>
-<p><strong>定义数组时不能指定数组长度？（是的，为什么？）</strong><br>数组是一种引用类型的变量，因此使用它定义一个变量时，仅仅表示定义了一个引用变量（可以认为是指针），这个引用变量还未指向任何有效的内存，因此定义数组时不能指定数组长度。而且由于定义数组只是定义了一个引用变量，并未指向任何有效的内存空间，所以还没有内存空间来存储数组元素，因此这个数组也不能使用，只有对数组进行初始化后才能使用。说白了，就是还没有内存空间，所以你还什么都干不了。</p>
-<h3 id="3、数组的初始化"><a href="#3、数组的初始化" class="headerlink" title="3、数组的初始化"></a>3、数组的初始化</h3><p>Java语言中数组必须先初始化，然后才可以使用。所谓初始化，就是为数组的数组元素分配内存空间，并为每个数组元素赋初始值。</p>
-<p><strong>能不能只分配内存空间而不赋予初始值呢？</strong><br>不能。一旦为数组的每个数组元素分配了内存空间，每个内存空间里存储的内容就是该数组元素的值，即使这个内存空间存储的内容是空，这个空也是一个值（null）。不管以哪种方式来初始化数组，只要为数组元素分配了内存空间，数组元素就具有了初始值。初始值的获得有两种方式：一种由系统自动分配，另一种由程序员指定。</p>
-<p><strong>数组的初始化的两种方式</strong></p>
-<ul>
-<li>静态初始化：初始化时有程序员显示指定每个数组元素的初始值，由系统决定数组的长度。</li>
-<li>动态初始化：初始化时程序员只指定数组长度，由系统分配数组元素的初始值。</li>
-</ul>
-<p><strong>静态初始化</strong><br>语法格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arrayName = <span class="keyword">new</span> type[]&#123;element1,element2,element3,element4,....&#125;</div></pre></td></tr></table></figure></p>
-<p>在上面的语法格式中，前面的type就是数组元素的数据类型，此处的type必须与定义数组变量时所使用的type相同，也可以是定义数组时所指定的type的子类。下面举个例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义一个int数组类型的变量，变量名为intArr</span></div><div class="line"><span class="keyword">int</span>[] intArr;</div><div class="line"><span class="comment">//使用静态初始化，初始化时只只指定数组元素的初始值，不指定数组长度</span></div><div class="line">intArr = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</div><div class="line"><span class="comment">//定义一个object数组类的变量，变量名为objArr</span></div><div class="line">Object[] objArr;</div><div class="line"><span class="comment">//使用静态初始化。初始化数组元素的类型是定义数组时数组元素的子类。</span></div><div class="line">objArr = <span class="keyword">new</span> String[]&#123;<span class="string">"Java"</span>,<span class="string">"C#"</span>&#125;</div><div class="line">Object objArr2;</div><div class="line">objArr2 = <span class="keyword">new</span> Object[]&#123;<span class="string">"Java"</span>,<span class="string">"C#"</span>&#125;</div></pre></td></tr></table></figure></p>
-<p>因为Java语言是面向对象的编程语言，能很好的支持子类和父类的继承关系：子类实例是一种特殊的父类实例。在上面程序中，String类型是Object类型的子类，即字符串是一种特殊的Object实例。</p>
-<p>除此之外，静态初始化还有如下简化的语法格式：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arryName = &#123;element1,element2,element3,...&#125;</div></pre></td></tr></table></figure></p>
-<p>在这种语法格式中，直接使用花括号来定义一个数组，在实际开发中，可能更习惯使用这种方式来定义和初始化数组，上面的代码也可以如下，等价：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] intArr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>动态初始化</strong><br>动态初始化只指定数组的长度，由系统为每个数组元素指定初始值。动态初始化的语法格式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">arryName = <span class="keyword">new</span> type[length];</div></pre></td></tr></table></figure></p>
-<p>在上面语法中，需要指定一个int类型的length参数，这个参数之地呢了数组的长度，也即是可以容纳的数组元素的个数。与静态初始化相似的是，此处的type必须与定义数组时使用的type类型要相同，或者是定义数组时使用的type类型的子类。下面代码演示了动态初始化：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] prices = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</div><div class="line">Object[] books = <span class="keyword">new</span> String[<span class="number">4</span>];</div></pre></td></tr></table></figure></p>
-<p>指向初始化时，程序员只需要指定数组的长度，即为每个数组元素指定所需要的内存空间，系统将负责为这些数组元素分配初始值。那么系统时按什么规则来分配初始值的呢？规则如下：<br>a. 数组元素的类型是基本类型中的整数类型时（byte、short、int和long），则数组元素的值是0；<br>b. 数组元素的类型是基本类型中的浮点类型（float、double），则数组元素的值是<code>0.0</code>；<br>c. 数组元素的类型是基本类型中的字符类型（char），则数组元素的值是<code>\u0000</code>；<br>d. 数组元素的类型是基本类型中的布尔类型（boolean），则数组元素的值是<code>false</code>；<br>e. 数组元素的类型是引用类型（类、接口和数组），则数组元素的值是<code>null</code>；</p>
-<h3 id="4、数组一定要初始化吗？"><a href="#4、数组一定要初始化吗？" class="headerlink" title="4、数组一定要初始化吗？"></a>4、数组一定要初始化吗？</h3><p>从前面我们已经知道，使用java数组之前必须先初始化数组，也就是位数组元素分配空间，并指定初始值。实际上，如果真正掌握了Java数组在内存中的分配机制，那么完全可以换一个方式来 初始化数组，或者说，数组无须经过初始化。</p>
-<p>始终记住：java的数组变量是引用类型的变量，他并不是数组对象本身，只要让数组变量指向有效的数组对象，程序中即可使用该数组变量，示例如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="comment">//定义并初始化nums数组</span></div><div class="line">	<span class="keyword">int</span>[] nums = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">20</span>, <span class="number">12</span>&#125;;</div><div class="line">	<span class="comment">//定义一个prices数组变量</span></div><div class="line">	<span class="keyword">int</span>[] prices;</div><div class="line">	<span class="comment">//让prices数组指向nums所引用的数组</span></div><div class="line">	prices = nums;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; prices.length ; i++ )&#123;</div><div class="line">		System.out.println(prices[i]);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//将prices数组的第三个元素赋值为34</span></div><div class="line">	prices[<span class="number">2</span>] = <span class="number">34</span>;</div><div class="line">	<span class="comment">//访问nums数组的第3个元素，将看到输出34</span></div><div class="line">	System.out.println(<span class="string">"nums数组的第3元素的值是："</span> + nums[<span class="number">2</span>]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>从上面粗体字可以看出，程序定义了prices数组之后，并对prices数组进行初始化。当执行int[] prices之后，程序在内存中的分配如下图：</p>
-<p><img src="(http://duni-article.stor.sinaapp.com/201506%2Farray%2F0.png" alt="">)</p>
-<p>当程序执行<code>prices = nums；</code>之后，prices变量将指向nums变量所引用的数组，此时prices变量和nums变量引用同一个数组对象。执行这条语句之后，prices变量已经指向有效的内存及一个长度为4的数组对象，因此程序完全可以正常使用prices变量了。</p>
-<p>常常说使用Java数组之前必须先初始化，可是现在prices变量却无须初始化，这不是互相矛盾吗？其实一点都不矛盾。关键是大部分的时候，我们把数组变量和数组对象搞混了，数组变量只是一个引用变量（有点类似于C语言里的指针），通常存放在栈内存中（也可被放入堆内存中）；而数组对象就是保存在对内存中的连续内存空间。对数组执行初始化，其实并不是对数组变量执行初始化，而是要对数组对象执行初始化——也就是位该数组对象分配一块内存空间，这块连续的内存空间的长度就是数组长度。虽然上面程序中的prices变量看似没有经过初始化，但执行prices= nums;就会让prices变量直接指向一个已经执行初始化的数组。</p>
-<h2 id="二、内存中的数组"><a href="#二、内存中的数组" class="headerlink" title="二、内存中的数组"></a>二、内存中的数组</h2><p>数组引用变量只是一个引用，这个引用变可以指向任何有效的内存，只有当该引用指向有效的内存后，才可通过该数组变量来访问数组元素。引用变量时访问真实对象的根本方式。也就是说，如果我们希望在程序中访问数组对象本身，则只能通过这个数组的引用变量来访问。</p>
-<p>实际的数组对象被存储在堆（heap）内存中，如果引用该数组对象的数组引用变量是一个局部变量，那么它被存储在栈（stack）内存中。数组在内存中的存储示意图如下1：</p>
-<p><img src="http://duni-article.stor.sinaapp.com/201506/array/1.png" alt="图1：数组在内存中的存储示意图"></p>
-<p>如果需要访问图1所示堆内存中的数组元素，则程序中只能通过<code>p[index]</code>的形式实现。也就是说，数组引用变量时访问堆内存中数组元素的根本方式。</p>
-<p>如果对内存中数组不在有任何引用变量指向自己，则这个数组将成为垃圾，该数组所占的内存将会被系统垃圾回收几只回收。因此，为了让垃圾回收机制回收一个数组所占用的内存空间，可以将该数组变量赋值为null，也就是切断了数组引用变量和实际数组之间的引用关系，实际的数组也就成为了垃圾。</p>
-<p>只要类型相互兼容，就可以让一个数组变量指向另一个实际的数组，这种操作会让人产生数组的长度可变的错觉。如下面代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义并初始化一个数组，使用静态初始化</span></div><div class="line"><span class="keyword">int</span>[] a = [<span class="number">5</span>,<span class="number">7</span>,<span class="number">20</span>];</div><div class="line"><span class="comment">//定义并初始化一个数组，使用动态初始化</span></div><div class="line"><span class="keyword">int</span>[] b = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>];</div><div class="line"><span class="comment">//输出b数组的长度</span></div><div class="line">System.out.println(<span class="string">"b数组的长度："</span> + b.length);</div><div class="line"><span class="comment">//循环输出a数组的元素</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;a.length; i++)&#123;</div><div class="line">    System.out.println(a[i]);</div><div class="line">&#125;</div><div class="line"><span class="comment">//循环输出b数组的元素</span></div><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;b.length; i++)&#123;</div><div class="line">    System.out.println(b[i]);</div><div class="line">&#125;</div><div class="line"><span class="comment">//因为a是int类型,b也是，所以可以将a的值赋给b。</span></div><div class="line"><span class="comment">//也就是让b引用指向a引用指向的数组</span></div><div class="line">b = a;</div><div class="line"><span class="comment">//在此输出b数组的长度</span></div><div class="line">System.out.println(<span class="string">"b数组的长度为："</span> + b.length);</div></pre></td></tr></table></figure></p>
-<p>输出结果：</p>
-<p>看起来似乎数组的长度是可变的，但这只是一个假象。我们必须牢记：定义并初始化一个数组后，在内存中分配了两个空间，一个用于存放数组的引用变量，另一个用于存放数组本身。下面结合图像来说明上面程序都的运行过程。</p>
-<p>当程序定义并初始化了两个a、b数组后，系统内存中实际产生了4块内存区域，其中栈内存中有两个引用变量：a和b，堆内存中也有两块内存区，分别用于存储a和b引用所指向的数组本身。此时计算机内存的存储示意图如下图：</p>
-<p><img src="http://duni-article.stor.sinaapp.com/201506/array/3.png" alt="图2：定义并初始化a、b两个数组的存储示意图"></p>
-<p>从图2中可以看出a和b引用个字所引用的数组对象，并可以很清楚的看出a变量所引用的数组长度是3，b变量所引用的数组长度是4。</p>
-<p>当执行b=a时，系统将会把a的赋值给b，a和b都是引用类型变量，存储的是地址。因此把a的值赋给b后，就是让b指向a所指向的地址。此时计算机内存的存储示意图如下图：</p>
-<p><img src="http://duni-article.stor.sinaapp.com/201506/array/4.png" alt="图3：让b引用指向a引用所指向的数组后的存储示意图"></p>
-<p>从图3可以看出，当执行了b=a之后，堆内存中的第一个数组具有了两个引用：a变量和b变量都引用了第一个数组。此时第二个数组就失去了引用，就变成了垃圾了，只有等待垃圾回收机制来回收它——但它的长度依然保持不变，直到它彻底消失。</p>
-<h3 id="1、基本类型数组的初始化"><a href="#1、基本类型数组的初始化" class="headerlink" title="1、基本类型数组的初始化"></a>1、基本类型数组的初始化</h3><p>对于基本数组类型而言，数组元素的值直接存储在对应数组元素中，因此，初始化数组时，先为该数组分配内存空间，然后直接将数组元素的值存入对应数组中。</p>
-<p>下面程序定义了一个<code>int[]</code>类型的数组变量，采用动态初始化方式初始化了该数组，并显示的为每个数组元素赋值：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">     <span class="keyword">int</span>[] iArr;</div><div class="line">     iArr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];</div><div class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; iArr.length ; i ++)&#123;</div><div class="line">	     iArr[i] = i + <span class="number">10</span>;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面代码的执行过程代表了基本类型数组初始化的典型过程。下面将集合示意图详细介绍这段代码的执行过程。<br>执行第一行代码<code>int[] iArr;</code>时，仅定义一个数组变量，此时内存中的存储示意图如图4：</p>
-<p><img src="http://duni-article.stor.sinaapp.com/201506/array/5.png" alt="图4：定义iArr数组变量后的存储示意图"></p>
-<p>执行了<code>int[] iArr;</code>后，仅在内存中定义了一个空引用（就是iArr数组变量），这个引用濒危指向任何有效的内存，淡然无法指定数组的长度。</p>
-<p>当执行<code>iArr = new int[5];</code>动态初始化后，系统将负责为该数组分配内存空间，并分配默认的初始值；所有数组元素都被赋值为0，此时内存中的存储示意图如图5所示：</p>
-<p><img src="http://duni-article.stor.sinaapp.com/201506/array/6.png" alt="图5：动态初始化iArr数组后的存储示意图"></p>
-<p>此时iArr数组的每个元素的值都是0，当循环为该数组的每个元素一次赋值后，此时每个数组元素的值都变成程序显示指定的值。显示指定每个数组元素值后的存储示意图如下：</p>
-<p><img src="http://duni-article.stor.sinaapp.com/201506/array/7.png" alt="图6：显示指定每个数组元素值后的存储示意图"></p>
-<p>从上图中可以看到基本类型数组的存储示意图，每个数组元素的值直接存储在对应的内存中。操作基本类型数组的数组元素是，实际上就是操作基本类型的变量。</p>
-<h3 id="2、引用类型数组的初始化"><a href="#2、引用类型数组的初始化" class="headerlink" title="2、引用类型数组的初始化"></a>2、引用类型数组的初始化</h3><p>引用类型数组的数组元素是引用，因此情况变得更为复杂。每个数组元素里存储的还是一个引用，它指向另一块内存，这块内存里存储了有效的数据。</p>
-<p>为了更好的说明引用类型数组的运行过程，下面先定义一个Person类（所有类都是引用类型）：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</div><div class="line">	<span class="comment">//年龄</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> age;</div><div class="line">	<span class="comment">//身高</span></div><div class="line">	<span class="keyword">public</span> <span class="keyword">double</span> height;</div><div class="line">	<span class="comment">//定义一个info方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">info</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"我的年龄是："</span>+age +<span class="string">"，我的身高是："</span>+height);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>下面程序定义一个Person[]数组，接着动态初始化这个数组，并为每个数组元素指定值：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayTest</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">//定义一个students数组变量，其类型是Person[]</span></div><div class="line">		Person[] students;</div><div class="line">		<span class="comment">//执行动态初始化</span></div><div class="line">		students = <span class="keyword">new</span> Person[<span class="number">2</span>];</div><div class="line">		<span class="comment">//创建一个Person实例，并将这个Person实例赋给zhang变量</span></div><div class="line">		Person zhang = <span class="keyword">new</span> Person();</div><div class="line">		<span class="comment">//为zhang所引用的Person对象的age,height赋值</span></div><div class="line">		zhang.age = <span class="number">15</span>;</div><div class="line">		zhang.height = <span class="number">158</span>;</div><div class="line">		<span class="comment">//创建一个Person实例，并将这个Person实例赋给li变量</span></div><div class="line">		Perosn li = <span class="keyword">new</span> Person();</div><div class="line">		<span class="comment">//为li所引用的Person对象的age,height赋值</span></div><div class="line">		li.age = <span class="number">16</span>;</div><div class="line">		li.height = <span class="number">161</span>;</div><div class="line">		<span class="comment">//将zhang变量的值赋值给第一数组元素</span></div><div class="line">		students[<span class="number">0</span>] = zhang;</div><div class="line">		<span class="comment">//将li变量的值赋值给第二数组元素</span></div><div class="line">		students[<span class="number">1</span>] = li;</div><div class="line">		<span class="comment">//下面两行代码的结果完全一样，因为li和students[1]指向的是同一个Person实例</span></div><div class="line">		li.info();</div><div class="line">		stsudents[<span class="number">1</span>].info();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面代码的执行过程代表了引用类型数组初始化的典型过程。</p>
-<p>执行<code>Person[] students;</code>代码时，这行代码仅仅在栈内存中定义了一个引用变量，也就是一个指针，这个指针还并没有指向任何有效的内存区。此时内存中存储示意图如下：</p>
-<p><img src="http://duni-article.stor.sinaapp.com/201506/array/8.png" alt="图7：定义一个students数组变量后的存储示意图"></p>
-<p>在上图中，栈内存中定义了一个students变量，它仅仅是一个引用，并未指向任何有效的内存，直到执行初始化，本程序对students数组执行动态初始化，动态初始化由系统为数组元素分配默认的初始值：null，即为每个数组元素的值都是null。执行动态初始化后的示意图如下图8：</p>
-<p><img src="http://duni-article.stor.sinaapp.com/201506/array/9.png" alt="图8：执行动态初始化后的示意图"></p>
-<p>从图8中可以看出，students数组的两个数组元素都是引用，而且这个引用并未指向任何有效的内存，因此每个数组元素的值都是null。这意味着依然不能直接使用students数组元素，因为每个数组元素都是null，这相当于定义了两个连续的Person变量，但这个变量还未指向任何有效的内存区，所以这两个连续的Person变量还不能使用。</p>
-<p>接着代码定义了zhang和li两个Person实例，定义这两个实例实际上分配了4块内存，在栈内存中储存了zhang和li两个引用变量，还在堆内存中存储了两个Person实例，此时的内存示意图如下图9：</p>
-<p><img src="http://duni-article.stor.sinaapp.com/201506/array/10.png" alt="图9：创建2个Person实例后的存储示意图"></p>
-<p>此时students数组的两个元素依然是null，直到程序依次将zhang赋给students数组的第一个元素，把li赋给students数组的第二个元素，students数组的两个数组元素将会指向有效的内存区。此时的内存存储示意图如图10：</p>
-<p><img src="http://duni-article.stor.sinaapp.com/201506/array/11.png" alt="图10：为数组赋值后的存储示意图"></p>
-<p>此时<code>zhang</code>和<code>students[0]</code>指向同一个内存区，而且它们都是引用类型变量，因此通过<code>zhang</code>和<code>students[0]</code>来访问Person实例的Field和方法的效果完全一样，不论修改<code>students[0]</code>所指向的<code>Person</code>实例的<code>Field</code>还是修改<code>zhang</code>变量所指向的<code>Person</code>实例的Field，所修改的其实是同一个内存区，所以必然互相影响，同理，li和<code>students[1]</code>也是引用同一个Person对象，也具有相同的效果。</p>
-
+              数组是编程语言中最常见的数据结构，可用于存储多个数据，每个数组元素存放一个数据，通常可通过数组元素的索引来访问数组元素，包括为数组元素赋值和取出数组元素的值。Java数组并不是什么很难的知识，如果单从语法角度来看，数组的用法并不不难，只是对Java数组的内存分配可能不是很明白，《Java雇佣兵之数组与内存分配》系列尝试探讨从基础到内存分配的两大方面全面介绍Java的数组知识。
+          
       
     </div>
     
@@ -619,6 +820,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2015/06/27/数组与内存分配/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -822,206 +1027,6 @@
       
         <p class="article-more-link">
           <a href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CSS的常见问题(一)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/24/CSS的常见问题(一)/" class="article-date">
-      <time datetime="2015-05-24T10:47:10.000Z" itemprop="datePublished">2015-05-24</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/24/CSS的常见问题(一)/">CSS的常见问题(一)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              多行式的编码风格可读性强，但缺点是容易使CSS文件的行数过多，编辑样式时，需要来回滚动编辑器，影响开发速度，另外，过多的空白，也会增大CSS的文件大小。一行式编码风格在可读性方面稍差，但可以有效减少CSS文件的行数，有利于提高开发速度，同时也可以减少CSS的大小。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/CSS/">CSS</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2015/05/24/CSS的常见问题(一)/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JavaScript中的继承入门" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/05/18/JavaScript中的继承入门/" class="article-date">
-      <time datetime="2015-05-18T10:10:57.000Z" itemprop="datePublished">2015-05-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/18/JavaScript中的继承入门/">JavaScript中的继承入门</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>正统的面相对象的语言都会提供extend之类的方法用于出来类的继承，但Javascript并不提供extend方法，在Javascript中使用继承需要用点技巧。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2015/05/18/JavaScript中的继承入门/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-利用jQuery克隆对象实例" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/12/15/利用jQuery克隆对象实例/" class="article-date">
-      <time datetime="2014-12-15T05:56:24.000Z" itemprop="datePublished">2014-12-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/15/利用jQuery克隆对象实例/">利用jQuery克隆对象实例</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              当点击右边元素的X时，向左边DIV添加一个，同时右边被设为`disabled`。当点击左边被加入的元素时，删除该元素，同时右边被`disabled`的元素恢复。利用jQuery的对象克隆，轻轻松松一行代码实现。
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2014/12/15/利用jQuery克隆对象实例/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
