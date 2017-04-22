@@ -76,7 +76,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -112,6 +112,13 @@
         <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -165,7 +172,13 @@
                         
                             <li><a href="/">主页</a></li>
                         
+                            <li><a href="/obook/">商店</a></li>
+                        
+                            <li><a href="/demo/">Demo</a></li>
+                        
                             <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/categories/随笔扯谈/">随笔</a></li>
                         
                             <li><a href="/tags/">标签云</a></li>
                         
@@ -250,7 +263,13 @@
                 
                     <li><a href="/">主页</a></li>
                 
+                    <li><a href="/obook/">商店</a></li>
+                
+                    <li><a href="/demo/">Demo</a></li>
+                
                     <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/随笔扯谈/">随笔</a></li>
                 
                     <li><a href="/tags/">标签云</a></li>
                 
@@ -283,6 +302,78 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Spring-IOC-依赖注入、控制反转-概念理解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/" class="article-date">
+      <time datetime="2013-08-21T13:09:01.000Z" itemprop="datePublished">2013-08-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/">Spring IOC(依赖注入、控制反转)概念理解</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>假设A组件依赖B组件</p>
+<ol>
+<li>自己new一个。(主动)</li>
+<li>找工厂去要一个。(主动)</li>
+<li>等，等容器为我们提供一个被依赖组件。(被动)
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-String、StringBuffer、StringBuilder" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -334,7 +425,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/08/18/String、StringBuffer、StringBuilder/#more">more >></a>
+          <a href="/2013/08/18/String、StringBuffer、StringBuilder/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -403,7 +494,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/08/14/数据库优化(一)索引及索引合理利用/#more">more >></a>
+          <a href="/2013/08/14/数据库优化(一)索引及索引合理利用/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -471,7 +562,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2012/09/08/abstract-class-and-interface/#more">more >></a>
+          <a href="/2012/09/08/abstract-class-and-interface/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -541,7 +632,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2012/09/02/==和equals方法终极解析/#more">more >></a>
+          <a href="/2012/09/02/==和equals方法终极解析/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -609,7 +700,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2012/08/02/手把手教你GlassFish与Eclipse的集成安装、配置/#more">more >></a>
+          <a href="/2012/08/02/手把手教你GlassFish与Eclipse的集成安装、配置/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -678,7 +769,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2010/07/25/可怜的钱学森，可怜的中国/#more">more >></a>
+          <a href="/2010/07/25/可怜的钱学森，可怜的中国/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -811,7 +902,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2010/01/04/小镇脾气与新貌/#more">more >></a>
+          <a href="/2010/01/04/小镇脾气与新貌/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -871,22 +962,6 @@
     </div>
     
 <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
 
 
 

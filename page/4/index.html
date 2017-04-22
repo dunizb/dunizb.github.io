@@ -76,7 +76,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -112,6 +112,13 @@
         <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -165,7 +172,13 @@
                         
                             <li><a href="/">主页</a></li>
                         
+                            <li><a href="/obook/">商店</a></li>
+                        
+                            <li><a href="/demo/">Demo</a></li>
+                        
                             <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/categories/随笔扯谈/">随笔</a></li>
                         
                             <li><a href="/tags/">标签云</a></li>
                         
@@ -250,7 +263,13 @@
                 
                     <li><a href="/">主页</a></li>
                 
+                    <li><a href="/obook/">商店</a></li>
+                
+                    <li><a href="/demo/">Demo</a></li>
+                
                     <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/随笔扯谈/">随笔</a></li>
                 
                     <li><a href="/tags/">标签云</a></li>
                 
@@ -283,6 +302,74 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-CSS的低权重原则—避免滥用子选择器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/" class="article-date">
+      <time datetime="2015-05-24T10:49:10.000Z" itemprop="datePublished">2015-05-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/">CSS的低权重原则—避免滥用子选择器</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              “CSS的低权重原则”既可以的到`font-size:40px`的样式，又可以得到`color： red`的样式。如果两个不同选择符设置的样式有冲突，又会如何？
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-CSS的常见问题(一)" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -333,7 +420,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2015/05/24/CSS的常见问题(一)/#more">more >></a>
+          <a href="/2015/05/24/CSS的常见问题(一)/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -397,7 +484,7 @@
       
       
         <p class="article-more-link">
-          <a href="/2015/05/18/JavaScript中的继承入门/#more">more >></a>
+          <a href="/2015/05/18/JavaScript中的继承入门/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -465,7 +552,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/12/15/利用jQuery克隆对象实例/#more">more >></a>
+          <a href="/2014/12/15/利用jQuery克隆对象实例/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -533,7 +620,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/11/08/cookie-and-session-distinction-and-contact/#more">more >></a>
+          <a href="/2014/11/08/cookie-and-session-distinction-and-contact/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -601,7 +688,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/10/29/Talking-about-the-development-of-AOP-development/#more">more >></a>
+          <a href="/2014/10/29/Talking-about-the-development-of-AOP-development/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -669,7 +756,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/10/28/漫谈AOP开发之谈谈AOP那些学术概念/#more">more >></a>
+          <a href="/2014/10/28/漫谈AOP开发之谈谈AOP那些学术概念/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -737,7 +824,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/#more">more >></a>
+          <a href="/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -801,7 +888,7 @@
       
       
         <p class="article-more-link">
-          <a href="/2014/09/06/javascript-event/#more">more >></a>
+          <a href="/2014/09/06/javascript-event/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -870,75 +957,7 @@
       
       
         <p class="article-more-link">
-          <a href="/2014/08/24/数据库设计的一些问题/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spring：一切都是Bean(二)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/07/27/Spring：一切都是Bean(二)/" class="article-date">
-      <time datetime="2014-07-27T10:49:22.000Z" itemprop="datePublished">2014-07-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/Spring：一切都是Bean(二)/">Spring：一切都是Bean(二)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              无论是静态工厂方法，还是实例工厂方法，都需要增加一个factory-method属性。实例工厂方法，还需要指定factory-bean属性
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2014/07/27/Spring：一切都是Bean(二)/#more">more >></a>
+          <a href="/2014/08/24/数据库设计的一些问题/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -998,22 +1017,6 @@
     </div>
     
 <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
 
 
 

@@ -76,7 +76,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -112,6 +112,13 @@
         <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -165,7 +172,13 @@
                         
                             <li><a href="/">主页</a></li>
                         
+                            <li><a href="/obook/">商店</a></li>
+                        
+                            <li><a href="/demo/">Demo</a></li>
+                        
                             <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/categories/随笔扯谈/">随笔</a></li>
                         
                             <li><a href="/tags/">标签云</a></li>
                         
@@ -250,7 +263,13 @@
                 
                     <li><a href="/">主页</a></li>
                 
+                    <li><a href="/obook/">商店</a></li>
+                
+                    <li><a href="/demo/">Demo</a></li>
+                
                     <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/随笔扯谈/">随笔</a></li>
                 
                     <li><a href="/tags/">标签云</a></li>
                 
@@ -283,6 +302,77 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-使用POI组件导出数据为Excel文件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/09/使用POI组件导出数据为Excel文件/" class="article-date">
+      <time datetime="2014-04-09T05:53:19.000Z" itemprop="datePublished">2014-04-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/09/使用POI组件导出数据为Excel文件/">使用POI组件导出数据为Excel文件</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>以下例子为HR系统中一个员工管理模块，导出员工数据为Excel文件的功能。</p>
+<p>系统结构为：Struts2+MyBaties+Spring3+MySQL</p>
+<p><img src="http://img2.ph.126.net/BVkxZkvJqRzgUbQVfehxVA==/6608189127748145441.png" alt=""></p>
+<p>HTML、JS：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;input type=<span class="string">"button"</span> value=<span class="string">"导出EXCEL"</span> onclick=<span class="string">"excelFn();"</span>/&gt;</div><div class="line"><span class="comment">/** 生成Excel文件 */</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">excelFn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">document</span>.location = <span class="string">"$&#123;pageContext.request.contextPath&#125;/employee/downExcel.action"</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>Java Action：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** 员工资料导出Excel */</span></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">downExcel</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">try</span>&#123;</div><div class="line">          <span class="comment">// 调用业务层导出员工资料</span></div><div class="line">          hrmService.exportEmployeeInfo(employee);</div><div class="line">    &#125;<span class="keyword">catch</span>(Exception ex)&#123;</div><div class="line">           log(ex);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> NONE;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Java Service：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 导出员工资料</div><div class="line"> * <span class="doctag">@param</span> employee</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exportEmployeeInfo</span><span class="params">(Employee employee)</span></span>&#123;</div><div class="line">    <span class="keyword">try</span>&#123;</div><div class="line">           <span class="comment">// 查询条件判断(对查询参数进行封装)</span></div><div class="line">           Map&lt;String, Object&gt; params = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</div><div class="line">           <span class="keyword">if</span> (employee != <span class="keyword">null</span>)&#123;</div><div class="line">               <span class="keyword">if</span> (!StringUtils.isNullOrEmpty(employee.getName()))&#123;</div><div class="line">                    params.put(<span class="string">"name"</span>, <span class="string">"%"</span> + employee.getName() + <span class="string">"%"</span>);</div><div class="line">               &#125;</div><div class="line">               <span class="keyword">if</span> (!StringUtils.isNullOrEmpty(employee.getCardId()))&#123;</div><div class="line">                    params.put(<span class="string">"cardId"</span>, <span class="string">"%"</span> + employee.getCardId() + <span class="string">"%"</span>);</div><div class="line">               &#125;</div><div class="line">               <span class="keyword">if</span> (!StringUtils.isNullOrEmpty(employee.getPhone()))&#123;</div><div class="line">                    params.put(<span class="string">"phone"</span>, <span class="string">"%"</span> + employee.getPhone() + <span class="string">"%"</span>);</div><div class="line">               &#125;</div><div class="line">               params.put(<span class="string">"employee"</span>, employee);</div><div class="line">            &#125;</div><div class="line">            List&lt;EmployeeInfo&gt; emps = employeeMapper.getEmployeeInfo(params);</div><div class="line">            <span class="comment">// 调用工具类来导出员工资料</span></div><div class="line">            <span class="comment">// </span></div><div class="line">            String[] titleHeader = &#123;<span class="string">"编号"</span>,<span class="string">"姓名"</span>,<span class="string">"性别"</span>, <span class="string">"手机号码"</span>,<span class="string">"邮箱"</span>, <span class="string">"职位"</span>,<span class="string">"学历"</span>,<span class="string">"身份证号码"</span>,<span class="string">" 部门"</span>,<span class="string">"联系地址"</span>,<span class="string">"建档日期"</span>&#125;;</div><div class="line">            ExcelUtils.export(<span class="string">"员工信息"</span>, <span class="string">"员工资料"</span>, titleHeader, </div><div class="line">                        ServletActionContext.getResponse(),</div><div class="line">                        ServletActionContext.getRequest(), emps);</div><div class="line">        &#125;<span class="keyword">catch</span>(Exception ex)&#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> HrmException(<span class="string">"导出员工资料时出现异常！"</span>, ex);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ExcelUtils.java：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Excel操作的工具类</div><div class="line"> * <span class="doctag">@date</span> 2013-5-29 上午9:47:52</div><div class="line"> * <span class="doctag">@version</span> 1.0</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExcelUtils</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 导出Excel的方法</div><div class="line">     * <span class="doctag">@param</span> excelFileName 生成Excel文件的名称</div><div class="line">     * <span class="doctag">@param</span> sheetname 工作单的名称</div><div class="line">     * <span class="doctag">@param</span> titleHeader (第一行)标题行</div><div class="line">     * <span class="doctag">@param</span> respone 响应</div><div class="line">     * <span class="doctag">@param</span> request 请求</div><div class="line">     * <span class="doctag">@param</span> data 数据</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">export</span><span class="params">(String excelFileName, String sheetname, String[] titleHeader, </span></span></div><div class="line">                        HttpServletResponse response, </div><div class="line">                        HttpServletRequest request, List&lt;?&gt; data) &#123;</div><div class="line">        <span class="comment">/** 创建工作簿 */</span></div><div class="line">        HSSFWorkbook workbook = <span class="keyword">new</span> HSSFWorkbook();</div><div class="line">        <span class="comment">/** 创建工作单*/</span></div><div class="line">        HSSFSheet sheet = workbook.createSheet(sheetname);</div><div class="line">        </div><div class="line">        <span class="comment">/** 创建第一行作为标题行 */</span></div><div class="line">        HSSFRow row = sheet.createRow(<span class="number">0</span>);</div><div class="line">        <span class="comment">/** 循环创建第一行中的单元格 */</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; titleHeader.length; i++)&#123;</div><div class="line">            HSSFCell cell = row.createCell(i);</div><div class="line">            cell.setCellValue(titleHeader[i]);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            <span class="comment">/** 下面把集合中的数据写到Excel中  (从第二行开始)*/</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; data.size(); i++)&#123;</div><div class="line">                row = sheet.createRow(i + <span class="number">1</span>);</div><div class="line">                <span class="comment">// 从集合中获取一个实体</span></div><div class="line">                Object obj = data.get(i);</div><div class="line">                <span class="comment">// 获取这个实体中的所有属性</span></div><div class="line">                Field[] fields = obj.getClass().getDeclaredFields();</div><div class="line">                <span class="comment">// 循环该实体中所有属性</span></div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; fields.length; j++)&#123;</div><div class="line">                    <span class="comment">// 创建单元格</span></div><div class="line">                    HSSFCell cell = row.createCell(j);</div><div class="line">                    <span class="comment">//  判断该Field是否能访问</span></div><div class="line">                    Field field = fields[j];</div><div class="line">                    <span class="keyword">if</span> (!field.isAccessible()) field.setAccessible(<span class="keyword">true</span>);</div><div class="line">                    <span class="comment">// 获取该Field的值</span></div><div class="line">                    Object res = field.get(obj);</div><div class="line">                    <span class="comment">// 设置单元格的值</span></div><div class="line">                    cell.setCellValue(res.toString());</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="comment">// 判断浏览器类型</span></div><div class="line">                String userAgent = request.getHeader(<span class="string">"user-agent"</span>);</div><div class="line">                <span class="keyword">if</span> (userAgent.toLowerCase().indexOf(<span class="string">"msie"</span>) != -<span class="number">1</span>)&#123; <span class="comment">//MSIE</span></div><div class="line">                    excelFileName = URLEncoder.encode(excelFileName, <span class="string">"utf-8"</span>);</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    excelFileName = <span class="keyword">new</span> String(excelFileName.getBytes(<span class="string">"utf-8"</span>), <span class="string">"iso-8859-1"</span>);</div><div class="line">                &#125;</div><div class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 设置响应头</span></div><div class="line">            response.setHeader(<span class="string">"Content-Disposition"</span>, <span class="string">"attachment;filename="</span> + excelFileName + <span class="string">".xls"</span>);</div><div class="line">            <span class="comment">// 输出Excel</span></div><div class="line">            workbook.write(response.getOutputStream());</div><div class="line">        &#125;<span class="keyword">catch</span>(Exception ex)&#123;</div><div class="line">            ex.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>代码完成后点击导出按钮，结果如图：<br><img src="http://img1.ph.126.net/KQ8Iezk1JrQG3udm8QtrLQ==/6599306173307820322.png" alt=""></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/组件使用/">组件使用</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Tomcat-study-notes" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -454,7 +544,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/12/08/Struts2-xml-result-in-the-transmission-of-multiple-parameters/#more">more >></a>
+          <a href="/2013/12/08/Struts2-xml-result-in-the-transmission-of-multiple-parameters/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -522,7 +612,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/12/07/Java-io-FTP-FileZill-Server设置/#more">more >></a>
+          <a href="/2013/12/07/Java-io-FTP-FileZill-Server设置/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -590,7 +680,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/11/30/小米活塞耳机1代开箱图鉴/#more">more >></a>
+          <a href="/2013/11/30/小米活塞耳机1代开箱图鉴/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -664,7 +754,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/11/15/使用JXL组件导入Excel文件数据到数据库/#more">more >></a>
+          <a href="/2013/11/15/使用JXL组件导入Excel文件数据到数据库/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -732,7 +822,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/10/29/System-out-println与System-err-println的区别/#more">more >></a>
+          <a href="/2013/10/29/System-out-println与System-err-println的区别/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -800,7 +890,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/10/26/BigDecimal-conversion-Integer/#more">more >></a>
+          <a href="/2013/10/26/BigDecimal-conversion-Integer/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -868,7 +958,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/#more">more >></a>
+          <a href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -936,79 +1026,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2013/09/21/Struts2-view-forwarding-type-summary/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Spring-IOC-依赖注入、控制反转-概念理解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/" class="article-date">
-      <time datetime="2013-08-21T13:09:01.000Z" itemprop="datePublished">2013-08-21</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/">Spring IOC(依赖注入、控制反转)概念理解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>假设A组件依赖B组件</p>
-<ol>
-<li>自己new一个。(主动)</li>
-<li>找工厂去要一个。(主动)</li>
-<li>等，等容器为我们提供一个被依赖组件。(被动)
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/#more">more >></a>
+          <a href="/2013/09/21/Struts2-view-forwarding-type-summary/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -1068,22 +1086,6 @@
     </div>
     
 <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
 
 
 
