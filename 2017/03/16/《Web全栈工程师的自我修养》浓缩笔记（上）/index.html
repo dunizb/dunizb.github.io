@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=http://dunizb.com/browseupdate/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="张兵" />
+
+
+
+<meta name="description" content="本书的作者余果，腾讯社交用户体验设计部高级UI工程师，前端开发组负责人，熟悉前端开发、iOS开发、PHP开发和Ruby开发等。这本书所讲的内容适合所程序员，不限于前端后端客户端，很多内容其实都是常识。第二遍阅读，特此整理此书精华内容笔记。">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《Web全栈工程师的自我修养》浓缩笔记（上）">
+<meta property="og:url" content="http://dunizb.com/2017/03/16/《Web全栈工程师的自我修养》浓缩笔记（上）/index.html">
+<meta property="og:site_name" content="Dunizb">
+<meta property="og:description" content="本书的作者余果，腾讯社交用户体验设计部高级UI工程师，前端开发组负责人，熟悉前端开发、iOS开发、PHP开发和Ruby开发等。这本书所讲的内容适合所程序员，不限于前端后端客户端，很多内容其实都是常识。第二遍阅读，特此整理此书精华内容笔记。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-48d9e2503e18d59f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://dunizb.com/2017/03/16/《Web全栈工程师的自我修养》浓缩笔记（上）/[https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490023285&di=7e5c19431bb3a3f7f8a4613d8aad0267&imgtype=jpg&er=1&src=http%3A%2F%2Ffarm6.staticflickr.com%2F5491%2F10973734404_1c7b19e69e_o.jpg">
+<meta property="og:updated_time" content="2017-04-23T07:17:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《Web全栈工程师的自我修养》浓缩笔记（上）">
+<meta name="twitter:description" content="本书的作者余果，腾讯社交用户体验设计部高级UI工程师，前端开发组负责人，熟悉前端开发、iOS开发、PHP开发和Ruby开发等。这本书所讲的内容适合所程序员，不限于前端后端客户端，很多内容其实都是常识。第二遍阅读，特此整理此书精华内容笔记。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-48d9e2503e18d59f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Dunizb" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>《Web全栈工程师的自我修养》浓缩笔记（上） | Dunizb</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.gif" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">张兵</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/obook/">商店</a></li>
+                        
+                            <li><a href="/demo/">Demo</a></li>
+                        
+                            <li><a href="/categories/随笔扯谈/">随笔</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileZill/">FileZill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftp/">ftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javase/">javase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts/">struts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/备忘/">备忘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储过程/">存储过程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总节/">总节</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件上传/">文件上传</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生活/">生活</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组件使用/">组件使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/规范/">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象编程/">面向对象编程</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张兵</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.gif" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张兵</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/obook/">商店</a></li>
+                
+                    <li><a href="/demo/">Demo</a></li>
+                
+                    <li><a href="/categories/随笔扯谈/">随笔</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" target="_blank" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-《Web全栈工程师的自我修养》浓缩笔记（上）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/16/《Web全栈工程师的自我修养》浓缩笔记（上）/" class="article-date">
+      <time datetime="2017-03-16T13:59:00.000Z" itemprop="datePublished">2017-03-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      《Web全栈工程师的自我修养》浓缩笔记（上）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+    </div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>本书的作者余果，腾讯社交用户体验设计部高级UI工程师，前端开发组负责人，熟悉前端开发、iOS开发、PHP开发和Ruby开发等。这本书所讲的内容适合所程序员，不限于前端后端客户端，很多内容其实都是常识。第二遍阅读，特此整理此书精华内容笔记。<br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/68937-48d9e2503e18d59f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="timg (1).jpg"></p>
+<h2 id="一、什么是全栈工程师？"><a href="#一、什么是全栈工程师？" class="headerlink" title="一、什么是全栈工程师？"></a>一、什么是全栈工程师？</h2><p>对于全栈工程师 ，业界并没有严格的定义 ，并不是说一定要一种都不能少地具备哪几项知识才能叫做全栈工程师 。我倾向于认为 ，<strong>应该从能力和思维方式两方面 ，来判定一个人是否是一个合格的全栈工程师 。</strong></p>
+<p>国外是怎么样定义的呢？在著名的问答网站Quora上有一个高票的回答：</p>
+<blockquote>
+<p>全栈工程师是指 ，一个能处理数据库 、服务器 、系统工程和客户端的所有工作的工程师 。根据项目的不同 ，客户需要的可能是移动栈 、 Web栈 ，或者原生应用程序栈 。</p>
+</blockquote>
+<p>简单来说 ，全栈工程师就是可以独立完成一个产品的人 。当客户让他去做一些舒适区之外的工作时 ，他敢于迎难而上 ，并成功完成任务 。</p>
+<h2 id="“各司其职”的弊端"><a href="#“各司其职”的弊端" class="headerlink" title="“各司其职”的弊端"></a>“各司其职”的弊端</h2><p>虽然流水线式的职业划分和工程管理有很多优点，但是它就像一把双刃剑，在带来高可控性、可用性和可管理性的同时，也给工程师带来了一些困境。</p>
+<p><strong>1. 工程师职责不清导致效率低下</strong></p>
+<p><strong>2. 工程师缺乏主人感导致产品质量差</strong></p>
+<p><strong>3. 工程师缺乏全局的视野影响个人成长</strong><br>当工程师希望晋升到更高级的职位 ，如高级工程师或者管理岗位时 ，公司对他的大局观会有更高的要求 ，这就不仅仅是做好 “分内 ”的工作就行的 。高级工程师需要有对设计的理解 、对后台知识的了解 ，以及有跨团队推动项目的能力 。长期研究专精的专业知识会让一个人视野变窄 ，变成 “学术派 ” ，而不是 “实践派 ” 。</p>
+<p><strong>4. 更多角色导致项目效率低下</strong></p>
+<h3 id="全栈工程师登上舞台"><a href="#全栈工程师登上舞台" class="headerlink" title="全栈工程师登上舞台"></a>全栈工程师登上舞台</h3><p>因为各司其职的工作流程有效率低下 、成本高的缺点 ，所以很多创业公司都不会配备齐全的流水线 ，而是希望采用更灵活的方式来组建团队 ，全栈工程师也因此成为了理想的选择 。<strong>但是全栈工程师的兴起还离不开这两个重要因素 ：技术的发展 ，以及提供 PaaS服务的平台越来越多 。</strong></p>
+<h3 id="全栈工程师基本要有的觉悟"><a href="#全栈工程师基本要有的觉悟" class="headerlink" title="全栈工程师基本要有的觉悟"></a>全栈工程师基本要有的觉悟</h3><p>而我推崇的全栈工程师则是与专精工程师不同的另一条道路 。全栈工程师除了在一个专精知识领域有深入研究之外 ，还以知识广博和解决问题能力强著称 。所以我认为有志成为全栈工程师的学习者 ，要有这样几个觉悟 。</p>
+<p><strong>1. 一专多长</strong><br>一专多长的意思是 ，工程师首先有一个专精的方向 ，在这个方向上足够精通之后 （高级工程师级别 ） ，以此为突破点去学习更多的知识 ，增加自己的长处 。如果还没有获得某个方向上足够深入的理解 ，就不要囫囵吞枣地去学习其他领域的知识 。</p>
+<p><strong>2.  解决问题，而不是醉心技术</strong></p>
+<h2 id="二、如何成为全栈工程师"><a href="#二、如何成为全栈工程师" class="headerlink" title="二、如何成为全栈工程师"></a>二、如何成为全栈工程师</h2><h3 id="先精后广，一专多长"><a href="#先精后广，一专多长" class="headerlink" title="先精后广，一专多长"></a>先精后广，一专多长</h3><p>“先精后广 ，一专多长 ”是指 ，建议初学者学习全栈技能的时候 ，先在一个特定的方向上有比较深入的钻研 ，然后再将学习目标渐渐推广开来 。比如先从前端方向入手 ，掌握了基本的 <code>HTML</code>、<code>CSS</code> 、<code>JavaScript</code>之后 ，不要转头向服务器端语言或者 App 方向发展 ，而是深入到性能优化 、 SEO 、多种框架 、响应式页面等前端细节中去 。经过一到两年的深入研究之后 ，再去学习其他方向 。</p>
+<p>如果是毕业生或者初学者 ，我不建议在刚开始的一到两年接触太多技术 ，杂而不精 ，结果可能会对后面的职业道路产生副作用 。</p>
+<p>为什么要强调在开始的时候要专精方向的重要性呢？因为这样您才能在求职的时候有一个“亮点”。</p>
+<p>无论是毕业生还是社会招聘 ，仅仅满足招聘要求是不够的 。您需要在招聘要求的方向上以 200%的能力来得到这个职位 。一个求职者在整个流程中会受到多方考核 ： HR考核您的成本和价值 ，专业面试官 （不是全栈工程师 ）考核您的专业能力 ，经理考核您的沟通能力 。在所有这些考核中 ，其实每一环都是漏斗型筛选 ，会过滤掉一些人 。</p>
+<p>让我再次重复这一点 ，作为求职者 ，一定要在某个特定方向上有非常深入的理解 。仅仅会做还不够 ，还要理解背后的原因 ，还有背后的背后的原因 。</p>
+<h3 id="围绕商业目标"><a href="#围绕商业目标" class="headerlink" title="围绕商业目标"></a>围绕商业目标</h3><p>我的第一条建议是 ，在考虑做什么项目的时候 ，围绕商业利益作为目标 。归根结底 ，技术是服务于商业目标的 。</p>
+<p>老板雇用一个员工 ，不是因为他能写程序 ，而是因为他能帮助自己赚钱 。赚钱有两种方法 ：减少成本 ，或者增加收入 。程序员如果能加快内部系统的运行效率 ，让产品制作流程更加顺畅 ，就是减少成本 。如果能让用户更容易地购买产品 ，或者提高服务质量吸引更多用户 ，就能增加收入 。在老板看来 ，程序员只是一个昂贵的劳动力 ，他会不会写程序都没那么重要 ，重要的是能赚钱 。</p>
+<p>所以如果您想成为一个高级开发者 （或者高级设计师 ） ，就一定要学会这种思维方式 。</p>
+<p>所谓 “商业目标 ”要广义地去解读 。对于直接制作产品 ，给用户使用的团队 ，就需要对外关注如何提高产品质量 、降低产品成本 ；对内应该关注如何优化流程 、减少错误率 。如果团队输出的成果是公司内其他部门需要的原材料 ，就要关注下游的需求 ，研究如何更好地输出成果 ，如何在流程上使得输出产品的过程更顺畅 。</p>
+<p>关注商业目标需要持久的练习 。等到自己成为全栈工程师 ，或者成为团队管理者 ，更加需要在多个目标任务之中做出选择 。全栈工程师需要做和能够做的事情是很多的 ，他会很多技能 ，也负责处理很多工作 ，所以他更需要能力从诸多事情中找到最有商业价值的一个 ：可能是制作一款工具提升团队效率 ，也可能是成本上的优化 。</p>
+<p>全栈工程师可以做得事情越多 ，就越需要具备判断做什么的能力 。如果增加一个用户需要的功能是加分项的话 ，拒绝一个用户不需要的需求更加值得推崇 。</p>
+<p><strong>一切都要围绕商业目标来进行 ，包括您做的项目 、您的汇报方式 ，以及您在学习新技能时进行的取舍 。永远从商业目标的角度来决定学习哪些东西 ，而不是纯粹为了锻炼技术能力而去学习 。</strong></p>
+<h3 id="关注用户体验"><a href="#关注用户体验" class="headerlink" title="关注用户体验"></a>关注用户体验</h3><ul>
+<li>每一个糟糕的体验背后都蕴藏着商机（腾讯HR的故事）</li>
+<li>用户是谁</li>
+<li>大巧若拙<br>意思是指，真正聪明的人，不会显露自己，反而从表面上看好像还很笨拙</li>
+<li>做自己会用的产品</li>
+</ul>
+<p>我如果开创一个公司需要招聘 “全栈工程师 ” ，我要求的三个能力就是<strong>一专多长 、关注商业目标 、关注用户体验 。</strong></p>
+<h2 id="三、工程师事业指南"><a href="#三、工程师事业指南" class="headerlink" title="三、工程师事业指南"></a>三、工程师事业指南</h2><h3 id="技术、成长和声望"><a href="#技术、成长和声望" class="headerlink" title="技术、成长和声望"></a>技术、成长和声望</h3><p>软件工程师事业指南告诉您 ，最核心的 3个词就是<strong>技术 、成长和声望 </strong>。技术是您的武器 ，成长就是好好打磨武器 ，而声望是您一生的积累 。怎样获得良好的声望 ？很简单 ——答应做的事 ，全部都要完成 。</p>
+<p>那如果上司真的给出一个非常棘手的问题 ，您该如何回答 ？没错 ，您不能直接拒绝 。拒绝上司是很困难的 。但您也不能什么都答应下来 ，随后又无法完成任务 。那时候您会丢掉更多的得分 。正确的方法是 ，讲出事实 。</p>
+<h3 id="积累作品集"><a href="#积累作品集" class="headerlink" title="积累作品集"></a>积累作品集</h3><h2 id="四、全栈工程师眼中的HTTP"><a href="#四、全栈工程师眼中的HTTP" class="headerlink" title="四、全栈工程师眼中的HTTP"></a>四、全栈工程师眼中的HTTP</h2><h3 id="HTTP简介"><a href="#HTTP简介" class="headerlink" title="HTTP简介"></a>HTTP简介</h3><p><strong>1. OSI七层模型</strong><br>OSI模型义了整个世界计算机相互连接的标准，总共分为 7层 ，其中最上层 （也就是第 7层 ）就是应用层 ， HTTP 、HT TPS、FTP、TELNET、SSH、SMTP和POP3都属于应用层 。这是软件工程师最关心的一层 。 SI模型越靠近底层 ，就越接近硬件 。在 HTTP协议中 ，并没有规定必须使用它或它支持的层 。事实上 ， HTTP可以在任何互联网协议或其他网络上实现 。 HTTP假定其下层协议提供可靠的传输 ，因此 ，任何能够提供这种保证的协议都可以被其使用 ，也就是其在 T CP / IP协议族使用 TCP作为其传输层 。</p>
+<p><img src="[https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1490023285&amp;di=7e5c19431bb3a3f7f8a4613d8aad0267&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Ffarm6.staticflickr.com%2F5491%2F10973734404_1c7b19e69e_o.jpg" alt="">](<a href="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1490023285&amp;di=7e5c19431bb3a3f7f8a4613d8aad0267&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Ffarm6.staticflickr.com%2F5491%2F10973734404_1c7b19e69e_o.jpg" target="_blank" rel="external">https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1490023285&amp;di=7e5c19431bb3a3f7f8a4613d8aad0267&amp;imgtype=jpg&amp;er=1&amp;src=http%3A%2F%2Ffarm6.staticflickr.com%2F5491%2F10973734404_1c7b19e69e_o.jpg</a>))</p>
+<p><strong>2. 关于HTTP版本</strong><br>1999年发布HTTP1.1，比1.0它增加了缓存处理和持续连接，以及其他一些性能优化。</p>
+<p>2015年2月，HTTP/2正式发布 。新的 HTTP版本有一些重大更新 ，除了一如既往地向下兼容 HTTP/1以外 ，还有一些优化 ，比如减小网络传输延迟 ，并简化服务器向浏览器传输内容的过程 。主流的服务器 （Apache 、Nginx等 ）和浏览器 （Firefox、Chrome、Safari以及 iOS和Android的浏览器等 ）的最新版都已经支持 HTTP/2 ，剩下的就需要网站管理员把服务器升级到最新版了 。</p>
+<h3 id="前端视角"><a href="#前端视角" class="headerlink" title="前端视角"></a>前端视角</h3><p>每一个前端工程师都知道的基本优化方法是：尽量减少统一域下的HTTP请求数，以及尽量减少每个资源的体积。</p>
+<p><strong>尽量减少统一域下的HTTP请求数</strong><br>浏览器常常限定了对同一域名发起的并发连接数的上限 。 各种浏览器普遍把这一上限设定为 4至 8个 。如果浏览器需要对某个域进行更多的连接 ，则需要在用完了当前连接之后 ，重复使用或者重新建立 T C P连接 。</p>
+<p>由于浏览器针对资源的域名限制并发连接数 ，而不是针对浏览器地址栏中的页面域名 ，所以很多静态资源可以放在其他域名下 （不同的子域名也被认为是不同的域名 ） 。如果您只有一台服务器 ，可以把这些不同的域名同时指向一个 I P ，也就提高了对这台服务器的并发连接数限制 （不过要小心服务器压力过大 ） 。</p>
+<p>把静态资源放在非主域名下 ，这种做法除了可以增加浏览器并发 ，还有一个好处是 ，减少HTTP请求中携带的不必要的cookie数据 ，因为这对带宽和链接熟读都造成了影响，所以我们一般把静态资源放在单独的域名下。</p>
+<p><strong>尽量减少每一个资源的体积</strong><br>我们不光要限制请求数 ，还要尽量减少每一个资源的体积。因为资源的体积越大 ，在传输中消耗的流量就越多 ，等待时间也越久 。</p>
+<p>在面试应聘者的时候，我会问的一个基础题目是 “常用的图片格式有哪些 ，它们的使用场景是什么 ” 。如果能选择合适的图片格式 ，就能够用更小的体积 ，达到更好的显示效果 。对图片格式的敏感 ，能反映出工程师对带宽和速度的不懈追求 。此外 ，对于比较大的文本资源 ，必须开启 gzip压缩 。因为 gzip 对于含有重复 “单词 ”的文本文件 ，压缩率非常高 ，能有效提高传输过程 。</p>
+<h3 id="后台视角"><a href="#后台视角" class="headerlink" title="后台视角"></a>后台视角</h3><p>前端工程师对HTTP的关注点在于尽量减少同一域下的HTTP请求数 ，以及尽量减少每一个资源的体积 。与之不同 ，后台工程师对于HTTP的关注在于让服务器尽快响应请求 ，以及减少请求对服务器的开销 。</p>
+<p><strong>提高服务器的请求处理能力</strong><br>Apache是市场份额最大的服务器 ，超过 50%的网站运行在Apache上 。Apache通过模块化的设计来适应各种环境 ，其中一个模块叫做多处理模块（MPM）专门用来处理多请求的情况 。Apache安装在不同系统上的时候会调用不同的默认MPM ，我们不用关心具体的细节，只需要了解Unix上默认的MPM是<code>prefork</code>。为了优化，我们可以改成<code>worker</code>模式 。</p>
+<p><code>prefork</code>和<code>worker</code>模式的最大区别就是 ，prefork的一个进程维持一个连接 ，而worker的一个线程维持一个连接 。所以prefork更稳定但内存消耗也更大 ，worker没有那么稳定 ，因为很多连接的线程共享一个进程 ，当一个线程崩溃的时候 ，整个进程和所有线程一起死掉 。但是worker的内存使用要比prefork低得多 ，所以很适合用在高HTTP请求的服务器上 。</p>
+<p>在高连接并发的情况下 ，Nginx是Apache服务器不错的替代品或者补充 ：一方面是Nginx更加轻量级 ，占用更少的资源和内存；另一方面是Nginx处理请求是异步非阻塞的 ，而Apache则是阻塞型的 ，在高并发下Nginx能保持低资源 、低消耗和高性能 。由于Apache和Nginx各有所长 ，所以经常的搭配是Nginx处理前端并发 ，Apache处理后台请求 。值得一提的是 ，新秀Node.js也是采用基于事件的异步非阻塞方式处理请求 ，所以在处理高并发请求上有天然的优势 。</p>
+<p><strong>DDos攻击</strong><br>DDos是Distributed Denialof Service的缩写，DDos攻击翻译成中文就是 “分布式拒绝服务 ”攻击 。</p>
+<p>攻击者通过海量的请求 ，让目标服务器瘫痪 ，无法响应正常的用户请求 ，以此达到攻击的效果 。对于这样的攻击 ，几乎没有什么特别好的防护方法 。除了增加带宽和提高服务器能同时接纳的客户数 ，另一种方法就是让首页静态化 。</p>
+<p>DDos攻击者喜欢攻击的页面一般是会对数据库进行写操作的页面，这样的页面无法静态化，服务器更容易宕机 。DDos攻击者一般不会攻击静态化的页面或者图片，因为静态资源对服务器压力小，而且能够部署在CDN上 。</p>
+<p><strong>BigPipe</strong><br>通俗来解释，BigPipe首先把HTML页面分为很多部分 ，然后在服务器和浏览器之间建立一条管道 （BigPipe就是 “大管道 ”的意思 ） ，HTML的不同部分可以源源不断地从服务器传输到浏览器 。BigPipe首先输送的内容是框架性HTML结构 ，这个框架结构可能会定义每个Pagelet模块的位置和宽高 ，但是这些Pagelet都是空的，就像只有钢筋混泥土骨架的毛坯房 。</p>
+<p>接下来管道里源源不断地传输过来很多模块 ，这时候最开始加载在服务器中的JS代码开始工作 ，它会负责把每一个模块依次渲染到页面上，在用户的感知上，页面非常快地出现在眼前 ，但是所有的模块都显示正在加载中 ，然后主要的区域 （比如重要的用户动态 ）优先出现，接下来是logo、边栏和各种挂件等 。</p>
+<p>为什么BigPipe能够让服务器对浏览器说“我这个请求还没结束，我们保持这个链接不要断开”呢？答案是HTTP1.1的分块传输编码。</p>
+<p>HTTP1.1引入分块传输编码 ，允许服务器为动态生成的内容维持HTTP持久链接。如果一个HTTP消息（请求消息或应答消息）的Transfer Encoding消息头的值为chunked，那么消息体由数量不确定的块组成 ——也就是说想发送多少块就发送多少块 ——并以最后一个大小为0的块为结束 。</p>
+<h2 id="五、高性能网站的关键——缓存"><a href="#五、高性能网站的关键——缓存" class="headerlink" title="五、高性能网站的关键——缓存"></a>五、高性能网站的关键——缓存</h2><h3 id="1-服务器缓存"><a href="#1-服务器缓存" class="headerlink" title="1. 服务器缓存"></a>1. 服务器缓存</h3><p><strong>基本的数据库查询缓存</strong><br>MySQL默认不开启查询缓存 ，但我们可以通过修改MySQL安装目录中的 <code>my.ini</code> 来设置查询缓存 。设置的时候可以根据实际情况配置缓冲区大小 、单个查询的缓冲区大小等 。</p>
+<p>可以在MySQL配置中增加这两项<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">query_cache_size = SIZE</div></pre></td></tr></table></figure></p>
+<p>SIZE是指为查询缓存开辟多大的空间 。默认是 0 ，也就是禁用查询缓存。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">query_cache_type = OPTION</div></pre></td></tr></table></figure>
+<p>设置查询缓存的类型 ，可选的值有以下这三种 。 </p>
+<ul>
+<li>0：设置查询缓存的类型 ，可选的值</li>
+<li>1：所有的缓存结果都缓存起来 ，除非查询命令以 <code>SELECTS_NO_CACHE</code> 开始 。 </li>
+<li>2：只缓存查询命令以 <code>SELECT SQL_CACHE</code>开始的查询结果 。</li>
+</ul>
+<p>所以 ，对于查询操作远远多于修改操作的数据库 ，开启数据库查询缓存是很有益的 ；但是对于修改操作很多的数据库 ，由于缓存经常会失效 ，就起不到加速的效果 。不仅如此 ，由于数据库要花费时间写缓存 ，所以实际上速度更慢了 。</p>
+<p>这里需要注意的是 ，两次 SQL 文本必须完全相同 。如果前后两次查询使用了不同的查询条件 ，就会重新查询 。</p>
+<p><strong>扩展数据库缓存：memcached</strong><br>memcached的缓存失效采用的是按时间来过期的设计 。memcached相当于应用程序和数据库之间的中间层 ，通过网络 API设置和调用 。memcached储存的是名值对 ，而且设置了一个过期时间 ，只要过期时间没有到 ，应用程序就会从memcached中获取数据 。这时候即使发生了数据库更新操作 ，缓存的查询结果也仍然是之前保存的旧数据 ，直到设置的时间过期 。这样提高了缓存的性能 ，带来的影响就是 ，数据可能是 “不新鲜 ”的 。</p>
+<p>但是 memcached 也不是总是那么有效，因为如果只有一台服务器，就用不到它的服务器集群的优势，反而让系统更慢 。</p>
+<p><strong>再加一层文件缓存</strong><br>除了可以将数据库查询结果缓存在内存中还可以将被频繁造访的数据缓存在文件中。文件 I/O 比起内存有以下几个好处。硬盘容量比内存大，所以可以缓存更多数据。数据更安全，断电之后数据还在。易于扩展，硬盘不够用的时候还可以添加硬盘。但是文件缓存没有内存缓存快，只能作为内存缓存的补充，在获取数据时，先从最快的地方读取，如果没有就继续往后找。查找优先级为：内存缓存 →文件缓存 →数据库 。</p>
+<p>缓存文件不会过期，除非您删掉它，否则任何被缓存了的查询会一直存在。缓存系统允许您按页面清除，或把所有缓存都清除掉 。一般来说，您可以在某些事件（比如向数据库添加了数据 ）发生时用特定的函数来清除缓存 。</p>
+<p><strong>静态化</strong><br>有两种静态化的方法，其中一种是类似 WordPress 的静态化插件，安装很简单，每次有新文章就自动生成静态页面。这种方法还是将数据保存在数据库中，只是会读取数据库之后生成一些静态页。这一种方法的原理跟文件缓存很相似 。</p>
+<p>另一种方法就是直接抛弃数据库 。比如有一些博客作者会用 Jekyll 系统来写博客，将整个博客站点静态化。完全抛弃数据库的好处是，可以将生成的静态网页直接托管在静态资源站点，比如 GitHub Pages 或者 Amazon S3，而不用操心数据库服务器的问题，不光整个系统稳定很多，费用上也更加低廉 （GitHub更是完全免费的，而且提交 Markdown 源代码后可以让它在服务器端生成站点） 。</p>
+<h3 id="2-浏览器缓存"><a href="#2-浏览器缓存" class="headerlink" title="2. 浏览器缓存"></a>2. 浏览器缓存</h3><p>当浏览器访问一个站点的时候，网络连接是主要瓶颈，我们可以通过设置浏览器缓存来跳过 HTTP请求。如果在浏览器设置缓存，通常有两个主要作用。</p>
+<ul>
+<li>用户来说，减少请求可以更快地加载页面，节省流量。如果用户是在手机上用3G或4G访问页面，这一点就很关键。</li>
+<li>对网站来说，减少带宽压力和费用。假设有1亿的访问量，如果能把大小为 10KB的 CSS缓存起来，可以节省不小的开支。</li>
+</ul>
+<p>主要的两种缓存指令<br><strong>第一种：Expires</strong><br>这种缓存是最快的，因为没有任何 HTTP请求发生。当用户需要这个资源，浏览器就直接从缓存中读取，不再需要询问服务器端的意见（服务器端甚至不知道您在浏览 image.png） 。所以 HttpWatch是推荐对所有的静态资源都设置Expires 。</p>
+<p><strong>第二种：Last-Modified</strong><br>通过这种缓存方式 ，无论资源是否发生了更新 ，仍然至少会发生一来一去 HTTPS 头的传输和接收 ，所以速度比不上Expires 。</p>
+<p>从服务器端的角度来看 ，有时候我们并不希望对静态资源的请求中大部分都返回304。因为这可能说明我们的很多用户都在频繁访问站点 ，而且我们的资源很少更新 ，就好像它们一直问 “资源修改了吗？ ” ，我们一直回答 “没有修改 ” 。这里可以使用Expires来设置过期时间 ，这样它们就不会 “烦我们 ”了 。对于服务器管理员来说，保持304为一个合理的比例即可 。我们可以通过查看服务器的log ，查看304响应与200响应的比例，来做出一个合理的缓存策略 。</p>
+<p><strong>Restful Web API</strong><br>表征性状态传输（Representational State Transfer，REST）是一种软件架构风格。在 3种主流的Web服务实现方案中，因为REST模式最简洁，也能合理地利用HTTP操作的语义，所以越来越多的Web服务开始采用REST风格设计和实现 。</p>
+<p>Restful的目的是定义如何正确地使用Web标准，优雅地使用HTTP本身的特性。原则上是对资源、集合、服务（URL）、get、post 、put、delete（操作）的合理使用。举例来说，如果请求一个资源，但是服务器上没有这个资源，这时候就应该对HTTPS头设置404，而不是设置200。</p>
+<p><strong>HTTP1.1加入的Cache-Control</strong><br>它的功能跟Expires类似，不过有更多的选项。Expires的值是一个日期，表示某日期之前都不再询问。Cache-Control的值是 : maxage = 7776000， maxage的单位是秒，从浏览器接收到文件之后开始计时。</p>
+<p>按照HTTP规范 ，如果修改了请求资源的QueryString，就应该被视为一个新的文件。</p>
+<p>下面是推荐的浏览器缓存设置最佳实践。</p>
+<ul>
+<li>对于动态生成的HTML页面使用HTTPS头：<code>Cache-Control:nocache</code>。</li>
+<li>对于静态HTML面使用HTTPS头：Last-Modified 。</li>
+<li>其他所有的文件类型都设置Expires头，并且在文件内容有所修改的时候修改QueryString。</li>
+</ul>
+<p><strong>浏览器缓存的现实世界</strong><br>服务器端可以设置缓存规则，告诉浏览器应该如何遵循和实现，但在服务器不能掌控的地方也许会出现一些意外。缓存会被挤出。文件有可能在运营商服务器上被劫持。</p>
+<p>第二个问题是 ，用户的宽带运营商为了提高速度 ，可能会在自己某节点服务器上缓存您的文件（比如style.css?v1），好处是当用户请求这个文件的时候，运营商无需来您的服务器上请求文件，而自己直接就给出了。</p>
+<p>问题来了，如果您的QueryString更新了（style.css?v2），按照HTTP规范，这理应被视为一个新的文件，但是运营商仍然可能会拿自己节点的缓存，而不是遵循规范。有点可恶对不对？这就是我们在用户量极大的情况下侦测到的情况，虽不太常见，但是有可能发生。所以，为了保证更新的文件下发到所有的用户，我们会使用更加强硬的方法：修改文件名，而不是仅仅修改QueryString。</p>
+<p>QQ空间静态资源在浏览器端使用的缓存策略。</p>
+<ul>
+<li>对于动态生成的HTML页面使用HTTPS头：<code>Cache-Control:nocache</code>。</li>
+<li>对于静态HTML页面使用HTTPS头 ：Last-Modified 。</li>
+<li>其他所有的文件类型都设置Cache-Control头，<strong>并且在文件内容有所修改的时候修改文件名</strong>。</li>
+</ul>
+<hr>
+<p>猜你喜欢：<a href="http://www.jianshu.com/p/8423c354108c" target="_blank" rel="external">《Web全栈工程师的自我修养》浓缩笔记（下）</a></p>
+<blockquote>
+<p>文章出处：<a href="http://duni.sinaapp.com" target="_blank" rel="external">http://duni.sinaapp.com</a><br>原文链接：<a href="http://duni.sinaapp.com/?p=796" target="_blank" rel="external">http://duni.sinaapp.com/?p=796</a></p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/03/16/《Web全栈工程师的自我修养》浓缩笔记（上）/">《Web全栈工程师的自我修养》浓缩笔记（上）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
+        <p><span>发布时间:</span>2017-03-16, 21:59:00</p>
+        <p><span>最后更新:</span>2017-04-23, 15:17:25</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/16/《Web全栈工程师的自我修养》浓缩笔记（上）/" title="《Web全栈工程师的自我修养》浓缩笔记（上）">http://dunizb.com/2017/03/16/《Web全栈工程师的自我修养》浓缩笔记（上）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2017/03/16/《Web全栈工程师的自我修养》浓缩笔记（上）/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/04/22/《她理财·蜜财周刊》怎样开源怎样花钱/">
+                    《她理财·蜜财周刊》怎样开源怎样花钱
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、什么是全栈工程师？"><span class="toc-number">1.</span> <span class="toc-text">一、什么是全栈工程师？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#“各司其职”的弊端"><span class="toc-number">2.</span> <span class="toc-text">“各司其职”的弊端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#全栈工程师登上舞台"><span class="toc-number">2.1.</span> <span class="toc-text">全栈工程师登上舞台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全栈工程师基本要有的觉悟"><span class="toc-number">2.2.</span> <span class="toc-text">全栈工程师基本要有的觉悟</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、如何成为全栈工程师"><span class="toc-number">3.</span> <span class="toc-text">二、如何成为全栈工程师</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先精后广，一专多长"><span class="toc-number">3.1.</span> <span class="toc-text">先精后广，一专多长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#围绕商业目标"><span class="toc-number">3.2.</span> <span class="toc-text">围绕商业目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关注用户体验"><span class="toc-number">3.3.</span> <span class="toc-text">关注用户体验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、工程师事业指南"><span class="toc-number">4.</span> <span class="toc-text">三、工程师事业指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#技术、成长和声望"><span class="toc-number">4.1.</span> <span class="toc-text">技术、成长和声望</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#积累作品集"><span class="toc-number">4.2.</span> <span class="toc-text">积累作品集</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、全栈工程师眼中的HTTP"><span class="toc-number">5.</span> <span class="toc-text">四、全栈工程师眼中的HTTP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP简介"><span class="toc-number">5.1.</span> <span class="toc-text">HTTP简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端视角"><span class="toc-number">5.2.</span> <span class="toc-text">前端视角</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后台视角"><span class="toc-number">5.3.</span> <span class="toc-text">后台视角</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、高性能网站的关键——缓存"><span class="toc-number">6.</span> <span class="toc-text">五、高性能网站的关键——缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-服务器缓存"><span class="toc-number">6.1.</span> <span class="toc-text">1. 服务器缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-浏览器缓存"><span class="toc-number">6.2.</span> <span class="toc-text">2. 浏览器缓存</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"《Web全栈工程师的自我修养》浓缩笔记（上）　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="上一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/04/22/《她理财·蜜财周刊》怎样开源怎样花钱/" title="下一篇: 《她理财·蜜财周刊》怎样开源怎样花钱">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/《她理财·蜜财周刊》怎样开源怎样花钱/">《她理财·蜜财周刊》怎样开源怎样花钱</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/《Web全栈工程师的自我修养》浓缩笔记（上）/">《Web全栈工程师的自我修养》浓缩笔记（上）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">使用SpringMVC+Mybatis搭建高性能安全站点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/02/《如何阅读一本书》之公正的评断一本书/">《如何阅读一本书》之公正的评断一本书</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/31/《如何阅读一本书》之主题阅读精华摘要/">《如何阅读一本书》之主题阅读精华摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/30/曼昆《经济学原理•微观经济学分册》内容笔记/">曼昆《经济学原理•微观经济学分册》内容笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/《如何阅读一本书》之如何透视一本书/">《如何阅读一本书》之如何透视一本书</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/">《如何阅读一本书》之阅读一本书的四个层次</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/主动选择与方法论/">主动选择与方法论</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/《我们怎样读书》之为什么要学，怎么学/">《我们怎样读书》之为什么要学，怎么学</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/《我们怎样读书》之为学与做人/">《我们怎样读书》之为学与做人</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/16/告别纸书，读了就扔了吧/">告别纸书，读了就扔了吧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/12/你为什么要发说说/">你为什么要发说说?</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/11/每天10分钟精通沟通心理学/">每天10分钟精通沟通心理学</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/09/有妖气，不要怕/">有妖气，不要怕</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/08/何不尝试一下/">何不尝试一下?</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/02/Talking-about-literature-reading-and-writing/">谈文学、读书和写作</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/20/Sublime-Text3插件安装图文教程/">Sublime Text3插件安装图文教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/31/LESS-CSS使用及语法入门/">LESS CSS使用及语法入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/31/Review-of-2015-年度回顾/">Review of 2015 年度回顾</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/04/JS检测图片的宽高和Image对象/">JS检测图片的宽高和Image对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/02/JavaScript-Object-Oriented-Programming-Basics/">JavaScript面向对象程序设计基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/JavaScript中的数据类型回顾/">JavaScript中的数据类型回顾</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/强大的Http监控工具Fidder简单介绍/">强大的Http监控工具Fidder简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/29/jQuery-Core-Style-Guide/">jQuery Core Style Guide（规范）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/18/Java-final修饰符梳理/">Java-final修饰符梳理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/05/Java的方法详解/">Jav的方法详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/28/对象的this引用/">对象的this引用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/数组与内存分配/">数组与内存分配</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/26/CSS常见问题(三)/">CSS常见问题(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/25/CSS的常见问题(二)/">CSS的常见问题(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/">CSS的低权重原则—避免滥用子选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/24/CSS的常见问题(一)/">CSS的常见问题(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/18/JavaScript中的继承入门/">JavaScript中的继承入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/15/利用jQuery克隆对象实例/">利用jQuery克隆对象实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/11/08/cookie-and-session-distinction-and-contact/">Cookie和Session的区别与联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/Talking-about-the-development-of-AOP-development/">漫谈AOP开发之开发Spring AOP程序</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/28/漫谈AOP开发之谈谈AOP那些学术概念/">漫谈AOP开发之谈谈AOP那些学术概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/">漫谈AOP开发之初探AOP及AspectJ的用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/09/06/javascript-event/">JavaScript事件探秘</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/08/24/数据库设计的一些问题/">数据库设计的一些问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/27/Spring：一切都是Bean(二)/">Spring：一切都是Bean(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/24/Spring：一切都是Bean(一)/">Spring：一切都是Bean(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/13/把头像图片以二进制形式保存到数据库（Hibernate实现）/">把头像图片以二进制形式保存到数据库（Hibernate实现）</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/10/根据分组依据对Java集合元素进行分组/">根据分组依据对Java集合元素进行分组</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">JDBC操作数据库的元数据信息，JDBC复习(四) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/">JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/">使用JDBC调用存储过程，JDBC复习(二) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/06/24/localhost-and-12-0-0-1-and-ip/">localhost、127.0.0.1和本机ip三者的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/16/JavaScript-this/">JavaScript中的this妙用</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/09/使用POI组件导出数据为Excel文件/">使用POI组件导出数据为Excel文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/28/Tomcat-study-notes/">Tomcat学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/08/Struts2-xml-result-in-the-transmission-of-multiple-parameters/">Struts2.xml的result里传多个参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/07/Java-io-FTP-FileZill-Server设置/">Java I/O FTP同步代码及FileZilla Server设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/11/30/小米活塞耳机1代开箱图鉴/">小米活塞耳机1代开箱图鉴</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/11/15/使用JXL组件导入Excel文件数据到数据库/">使用JXL组件导入Excel文件数据到数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/">Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/09/21/Struts2-view-forwarding-type-summary/">Struts2的视图转发类型总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/">Spring IOC(依赖注入、控制反转)概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/14/数据库优化(一)索引及索引合理利用/">数据库优化(一)：索引及索引合理利用</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/08/02/手把手教你GlassFish与Eclipse的集成安装、配置/">手把手教你GlassFish与Eclipse的集成安装、配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2010/07/25/可怜的钱学森，可怜的中国/">可怜的钱学森，可怜的中国</a></li><li class="post-list-item"><a class="post-list-link" href="/2010/03/08/372的忧伤/">372的忧伤</a></li><li class="post-list-item"><a class="post-list-link" href="/2010/01/04/小镇脾气与新貌/">小镇脾气与新貌</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017 张兵
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

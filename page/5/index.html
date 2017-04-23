@@ -176,22 +176,14 @@
                         
                             <li><a href="/demo/">Demo</a></li>
                         
-                            <li><a href="/archives/">所有文章</a></li>
-                        
                             <li><a href="/categories/随笔扯谈/">随笔</a></li>
                         
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
+                            <li><a href="/archives/">所有文章</a></li>
                         
                         </ul>
                     </nav>
                     <nav class="header-nav">
                         <ul class="social">
-                            
-                                <a class="fa Email" href="mailto:dunizb@foxmail.com" title="Email"></a>
-                            
-                                <a class="fa 新浪微博" href="//weibo.com/dunio" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" href="https://www.github.com/dunizb" title="GitHub"></a>
                             
@@ -200,8 +192,6 @@
                                 <a class="fa 简书" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
                             
                                 <a class="fa SegmentFault" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
-                            
-                                <a class="fa 微信" href="http://mp.weixin.qq.com/profile?src=3&timestamp=1492107936&ver=1&signature=lkkdEPpQh*gpzJhFUMj7iJ2bUXRcKvd0C2Vhlaow4cYyzFgXuj1Iq3Bpo*3nOjSHkTYcQUEDV4ey45etQPVBkw==" title="微信"></a>
                             
                         </ul>
                     </nav>
@@ -267,23 +257,15 @@
                 
                     <li><a href="/demo/">Demo</a></li>
                 
-                    <li><a href="/archives/">所有文章</a></li>
-                
                     <li><a href="/categories/随笔扯谈/">随笔</a></li>
                 
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
+                    <li><a href="/archives/">所有文章</a></li>
                 
                 <div class="clearfix"></div>
                 </ul>
             </nav>
             <nav class="header-nav">
                         <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:dunizb@foxmail.com" title="Email"></a>
-                            
-                                <a class="fa 新浪微博" target="_blank" href="//weibo.com/dunio" title="新浪微博"></a>
                             
                                 <a class="fa GitHub" target="_blank" href="https://www.github.com/dunizb" title="GitHub"></a>
                             
@@ -293,8 +275,6 @@
                             
                                 <a class="fa SegmentFault" target="_blank" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
                             
-                                <a class="fa 微信" target="_blank" href="http://mp.weixin.qq.com/profile?src=3&timestamp=1492107936&ver=1&signature=lkkdEPpQh*gpzJhFUMj7iJ2bUXRcKvd0C2Vhlaow4cYyzFgXuj1Iq3Bpo*3nOjSHkTYcQUEDV4ey45etQPVBkw==" title="微信"></a>
-                            
                         </ul>
             </nav>
         </header>                
@@ -302,6 +282,75 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-数据库设计的一些问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/08/24/数据库设计的一些问题/" class="article-date">
+      <time datetime="2014-08-24T04:36:40.000Z" itemprop="datePublished">2014-08-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/24/数据库设计的一些问题/">数据库设计的一些问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><strong>char与varchar如何选择</strong></p>
+<p>原则：</p>
+<ol>
+<li>如果列中要存储的数据长度差不多一致的，则因该考虑用char；否则因该考虑用varchar。</li>
+<li>如果列中的最大数据长度小于50Byte，则一般也考虑用char。（当然如果这个列很少用，则基于节省空间和减少I/O的考虑，还是可以选择varchar）</li>
+<li>一般不宜定义大于50Byte的char类型列。
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/数据库-SQL/">数据库&SQL</a>
+    </div>
+
+
+      
+      
+        <p class="article-more-link">
+          <a href="/2014/08/24/数据库设计的一些问题/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Spring：一切都是Bean(二)" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -352,7 +401,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/07/27/Spring：一切都是Bean(二)/#more">阅读全文 >></a>
+          <a href="/2014/07/27/Spring：一切都是Bean(二)/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -422,7 +471,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/07/24/Spring：一切都是Bean(一)/#more">阅读全文 >></a>
+          <a href="/2014/07/24/Spring：一切都是Bean(一)/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -490,7 +539,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/07/13/把头像图片以二进制形式保存到数据库（Hibernate实现）/#more">阅读全文 >></a>
+          <a href="/2014/07/13/把头像图片以二进制形式保存到数据库（Hibernate实现）/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -558,7 +607,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/07/10/根据分组依据对Java集合元素进行分组/#more">阅读全文 >></a>
+          <a href="/2014/07/10/根据分组依据对Java集合元素进行分组/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -626,7 +675,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/#more">阅读全文 >></a>
+          <a href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -694,7 +743,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/#more">阅读全文 >></a>
+          <a href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -762,7 +811,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/#more">阅读全文 >></a>
+          <a href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -830,7 +879,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/#more">阅读全文 >></a>
+          <a href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -898,76 +947,7 @@
 
       
         <p class="article-more-link">
-          <a href="/2014/06/24/localhost-and-12-0-0-1-and-ip/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JavaScript-this" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/04/16/JavaScript-this/" class="article-date">
-      <time datetime="2014-04-16T09:15:58.000Z" itemprop="datePublished">2014-04-16</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/16/JavaScript-this/">JavaScript中的this妙用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>JavaScript关键字this始JS脚本能够根据使用这个关键字的上下文将值传递给函数。</p>
-<p>我们先来看如下一个网页，在用户单击链接之后，弹出一个alert框，然后再转到href属性所指的网页<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/">this</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2014/04/16/JavaScript-this/#more">阅读全文 >></a>
+          <a href="/2014/06/24/localhost-and-12-0-0-1-and-ip/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
