@@ -22,7 +22,7 @@
 <meta property="og:url" content="http://dunizb.com/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/index.html">
 <meta property="og:site_name" content="Dunizb">
 <meta property="og:description" content="XSS又称CSS，全称Cross Site Script，跨站脚本攻击，是Web程序中常见的漏洞，XSS属于被动式且用于客户端的攻击方式，所以容易被忽略其危害性。其原理是攻击者向有XSS漏洞的网站中输入(传入)恶意的HTML代码，当其它用户浏览该网站时，这段HTML代码会自动执行，从而达到攻击的目的。如，盗取用户Cookie、破坏页面结构、重定向到其它网站等。">
-<meta property="og:updated_time" content="2017-04-16T13:49:20.000Z">
+<meta property="og:updated_time" content="2017-04-26T12:48:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用SpringMVC+Mybatis搭建高性能安全站点">
 <meta name="twitter:description" content="XSS又称CSS，全称Cross Site Script，跨站脚本攻击，是Web程序中常见的漏洞，XSS属于被动式且用于客户端的攻击方式，所以容易被忽略其危害性。其原理是攻击者向有XSS漏洞的网站中输入(传入)恶意的HTML代码，当其它用户浏览该网站时，这段HTML代码会自动执行，从而达到攻击的目的。如，盗取用户Cookie、破坏页面结构、重定向到其它网站等。">
@@ -148,13 +148,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>菜單</li>
-                        <li>標籤</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>友情鏈接</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>關於我</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -173,7 +173,7 @@
                         
                             <li><a href="/categories/读书笔记/">读书笔记</a></li>
                         
-                            <li><a href="/categories/随笔扯谈/">随笔</a></li>
+                            <li><a href="/categories/随笔扯谈/">随笔扯谈</a></li>
                         
                             <li><a href="/archives/">所有文章</a></li>
                         
@@ -254,7 +254,7 @@
                 
                     <li><a href="/categories/读书笔记/">读书笔记</a></li>
                 
-                    <li><a href="/categories/随笔扯谈/">随笔</a></li>
+                    <li><a href="/categories/随笔扯谈/">随笔扯谈</a></li>
                 
                     <li><a href="/archives/">所有文章</a></li>
                 
@@ -276,7 +276,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="標籤" friends="友情鏈接" about="關於我"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-使用SpringMVC-Mybatis搭建高性能安全站点" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -323,12 +323,12 @@
       
           
         <h2 id="一、网站安全"><a href="#一、网站安全" class="headerlink" title="一、网站安全"></a>一、网站安全</h2><h3 id="1-1-XSS跨站脚本"><a href="#1-1-XSS跨站脚本" class="headerlink" title="1.1 XSS跨站脚本"></a>1.1 XSS跨站脚本</h3><p>XSS又称CSS，全称Cross Site Script，跨站脚本攻击，是Web程序中常见的漏洞，XSS属于被动式且用于客户端的攻击方式，所以容易被忽略其危害性。其原理是攻击者向有XSS漏洞的网站中输入(传入)恶意的HTML代码，当其它用户浏览该网站时，这段HTML代码会自动执行，从而达到攻击的目的。如，盗取用户Cookie、破坏页面结构、重定向到其它网站等。</p>
-<p>一个简单的例子，页面名字叫test.jsp：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;   </div><div class="line">   &lt;head&gt;     </div><div class="line">      &lt;title&gt;XSS测试&lt;/title&gt;   </div><div class="line">   &lt;/head&gt;   </div><div class="line">   &lt;body&gt;     </div><div class="line">      页面内容：&lt;%=request.getParameter(&quot;content&quot;)%&gt;   </div><div class="line">   &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
-<p>请求下面链接就会出现问题了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.domain.com/test.jsp?content=&lt;script&gt;alert(&apos;XSS注入&apos;);&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>一个简单的例子，页面名字叫test.jsp：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>   </div><div class="line">   <span class="tag">&lt;<span class="name">head</span>&gt;</span>     </div><div class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>XSS测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span>   </div><div class="line">   <span class="tag">&lt;/<span class="name">head</span>&gt;</span>   </div><div class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span>     </div><div class="line">      页面内容：<span class="tag">&lt;<span class="name">%=request.getParameter("content")%</span>&gt;</span>   </div><div class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>请求下面链接就会出现问题了：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://www.domain.com/test.jsp?content=<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined">alert('XSS注入');</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <h3 id="1-2-SQL注入"><a href="#1-2-SQL注入" class="headerlink" title="1.2 SQL注入"></a>1.2 SQL注入</h3><p>SQL Injection，就是通过把SQL命令插入到Web表单递交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。</p>
 <p>典型例子：<br>国内最大的程序员社区CSDN网站的用户数据库被黑客公开发布，600万用户的登录名及密码被公开泄露。</p>
-<p>一个简单的例子，比如请求连接获取用户信息<br>请求连接为：<code>http://www.example.com/user?userId=1</code><br>通常代码中会执行SQL语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from table_user where userId=$&#123;userId&#125;</div></pre></td></tr></table></figure></p>
-<p>假如SQL注入<br>请求连接为：<code>http://www.example.com/user?userId=1 or 1=1</code><br>SQL会执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from table_user where userId=1 or 1=1</div></pre></td></tr></table></figure></p>
+<p>一个简单的例子，比如请求连接获取用户信息，请求连接为：<code>http://www.example.com/user?userId=1</code>，通常代码中会执行SQL语句：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> table_user <span class="keyword">where</span> userId=$&#123;userId&#125;</div></pre></td></tr></table></figure></p>
+<p>假如SQL注入，请求连接为：<code>http://www.example.com/user?userId=1 or 1=1</code>，SQL会执行：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> table_user <span class="keyword">where</span> userId=<span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span></div></pre></td></tr></table></figure></p>
 <h2 id="二、解决之道-─-使用HttpServletRequestWrapper类"><a href="#二、解决之道-─-使用HttpServletRequestWrapper类" class="headerlink" title="二、解决之道 ─ 使用HttpServletRequestWrapper类"></a>二、解决之道 ─ 使用HttpServletRequestWrapper类</h2><p>定义一个Filter,使用HttpServletRequestWrapper类截获并处理参数：</p>
 <ul>
 <li><code>&lt;</code> –&gt; <code>&amp;lt;</code></li>
@@ -340,57 +340,20 @@
 <li><code>[\&quot;\&#39;][\s]*javascript:(.*)[\&quot;\&#39;]</code>  –&gt; <code>空</code></li>
 <li><code>script</code>  –&gt; <code>空</code></li>
 </ul>
-<h3 id="2-1-定义XssFilter过滤器类"><a href="#2-1-定义XssFilter过滤器类" class="headerlink" title="2.1 定义XssFilter过滤器类"></a>2.1 定义XssFilter过滤器类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">package com.dunizb.demo.common;</div><div class="line"></div><div class="line">import java.io.IOException;</div><div class="line">import javax.servlet.Filter;</div><div class="line">import javax.servlet.FilterChain;</div><div class="line">import javax.servlet.FilterConfig;</div><div class="line">import javax.servlet.ServletException;</div><div class="line">import javax.servlet.ServletRequest;</div><div class="line">import javax.servlet.ServletResponse;</div><div class="line"></div><div class="line">public class XssFilter implements Filter &#123;</div><div class="line">    @Override</div><div class="line">    public void destroy() &#123;</div><div class="line">        // TODO Auto-generated method stub</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void doFilter(ServletRequest request, ServletResponse response,</div><div class="line">            FilterChain chain) throws IOException, ServletException &#123;</div><div class="line">        chain.doFilter(request, response);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void init(FilterConfig arg0) throws ServletException &#123;</div><div class="line">        // TODO Auto-generated method stub</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="2-2-在web-xml中配置过滤器"><a href="#2-2-在web-xml中配置过滤器" class="headerlink" title="2.2 在web.xml中配置过滤器"></a>2.2 在web.xml中配置过滤器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;filter&gt;</div><div class="line">  &lt;filter-name&gt;XssFilter&lt;/filter-name&gt;</div><div class="line">  &lt;filter-class&gt;com.jikexueyuan.demo.common.XssFilter&lt;/filter-class&gt;</div><div class="line">&lt;/filter&gt;</div><div class="line">&lt;filter-mapping&gt;</div><div class="line">  &lt;filter-name&gt;XssFilter&lt;/filter-name&gt;</div><div class="line">  &lt;url-pattern&gt;*.html&lt;/url-pattern&gt;</div><div class="line">&lt;/filter-mapping&gt;</div><div class="line">```  </div><div class="line"></div><div class="line">### 2.3 使用HttpServletRequestWrapper拦截请求</div></pre></td></tr></table></figure>
-<p>package com.dunizb.demo.common;</p>
-<p>import javax.servlet.http.HttpServletRequest;<br>import javax.servlet.http.HttpServletRequestWrapper;</p>
-<p>public class XssHttpServletRequestWraper extends HttpServletRequestWrapper {</p>
-<pre><code>public XssHttpServletRequestWraper(HttpServletRequest request) {
-    super(request);
-}
-
-@Override
-public String getParameter(String name) {
-    return clearXss(super.getParameter(name));
-}
-
-@Override
-public String getHeader(String name) {
-    return clearXss(super.getHeader(name));
-}
-
-@Override
-public String[] getParameterValues(String name) {
-    String[] values = super.getParameterValues(name);
-    String[] newValues = new String[values.length];
-
-    for(int i =0; i&lt; values.length; i++){
-        newValues[i] = clearXss(values[i]);
-    }
-    return newValues;
-}
-
-/**
- * 处理字符转义
- * @param value
- * @return
- */
-private String clearXss(String value){
-    if (value == null || &quot;&quot;.equals(value)) {
-        return value;
-    }
-    value = value.replaceAll(&quot;&lt;&quot;, &quot;&amp;lt;&quot;).replaceAll(&quot;&gt;&quot;, &quot;&amp;gt;&quot;);
-    value = value.replaceAll(&quot;\\(&quot;, &quot;&amp;#40;&quot;).replace(&quot;\\)&quot;, &quot;&amp;#41;&quot;);
-    value = value.replaceAll(&quot;&apos;&quot;, &quot;&amp;#39;&quot;);
-    value = value.replaceAll(&quot;eval\\((.*)\\)&quot;, &quot;&quot;);
-    value = value.replaceAll(&quot;[\\\&quot;\\\&apos;][\\s]*javascript:(.*)[\\\&quot;\\\&apos;]&quot;, &quot;\&quot;\&quot;&quot;);
-    value = value.replace(&quot;script&quot;, &quot;&quot;);
-    return value;
-}
-</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## 三、提升性能：使用Mybatis的二级缓存策略</div><div class="line"></div><div class="line">一级缓存是SqlSession级别的缓存，MyBatis默认开启一级缓存。</div><div class="line"></div><div class="line">二级缓存是mapper级别的缓存，是多个SqlSession共享的，其作用域是mapper的同一个namespace，MyBatis默认没有开启二级缓存，需要在setting全局参数中配置开启二级缓存。如果缓存中有数据就不用从数据库中获取，大大提高系统性能。</div><div class="line"></div><div class="line">### 3.1 配置缓存</div><div class="line">mybaits的二级缓存是mapper范围级别，除了在SqlMapConfig.xml设置二级缓存的总开关，还要在具体的mapper.xml中开启二级缓存。Mybatis缓存使用起来非常方便，三个配置就搞定：</div><div class="line"></div><div class="line">**第一个需要配置config.xml ，开启缓存**</div></pre></td></tr></table></figure></p>
-<p><setting name="cacheEnabled" value="true"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**第二个需要在M apper文件头指定使用缓存**</div></pre></td></tr></table></figure></setting></p>
-<p><cache readonly="true" size="500" flushinterval="120000" eviction="LRU"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">其中：</div><div class="line">**readOnly=&quot;true&quot;**则所有相同的SQL语句返回的是同一个对象，这样有助于提高性能，但并发操作同一条数据时可能不安全，如果设置为false，则相同的SQL语句访问的是cache中的副本。</div><div class="line"></div><div class="line">**size=500**是指缓存多少个对象，默认值是1024。</div><div class="line"></div><div class="line">**flushInterval=&quot;120000&quot;**指定缓存过期的时间，单位为毫秒，默认是空，也就是说只要容量足够永远不会过期。</div><div class="line"></div><div class="line">**eviction=&quot;LRU&quot;**是缓存的淘汰算法，默认算法是最近最少使用算法，也就是LRU。</div><div class="line"></div><div class="line">第三个配置，在具体的SQ L语句处指定使用缓存，默认开启</div></pre></td></tr></table></figure></cache></p>
-<p><select id="selectCount" usecache="true"><br>    …<br></select><br>```</p>
+<h3 id="2-1-定义XssFilter过滤器类"><a href="#2-1-定义XssFilter过滤器类" class="headerlink" title="2.1 定义XssFilter过滤器类"></a>2.1 定义XssFilter过滤器类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.dunizb.demo.common;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> javax.servlet.Filter;</div><div class="line"><span class="keyword">import</span> javax.servlet.FilterChain;</div><div class="line"><span class="keyword">import</span> javax.servlet.FilterConfig;</div><div class="line"><span class="keyword">import</span> javax.servlet.ServletException;</div><div class="line"><span class="keyword">import</span> javax.servlet.ServletRequest;</div><div class="line"><span class="keyword">import</span> javax.servlet.ServletResponse;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XssFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest request, ServletResponse response,</span></span></div><div class="line">            FilterChain chain) <span class="keyword">throws</span> IOException, ServletException &#123;</div><div class="line">        chain.doFilter(request, response);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig arg0)</span> <span class="keyword">throws</span> ServletException </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-2-在web-xml中配置过滤器"><a href="#2-2-在web-xml中配置过滤器" class="headerlink" title="2.2 在web.xml中配置过滤器"></a>2.2 在web.xml中配置过滤器</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">&lt;filter&gt;</div><div class="line">  &lt;filter-name&gt;XssFilter&lt;/filter-name&gt;</div><div class="line">  &lt;filter-class&gt;com.jikexueyuan.demo.common.XssFilter&lt;/filter-class&gt;</div><div class="line">&lt;/filter&gt;</div><div class="line">&lt;filter-mapping&gt;</div><div class="line">  &lt;filter-name&gt;XssFilter&lt;/filter-name&gt;</div><div class="line">  &lt;url-pattern&gt;*.html&lt;/url-pattern&gt;</div><div class="line">&lt;/filter-mapping&gt;</div><div class="line">```  </div><div class="line"></div><div class="line">### 2.3 使用HttpServletRequestWrapper拦截请求</div><div class="line">```java</div><div class="line">package com.dunizb.demo.common;</div><div class="line"></div><div class="line">import javax.servlet.http.HttpServletRequest;</div><div class="line">import javax.servlet.http.HttpServletRequestWrapper;</div><div class="line"></div><div class="line">public class XssHttpServletRequestWraper extends HttpServletRequestWrapper &#123;</div><div class="line"></div><div class="line">    public XssHttpServletRequestWraper(HttpServletRequest request) &#123;</div><div class="line">        super(request);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    @Override</div><div class="line">    public String getParameter(String name) &#123;</div><div class="line">        return clearXss(super.getParameter(name));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    @Override</div><div class="line">    public String getHeader(String name) &#123;</div><div class="line">        return clearXss(super.getHeader(name));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    @Override</div><div class="line">    public String[] getParameterValues(String name) &#123;</div><div class="line">        String[] values = super.getParameterValues(name);</div><div class="line">        String[] newValues = new String[values.length];</div><div class="line">        </div><div class="line">        for(int i =0; i&lt; values.length; i++)&#123;</div><div class="line">            newValues[i] = clearXss(values[i]);</div><div class="line">        &#125;</div><div class="line">        return newValues;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 处理字符转义</div><div class="line">     * @param value</div><div class="line">     * @return</div><div class="line">     */</div><div class="line">    private String clearXss(String value)&#123;</div><div class="line">        if (value == null || "".equals(value)) &#123;</div><div class="line">            return value;</div><div class="line">        &#125;</div><div class="line">        value = value.replaceAll("&lt;", "&amp;lt;").replaceAll("&gt;", "&amp;gt;");</div><div class="line">        value = value.replaceAll("\\(", "&amp;#40;").replace("\\)", "&amp;#41;");</div><div class="line">        value = value.replaceAll("'", "&amp;#39;");</div><div class="line">        value = value.replaceAll("eval\\((.*)\\)", "");</div><div class="line">        value = value.replaceAll("[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']", "\"\"");</div><div class="line">        value = value.replace("script", "");</div><div class="line">        return value;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="三、提升性能：使用Mybatis的二级缓存策略"><a href="#三、提升性能：使用Mybatis的二级缓存策略" class="headerlink" title="三、提升性能：使用Mybatis的二级缓存策略"></a>三、提升性能：使用Mybatis的二级缓存策略</h2><p>一级缓存是SqlSession级别的缓存，MyBatis默认开启一级缓存。</p>
+<p>二级缓存是mapper级别的缓存，是多个SqlSession共享的，其作用域是mapper的同一个namespace，MyBatis默认没有开启二级缓存，需要在setting全局参数中配置开启二级缓存。如果缓存中有数据就不用从数据库中获取，大大提高系统性能。</p>
+<h3 id="3-1-配置缓存"><a href="#3-1-配置缓存" class="headerlink" title="3.1 配置缓存"></a>3.1 配置缓存</h3><p>mybaits的二级缓存是mapper范围级别，除了在SqlMapConfig.xml设置二级缓存的总开关，还要在具体的mapper.xml中开启二级缓存。</p>
+<p>Mybatis缓存使用起来非常方便，三个配置就搞定：</p>
+<p><strong>第一个需要配置config.xml ，开启缓存</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"cacheEnabled"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>第二个需要在M apper文件头指定使用缓存</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">readOnly</span>=<span class="string">"true"</span> <span class="attr">size</span>=<span class="string">"500"</span> <span class="attr">flushInterval</span>=<span class="string">"120000"</span> <span class="attr">eviction</span>=<span class="string">"LRU"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
+<p>其中：<br><strong>readOnly=”true”</strong>则所有相同的SQL语句返回的是同一个对象，这样有助于提高性能，但并发操作同一条数据时可能不安全，如果设置为false，则相同的SQL语句访问的是cache中的副本。</p>
+<p><strong>size=500</strong>是指缓存多少个对象，默认值是1024。</p>
+<p><strong>flushInterval=”120000”</strong>指定缓存过期的时间，单位为毫秒，默认是空，也就是说只要容量足够永远不会过期。</p>
+<p><strong>eviction=”LRU”</strong>是缓存的淘汰算法，默认算法是最近最少使用算法，也就是LRU。</p>
+<p>第三个配置，在具体的SQ L语句处指定使用缓存，默认开启</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectCount"</span> <span class="attr">useCache</span>=<span class="string">"true"</span>&gt;</span>   </div><div class="line">    ...</div><div class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="3-2-缓存策略"><a href="#3-2-缓存策略" class="headerlink" title="3.2 缓存策略"></a>3.2 缓存策略</h3><p>Mybatis有4个最常见的缓存策略：</p>
 <ul>
 <li>LRU，最近最少使用，移除最长时间不被使用的对象，默认策略</li>
@@ -434,17 +397,17 @@ private String clearXss(String value){
   
     
     <div class="copyright">
-        <p><span>本文標題:</span><a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">使用SpringMVC+Mybatis搭建高性能安全站点</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主頁">张兵</a></p>
-        <p><span>發布時間:</span>2016-11-01, 23:29:08</p>
-        <p><span>最後更新:</span>2017-04-16, 21:49:20</p>
+        <p><span>本文标题:</span><a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">使用SpringMVC+Mybatis搭建高性能安全站点</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
+        <p><span>发布时间:</span>2016-11-01, 23:29:08</p>
+        <p><span>最后更新:</span>2017-04-26, 20:48:20</p>
         <p>
-            <span>原始鏈接:</span><a class="post-url" href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="使用SpringMVC+Mybatis搭建高性能安全站点">http://dunizb.com/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/　　作者: 张兵" title="點擊複製文章鏈接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="使用SpringMVC+Mybatis搭建高性能安全站点">http://dunizb.com/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>許可協議:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"姓名標示-非商業性-相同方式分享 4.0 國際"</a> 轉載請保留原文鏈接及作者。
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -471,9 +434,9 @@ private String clearXss(String value){
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目錄</strong>
+        <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、网站安全"><span class="toc-number">1.</span> <span class="toc-text">一、网站安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-XSS跨站脚本"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 XSS跨站脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-SQL注入"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 SQL注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、解决之道-─-使用HttpServletRequestWrapper类"><span class="toc-number">2.</span> <span class="toc-text">二、解决之道 ─ 使用HttpServletRequestWrapper类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-定义XssFilter过滤器类"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 定义XssFilter过滤器类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-在web-xml中配置过滤器"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 在web.xml中配置过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-缓存策略"><span class="toc-number">2.3.</span> <span class="toc-text">3.2 缓存策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、在Linux服务器上部署项目"><span class="toc-number">3.</span> <span class="toc-text">四、在Linux服务器上部署项目</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、网站安全"><span class="toc-number">1.</span> <span class="toc-text">一、网站安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-XSS跨站脚本"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 XSS跨站脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-SQL注入"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 SQL注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、解决之道-─-使用HttpServletRequestWrapper类"><span class="toc-number">2.</span> <span class="toc-text">二、解决之道 ─ 使用HttpServletRequestWrapper类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-定义XssFilter过滤器类"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 定义XssFilter过滤器类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-在web-xml中配置过滤器"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 在web.xml中配置过滤器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、提升性能：使用Mybatis的二级缓存策略"><span class="toc-number">3.</span> <span class="toc-text">三、提升性能：使用Mybatis的二级缓存策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-配置缓存"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 配置缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-缓存策略"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 缓存策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、在Linux服务器上部署项目"><span class="toc-number">4.</span> <span class="toc-text">四、在Linux服务器上部署项目</span></a></li></ol>
         
     </div>
     <style>
@@ -487,10 +450,10 @@ private String clearXss(String value){
         }
     </style>
 
-    <input type="button" id="tocButton" value="隱藏目錄"  title="點擊按鈕隱藏或者顯示文章目錄">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["隱藏目錄", "顯示目錄", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -560,14 +523,14 @@ private String clearXss(String value){
                 2017 张兵
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、簡單且強大的網誌框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="簡而不減 Hexo 雙欄網誌主題  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到訪數"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -576,7 +539,7 @@ private String clearXss(String value){
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本頁閱讀量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -593,9 +556,9 @@ private String clearXss(String value){
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="返回頂部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看評論"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="轉到底部"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
