@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="业务场景：当需要向数据库发送一批SQL语句执行时，应避免向数据库一条条的发送执行，而应采用JDBC的批处理机制，以提升执行效率。">
-<meta name="keywords" content="jdbc">
+<meta name="description" content="jquery.form.js是jQuery的一个官方用语支持异步上传文件的插件。官方网站：http://plugins.jquery.com/form/ ，结合Struts2三步轻松实现文件上传。">
+<meta name="keywords" content="struts,文件上传,jquery">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)">
-<meta property="og:url" content="http://dunizb.com/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/index.html">
+<meta property="og:title" content="使用jquery.from.js+Struts2实现图片异步上传">
+<meta property="og:url" content="http://dunizb.com/2013/09/19/使用jquery-from-js-Struts2实现图片异步上传/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="业务场景：当需要向数据库发送一批SQL语句执行时，应避免向数据库一条条的发送执行，而应采用JDBC的批处理机制，以提升执行效率。">
-<meta property="og:updated_time" content="2017-04-15T14:29:51.000Z">
+<meta property="og:description" content="jquery.form.js是jQuery的一个官方用语支持异步上传文件的插件。官方网站：http://plugins.jquery.com/form/ ，结合Struts2三步轻松实现文件上传。">
+<meta property="og:updated_time" content="2017-05-05T15:44:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)">
-<meta name="twitter:description" content="业务场景：当需要向数据库发送一批SQL语句执行时，应避免向数据库一条条的发送执行，而应采用JDBC的批处理机制，以提升执行效率。">
+<meta name="twitter:title" content="使用jquery.from.js+Struts2实现图片异步上传">
+<meta name="twitter:description" content="jquery.form.js是jQuery的一个官方用语支持异步上传文件的插件。官方网站：http://plugins.jquery.com/form/ ，结合Struts2三步轻松实现文件上传。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JDBC的批处理、可滚动和可更新结果集，JDBC复习(三) | Dunizb</title>
+<title>使用jquery.from.js+Struts2实现图片异步上传 | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -278,11 +278,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-使用jquery-from-js-Struts2实现图片异步上传" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/" class="article-date">
-      <time datetime="2014-07-08T05:11:52.000Z" itemprop="datePublished">2014-07-08</time>
+      <a href="/2013/09/19/使用jquery-from-js-Struts2实现图片异步上传/" class="article-date">
+      <time datetime="2013-09-19T04:42:29.000Z" itemprop="datePublished">2013-09-19</time>
 </a>
 
 
@@ -297,7 +297,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)
+      使用jquery.from.js+Struts2实现图片异步上传
     </h1>
   
 
@@ -312,7 +312,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struts/">struts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件上传/">文件上传</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -322,41 +322,14 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="一、使用JDBC的批处理功能"><a href="#一、使用JDBC的批处理功能" class="headerlink" title="一、使用JDBC的批处理功能"></a>一、使用JDBC的批处理功能</h2><p>业务场景：当需要向数据库发送一批SQL语句执行时，应避免向数据库一条条的发送执行，而应采用JDBC的批处理机制，以提升执行效率。 </p>
-<p>实现批处理有两种方式</p>
-<h3 id="第一种方式"><a href="#第一种方式" class="headerlink" title="第一种方式"></a>第一种方式</h3><p><code>Statement.addBatch(sql)</code> 执行批处理SQL语句<br><code>executeBatch()方法</code>：执行批处理命令<br><code>clearBatch()方法</code>：清除批处理命令  </p>
-<p>采用Statement.addBatch(sql)方式实现批处理：<br>优点：可以向数据库发送多条不同的ＳＱＬ语句。<br>缺点： SQL语句没有预编译。 当向数据库发送多条语句相同，但仅参数不同的SQL语句时，需重复写上很多条SQL语句。  </p>
-<h3 id="实现批处理的第二种方式：PreparedStatement-addBatch"><a href="#实现批处理的第二种方式：PreparedStatement-addBatch" class="headerlink" title="实现批处理的第二种方式：PreparedStatement.addBatch()"></a>实现批处理的第二种方式：PreparedStatement.addBatch()</h3><p>优点：发送的是预编译后的SQL语句，执行效率高。<br>缺点：只能应用在SQL语句相同，但参数不同的批处理中。因此此种形式的批处理经常用于在同一个表中批量插入 数据，或批量更新表的数据。</p>
-<p>批处理实例:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">createBatch</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</div><div class="line">    Connection conn = <span class="keyword">null</span>;</div><div class="line">    PreparedStatement ps = <span class="keyword">null</span>;</div><div class="line">    ResultSet rs = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">	conn = JdbcUtils.getConnection();</div><div class="line">	String sql = <span class="string">"insert into user(name,birthday, money) values (?, ?, ?) "</span>;</div><div class="line">	ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</div><div class="line">	    ps.setString(<span class="number">1</span>, <span class="string">"batch name"</span> + i);</div><div class="line">	    ps.setDate(<span class="number">2</span>, <span class="keyword">new</span> Date(System.currentTimeMillis()));</div><div class="line">	    ps.setFloat(<span class="number">3</span>, <span class="number">100f</span> + i);</div><div class="line">	    ps.addBatch();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span>[] is = ps.executeBatch();</div><div class="line">    &#125; <span class="keyword">finally</span> &#123;</div><div class="line">	JdbcUtils.free(rs, ps, conn);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="二、JDBC可滚动和可更新结果集"><a href="#二、JDBC可滚动和可更新结果集" class="headerlink" title="二、JDBC可滚动和可更新结果集"></a>二、JDBC可滚动和可更新结果集</h2><p>JDBC中ResultSet类中，我们可以使用next()方法从结果集中的一条记录移动到下一条记录。同时我们还可以在定义Statement或PrepareStatement时指定结果集是否可滚动或更新。以下是注意事项：</p>
-<ul>
-<li>即使使用了CONCUR_UPDATABLE参数来创建Statement，得到的结果集也不一定是“可更新的”。如果你的记录集来自合并查询，这样的结果集就可能是不可更新的。可以使用ResultSet类的getConcurrency()方法来确定是否为可更新结果集。</li>
-<li><p>在JDBC中使用可更新的结果集来更新数据库，不能使用”select * from table”方式的sql语句，必须写成以下两种形式之一：</p>
-<ul>
-<li>select table.* from table </li>
-<li>select column1,column2,column3 from table</li>
-</ul>
-</li>
-<li><p>如果使用的JDBC版本是3.0 (JDK1.4以后的版本)，使用CallableStatement的setXXX()方法来设置IN参数时，既可以使用索引，也可以使用参数名称。如果使用JDBC2.0及以下版本，只能使用使用索引。对于对应的getXXX()中的参数也一样。</p>
-</li>
-</ul>
-<blockquote>
-<p>为了使照片能够快速、正确的存入oracle数据库中，最好使用oracle 10g的JDBC驱动！</p>
-</blockquote>
-<p>ResultSet 可取值常量值：</p>
-<ul>
-<li>TYPE_FORWARD_ONLY 结果集不能滚动</li>
-<li>TYPE_SCROLL_INSENSITIVE 结果集可以滚动，但对数据库变化不敏感</li>
-<li>TYPE_SCROLL_SENSITIVE 结果集可以滚动，但对数据库变化敏感</li>
-<li>CONCUR_READ_ONLY 结果集不能用于更新数据库(默认值)</li>
-<li>CONCUR_UPDATABLE 结果集可以用于更新数据库 </li>
-</ul>
-<p>例如：只想滚动遍历结果集，而不想修改他的数据，那么可以使用一下语句：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Statement stat = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);</div></pre></td></tr></table></figure></p>
-<p>向前滚动：if(rs.previous)…<br>向前或者向后滚动：rs.relative(n); n为正数或者负数<br>返回当前行号：rs.getRow();</p>
-<p>可滚动的结果集实例:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">scroll</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</div><div class="line">    Connection conn = <span class="keyword">null</span>;</div><div class="line">    Statement st = <span class="keyword">null</span>;</div><div class="line">    ResultSet rs = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">	<span class="comment">// 2.建立连接</span></div><div class="line">	conn = JdbcUtils.getConnection();</div><div class="line">	st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);</div><div class="line">	rs = st.executeQuery(<span class="string">"select id, name, money, birthday  from user limit 150, 10"</span>);</div><div class="line">	<span class="keyword">while</span> (rs.next()) &#123;</div><div class="line">	    System.out.println(rs.getObject(<span class="string">"id"</span>) + <span class="string">"\t"</span></div><div class="line">		+ rs.getObject(<span class="string">"name"</span>) + <span class="string">"\t"</span></div><div class="line">		+ rs.getObject(<span class="string">"birthday"</span>) + <span class="string">"\t"</span></div><div class="line">		+ rs.getObject(<span class="string">"money"</span>));</div><div class="line">	    &#125;</div><div class="line">	    System.out.println(<span class="string">"------------"</span>);</div><div class="line">	    <span class="comment">//绝对定位，定位到结果集的第5行</span></div><div class="line">	    rs.absolute(<span class="number">150</span>);</div><div class="line">	    <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">	    <span class="keyword">while</span> (rs.next() &amp;&amp; i &lt; <span class="number">10</span>) &#123;</div><div class="line">		i++;</div><div class="line">		System.out.println(rs.getObject(<span class="string">"id"</span>) + <span class="string">"\t"</span></div><div class="line">	    	    + rs.getObject(<span class="string">"name"</span>) + <span class="string">"\t"</span></div><div class="line">		    + rs.getObject(<span class="string">"birthday"</span>) + <span class="string">"\t"</span></div><div class="line">		    + rs.getObject(<span class="string">"money"</span>));</div><div class="line">	    &#125;</div><div class="line">		</div><div class="line">	    <span class="comment">//结果集的上一行数据</span></div><div class="line">	    <span class="keyword">if</span> (rs.previous())</div><div class="line">		System.out.println(rs.getObject(<span class="string">"id"</span>) + <span class="string">"\t"</span></div><div class="line">		    + rs.getObject(<span class="string">"name"</span>) + <span class="string">"\t"</span></div><div class="line">		    + rs.getObject(<span class="string">"birthday"</span>) + <span class="string">"\t"</span></div><div class="line">		    + rs.getObject(<span class="string">"money"</span>));</div><div class="line">	&#125; <span class="keyword">finally</span> &#123;</div><div class="line">	    JdbcUtils.free(rs, st, conn);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在读取数据的时候可以更新数据</p>
-<p>可更新的结果集实例:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readRs</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">    Connection conn = <span class="keyword">null</span>;</div><div class="line">    Statement stat = <span class="keyword">null</span>;</div><div class="line">    ResultSet rs = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">	<span class="comment">//conn = JdbcUtils.getConnenction();</span></div><div class="line">	conn = JdbcUtilsSingleton.getInstance().getConnenction();</div><div class="line">	<span class="comment">//3.创建语句</span></div><div class="line">	stat = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);</div><div class="line">	<span class="comment">//4.执行语句</span></div><div class="line">	rs = stat.executeQuery(<span class="string">"select id,name,login_name,pass_word from USER where id&gt;2"</span>);</div><div class="line">	<span class="comment">//5.处理结果</span></div><div class="line">	<span class="keyword">while</span>(rs.next())&#123;</div><div class="line">    	    System.out.println(<span class="string">"id:"</span>+rs.getString(<span class="string">"id"</span>));</div><div class="line">	    System.out.println(<span class="string">"name:"</span>+rs.getString(<span class="string">"name"</span>));</div><div class="line">			</div><div class="line">	    <span class="comment">//更新数据：如果name=zhangsan,那么就更新name=zhangsan2014</span></div><div class="line">	    String name = rs.getString(<span class="string">"name"</span>);</div><div class="line">	    <span class="keyword">if</span>(<span class="string">"zhangsan"</span>.equals(name))&#123;</div><div class="line">		rs.updateString(<span class="string">"name"</span>, <span class="string">"zhangsan2014"</span>);</div><div class="line">                rs.updateRow();</div><div class="line">	    &#125;</div><div class="line">	&#125;</div><div class="line">    &#125;<span class="keyword">finally</span>&#123;</div><div class="line">	JdbcUtils.close(rs, stat, conn);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在实际开发中并不建议这样直接更新数据，因为不明确，不只管。还是建议写一条update的更新语句去更新数据。</p>
+        <p>jquery.form.js是jQuery的一个官方用语支持异步上传文件的插件。官方网站：<a href="http://plugins.jquery.com/form/" target="_blank" rel="external">http://plugins.jquery.com/form/</a> ，结合Struts2三步轻松实现文件上传。</p>
+<p>一般是针对一个页面可能不止一个Form表单，所以在一个面提交表单会影响到另一个表单，为此，图片上传表单就可以使用无刷新提交方式上传，也就是异步上传，这时jquery.from.js就派上用场了。</p>
+<p><strong>在HTML页面上导入JS</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/js/jquery.form.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">!—图片上传</span> <span class="attr">--</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">s:form</span> <span class="attr">id</span>=<span class="string">"picForm"</span> <span class="attr">name</span>=<span class="string">"picForm"</span> <span class="attr">action</span>=<span class="string">"/notice/showAddNotice.action"</span> <span class="attr">method</span>=<span class="string">"post"</span></span></div><div class="line">   <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"pic"</span>  <span class="attr">size</span>=<span class="string">"30"</span>/&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"上传"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">s:form</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>写JS</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 为表单绑定异步上传的事件</span></div><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// 为表单绑定异步上传的事件</span></div><div class="line">    $(<span class="string">"#picForm"</span>).ajaxForm(&#123;</div><div class="line">        <span class="attr">url</span> : <span class="string">"$&#123;pageContext.request.contextPath&#125;/notice/uploadPic.action"</span>, <span class="comment">// 请求的url</span></div><div class="line">        type : <span class="string">"post"</span>, <span class="comment">// 请求方式</span></div><div class="line">        dataType : <span class="string">"text"</span>, <span class="comment">// 响应的数据类型</span></div><div class="line">        <span class="keyword">async</span> :<span class="literal">true</span>, <span class="comment">// 异步</span></div><div class="line">        success : <span class="function"><span class="keyword">function</span>(<span class="params">imageUrl</span>)</span>&#123;</div><div class="line">        <span class="comment">//alert(imageUrl);</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">error</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            alert(<span class="string">"数据加载失败！"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">// 为提交按钮绑定事件</span></div><div class="line">    $(<span class="string">"#saveBtn"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">// 表单输入较验</span></div><div class="line">    <span class="keyword">var</span> title = $(<span class="string">"#title"</span>);</div><div class="line">    <span class="comment">// 获取textarea的内容</span></div><div class="line">    <span class="keyword">var</span> content = tinyMCE.get(<span class="string">'content'</span>).getContent();</div><div class="line">    <span class="keyword">var</span> msg = <span class="string">""</span>;</div><div class="line">    <span class="keyword">if</span> ($.trim(title.val()) == <span class="string">""</span>)&#123;</div><div class="line">       msg = <span class="string">"公告标题不能为空！"</span>;</div><div class="line">       title.focus();</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> ($.trim(content) == <span class="string">""</span>)&#123;</div><div class="line">       msg = <span class="string">"内容不能为空！"</span>;</div><div class="line">    &#125;</div><div class="line">         msg = <span class="string">""</span>;</div><div class="line">    <span class="keyword">if</span> (msg != <span class="string">""</span>)&#123;</div><div class="line">        alert(msg);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="comment">// 表单提交</span></div><div class="line">    $(<span class="string">"#noticeForm"</span>).submit();</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>写Struts2代码</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">uploadPicAjax</span> <span class="keyword">extends</span> <span class="title">AbstractAjaxAction</span> </span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">4742151106080093662L</span>;</div><div class="line"><span class="comment">/** Struts2文件上传的三个属性 */</span></div><div class="line"><span class="keyword">private</span> File pic;</div><div class="line"><span class="keyword">private</span> String picFileName;</div><div class="line"><span class="keyword">private</span> String picContentType;</div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> String <span class="title">getJson</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">     <span class="comment">//获取项目部署的路径</span></div><div class="line">     String realPath = ServletActionContext.getServletContext().getRealPath(<span class="string">"/images/notice"</span>);</div><div class="line">     <span class="comment">//生成新的文件名</span></div><div class="line">     <span class="comment">//获取文件的后缀名 aa.jpg --&gt; jpg</span></div><div class="line">     String newFileName=UUID.randomUUID().toString()+<span class="string">"."</span>+FilenameUtils.getExtension(picFileName);</div><div class="line">     FileUtils.copyFile(pic, <span class="keyword">new</span> File(realPath + File.separator + newFileName));</div><div class="line">     <span class="keyword">return</span> <span class="string">"/images/notice/"</span> + newFileName;</div><div class="line">&#125;</div><div class="line"><span class="comment">/** setter and getter method  **/</span></div><div class="line">        ......</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我这里继承了一个抽象的的处理Ajax的基类，所以直接返图片地址回到页面。你可以return到一个视图。</p>
+<p><strong>配置Struts2.xml</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 图片的异步上传 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"uploadPic"</span> <span class="attr">class</span>=<span class="string">"com.wise.hrm.action.notice.uploadPicAjax"</span>&gt;</span><span class="tag">&lt;/<span class="name">action</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>好了，从页面到后台就已经写完了、、、、这样就可以上传了。完毕！</p>
 
       
     </div>
@@ -365,13 +338,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/">JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)</a></p>
+        <p><span>Title:</span><a href="/2013/09/19/使用jquery-from-js-Struts2实现图片异步上传/">使用jquery.from.js+Struts2实现图片异步上传</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">张兵</a></p>
-        <p><span>Created:</span>2014-07-08, 13:11:52</p>
-        <p><span>Updated:</span>2017-04-15, 22:29:51</p>
+        <p><span>Created:</span>2013-09-19, 12:42:29</p>
+        <p><span>Updated:</span>2017-05-05, 23:44:41</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/" title="JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)">http://dunizb.com/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/</a>
-            <span class="copy-path" data-clipboard-text="From http://dunizb.com/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/　　By 张兵" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2013/09/19/使用jquery-from-js-Struts2实现图片异步上传/" title="使用jquery.from.js+Struts2实现图片异步上传">http://dunizb.com/2013/09/19/使用jquery-from-js-Struts2实现图片异步上传/</a>
+            <span class="copy-path" data-clipboard-text="From http://dunizb.com/2013/09/19/使用jquery-from-js-Struts2实现图片异步上传/　　By 张兵" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -384,15 +357,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/">
-                    使用JDBC调用存储过程，JDBC复习(二) 
+                <a href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/">
+                    Spring IOC(依赖注入、控制反转)概念理解
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">
-                    JDBC操作数据库的元数据信息，JDBC复习(四) 
+                <a href="/2013/09/21/Struts2-view-forwarding-type-summary/">
+                    Struts2的视图转发类型总结
                 </a>
             </div>
         
@@ -404,7 +377,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、使用JDBC的批处理功能"><span class="toc-number">1.</span> <span class="toc-text">一、使用JDBC的批处理功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一种方式"><span class="toc-number">1.1.</span> <span class="toc-text">第一种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现批处理的第二种方式：PreparedStatement-addBatch"><span class="toc-number">1.2.</span> <span class="toc-text">实现批处理的第二种方式：PreparedStatement.addBatch()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、JDBC可滚动和可更新结果集"><span class="toc-number">2.</span> <span class="toc-text">二、JDBC可滚动和可更新结果集</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -440,7 +413,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"使用jquery.from.js+Struts2实现图片异步上传　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -460,7 +433,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/" title="Pre: 使用JDBC调用存储过程，JDBC复习(二) ">
+            <a href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/" title="Pre: Spring IOC(依赖注入、控制反转)概念理解">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -468,7 +441,7 @@
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/" title="Next: JDBC操作数据库的元数据信息，JDBC复习(四) ">
+            <a href="/2013/09/21/Struts2-view-forwarding-type-summary/" title="Next: Struts2的视图转发类型总结">
                 <i class="fa fa-angle-right"></i>
             </a>
         
