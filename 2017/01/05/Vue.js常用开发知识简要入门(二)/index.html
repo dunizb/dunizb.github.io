@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="System.out.println能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而System.err.println只能在屏幕上实现打印，即使你重定向了也一样。">
-<meta name="keywords" content="java,javase">
+<meta name="description" content="Vue.js学习笔记（二）">
+<meta name="keywords" content="总结,学习笔记,Vue.js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="System.out.println与System.err.println的区别">
-<meta property="og:url" content="http://dunizb.com/2013/10/29/System-out-println与System-err-println的区别/index.html">
+<meta property="og:title" content="Vue.js常用开发知识简要入门（二）">
+<meta property="og:url" content="http://dunizb.com/2017/01/05/Vue.js常用开发知识简要入门(二)/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="System.out.println能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而System.err.println只能在屏幕上实现打印，即使你重定向了也一样。">
-<meta property="og:image" content="http://img2.ph.126.net/2QNPPl8D_-byOjzPHYzKKA==/6599275386981696242.png">
-<meta property="og:updated_time" content="2017-04-13T17:34:52.000Z">
+<meta property="og:description" content="Vue.js学习笔记（二）">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-7689aa4711f8e5ed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-05-05T15:58:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="System.out.println与System.err.println的区别">
-<meta name="twitter:description" content="System.out.println能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而System.err.println只能在屏幕上实现打印，即使你重定向了也一样。">
-<meta name="twitter:image" content="http://img2.ph.126.net/2QNPPl8D_-byOjzPHYzKKA==/6599275386981696242.png">
+<meta name="twitter:title" content="Vue.js常用开发知识简要入门（二）">
+<meta name="twitter:description" content="Vue.js学习笔记（二）">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-7689aa4711f8e5ed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>System.out.println与System.err.println的区别 | Dunizb</title>
+<title>Vue.js常用开发知识简要入门（二） | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -280,11 +280,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-System-out-println与System-err-println的区别" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue.js常用开发知识简要入门(二)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2013/10/29/System-out-println与System-err-println的区别/" class="article-date">
-      <time datetime="2013-10-29T07:17:21.000Z" itemprop="datePublished">2013-10-29</time>
+      <a href="/2017/01/05/Vue.js常用开发知识简要入门(二)/" class="article-date">
+      <time datetime="2017-01-05T08:56:00.000Z" itemprop="datePublished">2017-01-05</time>
 </a>
 
 
@@ -299,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      System.out.println与System.err.println的区别
+      Vue.js常用开发知识简要入门（二）
     </h1>
   
 
@@ -308,13 +308,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
+    <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -324,20 +324,31 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><code>System.out.println</code>能重定向到别的输出流，这样的话你在屏幕上将看不到打印的东西了， 而<code>System.err.println</code>只能在屏幕上实现打印，即使你重定向了也一样。<br><a id="more"></a><br>当向控制台输出信息时，开发者有两个选择：<code>System.out</code>和<code>System.err</code>。使用者更倾向于输出的是<code>System.out</code>，而如果是<code>System.err</code>则输出“error”。尽管这看起来是显而易见的，但很多开发者都不了解为什么出错和调试时使用<code>System.err</code>。</p>
-<p>当输出一个流时，JVM和操作系统共同决定何时输出这个流。也就是说，尽管开发者键入了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.print(<span class="string">"Test   Output:"</span>);</div></pre></td></tr></table></figure></p>
-<p>JVM和操作系统的组合体并不会立即输出这个流。相反，它将保持等待状态直到将要输出的东西达到一定的量。   </p>
-<p>假设输入以下指令：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.println(<span class="string">"Debugging Info."</span>);</div></pre></td></tr></table></figure></p>
-<p>JVM可能同意输出；然而，操作系统可能决定暂不输出。   </p>
-<p>由于这个原因，在调试程序时想要发现出错的位置就有可能成为问题。考虑以下的程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span>   i=<span class="number">0</span>;   i&lt;<span class="number">56</span>;   i++)   &#123;   </div><div class="line">    System.out.println(i);   </div><div class="line">    ...   </div><div class="line">    <span class="comment">//   containing   an   error   </span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>错误可能出现在i等于54时，但是可能JVM在i等于49时就结束输出了。50到54仍然存在于缓存中，结果也就丢失了。使用<code>System.err</code>来报告错误、调试程序就可以避免这种情况出现，它将使每一次操作的结果都输出出来。例如以下程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span>   i=<span class="number">0</span>;   i&lt;<span class="number">56</span>;   i++)   &#123;   </div><div class="line">     System.err.println(i);   </div><div class="line">     ...   </div><div class="line">     <span class="comment">//   containing   an   error   </span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在每一次i等于54时都将显示错误信息。</p>
-<p><code>System.out.println</code>可能会被缓冲,而<code>System.err.println</code>不会.</p>
-<p><code>System.err和System.out</code>就是错误输出和标准输出。如果你用LOG4J记录日志的话,且设定错误等级的话，<code>System.err</code>的输出是将记录到日志中。</p>
-<p>输出设备是一样的所以你看到的是一样的<code>System.setErr()</code>，<code>System.setOut()</code>是重定向两个流的方法。</p>
-<p><code>System.err.println()</code>是要缓冲的,所以优先级会高点,而<code>System.out.println()</code>是不需要缓冲的,所以优先级会低点.</p>
-<p>另外，特别的，当你使用MyEclipse和Tomcat6以上时，输出<code>System.err.println(&quot;aaaa&quot;)</code>到控制台是红色显示的，在控制台很显眼，一下就能找到，非常适合输出调试信息，这个我个人比较喜欢用，比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    System.err.println(<span class="string">"aaaaaaaaaaaaaaaa"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="http://img2.ph.126.net/2QNPPl8D_-byOjzPHYzKKA==/6599275386981696242.png" alt=""></p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/68937-7689aa4711f8e5ed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="Vue-cli创建项目"><a href="#Vue-cli创建项目" class="headerlink" title="Vue-cli创建项目"></a>Vue-cli创建项目</h2><ul>
+<li>安装：npm install -g vue-cli</li>
+<li>vue list命令 ：查看官方模版列表</li>
+<li>初始化项目：vue init webpack 项目名 </li>
+<li>安装依赖：npm install </li>
+<li>运行：npm run dev</li>
+</ul>
+<h2 id="Vue动画支持（transition）"><a href="#Vue动画支持（transition）" class="headerlink" title="Vue动画支持（transition）"></a>Vue动画支持（transition）</h2><p>以DIV从右到做的飞入动画为例。<br>在需要加动画的组建上设置属性：transition=”动画名称”<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-show</span>=<span class="string">"showFlag"</span> <span class="attr">transition</span>=<span class="string">"move"</span> <span class="attr">class</span>=<span class="string">"food"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这里给要添加动画的组建设置了transition属性，并且值等于move，也就是去个名字</p>
+<p>然后在style样式中分别写两个样式：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"less"</span> <span class="attr">rel</span>=<span class="string">"stylesheet/less"</span>&gt;</span><span class="undefined"></span></div><div class="line">  .food&#123;</div><div class="line">    // 其他样式</div><div class="line">    ... ...</div><div class="line">    &amp;.move-transition&#123;</div><div class="line">      transition: all .2s linear;</div><div class="line">      transform: translate3d(0,0,0);</div><div class="line">    &#125;</div><div class="line">    &amp;.move-enter,&amp;.move-leave&#123;</div><div class="line">      transform: translate3d(100%,0,0);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>样式以“动画名称-transition”为名，表示动画开始的设置，以“enter”“leave”结尾的表示动画结束的设置。</p>
+<p>这样就完成了一个简单的Vue动画。</p>
+<h2 id="父组建调用子组件方法（v-ref）"><a href="#父组建调用子组件方法（v-ref）" class="headerlink" title="父组建调用子组件方法（v-ref）"></a>父组建调用子组件方法（v-ref）</h2><p>parent组件中有child组件，并且在子组件上设置v-ref属性：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">   // child组建</div><div class="line">   <span class="tag">&lt;<span class="name">child</span> <span class="attr">v-ref:child</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/ecmascript-6"</span>&gt;</span><span class="undefined"></span></div><div class="line">    export default&#123;</div><div class="line">        methods: &#123;</div><div class="line">            methodA() &#123;</div><div class="line">                // 调用子组件方法</div><div class="line">                this.$refs.child.show();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"less"</span> <span class="attr">rel</span>=<span class="string">"stylesheet/less"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>注意：v-ref后面的值是以“:”连接的而不是“=”号。“this.$refs.child”就是获取到子组件。</p>
+<p>child子组件内容<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是child组建<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/ecmascript-6"</span>&gt;</span><span class="undefined"></span></div><div class="line">    export default&#123;</div><div class="line">        methods: &#123;</div><div class="line">            show() &#123;</div><div class="line">                //方法内容</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"less"</span> <span class="attr">rel</span>=<span class="string">"stylesheet/less"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="子组建通知父组件（事件派发-dispatch）"><a href="#子组建通知父组件（事件派发-dispatch）" class="headerlink" title="子组建通知父组件（事件派发$dispatch）"></a>子组建通知父组件（事件派发$dispatch）</h2><p>在子组件方法中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.$dispatch(<span class="string">'content.toggle'</span>, type);</div></pre></td></tr></table></figure></p>
+<p><code>ratingtype.select</code>是自定义事件名，在父组件中可以监听该事件，在父组件中定义events属性处理事件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">events: &#123;</div><div class="line">      <span class="string">'ratingtype.select'</span>(type) &#123;</div><div class="line">        <span class="keyword">this</span>.selectType = type;</div><div class="line">      &#125;,</div><div class="line">      <span class="string">'content.toggle'</span>(onlyContent) &#123;</div><div class="line">        <span class="keyword">this</span>.onlyContent = onlyContent;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="DOM绑定（v-el）"><a href="#DOM绑定（v-el）" class="headerlink" title="DOM绑定（v-el）"></a>DOM绑定（v-el）</h2><p>通过给div设置“v-el:xxx”就如同给div设置一个id属性，然后可以通过这个id获取DIV元素。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"food"</span> <span class="attr">v-el:food</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>然后在使用$els即可访问该元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> food = <span class="keyword">this</span>.$els.food;</div></pre></td></tr></table></figure></p>
+<p>food得到的就是一个DOM对象</p>
+<h2 id="阻止元素点击穿透和冒泡"><a href="#阻止元素点击穿透和冒泡" class="headerlink" title="阻止元素点击穿透和冒泡"></a>阻止元素点击穿透和冒泡</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.stop.prevent</span>=<span class="string">"test"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="生命周期不重新加载（keep-alive）"><a href="#生命周期不重新加载（keep-alive）" class="headerlink" title="生命周期不重新加载（keep-alive）"></a>生命周期不重新加载（keep-alive）</h2><p>在切换路由的时候不希望每次切换都重新被渲染一次，可以在路由出口上添加keep-alive属性即可<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">:user</span>=<span class="string">"user"</span> <span class="attr">keep-alive</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="项目编译打包注意"><a href="#项目编译打包注意" class="headerlink" title="项目编译打包注意"></a>项目编译打包注意</h2><p>使用vue-cli创建的项目使用npm run build命令进行打包编译成静态文件。但是可能遇到如下异常：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- building <span class="keyword">for</span> production...shell.js: internal error</div><div class="line"><span class="built_in">Error</span>: ENOENT: no such file or directory, stat <span class="string">'D:\xxxxxapp\static\*'</span></div><div class="line">... ...</div></pre></td></tr></table></figure></p>
+<p>此时，可以尝试更新shelljs包的版本，如项目中shelljs当前版本是0.6.0，那么可以更新至0.7.4（npm update shelljs@0.7.4）后再次进行build命令</p>
 
       
     </div>
@@ -346,13 +357,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a></p>
+        <p><span>Title:</span><a href="/2017/01/05/Vue.js常用开发知识简要入门(二)/">Vue.js常用开发知识简要入门（二）</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">张兵</a></p>
-        <p><span>Created:</span>2013-10-29, 15:17:21</p>
-        <p><span>Updated:</span>2017-04-14, 01:34:52</p>
+        <p><span>Created:</span>2017-01-05, 16:56:00</p>
+        <p><span>Updated:</span>2017-05-05, 23:58:20</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2013/10/29/System-out-println与System-err-println的区别/" title="System.out.println与System.err.println的区别">http://dunizb.com/2013/10/29/System-out-println与System-err-println的区别/</a>
-            <span class="copy-path" data-clipboard-text="From http://dunizb.com/2013/10/29/System-out-println与System-err-println的区别/　　By 张兵" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2017/01/05/Vue.js常用开发知识简要入门(二)/" title="Vue.js常用开发知识简要入门（二）">http://dunizb.com/2017/01/05/Vue.js常用开发知识简要入门(二)/</a>
+            <span class="copy-path" data-clipboard-text="From http://dunizb.com/2017/01/05/Vue.js常用开发知识简要入门(二)/　　By 张兵" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -365,15 +376,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2013/10/26/BigDecimal-conversion-Integer/">
-                    BigDecimal互转Integer
+                <a href="/2016/12/18/Vue.js常用开发知识简要入门(一)/">
+                    Vue.js常用开发知识简要入门（一）
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2013/11/15/使用JXL组件导入Excel文件数据到数据库/">
-                    使用JXL组件导入Excel文件数据到数据库
+                <a href="/2017/02/13/如何正确高效的使用群聊？/">
+                    如何正确高效的使用群聊？
                 </a>
             </div>
         
@@ -385,7 +396,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-cli创建项目"><span class="toc-number">1.</span> <span class="toc-text">Vue-cli创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue动画支持（transition）"><span class="toc-number">2.</span> <span class="toc-text">Vue动画支持（transition）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#父组建调用子组件方法（v-ref）"><span class="toc-number">3.</span> <span class="toc-text">父组建调用子组件方法（v-ref）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#子组建通知父组件（事件派发-dispatch）"><span class="toc-number">4.</span> <span class="toc-text">子组建通知父组件（事件派发$dispatch）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM绑定（v-el）"><span class="toc-number">5.</span> <span class="toc-text">DOM绑定（v-el）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阻止元素点击穿透和冒泡"><span class="toc-number">6.</span> <span class="toc-text">阻止元素点击穿透和冒泡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生命周期不重新加载（keep-alive）"><span class="toc-number">7.</span> <span class="toc-text">生命周期不重新加载（keep-alive）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目编译打包注意"><span class="toc-number">8.</span> <span class="toc-text">项目编译打包注意</span></a></li></ol>
         
     </div>
     <style>
@@ -421,7 +432,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"System.out.println与System.err.println的区别　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Vue.js常用开发知识简要入门（二）　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -441,7 +452,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2013/10/26/BigDecimal-conversion-Integer/" title="Pre: BigDecimal互转Integer">
+            <a href="/2016/12/18/Vue.js常用开发知识简要入门(一)/" title="Pre: Vue.js常用开发知识简要入门（一）">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -449,7 +460,7 @@
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2013/11/15/使用JXL组件导入Excel文件数据到数据库/" title="Next: 使用JXL组件导入Excel文件数据到数据库">
+            <a href="/2017/02/13/如何正确高效的使用群聊？/" title="Next: 如何正确高效的使用群聊？">
                 <i class="fa fa-angle-right"></i>
             </a>
         
