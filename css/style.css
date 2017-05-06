@@ -193,6 +193,9 @@ a {
     width: 100%;
   }
 }
+#header .header-menu {
+  Max-height: none;
+}
 #container {
   min-height: 100%;
 }
