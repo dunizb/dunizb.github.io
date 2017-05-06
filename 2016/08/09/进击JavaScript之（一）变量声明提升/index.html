@@ -15,17 +15,19 @@
 
 
 
-<meta name="description" content="Vue.js学习笔记（三）">
-<meta name="keywords" content="总结,Vue.js,学习笔记">
+<meta name="description" content="如下代码输出的结果是？1234567var num = 123;function foo1()&amp;#123;    console.log( num );    //undefined    var num = 456;   console.log( num );    //456&amp;#125;foo1(); Javascript代码执行分为两个大步： 预解析的过程代码的执行过程   1.预解析与变">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue.js常用开发知识简要入门（三）">
-<meta property="og:url" content="http://dunizb.com/2017/02/13/Vue.js常用开发知识简要入门(三)/index.html">
+<meta property="og:title" content="进击JavaScript之（一）变量声明提升">
+<meta property="og:url" content="http://dunizb.com/2016/08/09/进击JavaScript之（一）变量声明提升/index.html">
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
-<meta property="og:description" content="Vue.js学习笔记（三）">
-<meta property="og:updated_time" content="2017-05-05T16:06:10.000Z">
+<meta property="og:description" content="如下代码输出的结果是？1234567var num = 123;function foo1()&amp;#123;    console.log( num );    //undefined    var num = 456;   console.log( num );    //456&amp;#125;foo1(); Javascript代码执行分为两个大步： 预解析的过程代码的执行过程   1.预解析与变">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-4cc0fdff5666ed18.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-05-06T16:32:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue.js常用开发知识简要入门（三）">
-<meta name="twitter:description" content="Vue.js学习笔记（三）">
+<meta name="twitter:title" content="进击JavaScript之（一）变量声明提升">
+<meta name="twitter:description" content="如下代码输出的结果是？1234567var num = 123;function foo1()&amp;#123;    console.log( num );    //undefined    var num = 456;   console.log( num );    //456&amp;#125;foo1(); Javascript代码执行分为两个大步： 预解析的过程代码的执行过程   1.预解析与变">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-4cc0fdff5666ed18.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Vue.js常用开发知识简要入门（三） | Dunizb，张兵的个人技术博客</title>
+<title>进击JavaScript之（一）变量声明提升 | Dunizb，张兵的个人技术博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -282,11 +284,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Vue.js常用开发知识简要入门(三)" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-进击JavaScript之（一）变量声明提升" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/13/Vue.js常用开发知识简要入门(三)/" class="article-date">
-      <time datetime="2017-02-13T02:52:00.000Z" itemprop="datePublished">2017-02-13</time>
+      <a href="/2016/08/09/进击JavaScript之（一）变量声明提升/" class="article-date">
+      <time datetime="2016-08-09T13:51:00.000Z" itemprop="datePublished">2016-08-09</time>
 </a>
 
 
@@ -301,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vue.js常用开发知识简要入门（三）
+      进击JavaScript之（一）变量声明提升
     </h1>
   
 
@@ -316,7 +318,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -326,39 +328,101 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="组件的注册与使用"><a href="#组件的注册与使用" class="headerlink" title="组件的注册与使用"></a>组件的注册与使用</h2><p>例如，注册一个Hello组件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Hello = Vue.extend(&#123;        <span class="comment">//返回预设选项的Vue构造器（子类）</span></div><div class="line">   data: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">       <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">msg</span>: <span class="string">'Hello，Vue.js'</span></div><div class="line">       &#125;</div><div class="line">   &#125;,</div><div class="line">   <span class="attr">template</span>: <span class="string">'&lt;h1&gt;&#123;&#123;msg&#125;&#125;&lt;/h1&gt;'</span>      </div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>这样，就创建了一个<code>h1</code>标签，标签内容为Hello，Vue.js的Hello组件，我们可以使用全局注册来使用这个组建：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;Hello&gt;&lt;/Hello&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">//全局注册</div><div class="line">Vue.component('Hello',Hello);</div><div class="line"></div><div class="line">new Vue(&#123;</div><div class="line">     el: 'body',</div><div class="line">     components: &#123;</div><div class="line">          // 'Hello': Hello,    //局部注册</div><div class="line">          'Temp': Temp</div><div class="line">     &#125;</div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>当然，我们也可以使用局部注册。</p>
-<p>template实例模版，用户替换或插入挂载元素，元素可以使用<code>#</code>选择子，使用匹配元素的<code>innerHTML</code>作为模板<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;Hello&gt;&lt;/Hello&gt;</div><div class="line">    &lt;Temp&gt;&lt;/Temp&gt;</div><div class="line"></div><div class="line">    &lt;template id="template-use"&gt;</div><div class="line">        &lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;/p&gt;</div><div class="line">        &lt;p&gt;Demos 代码演示、代码片段 - 读你 | 这世间唯有梦想和好姑娘不可辜负!&lt;/p&gt;</div><div class="line">    &lt;/template&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">var Temp = Vue.extend(&#123; </div><div class="line">   data: function() &#123;</div><div class="line">       return &#123;</div><div class="line">            msg: '组件的注册与使用'</div><div class="line">       &#125;</div><div class="line">   &#125;,</div><div class="line">   template: '#template-use'      </div><div class="line">&#125;);</div><div class="line"></div><div class="line">new Vue(&#123;</div><div class="line">     el: 'body',</div><div class="line">     components: &#123;</div><div class="line">          'Hello': Hello,    //局部注册</div><div class="line">          'Temp': Temp</div><div class="line">     &#125;</div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p><strong>使用 Vue 扩展构造 Vue 实例时，实例选项中的 methods 属性会覆盖扩展选项中的 methods 属性？</strong></p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/68937-4cc0fdff5666ed18.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>如下代码输出的结果是？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">123</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( num );    <span class="comment">//undefined</span></div><div class="line">    <span class="keyword">var</span> num = <span class="number">456</span>;</div><div class="line">   <span class="built_in">console</span>.log( num );    <span class="comment">//456</span></div><div class="line">&#125;</div><div class="line">foo1();</div></pre></td></tr></table></figure></p>
+<p>Javascript代码执行分为两个大步：</p>
+<p>预解析的过程<br>代码的执行过程  </p>
+<h2 id="1-预解析与变量声明提升"><a href="#1-预解析与变量声明提升" class="headerlink" title="1.预解析与变量声明提升"></a>1.预解析与变量声明提升</h2><p>程序在执行过程中，会先将代码读取到内存中检查，会将所有的声明在此进行标记，所谓的标记就是让JS解析器知道有这个名字，后面在使用名字的时候不会出现未定义的错误。这个标记过程就是提升。</p>
+<p><strong>声明：</strong></p>
+<ol>
+<li><p>名字的声明，标识符声明（变量名声明）</p>
 <ul>
-<li>Vue 扩展是一个提供了部分可复用的数据、方法……选项的 Vue 构造器，可以直接使用 new MyVue(options) 这样的方式来构造 Vue 实例；只要愿意，可以在一个页面上使用 Vue 构造器或者 Vue 扩展构造器创建任意个 Vue 实例；使用 Vue 扩展构造 Vue 实例时，选项级别的属性并不是直接覆盖.</li>
-<li>如 Vue 扩展选项里包括 methods 属性，调用该扩展构造器时也传入了 methods，则会将两个 methods 中的内容合并成一个新对象，仅当存在键名冲突时，实例选项中的方法覆盖扩展选项中的同名方法.</li>
-<li>data 属性的情况类似，但更复杂，键名冲突时，当 data 属性中的数据是数值时，使用实例选项中的数据覆盖扩展选项中的数据，当 data 属性中的数据是对象时，将两个对象按相同规则继续合并，此外，同名钩子会组成数组，在生命周期中事件触发时均会被调用.</li>
-<li>使用 Vue.extend 创建 Vue 扩展时，扩展选项中的 data 和 el 必须是返回相关数据的函数，即使使用指向同一个数据对象的变量作为函数的返回值，通过 Vue 扩展创建的 Vue 实例的数据也是不同的。</li>
+<li>名字的声明就是让解析器知道有这个名字</li>
+<li>名字没有任何数据与之对应</li>
 </ul>
-<p><strong>注意：</strong><br>当自定义标签所对应的模板中可能包含多个顶级元素时，由于指令优先级的关系，不能使用 v-show 指令，并且在任何自定义标签后的元素中，v-else 均无效；由于 v-if 的初始化处理方式不同（根据绑定数据决定是否创建 DOM 元素，而不是设置 display 属性），在自定义标签中使用 v-if 指令是可以的，并且允许在后续标签中使用 v-else。</p>
-<h2 id="使用props传递数据"><a href="#使用props传递数据" class="headerlink" title="使用props传递数据"></a>使用props传递数据</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">   &lt;child title="Vue.js权威指南" author="滴滴前端" price="89"&gt;&lt;/child&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"&gt;&lt;/script&gt;</div><div class="line">&lt;script type="text/javascript"&gt;</div><div class="line">    //注册组建</div><div class="line">    var child = Vue.component('child',&#123;</div><div class="line">        props: [</div><div class="line">            'title','author','price'</div><div class="line">        ],</div><div class="line">        template: `&lt;span :title="title"&gt;&#123;&#123;title&#125;&#125;&lt;/span&gt;</div><div class="line">                &lt;span :author="author"&gt;&#123;&#123;author&#125;&#125;&lt;/span&gt;</div><div class="line">                &lt;span :price="price"&gt;&#123;&#123;price&#125;&#125;&lt;/span&gt;`</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    //使用组建</div><div class="line">    new Vue(&#123;</div><div class="line">        el: 'body',</div><div class="line">        components: &#123; child &#125;</div><div class="line">    &#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>这里使用了另一种创建组建的方式，属于Vue语法糖，背后会自动使用<code>Vue.extend()</code>.</p>
-<h3 id="prop-校验"><a href="#prop-校验" class="headerlink" title="prop 校验"></a>prop 校验</h3><ul>
-<li>type：类型 </li>
-<li>required：是否必须 </li>
-<li>towWay：是否双向 </li>
-<li>default：默认值</li>
-<li>validator：自定义校验函数</li>
-<li>coerce：转换函数</li>
-<li>type 为 String、Number、Boolean、Function、Object、Array等原生构造器或自定义构造器</li>
-<li>仅有 type 时可不适用对象语法</li>
-<li>可设置为构造器数组</li>
-<li>如果设置了转换函数，先转换再判断 type</li>
+</li>
+<li><p>函数的声明</p>
+<ul>
+<li>函数声明包含两部分</li>
+<li><p>函数声明与函数表达式有区别，函数声明是单独写在一个结构中，不存在任何语句，逻辑判断等结构中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125; <span class="comment">// 函数声明</span></div><div class="line"><span class="keyword">if</span> ( <span class="literal">true</span> ) &#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">func2</span> (<span class="params"></span>) </span>&#123;&#125; <span class="comment">//函数表达式</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> <span class="title">func3</span> (<span class="params"></span>) </span>&#123;&#125;; <span class="comment">//函数表达式</span></div><div class="line"><span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;; <span class="comment">//函数表达式</span></div><div class="line"><span class="keyword">var</span> i= <span class="number">1</span>；</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func4</span> (<span class="params"></span>) </span>&#123;&#125;    <span class="comment">// 函数声明</span></div><div class="line">    <span class="keyword">var</span> j = <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<h2 id="单文件组建规范"><a href="#单文件组建规范" class="headerlink" title="单文件组建规范"></a>单文件组建规范</h2><h3 id="单文件组建的结构"><a href="#单文件组建的结构" class="headerlink" title="单文件组建的结构"></a>单文件组建的结构</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;template&gt;</div><div class="line">    &lt;span&gt;![](../img/logo.png)&lt;/span&gt;</div><div class="line">&lt;/template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">export default&#123;</div><div class="line">    props: ['componentName']</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;style&gt;</div><div class="line">img.log&#123;</div><div class="line">    width:16px;height:16px;</div><div class="line">&#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure>
-<h3 id="语言块"><a href="#语言块" class="headerlink" title="语言块"></a>语言块</h3><p><strong>template块</strong><br>默认语言html，每个文件允许最多一个template块</p>
-<p><strong>script块</strong><br>默认语言js，每个文件允许最多一个script块</p>
-<p><strong>style块</strong><br>默认语言CSS，支持多个style块</p>
-<p>Vue.js 的单文件组件中不一定要有 template 语言块，再者，即使确实需要 template 属性，script 语言块中输出的组件选项中也可以包含字符串形式的 template属性。为了更好地组织样式，一个单文件组件中允许有多个 style 语言块。template 语言块的默认语言是 html，还可以设置为其他预处理的模板语言如 jade。script 语言块的默认语言是 js，也允许设置使用其他语言如 CoffeeScript、TypeScript 等。</p>
-<h3 id="src引用"><a href="#src引用" class="headerlink" title="src引用"></a>src引用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;template src=<span class="string">"./template.html"</span>&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></div><div class="line">&lt;script src=<span class="string">"./script.js"</span>&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div><div class="line">&lt;style src=<span class="string">"./style.css"</span>&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<p>支持src引用，遵循CommonJS路径规范。</p>
+</li>
+</ol>
+<p><strong>分析</strong></p>
+<ol>
+<li><p>预解析代码，提示名字    </p>
+<ul>
+<li>首先提升名字num</li>
+<li>再提升函数名，但是名字已经存在，因此只做第二部，让名字与函数体对应上</li>
+<li>结论就是 代码中已经有一个函数 num 了</li>
+</ul>
+</li>
+<li><p>开始执行代码，第一句话从赋值语句开始执行</p>
+<ul>
+<li>给num赋值为1</li>
+<li>覆盖了函数 </li>
+</ul>
+</li>
+<li><p>调用num，由于num中存储的是数组1，因此报错</p>
+</li>
+</ol>
+<h2 id="2-代码分析举例"><a href="#2-代码分析举例" class="headerlink" title="2.代码分析举例"></a>2.代码分析举例</h2><h3 id="程序1"><a href="#程序1" class="headerlink" title="程序1"></a>程序1</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">123</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( num );    <span class="comment">//undefined</span></div><div class="line">    <span class="keyword">var</span> num = <span class="number">456</span>;</div><div class="line">    <span class="built_in">console</span>.log( num );    <span class="comment">//456</span></div><div class="line">&#125;</div><div class="line">foo1();</div></pre></td></tr></table></figure>
+<ol>
+<li>预解析，提升 num 名字和 foo1 函数</li>
+<li>执行第一句话：<code>num = 123;</code></li>
+<li>执行函数调用<ul>
+<li>函数调用进入函数的一瞬间也要进行预解析，此时解析的是变量名 num</li>
+<li>在函数内部是一个独立的空间，允许使用外部的数据，但是现在 num 声明同名，即覆盖外面的</li>
+<li>执行第一句 打印num，没有数据，undefined</li>
+<li>执行第二句 赋值：num = 456；</li>
+<li>执行第三句 打印num，结果456</li>
+</ul>
+</li>
+</ol>
+<h3 id="程序2"><a href="#程序2" class="headerlink" title="程序2"></a>程序2</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ( ！ <span class="string">'a'</span> <span class="keyword">in</span> <span class="built_in">window</span> ) &#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">123</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( a );</div></pre></td></tr></table></figure>
+<ol>
+<li>预解析，读取提升a，有一个名字a 存在了</li>
+<li>in 运算符：判断某一个字符串描述的属性名是否在对象中<ul>
+<li>var o = { name:’jim’ }; ‘name’ in o，’age’ in o</li>
+<li>执行第一个判断：! ‘a’ in window</li>
+</ul>
+<ul>
+<li>‘a’ in window 结果为真</li>
+<li>！得到假</li>
+</ul>
+<ul>
+<li>if内部的赋值不进行</li>
+</ul>
+</li>
+<li>打印结果 a 的值为 undefined  </li>
+</ol>
+<h3 id="程序3"><a href="#程序3" class="headerlink" title="程序3"></a>程序3</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ( <span class="literal">false</span> ) &#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f1</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log( <span class="string">'true'</span> );</div><div class="line">     &#125;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f1</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log( <span class="string">'false'</span> );</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">f1();</div></pre></td></tr></table></figure>
+<ol>
+<li>预解析：提升 f1 函数，只保留提升后的内容，所以打印是 false</li>
+<li><p>执行代码，第一句话就是一个空的if结构  </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ( true ) &#123;</div><div class="line">&#125; else &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行函数调用，得到 false    </p>
+</li>
+</ol>
+<h2 id="3-问题"><a href="#3-问题" class="headerlink" title="3.问题"></a>3.问题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) &#125; </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure>
+<ol>
+<li>上面的语法是声明，可以提升，因此在函数上方也可以调用</li>
+<li>下面的语法是函数表达式，函数名就是foo ，他会提升，提升的不是函数体</li>
+<li><p>函数表达式也是支持名字语法</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var foo = function func1 () &#123;&#125;;</div><div class="line">func();</div></pre></td></tr></table></figure>
+</li>
+<li><p>函数有一个属性name，表示的是函数名，只有带有名字的函数定义，才会有name属性值，否则是“”</p>
+<ul>
+<li>但是，函数表达式的名字，只允许在函数内部使用，IE8可以访问</li>
+<li>（）可以将数据转化为表达式</li>
+</ul>
+</li>
+</ol>
+<p>新的浏览器中，写在if、while、do..while结构中的函数，都会将函数的声明转换成特殊的函数表达式<br>将代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (...) &#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; ... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>转换成<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (...) &#123;</div><div class="line">    <span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; .... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -367,13 +431,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/13/Vue.js常用开发知识简要入门(三)/">Vue.js常用开发知识简要入门（三）</a></p>
+        <p><span>本文标题:</span><a href="/2016/08/09/进击JavaScript之（一）变量声明提升/">进击JavaScript之（一）变量声明提升</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
-        <p><span>发布时间:</span>2017-02-13, 10:52:00</p>
-        <p><span>最后更新:</span>2017-05-06, 00:06:10</p>
+        <p><span>发布时间:</span>2016-08-09, 21:51:00</p>
+        <p><span>最后更新:</span>2017-05-07, 00:32:56</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/13/Vue.js常用开发知识简要入门(三)/" title="Vue.js常用开发知识简要入门（三）">http://dunizb.com/2017/02/13/Vue.js常用开发知识简要入门(三)/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2017/02/13/Vue.js常用开发知识简要入门(三)/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/08/09/进击JavaScript之（一）变量声明提升/" title="进击JavaScript之（一）变量声明提升">http://dunizb.com/2016/08/09/进击JavaScript之（一）变量声明提升/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/08/09/进击JavaScript之（一）变量声明提升/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -386,15 +450,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/18/Vue.js常用开发知识简要入门(一)/">
-                    Vue.js常用开发知识简要入门（一）
+                <a href="/2016/08/04/HTML5-VideoAPI，打造自己的Web视频播放器/">
+                    HTML5 VideoAPI，打造自己的Web视频播放器
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/13/如何正确高效的使用群聊？/">
-                    如何正确高效的使用群聊？
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
                 </a>
             </div>
         
@@ -406,7 +470,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#组件的注册与使用"><span class="toc-number">1.</span> <span class="toc-text">组件的注册与使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用props传递数据"><span class="toc-number">2.</span> <span class="toc-text">使用props传递数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#prop-校验"><span class="toc-number">2.1.</span> <span class="toc-text">prop 校验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单文件组建规范"><span class="toc-number">3.</span> <span class="toc-text">单文件组建规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#单文件组建的结构"><span class="toc-number">3.1.</span> <span class="toc-text">单文件组建的结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语言块"><span class="toc-number">3.2.</span> <span class="toc-text">语言块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#src引用"><span class="toc-number">3.3.</span> <span class="toc-text">src引用</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-预解析与变量声明提升"><span class="toc-number">1.</span> <span class="toc-text">1.预解析与变量声明提升</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-代码分析举例"><span class="toc-number">2.</span> <span class="toc-text">2.代码分析举例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#程序1"><span class="toc-number">2.1.</span> <span class="toc-text">程序1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序2"><span class="toc-number">2.2.</span> <span class="toc-text">程序2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#程序3"><span class="toc-number">2.3.</span> <span class="toc-text">程序3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-问题"><span class="toc-number">3.</span> <span class="toc-text">3.问题</span></a></li></ol>
         
     </div>
     <style>
@@ -442,7 +506,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Vue.js常用开发知识简要入门（三）　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"进击JavaScript之（一）变量声明提升　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -462,7 +526,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/18/Vue.js常用开发知识简要入门(一)/" title="上一篇: Vue.js常用开发知识简要入门（一）">
+            <a href="/2016/08/04/HTML5-VideoAPI，打造自己的Web视频播放器/" title="上一篇: HTML5 VideoAPI，打造自己的Web视频播放器">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -470,7 +534,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/13/如何正确高效的使用群聊？/" title="下一篇: 如何正确高效的使用群聊？">
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="下一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
                 <i class="fa fa-angle-right"></i>
             </a>
         
