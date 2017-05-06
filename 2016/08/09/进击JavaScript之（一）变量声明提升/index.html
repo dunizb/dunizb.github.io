@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="如下代码输出的结果是？1234567var num = 123;function foo1()&amp;#123;    console.log( num );    //undefined    var num = 456;   console.log( num );    //456&amp;#125;foo1(); Javascript代码执行分为两个大步： 预解析的过程代码的执行过程   1.预解析与变">
+<meta name="description" content="程序在执行过程中，会先将代码读取到内存中检查，会将所有的声明在此进行标记，所谓的标记就是让JS解析器知道有这个名字，后面在使用名字的时候不会出现未定义的错误。这个标记过程就是提升。">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进击JavaScript之（一）变量声明提升">
 <meta property="og:url" content="http://dunizb.com/2016/08/09/进击JavaScript之（一）变量声明提升/index.html">
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
-<meta property="og:description" content="如下代码输出的结果是？1234567var num = 123;function foo1()&amp;#123;    console.log( num );    //undefined    var num = 456;   console.log( num );    //456&amp;#125;foo1(); Javascript代码执行分为两个大步： 预解析的过程代码的执行过程   1.预解析与变">
+<meta property="og:description" content="程序在执行过程中，会先将代码读取到内存中检查，会将所有的声明在此进行标记，所谓的标记就是让JS解析器知道有这个名字，后面在使用名字的时候不会出现未定义的错误。这个标记过程就是提升。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-4cc0fdff5666ed18.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-05-06T16:32:56.000Z">
+<meta property="og:updated_time" content="2017-05-06T16:36:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进击JavaScript之（一）变量声明提升">
-<meta name="twitter:description" content="如下代码输出的结果是？1234567var num = 123;function foo1()&amp;#123;    console.log( num );    //undefined    var num = 456;   console.log( num );    //456&amp;#125;foo1(); Javascript代码执行分为两个大步： 预解析的过程代码的执行过程   1.预解析与变">
+<meta name="twitter:description" content="程序在执行过程中，会先将代码读取到内存中检查，会将所有的声明在此进行标记，所谓的标记就是让JS解析器知道有这个名字，后面在使用名字的时候不会出现未定义的错误。这个标记过程就是提升。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-4cc0fdff5666ed18.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -434,7 +434,7 @@
         <p><span>本文标题:</span><a href="/2016/08/09/进击JavaScript之（一）变量声明提升/">进击JavaScript之（一）变量声明提升</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
         <p><span>发布时间:</span>2016-08-09, 21:51:00</p>
-        <p><span>最后更新:</span>2017-05-07, 00:32:56</p>
+        <p><span>最后更新:</span>2017-05-07, 00:36:13</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/08/09/进击JavaScript之（一）变量声明提升/" title="进击JavaScript之（一）变量声明提升">http://dunizb.com/2016/08/09/进击JavaScript之（一）变量声明提升/</a>
             <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/08/09/进击JavaScript之（一）变量声明提升/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

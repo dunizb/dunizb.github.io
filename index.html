@@ -844,102 +844,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><img src="http://upload-images.jianshu.io/upload_images/68937-4cc0fdff5666ed18.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>如下代码输出的结果是？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">123</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( num );    <span class="comment">//undefined</span></div><div class="line">    <span class="keyword">var</span> num = <span class="number">456</span>;</div><div class="line">   <span class="built_in">console</span>.log( num );    <span class="comment">//456</span></div><div class="line">&#125;</div><div class="line">foo1();</div></pre></td></tr></table></figure></p>
-<p>Javascript代码执行分为两个大步：</p>
-<p>预解析的过程<br>代码的执行过程  </p>
-<h2 id="1-预解析与变量声明提升"><a href="#1-预解析与变量声明提升" class="headerlink" title="1.预解析与变量声明提升"></a>1.预解析与变量声明提升</h2><p>程序在执行过程中，会先将代码读取到内存中检查，会将所有的声明在此进行标记，所谓的标记就是让JS解析器知道有这个名字，后面在使用名字的时候不会出现未定义的错误。这个标记过程就是提升。</p>
-<p><strong>声明：</strong></p>
-<ol>
-<li><p>名字的声明，标识符声明（变量名声明）</p>
-<ul>
-<li>名字的声明就是让解析器知道有这个名字</li>
-<li>名字没有任何数据与之对应</li>
-</ul>
-</li>
-<li><p>函数的声明</p>
-<ul>
-<li>函数声明包含两部分</li>
-<li><p>函数声明与函数表达式有区别，函数声明是单独写在一个结构中，不存在任何语句，逻辑判断等结构中</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125; <span class="comment">// 函数声明</span></div><div class="line"><span class="keyword">if</span> ( <span class="literal">true</span> ) &#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">func2</span> (<span class="params"></span>) </span>&#123;&#125; <span class="comment">//函数表达式</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> <span class="title">func3</span> (<span class="params"></span>) </span>&#123;&#125;; <span class="comment">//函数表达式</span></div><div class="line"><span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;; <span class="comment">//函数表达式</span></div><div class="line"><span class="keyword">var</span> i= <span class="number">1</span>；</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func4</span> (<span class="params"></span>) </span>&#123;&#125;    <span class="comment">// 函数声明</span></div><div class="line">    <span class="keyword">var</span> j = <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<p><strong>分析</strong></p>
-<ol>
-<li><p>预解析代码，提示名字    </p>
-<ul>
-<li>首先提升名字num</li>
-<li>再提升函数名，但是名字已经存在，因此只做第二部，让名字与函数体对应上</li>
-<li>结论就是 代码中已经有一个函数 num 了</li>
-</ul>
-</li>
-<li><p>开始执行代码，第一句话从赋值语句开始执行</p>
-<ul>
-<li>给num赋值为1</li>
-<li>覆盖了函数 </li>
-</ul>
-</li>
-<li><p>调用num，由于num中存储的是数组1，因此报错</p>
-</li>
-</ol>
-<h2 id="2-代码分析举例"><a href="#2-代码分析举例" class="headerlink" title="2.代码分析举例"></a>2.代码分析举例</h2><h3 id="程序1"><a href="#程序1" class="headerlink" title="程序1"></a>程序1</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">123</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( num );    <span class="comment">//undefined</span></div><div class="line">    <span class="keyword">var</span> num = <span class="number">456</span>;</div><div class="line">    <span class="built_in">console</span>.log( num );    <span class="comment">//456</span></div><div class="line">&#125;</div><div class="line">foo1();</div></pre></td></tr></table></figure>
-<ol>
-<li>预解析，提升 num 名字和 foo1 函数</li>
-<li>执行第一句话：<code>num = 123;</code></li>
-<li>执行函数调用<ul>
-<li>函数调用进入函数的一瞬间也要进行预解析，此时解析的是变量名 num</li>
-<li>在函数内部是一个独立的空间，允许使用外部的数据，但是现在 num 声明同名，即覆盖外面的</li>
-<li>执行第一句 打印num，没有数据，undefined</li>
-<li>执行第二句 赋值：num = 456；</li>
-<li>执行第三句 打印num，结果456</li>
-</ul>
-</li>
-</ol>
-<h3 id="程序2"><a href="#程序2" class="headerlink" title="程序2"></a>程序2</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ( ！ <span class="string">'a'</span> <span class="keyword">in</span> <span class="built_in">window</span> ) &#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">123</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( a );</div></pre></td></tr></table></figure>
-<ol>
-<li>预解析，读取提升a，有一个名字a 存在了</li>
-<li>in 运算符：判断某一个字符串描述的属性名是否在对象中<ul>
-<li>var o = { name:’jim’ }; ‘name’ in o，’age’ in o</li>
-<li>执行第一个判断：! ‘a’ in window</li>
-</ul>
-<ul>
-<li>‘a’ in window 结果为真</li>
-<li>！得到假</li>
-</ul>
-<ul>
-<li>if内部的赋值不进行</li>
-</ul>
-</li>
-<li>打印结果 a 的值为 undefined  </li>
-</ol>
-<h3 id="程序3"><a href="#程序3" class="headerlink" title="程序3"></a>程序3</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ( <span class="literal">false</span> ) &#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f1</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log( <span class="string">'true'</span> );</div><div class="line">     &#125;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f1</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log( <span class="string">'false'</span> );</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">f1();</div></pre></td></tr></table></figure>
-<ol>
-<li>预解析：提升 f1 函数，只保留提升后的内容，所以打印是 false</li>
-<li><p>执行代码，第一句话就是一个空的if结构  </p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ( true ) &#123;</div><div class="line">&#125; else &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>执行函数调用，得到 false    </p>
-</li>
-</ol>
-<h2 id="3-问题"><a href="#3-问题" class="headerlink" title="3.问题"></a>3.问题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) &#125; </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure>
-<ol>
-<li>上面的语法是声明，可以提升，因此在函数上方也可以调用</li>
-<li>下面的语法是函数表达式，函数名就是foo ，他会提升，提升的不是函数体</li>
-<li><p>函数表达式也是支持名字语法</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var foo = function func1 () &#123;&#125;;</div><div class="line">func();</div></pre></td></tr></table></figure>
-</li>
-<li><p>函数有一个属性name，表示的是函数名，只有带有名字的函数定义，才会有name属性值，否则是“”</p>
-<ul>
-<li>但是，函数表达式的名字，只允许在函数内部使用，IE8可以访问</li>
-<li>（）可以将数据转化为表达式</li>
-</ul>
-</li>
-</ol>
-<p>新的浏览器中，写在if、while、do..while结构中的函数，都会将函数的声明转换成特殊的函数表达式<br>将代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (...) &#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; ... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>转换成<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (...) &#123;</div><div class="line">    <span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; .... &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
+              程序在执行过程中，会先将代码读取到内存中检查，会将所有的声明在此进行标记，所谓的标记就是让JS解析器知道有这个名字，后面在使用名字的时候不会出现未定义的错误。这个标记过程就是提升。
+          
       
     </div>
     
@@ -956,6 +862,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2016/08/09/进击JavaScript之（一）变量声明提升/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
