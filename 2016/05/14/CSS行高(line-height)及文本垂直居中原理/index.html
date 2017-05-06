@@ -15,20 +15,27 @@
 
 
 
-<meta name="description" content="需求：1. 选中店铺后，选中上传LOGO或者页脚、或者一次LOGO和页脚都上传。2. 上传后，LOGO和页脚保存到表的两个列">
-<meta name="keywords" content="struts,文件上传">
+<meta name="description" content="在CSS中，line-height 属性设置两段段文本之间的距离，也就是行高，如果我们把一段文本的line-height设置为父容器的高度就可以实现文本垂直居中了。那么，它怎么就垂直居中了？为了弄清楚它，下面我们先来看几个概念。">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)">
-<meta property="og:url" content="http://dunizb.com/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/index.html">
+<meta property="og:title" content="CSS行高(line-height)及文本垂直居中原理">
+<meta property="og:url" content="http://dunizb.com/2016/05/14/CSS行高(line-height)及文本垂直居中原理/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="需求：1. 选中店铺后，选中上传LOGO或者页脚、或者一次LOGO和页脚都上传。2. 上传后，LOGO和页脚保存到表的两个列">
-<meta property="og:image" content="http://img1.ph.126.net/TVKU0tPhhtVlVvBH3D4mlw==/2249548013971633168.png">
-<meta property="og:image" content="http://img1.ph.126.net/EbZYUj6vb_vtr18JVa1ZBQ==/6597968067658220923.png">
-<meta property="og:updated_time" content="2017-04-15T14:54:22.000Z">
+<meta property="og:description" content="在CSS中，line-height 属性设置两段段文本之间的距离，也就是行高，如果我们把一段文本的line-height设置为父容器的高度就可以实现文本垂直居中了。那么，它怎么就垂直居中了？为了弄清楚它，下面我们先来看几个概念。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-a07e7b8f4ad6ac46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-a287041aba8e8217.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-31f6657bf046e8a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-c6cf627c0fb2f809.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-99eddf2299822240.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-4332babc588af34c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-f0b6c800786190db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-d67694bb8ccd7396.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-fbf1797892333859.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-05-06T06:25:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)">
-<meta name="twitter:description" content="需求：1. 选中店铺后，选中上传LOGO或者页脚、或者一次LOGO和页脚都上传。2. 上传后，LOGO和页脚保存到表的两个列">
-<meta name="twitter:image" content="http://img1.ph.126.net/TVKU0tPhhtVlVvBH3D4mlw==/2249548013971633168.png">
+<meta name="twitter:title" content="CSS行高(line-height)及文本垂直居中原理">
+<meta name="twitter:description" content="在CSS中，line-height 属性设置两段段文本之间的距离，也就是行高，如果我们把一段文本的line-height设置为父容器的高度就可以实现文本垂直居中了。那么，它怎么就垂直居中了？为了弄清楚它，下面我们先来看几个概念。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-a07e7b8f4ad6ac46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -60,7 +67,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列) | Dunizb</title>
+<title>CSS行高(line-height)及文本垂直居中原理 | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +288,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-CSS行高(line-height)及文本垂直居中原理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/" class="article-date">
-      <time datetime="2013-10-12T03:38:57.000Z" itemprop="datePublished">2013-10-12</time>
+      <a href="/2016/05/14/CSS行高(line-height)及文本垂直居中原理/" class="article-date">
+      <time datetime="2016-05-14T04:02:00.000Z" itemprop="datePublished">2016-05-14</time>
 </a>
 
 
@@ -300,7 +307,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)
+      CSS行高(line-height)及文本垂直居中原理
     </h1>
   
 
@@ -309,13 +316,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
+    <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/struts/">struts</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件上传/">文件上传</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -325,19 +332,25 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>页面如下：<br><img src="http://img1.ph.126.net/TVKU0tPhhtVlVvBH3D4mlw==/2249548013971633168.png" alt=""></p>
-<p>需求：</p>
-<ol>
-<li>选中店铺后，选中上传LOGO或者页脚、或者一次LOGO和页脚都上传</li>
-<li>上传后，LOGO和页脚保存到表的两个列</li>
-</ol>
-<p>关键：<br>单张图上传、怎么判断上传的是LOGO还是页脚</p>
-<p>表如下：<br><img src="http://img1.ph.126.net/EbZYUj6vb_vtr18JVa1ZBQ==/6597968067658220923.png" alt=""></p>
-<p>upload.jsp<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">……….</div><div class="line">&lt;s:hidden id="img_type" name="imgType" value="" /&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td class="STYLE1"&gt;上传LOGO：&lt;s:file id="img" name="img"/&gt;&lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td class="STYLE1"&gt;上传页脚：&lt;s:file id="foot" name="img"/&gt;&lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td align="left"&gt;</div><div class="line">    &lt;input type="button" id="img_btn" value="上传" /&gt;</div><div class="line">    &lt;span style="color:red;"&gt;</div><div class="line">    &lt;s:actionerror/&gt;</div><div class="line">    &lt;s:fielderror /&gt;</div><div class="line">    &lt;s:if test="message!= null"&gt;</div><div class="line">    &lt;s:property value="message" /&gt;</div><div class="line">    &lt;/s:if&gt;</div><div class="line">    &lt;/span&gt;</div><div class="line">    &lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td class="STYLE1" align="left"&gt;预览：&lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td class="STYLE1" align="left"&gt;</div><div class="line">    &lt;img src="$&#123;pageContext.request.contextPath&#125;/$&#123;imgSrcLogo&#125;" alt="这是LOGO" title="这是LOGO" width="100" height="100" /&gt;</div><div class="line">&lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div><div class="line">&lt;tr&gt;</div><div class="line">    &lt;td class="STYLE1" align="left"&gt;</div><div class="line">    &lt;img src="$&#123;pageContext.request.contextPath&#125;/$&#123;imgSrcFoot&#125;" alt="这是页脚" title="这是页脚" width="600" height="350" /&gt;</div><div class="line">    &lt;/td&gt;</div><div class="line">&lt;/tr&gt;</div></pre></td></tr></table></figure></p>
-<p>这里面有个隐藏表单域<code>&lt;s:hidden id=&quot;img_type&quot; name=&quot;imgType&quot; value=&quot;&quot; /&gt;</code>，用来区分上传的是logo还是foot页脚</p>
-<p>这些控制需要用JS来做：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** 图片上传 */</span></div><div class="line">$(<span class="string">"#img_btn"</span>).click(function()&#123;</div><div class="line">  var img = $(<span class="string">"#img"</span>);</div><div class="line">  var foot = $(<span class="string">"#foot"</span>);</div><div class="line">  var shopId = $(<span class="string">"#shopIdSelect"</span>);</div><div class="line">  var msg=<span class="string">""</span>;</div><div class="line">  <span class="keyword">if</span>(shopId.val()&lt;<span class="string">"0"</span>)&#123;</div><div class="line">     msg += <span class="string">"请选择店铺！"</span>;</div><div class="line">     shopId.focus();</div><div class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(img.val()==<span class="string">""</span> &amp;&amp; foot.val()==<span class="string">""</span>)&#123;</div><div class="line">     msg += <span class="string">"请选择要上传的图片！"</span>;</div><div class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(img.val()!=<span class="string">""</span> &amp;&amp; foot.val()==<span class="string">""</span>)&#123;    <span class="comment">//如果上传的是LOGO</span></div><div class="line">     document.getElementById(<span class="string">'img_type'</span>).value=<span class="string">"logo"</span>;</div><div class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(img.val()==<span class="string">""</span> &amp;&amp; foot.val()!=<span class="string">""</span>)&#123;    <span class="comment">//如果上传的是页脚</span></div><div class="line">     document.getElementById(<span class="string">'img_type'</span>).value=<span class="string">"foot"</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (msg != <span class="string">""</span>)&#123;</div><div class="line">     alert(msg);</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">  <span class="comment">// 表单提交</span></div><div class="line">     $(<span class="string">"#uploadForm"</span>).submit();</div><div class="line">  &#125;        </div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>在这里使用<code>document.getElementById(&#39;img_type&#39;).value=&quot;logo&quot;;</code>进行复制，传递到后台</p>
-<p>Action：uploadLogoAction.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">uploadLogoAction</span> <span class="keyword">extends</span> <span class="title">ActionSupport</span></span>&#123;</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1590947402900249195L</span>;</div><div class="line"><span class="comment">/** 注入业务层*/</span></div><div class="line"><span class="keyword">private</span> SystemManageService systemManageService;</div><div class="line"><span class="keyword">private</span> ShoppingMerchantShop shoppingMerchantShop;</div><div class="line"><span class="keyword">private</span> List&lt;ShoppingMerchantShop&gt; shoppingMerchantShopList;</div><div class="line"><span class="comment">/** 图片上传的三个属性 */</span></div><div class="line"><span class="keyword">private</span> File[] img;</div><div class="line"><span class="keyword">private</span> String[] imgFileName;</div><div class="line"><span class="keyword">private</span> String[] imgContentType;</div><div class="line"><span class="comment">/** 店铺ID */</span></div><div class="line"><span class="keyword">private</span> String shopId;</div><div class="line"><span class="keyword">private</span> String imgType;</div><div class="line"><span class="comment">/** 图片上传 只要一张不符合要求另一张也不能上传*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">uploadPic</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">//设定拖存储在服务器的路径</span></div><div class="line">        String realPath = <span class="string">"/skin/"</span>+shopId+<span class="string">"/sitemesh"</span>;</div><div class="line">        String savePath = ServletActionContext.getServletContext().getRealPath(realPath);</div><div class="line">        System.err.println(<span class="string">"项目部署的路径："</span>+savePath);</div><div class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(File file : img)&#123;</div><div class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.filterTypes(imgContentType))&#123;</div><div class="line">                </div><div class="line">                FileUtils.copyFile(file, <span class="keyword">new</span> File(savePath+File.separator+imgFileName[index]));</div><div class="line">                <span class="comment">//图片路径</span></div><div class="line">                String picPath = realPath+<span class="string">"/"</span>+imgFileName[index];</div><div class="line">                </div><div class="line">                ActionContext.getContext().put(<span class="string">"shopId"</span>,shopId );                </div><div class="line">                <span class="comment">//上传成功后保存图片路劲到店铺表</span></div><div class="line">                shoppingMerchantShop = <span class="keyword">new</span> ShoppingMerchantShop();</div><div class="line">                shoppingMerchantShop.setShopId(shopId);</div><div class="line">                <span class="keyword">if</span>(index == <span class="number">0</span>)&#123;    <span class="comment">//如果是LOGO</span></div><div class="line">                    <span class="keyword">if</span>(imgType.equals(<span class="string">"foot"</span>))&#123;    <span class="comment">//如果只上传了一个，如果上传的是页脚</span></div><div class="line">                        shoppingMerchantShop.setShopFoot(picPath);</div><div class="line">                        <span class="comment">//保存上传后的路径、用于页面上回显</span></div><div class="line">                        ActionContext.getContext().put(<span class="string">"imgSrcFoot"</span>,picPath);</div><div class="line">                    &#125;<span class="keyword">else</span>&#123;</div><div class="line">                        shoppingMerchantShop.setShopLogo(picPath);                        </div><div class="line">                        <span class="comment">//保存上传后的路径、用于页面上回显</span></div><div class="line">                        ActionContext.getContext().put(<span class="string">"imgSrcLogo"</span>,picPath);</div><div class="line">                    &#125;</div><div class="line">                &#125;<span class="keyword">else</span>&#123;    <span class="comment">//如果是页脚</span></div><div class="line">                    shoppingMerchantShop.setShopFoot(picPath);</div><div class="line">                    ActionContext.getContext().put(<span class="string">"imgSrcFoot"</span>,picPath);</div><div class="line">                &#125;</div><div class="line">                index++;                </div><div class="line"></div><div class="line">                systemManageService.updateMerchantShop(shoppingMerchantShop);</div><div class="line">                setMessage(<span class="string">"上传成功！"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception ex) &#123;</div><div class="line">        setMessage(<span class="string">"上传失败！"</span>);</div><div class="line">        log(ex);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> SUCCESS;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 判断图片格式是否符合要求</div><div class="line"> * <span class="doctag">@param</span> types 图片格式</div><div class="line"> * <span class="doctag">@return</span></div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">filterTypes</span><span class="params">(String[] types)</span></span>&#123;</div><div class="line">    <span class="comment">//WebConstant.uploadImgTypes是一个数组，存放图片格式&#123;"image/png","image/jpeg"...&#125;</span></div><div class="line">    String[] imgTypes = WebConstant.uploadImgTypes;</div><div class="line">    Boolean flag =<span class="keyword">true</span>;</div><div class="line">    <span class="keyword">for</span>(String type : types)&#123;</div><div class="line">        <span class="keyword">for</span>(String trueType : imgTypes)&#123;</div><div class="line">            <span class="keyword">if</span>(!trueType.equals(type))&#123;</div><div class="line">                flag = <span class="keyword">false</span>;</div><div class="line">                setMessage(<span class="string">"上传的图片类型是不被允许的！"</span>);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                flag = <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> flag;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/** get and set  */</span></div><div class="line">......</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p>在CSS中，line-height 属性设置两段段文本之间的距离，也就是行高，如果我们把一段文本的line-height设置为父容器的高度就可以实现文本垂直居中了，比如下面的例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">       <span class="selector-tag">div</span> &#123;</div><div class="line">           <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">           <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">           <span class="attribute">border</span>: <span class="number">1px</span> solid red;</div><div class="line">       &#125;</div><div class="line">       <span class="selector-tag">span</span> &#123;</div><div class="line">           <span class="attribute">line-height</span>: <span class="number">200px</span>;</div><div class="line">       &#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">span</span>&gt;</span>文本垂直居中原理<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这样，span标签中的文字就相对于div垂直方向居中了，想要文本水平居中设置text-align：center即可。<br><img src="http://upload-images.jianshu.io/upload_images/68937-a07e7b8f4ad6ac46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br>那么，它怎么就垂直居中了？为了弄清楚它，下面我们先来看几个概念。</p>
+<h2 id="1-行框"><a href="#1-行框" class="headerlink" title="1. 行框"></a>1. 行框</h2><p>在浏览器中，会将给每一段文本生成一个<strong>行框</strong>，行框的高度就是行高。行框由上间距、文本高度、下间距组成，上间距的距离与下间距的距离是相等的。<br><img src="http://upload-images.jianshu.io/upload_images/68937-a287041aba8e8217.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"><br>默认情况下一行文本的行高分为：上间距，文本的高度，下间距，并且上间距是等于下间距的，所以文字默认在这一行中是垂直居中的。</p>
+<h2 id="2-文本中的几条线"><a href="#2-文本中的几条线" class="headerlink" title="2. 文本中的几条线"></a>2. 文本中的几条线</h2><p><img src="http://upload-images.jianshu.io/upload_images/68937-31f6657bf046e8a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br>几条线与行高的关系图解：<br><img src="http://upload-images.jianshu.io/upload_images/68937-c6cf627c0fb2f809.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"><br>文本的行高也可以看成是基线到基线的距离。<br><img src="http://upload-images.jianshu.io/upload_images/68937-99eddf2299822240.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><br>如果一段文本的高度为16px，如果给他设置line-height的高度为200，那么相当于，文本的上下间距的高度增加了，但是文本本身的高度依然是16是不变的，并且一直默认在行框中垂直居中，而上间距和下间距平分了200px的高度并且减去文本本身的高度。所以，容器被这一行文本占满，而本身文字在自己的一行中是垂直居中的，所以看起来就像是在容器中垂直居中。</p>
+<h2 id="3-Chrome浏览器的默认值"><a href="#3-Chrome浏览器的默认值" class="headerlink" title="3. Chrome浏览器的默认值"></a>3. Chrome浏览器的默认值</h2><p>谷歌浏览器字体的默认大小是：16px，字体的最小值为：12px，默认行高为：18px；默认情况下如果没有给div设置高度，那么这个div的高度会比其中文本的大小大一点（这个大多少现在没有办法确定）</p>
+<h2 id="4-行高的单位"><a href="#4-行高的单位" class="headerlink" title="4. 行高的单位"></a>4. 行高的单位</h2><p><strong>px(像素)</strong><br>设置起来是最直接的，同时也最方便的。</p>
+<p><strong>%(百分号)</strong><br>如果line-height单位设置为%，那么将来在计算的时候，基数是当前标签中的文本的字体的大小。<br>如果是%,%之前的数据一定是整数 ：150% ，200%</p>
+<p><strong>em</strong><br>效果跟%是一样一样的。<br>注意：一行em的大小相当于是当前标签中的font-size的大小。<br>如果是em,em之前的数据一定是：1.2em ,1.5em ,2em</p>
+<p><strong>不带单位</strong><br>如果不涉及到继承，那么带不带单位（em）都是一样的效果，但是如果涉及到继承的话，那么就有很大的区别了：</p>
+<ul>
+<li>如果单位是em，那么将来在继承的时候，我们的浏览器会先将行高对应的具体的数值计算出来以后再继承。</li>
+<li>如果没有单位，那么将来在继承的时候，我们的浏览器会先将line-height这个属性继承给子元素，再在子元素的font-size来计算。line-height: 1.5。</li>
+</ul>
+<h2 id="5-行高可以被继承"><a href="#5-行高可以被继承" class="headerlink" title="5.行高可以被继承"></a>5.行高可以被继承</h2><p>我们知道，CSS的三大特性是继承、层叠、优先级。line-height也是可以被继承的，如下面的示例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">	<span class="selector-class">.father</span> &#123;</div><div class="line">    	<span class="comment">/*line-height: 20px;*/</span></div><div class="line">	&#125;</div><div class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">    	  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"children"</span>&gt;</span>丰趣海淘<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在不给.father设置行高的情况下，.children的文字行高默认为18<br><img src="http://upload-images.jianshu.io/upload_images/68937-4332babc588af34c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=".children的文字行高默认为18"><br>接着我们给div设置一个行高等于20px<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.father</span> &#123;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">20px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们再来看看.children标签的的变化，.children标签的文字行高变成20px了<br><img src="http://upload-images.jianshu.io/upload_images/68937-f0b6c800786190db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=".children标签的文字行高变成20px了"><br>而且，不管我们给行高设置什么单位（px、%、em、不带单位）都可以被继承。</p>
+<h2 id="6-行高计算的基数"><a href="#6-行高计算的基数" class="headerlink" title="6. 行高计算的基数"></a>6. 行高计算的基数</h2><p>如果行高的单位不是px，那么将来行高要进行计算：这个计算需要一个基数，这个基数是当前标签的字体大小，而不是浏览器默认字体大小。以上面的例子为例，我们并没有设置任何字体大小，此时我们把line-height设置为150%，那么文字的行高将变为24px（16px*1.5=24）。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">150%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果如下<br><img src="http://upload-images.jianshu.io/upload_images/68937-d67694bb8ccd7396.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"><br>此时我们在给div设置一个font-size等于20px：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">   <span class="attribute">line-height</span>: <span class="number">150%</span>;</div><div class="line">   <span class="attribute">font-size</span>:<span class="number">20px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>那么文字行高将会变成30px，20px*1.5=30px;<br><img src="http://upload-images.jianshu.io/upload_images/68937-fbf1797892333859.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
 
       
     </div>
@@ -346,13 +359,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/">Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)</a></p>
+        <p><span>本文标题:</span><a href="/2016/05/14/CSS行高(line-height)及文本垂直居中原理/">CSS行高(line-height)及文本垂直居中原理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
-        <p><span>发布时间:</span>2013-10-12, 11:38:57</p>
-        <p><span>最后更新:</span>2017-04-15, 22:54:22</p>
+        <p><span>发布时间:</span>2016-05-14, 12:02:00</p>
+        <p><span>最后更新:</span>2017-05-06, 14:25:45</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/" title="Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)">http://dunizb.com/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/14/CSS行高(line-height)及文本垂直居中原理/" title="CSS行高(line-height)及文本垂直居中原理">http://dunizb.com/2016/05/14/CSS行高(line-height)及文本垂直居中原理/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/05/14/CSS行高(line-height)及文本垂直居中原理/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -365,15 +378,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2013/09/21/Struts2-view-forwarding-type-summary/">
-                    Struts2的视图转发类型总结
+                <a href="/2016/05/08/为什么你应该从现在开始使用云笔记？/">
+                    为什么你应该从现在开始使用云笔记？
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2013/10/26/BigDecimal-conversion-Integer/">
-                    BigDecimal互转Integer
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
                 </a>
             </div>
         
@@ -385,7 +398,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-行框"><span class="toc-number">1.</span> <span class="toc-text">1. 行框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-文本中的几条线"><span class="toc-number">2.</span> <span class="toc-text">2. 文本中的几条线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Chrome浏览器的默认值"><span class="toc-number">3.</span> <span class="toc-text">3. Chrome浏览器的默认值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-行高的单位"><span class="toc-number">4.</span> <span class="toc-text">4. 行高的单位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-行高可以被继承"><span class="toc-number">5.</span> <span class="toc-text">5.行高可以被继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-行高计算的基数"><span class="toc-number">6.</span> <span class="toc-text">6. 行高计算的基数</span></a></li></ol>
         
     </div>
     <style>
@@ -421,7 +434,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"CSS行高(line-height)及文本垂直居中原理　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -441,7 +454,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2013/09/21/Struts2-view-forwarding-type-summary/" title="上一篇: Struts2的视图转发类型总结">
+            <a href="/2016/05/08/为什么你应该从现在开始使用云笔记？/" title="上一篇: 为什么你应该从现在开始使用云笔记？">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -449,7 +462,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2013/10/26/BigDecimal-conversion-Integer/" title="下一篇: BigDecimal互转Integer">
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="下一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
                 <i class="fa fa-angle-right"></i>
             </a>
         
