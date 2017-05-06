@@ -15,19 +15,21 @@
 
 
 
-<meta name="description" content="第一层次，基础阅读（初级阅读、基本阅读或初步阅读）不管哪一种名称，都指出一个人只要熟练这个层次的阅读，就摆脱了文盲状态，至少一开始认字了。在熟练这个层次的过程中，一个人可以学习到阅读的基本艺术，接受基础阅读训练，活的初步的阅读技巧，这个层次通常在小学时完成的。">
-<meta name="keywords">
+<meta name="description" content="一、作用域域表示的就是范围，即作用域，就是一个名字在什么地方可以使用，什么时候不能使用。想了解更多关于作用域的问题推荐阅读《你不知道的JavaScript上卷》第一章（或第一部分），从编译原理的角度说明什么是作用域。概括的说作用域就是一套设计良好的规则来存储变量，并且之后可以方便地找到这些变量。">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《如何阅读一本书》之阅读一本书的四个层次">
-<meta property="og:url" content="http://dunizb.com/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/index.html">
+<meta property="og:title" content="进击JavaScript之（二）词法作用域与作用域链">
+<meta property="og:url" content="http://dunizb.com/2017/08/19/进击JavaScript之（二）词法作用域与作用域链/index.html">
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
-<meta property="og:description" content="第一层次，基础阅读（初级阅读、基本阅读或初步阅读）不管哪一种名称，都指出一个人只要熟练这个层次的阅读，就摆脱了文盲状态，至少一开始认字了。在熟练这个层次的过程中，一个人可以学习到阅读的基本艺术，接受基础阅读训练，活的初步的阅读技巧，这个层次通常在小学时完成的。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-93d4654b7fe97343.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-04-16T13:55:32.000Z">
+<meta property="og:description" content="一、作用域域表示的就是范围，即作用域，就是一个名字在什么地方可以使用，什么时候不能使用。想了解更多关于作用域的问题推荐阅读《你不知道的JavaScript上卷》第一章（或第一部分），从编译原理的角度说明什么是作用域。概括的说作用域就是一套设计良好的规则来存储变量，并且之后可以方便地找到这些变量。">
+<meta property="og:image" content="http://img.mukewang.com/57aeec6800014ac807440440.jpg">
+<meta property="og:image" content="http://img.mukewang.com/57aeec79000175cb07250232.jpg">
+<meta property="og:image" content="http://img.mukewang.com/57aeec83000177e107180335.jpg">
+<meta property="og:updated_time" content="2017-05-06T16:39:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《如何阅读一本书》之阅读一本书的四个层次">
-<meta name="twitter:description" content="第一层次，基础阅读（初级阅读、基本阅读或初步阅读）不管哪一种名称，都指出一个人只要熟练这个层次的阅读，就摆脱了文盲状态，至少一开始认字了。在熟练这个层次的过程中，一个人可以学习到阅读的基本艺术，接受基础阅读训练，活的初步的阅读技巧，这个层次通常在小学时完成的。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-93d4654b7fe97343.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="进击JavaScript之（二）词法作用域与作用域链">
+<meta name="twitter:description" content="一、作用域域表示的就是范围，即作用域，就是一个名字在什么地方可以使用，什么时候不能使用。想了解更多关于作用域的问题推荐阅读《你不知道的JavaScript上卷》第一章（或第一部分），从编译原理的角度说明什么是作用域。概括的说作用域就是一套设计良好的规则来存储变量，并且之后可以方便地找到这些变量。">
+<meta name="twitter:image" content="http://img.mukewang.com/57aeec6800014ac807440440.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>《如何阅读一本书》之阅读一本书的四个层次 | Dunizb，张兵的个人技术博客</title>
+<title>进击JavaScript之（二）词法作用域与作用域链 | Dunizb，张兵的个人技术博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -284,11 +286,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-《如何阅读一本书》之阅读一本书的四个层次" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-进击JavaScript之（二）词法作用域与作用域链" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/" class="article-date">
-      <time datetime="2016-03-26T13:13:00.000Z" itemprop="datePublished">2016-03-26</time>
+      <a href="/2017/08/19/进击JavaScript之（二）词法作用域与作用域链/" class="article-date">
+      <time datetime="2017-08-19T14:02:00.000Z" itemprop="datePublished">2017-08-19</time>
 </a>
 
 
@@ -303,7 +305,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      《如何阅读一本书》之阅读一本书的四个层次
+      进击JavaScript之（二）词法作用域与作用域链
     </h1>
   
 
@@ -312,11 +314,15 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
+    <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
     </div>
 
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -324,39 +330,49 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="第一层次，基础阅读（初级阅读、基本阅读或初步阅读）"><a href="#第一层次，基础阅读（初级阅读、基本阅读或初步阅读）" class="headerlink" title="第一层次，基础阅读（初级阅读、基本阅读或初步阅读）"></a>第一层次，基础阅读（初级阅读、基本阅读或初步阅读）</h2><p>不管哪一种名称，都指出一个人只要熟练这个层次的阅读，就摆脱了文盲状态，至少一开始认字了。在熟练这个层次的过程中，一个人可以学习到阅读的基本艺术，接受基础阅读训练，活的初步的阅读技巧，这个层次通常在小学时完成的。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-93d4654b7fe97343.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="如何阅读一本书"></p>
-<p>这一层次阅读你所要问得问题是：“这个句子在说什么？”</p>
-<h2 id="第二层次，检视阅读"><a href="#第二层次，检视阅读" class="headerlink" title="第二层次，检视阅读"></a>第二层次，检视阅读</h2><p>特点在强调时间，在这个阅读层次，学生必须在规定的时间内完成一项阅读的功课。也可以用另外一种方式来形容这个层次的阅读，就是在一定时间内抓住一本书的重点——通常是很短的，而且总是（就其定义上说）过短，很难掌握一本书所有重点。这个层次的阅读也可以用其他称呼，譬如略读或预读，我们并不是说略读就是随意或随便浏览一本书。检视阅读是系统化略读的一门艺术。</p>
-<p>用检视阅读完一本书后，无论你用了多长时间，你都该回答得出这样的问题：“这本书在谈什么？这是哪一类的书？这本书包含哪些部分？”</p>
-<h3 id="检视阅读一：有系统的略读或粗读。"><a href="#检视阅读一：有系统的略读或粗读。" class="headerlink" title="检视阅读一：有系统的略读或粗读。"></a>检视阅读一：有系统的略读或粗读。</h3><ol>
-<li>先看书名页，然后如果有序言就先看序。</li>
-<li>研究目录页。对这本书的基础架构做概括性的理解。</li>
-<li>如果书中附有索引，也要检阅一下——大多数论说类的书籍都有索引。</li>
-<li>读一下出版者的介绍。</li>
-<li>开始挑几个看来跟主题息息相关的篇章来看。</li>
-<li>最后一步，把书打开来，东翻翻西翻翻，念一个片段，有时候连续读几页，但不要太多。</li>
+        <h2 id="一、作用域"><a href="#一、作用域" class="headerlink" title="一、作用域"></a>一、作用域</h2><p>域表示的就是范围，即作用域，就是一个名字在什么地方可以使用，什么时候不能使用。想了解更多关于作用域的问题推荐阅读《你不知道的JavaScript上卷》第一章（或第一部分），从编译原理的角度说明什么是作用域。概括的说作用域就是一套设计良好的规则来存储变量，并且之后可以方便地找到这些变量。<br><a id="more"></a></p>
+<h3 id="1-1-块级作用域"><a href="#1-1-块级作用域" class="headerlink" title="1.1 块级作用域"></a>1.1 块级作用域</h3><p>在C、Java、C#等编程语言中，下面的语法报错（伪代码）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> num = <span class="number">123</span>;</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">console</span>.log( num );    <span class="comment">// num =&gt; 123</span></div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( num );   <span class="comment">//报错</span></div></pre></td></tr></table></figure></p>
+<h3 id="1-2-JS的词法作用域"><a href="#1-2-JS的词法作用域" class="headerlink" title="1.2 JS的词法作用域"></a>1.2 JS的词法作用域</h3><p>所谓的词法（代码）作用域，就是代码在编写过程中体现出来的作用范围，代码一旦写好，不用执行，作用范围就已经确定好了，这个就是所谓的词法作用域。</p>
+<p>在JS中词法作用域的规则：</p>
+<ol>
+<li>函数允许访问函数外部的数据</li>
+<li>整个代码结构中只有函数可以限定作用域</li>
+<li>作用规则首先使用提升规则分析</li>
+<li>如果当前作用域中有了名字了，就不考虑外面的名字</li>
 </ol>
-<h3 id="检视阅读二：粗浅的阅读。"><a href="#检视阅读二：粗浅的阅读。" class="headerlink" title="检视阅读二：粗浅的阅读。"></a>检视阅读二：粗浅的阅读。</h3><p>这个规则很简单：头一次面对一本难读的书的时候，从头到尾读完一遍，碰到不懂得地方不要停下来查询或思索。只注意您能理解的部分，不要为一些没法立即了解的东西而停顿，不要被一个看不懂的章节、注解、评论或参考资料阻扰或泄气。</p>
-<ul>
-<li><strong>阅读的速度</strong></li>
-</ul>
-<p>许多书其实连略读都不值得的，另外一写书只需要快速读过就行了，有少数书需要用某种速度，通常是相当慢的速度，才能完全理解。所谓阅读速度，理想上来说，不只是要能读的快，还要能用不同的速度来阅读，要知道什么时候用什么样的速度是恰当的。</p>
-<p>李笑来在他的《新生，七年就是一辈子》中说道：“阅读速度”是个没用的概念，在我眼里，只有“理解速度”，理解速度快，才能有效提高阅读量。遇到好书，我会抽时间朗读完，一本二十万字左右的书朗读完，也不过十几个小时，中间断断续续，也能一个星期内搞定。更多的时候，时间花在那些需要停下来认真思考的部分，需要停下来心平气和地开开脑洞的部分，需要反复搜索寻找更多资料与关联的部分……反正，眼球快速移动本身，没有任何意义。</p>
-<ul>
-<li><strong>逗留与倒退</strong></li>
-</ul>
-<p>要矫正眼睛逗留与一点的工具有很多种，有些很复杂又很昂贵。无论如何，任何复杂的工具其实都比不上你的一双手来得有用，你可以利用双手训练自己的眼睛，跟着章节段落移动得越来越快。</p>
-<ul>
-<li><strong>理解的问题</strong></li>
-</ul>
-<p>无论速度如何，理解是最重要的。</p>
-<h2 id="第三层次，分析阅读"><a href="#第三层次，分析阅读" class="headerlink" title="第三层次，分析阅读"></a>第三层次，分析阅读</h2><p>比起前两种这种阅读要更复杂，更系统化。分析阅读就是全盘阅读、完整阅读，或是说优质阅读——你能做到的最好的阅读方式。如果说检视阅读是在有限的时间内最好也最完整的阅读，那么分析阅读就是在无线的时间里，最好也最完整的阅读。</p>
-<p>分析阅读是一种专注的活动，在这个层次的阅读中，读者要读到这本书成为他自己为止，分析阅读就是咀嚼与消化一本书。</p>
-<h2 id="第四层次，主题阅读"><a href="#第四层次，主题阅读" class="headerlink" title="第四层次，主题阅读"></a>第四层次，主题阅读</h2><p>这是最高层次的阅读，也是阅读中最复杂也最系统化的阅读。也可以用另外的名称来形容这样的阅读，如比较阅读。</p>
-<p>在做主题阅读时阅读者通常会读很多书而不是一本书，并列举出这些书之间的相关之处，提出一个所有的书都谈到的主题。借助他所阅读的书籍，主题阅读者要能够架构出一个可能在哪一本书里都没有提到过的主题阅读分析。因此，很显然的，主题阅读是最主动、也是最话力气的一种阅读。</p>
-<hr>
-<p>本文是《如何阅读一本书》的札记之一</p>
+<p>例子1：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">123</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( num );</div><div class="line">&#125;</div><div class="line">foo();    <span class="comment">//123</span></div></pre></td></tr></table></figure></p>
+<p>例子2：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>( <span class="literal">false</span> )&#123;</div><div class="line">    <span class="keyword">var</span> num = <span class="number">123</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( num ); <span class="comment">//undefined</span></div></pre></td></tr></table></figure></p>
+<p>例子3：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>  num = <span class="number">123</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> num = <span class="number">456</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log( num );</div><div class="line">     &#125;</div><div class="line">     func();</div><div class="line">&#125;</div><div class="line">foo();    <span class="comment">//456</span></div></pre></td></tr></table></figure></p>
+<h2 id="二、作用域链"><a href="#二、作用域链" class="headerlink" title="二、作用域链"></a>二、作用域链</h2><p>只有函数才能制造作用域结构，那么只要是代码，至少有一个作用域，即全局作用域。 </p>
+<p>凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域，那么将这样的所有作用域列出来，可以有一个结构：函数内指向函数外的链式结构</p>
+<p>例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> num = <span class="number">456</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f3</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f4</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>作用域链结构与DOM树结构很相似.</p>
+<h3 id="2-1-绘制作用域链"><a href="#2-1-绘制作用域链" class="headerlink" title="2.1 绘制作用域链"></a>2.1 绘制作用域链</h3><p>步骤：</p>
+<ol>
+<li>看整个全局是一条链，即顶级链，记为0级链</li>
+<li>看全局作用域中有什么成员声明，就以方格的形式绘制到0级链上</li>
+<li>再找函数，只有函数可以限制作用域，因此从函数中引出新链，标记为1级链</li>
+<li>然后在每一个1级链中再次往复刚才的行为<br><img src="http://img.mukewang.com/57aeec6800014ac807440440.jpg" alt="图片描述"></li>
+</ol>
+<h3 id="2-2-变量的访问（搜索）规则"><a href="#2-2-变量的访问（搜索）规则" class="headerlink" title="2.2 变量的访问（搜索）规则"></a>2.2 变量的访问（搜索）规则</h3><ol>
+<li>首先看变量在第几条链上，在该链上看是否有变量的定义与赋值，如果有直接使用</li>
+<li>如果没有到上一级链上找（ n - 1 级链）,如果有直接使用，停止继续查找。</li>
+<li>如果还没有在此往上找… 直到全局链（0级），还没有就是is not defined</li>
+<li>注意，切记：同级的链不可混合查找</li>
+</ol>
+<p>练习： 绘制作用域链</p>
+<p>绘制如下程序的作用域链<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> num = <span class="number">123</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log( num ); </div><div class="line">     &#125;</div><div class="line">    f2();</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span>  num = <span class="number">456</span>;</div><div class="line">f1();    <span class="comment">//123</span></div></pre></td></tr></table></figure></p>
+<p><img src="http://img.mukewang.com/57aeec79000175cb07250232.jpg" alt="图片描述"></p>
+<p>函数f1 和变量 num=456， 在0级链，而f1下又可以展开1级链，1级链上有num=123和函数f2。程序f1()调用进入左边1级链，而f1中又调用了f2函数，f2函数中<code>console.log(num)</code>可以看作在2级链，此时，程序会向这一条链向上查找，首先2级链没有num，向上到达1级链，刚好1级链上有num=123，所以就直接使用123，程序最后的结果就是打印123.</p>
+<h3 id="2-3-如何分析代码"><a href="#2-3-如何分析代码" class="headerlink" title="2.3 如何分析代码"></a>2.3 如何分析代码</h3><ol>
+<li>在分析代码的时候切记从代码的运行角度上来分析，如果代码给变量赋值了，一定要标记到图中</li>
+<li>如果代码比较复杂，可以在图中表示代码的内容，有时候还要将原型图与作用域图结合起来分析</li>
+</ol>
+<p>分析如下代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">123</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( num );</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> num = <span class="number">456</span>;</div><div class="line">    f1();</div><div class="line">&#125;</div><div class="line">f2();    <span class="comment">//123</span></div></pre></td></tr></table></figure></p>
+<p>作用域链图： </p>
+<p><img src="http://img.mukewang.com/57aeec83000177e107180335.jpg" alt="图片描述"></p>
+<p>首先把num=123，函数f1，函数f2画在0级链上。f1中只有一句console，画出一条1级链，f2也下画出1级链，链上有num=456和函数调用语句f1();</p>
+<p>调用f2()，进入f2函数的作用域链，而在f2中又调用了f1函数，程序进入f1的作用域链，所以<code>console.log(num)</code>会在此链上查找是否存在num，没有，继续向上一级链查找，刚好在0级链上找到了num=123，所以f1函数中的<code>console.log(num)</code>就是123.</p>
 
       
     </div>
@@ -365,13 +381,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/">《如何阅读一本书》之阅读一本书的四个层次</a></p>
+        <p><span>本文标题:</span><a href="/2017/08/19/进击JavaScript之（二）词法作用域与作用域链/">进击JavaScript之（二）词法作用域与作用域链</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
-        <p><span>发布时间:</span>2016-03-26, 21:13:00</p>
-        <p><span>最后更新:</span>2017-04-16, 21:55:32</p>
+        <p><span>发布时间:</span>2017-08-19, 22:02:00</p>
+        <p><span>最后更新:</span>2017-05-07, 00:39:33</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/" title="《如何阅读一本书》之阅读一本书的四个层次">http://dunizb.com/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/19/进击JavaScript之（二）词法作用域与作用域链/" title="进击JavaScript之（二）词法作用域与作用域链">http://dunizb.com/2017/08/19/进击JavaScript之（二）词法作用域与作用域链/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2017/08/19/进击JavaScript之（二）词法作用域与作用域链/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -384,17 +400,11 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/03/24/主动选择与方法论/">
-                    主动选择与方法论
+                <a href="/2017/04/22/《她理财·蜜财周刊》怎样开源怎样花钱/">
+                    《她理财·蜜财周刊》怎样开源怎样花钱
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/03/28/《如何阅读一本书》之如何透视一本书/">
-                    《如何阅读一本书》之如何透视一本书
-                </a>
-            </div>
         
     </nav>
 
@@ -404,7 +414,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一层次，基础阅读（初级阅读、基本阅读或初步阅读）"><span class="toc-number">1.</span> <span class="toc-text">第一层次，基础阅读（初级阅读、基本阅读或初步阅读）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二层次，检视阅读"><span class="toc-number">2.</span> <span class="toc-text">第二层次，检视阅读</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#检视阅读一：有系统的略读或粗读。"><span class="toc-number">2.1.</span> <span class="toc-text">检视阅读一：有系统的略读或粗读。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检视阅读二：粗浅的阅读。"><span class="toc-number">2.2.</span> <span class="toc-text">检视阅读二：粗浅的阅读。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三层次，分析阅读"><span class="toc-number">3.</span> <span class="toc-text">第三层次，分析阅读</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四层次，主题阅读"><span class="toc-number">4.</span> <span class="toc-text">第四层次，主题阅读</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、作用域"><span class="toc-number">1.</span> <span class="toc-text">一、作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-块级作用域"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 块级作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-JS的词法作用域"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 JS的词法作用域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、作用域链"><span class="toc-number">2.</span> <span class="toc-text">二、作用域链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-绘制作用域链"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 绘制作用域链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-变量的访问（搜索）规则"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 变量的访问（搜索）规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-如何分析代码"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 如何分析代码</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -440,7 +450,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"《如何阅读一本书》之阅读一本书的四个层次　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"进击JavaScript之（二）词法作用域与作用域链　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -460,7 +470,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/03/24/主动选择与方法论/" title="上一篇: 主动选择与方法论">
+            <a href="/2017/04/22/《她理财·蜜财周刊》怎样开源怎样花钱/" title="上一篇: 《她理财·蜜财周刊》怎样开源怎样花钱">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -468,9 +478,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/03/28/《如何阅读一本书》之如何透视一本书/" title="下一篇: 《如何阅读一本书》之如何透视一本书">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
