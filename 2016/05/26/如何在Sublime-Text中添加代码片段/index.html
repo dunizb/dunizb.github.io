@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=http://dunizb.com/browseupdate/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="张兵" />
+
+
+
+<meta name="description" content="我们在编写代码的时候，总会遇到一些需要反复使用的代码片段。这时候就需要反复的复制和黏贴，大大影响效率。我们利用Sublime Text的snippet（代码片段）功能，就能很好的解决这一问题。通俗的讲，就是把我们常用的代码分别保存起啦，然后通过插件的形式来反复调用。">
+<meta name="keywords" content="SublimeText">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在Sublime Text中添加代码片段">
+<meta property="og:url" content="http://dunizb.com/2016/05/26/如何在Sublime-Text中添加代码片段/index.html">
+<meta property="og:site_name" content="Dunizb">
+<meta property="og:description" content="我们在编写代码的时候，总会遇到一些需要反复使用的代码片段。这时候就需要反复的复制和黏贴，大大影响效率。我们利用Sublime Text的snippet（代码片段）功能，就能很好的解决这一问题。通俗的讲，就是把我们常用的代码分别保存起啦，然后通过插件的形式来反复调用。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-dfcf978a7b66ff78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-05-06T10:36:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何在Sublime Text中添加代码片段">
+<meta name="twitter:description" content="我们在编写代码的时候，总会遇到一些需要反复使用的代码片段。这时候就需要反复的复制和黏贴，大大影响效率。我们利用Sublime Text的snippet（代码片段）功能，就能很好的解决这一问题。通俗的讲，就是把我们常用的代码分别保存起啦，然后通过插件的形式来反复调用。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-dfcf978a7b66ff78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Dunizb" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>如何在Sublime Text中添加代码片段 | Dunizb</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.gif" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">张兵</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/obook/">商店</a></li>
+                        
+                            <li><a href="/demo/">Demo</a></li>
+                        
+                            <li><a href="/categories/读书笔记/">读书笔记</a></li>
+                        
+                            <li><a href="/categories/随笔扯谈/">随笔扯谈</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileZill/">FileZill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SublimeText/">SublimeText</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftp/">ftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javase/">javase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts/">struts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式/">响应式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/备忘/">备忘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储过程/">存储过程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件上传/">文件上传</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统设计/">系统设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组件使用/">组件使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/规范/">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象编程/">面向对象编程</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">张兵</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.gif" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">张兵</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负！</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/obook/">商店</a></li>
+                
+                    <li><a href="/demo/">Demo</a></li>
+                
+                    <li><a href="/categories/读书笔记/">读书笔记</a></li>
+                
+                    <li><a href="/categories/随笔扯谈/">随笔扯谈</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" target="_blank" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-如何在Sublime-Text中添加代码片段" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/26/如何在Sublime-Text中添加代码片段/" class="article-date">
+      <time datetime="2016-05-26T12:42:00.000Z" itemprop="datePublished">2016-05-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      如何在Sublime Text中添加代码片段
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SublimeText/">SublimeText</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>我们在编写代码的时候，总会遇到一些需要反复使用的代码片段。这时候就需要反复的复制和黏贴，大大影响效率。我们利用Sublime Text的snippet（代码片段）功能，就能很好的解决这一问题。通俗的讲，就是把我们常用的代码分别保存起啦，然后通过插件的形式来反复调用。<br><a id="more"></a><br>创建方法：Tools （工具）&gt; New Snippet（新片段）</p>
+<p>此时，会出现如下代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">snippet</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">content</span>&gt;</span>&lt;![CDATA[</div><div class="line">Hello, $&#123;1:this&#125; is a $&#123;2:snippet&#125;.</div><div class="line">]]&gt;<span class="tag">&lt;/<span class="name">content</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</span></div><div class="line">	<span class="comment">&lt;!-- &lt;tabTrigger&gt;hello&lt;/tabTrigger&gt; --&gt;</span></div><div class="line">	<span class="comment">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span></div><div class="line">	<span class="comment">&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;</span></div><div class="line">	<span class="comment">&lt;!-- &lt;description&gt;description&lt;/description&gt; --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">snippet</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>其中，content中由CDATA包裹起来的部分是我们要插入的代码片段，可选。</p>
+<p>tabTrigger是我们tab键触发的自动补全代码功能的一个名字，可选。</p>
+<p>scope，可选，使用范围，不填写代表对所有文件有效。附：source.css和test.html分别对应不同文件。</p>
+<p>description，可选，在snippet菜单中的显示说明（支持中文）。如果不定义，菜单则显示当前文件的文件名。</p>
+<p>${1:this}表示代码插入后，光标所停留的位置，可同时插入多个。其中:this为自定义参数（可选）。<br>${2}表示代码插入后，按Tab键，光标会根据顺序跳转到相应位置（以此类推）。</p>
+<p>现在，你应该有了个大致的了解。那我们就开始自己动手编写一个实例。我们都知道，再Sublime中，输入！或者html:5再按tab键，可以自动补全HTML结构，但是这个结果相对很简单，我自己扩展了它的结果内容，新增了几个mate标签，增加了页面描述。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">snippet</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">content</span>&gt;</span>&lt;![CDATA[</div><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset="UTF-8"&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">	&lt;meta name="Generator" content="Sublime Text3"&gt;</div><div class="line">	&lt;meta name="Author" content="dunizb"&gt;</div><div class="line">    &lt;meta name="website" content="http://www.mybry.com"&gt;</div><div class="line">    &lt;meta name="Description" content="读你，这世间唯有梦想和好姑娘不可辜负~~"&gt;</div><div class="line">    &lt;link type="image/x-icon" rel="shortcut icon" href="image/favicon.ico" /&gt;</div><div class="line">	&lt;script type="text/javascript"&gt;</div><div class="line">		$&#123;1:&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    $&#123;2:这是html内容&#125;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line">]]&gt;<span class="tag">&lt;/<span class="name">content</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- Optional: Set a tabTrigger to define how to trigger the snippet --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">tabTrigger</span>&gt;</span>hjs<span class="tag">&lt;/<span class="name">tabTrigger</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- Optional: Set a scope to limit where the snippet will trigger --&gt;</span></div><div class="line">	<span class="comment">&lt;!-- &lt;scope&gt;source.python&lt;/scope&gt; --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">description</span>&gt;</span>custom-html<span class="tag">&lt;/<span class="name">description</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">snippet</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>然后保存代码片段，保存到Sublime Text3\Data\Packages\User下面，取个名字</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/68937-dfcf978a7b66ff78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>就这样，在HTML页面中输入hjs+tab，就可以自动补全这一系列代码了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/05/26/如何在Sublime-Text中添加代码片段/">如何在Sublime Text中添加代码片段</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
+        <p><span>发布时间:</span>2016-05-26, 20:42:00</p>
+        <p><span>最后更新:</span>2017-05-06, 18:36:03</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/26/如何在Sublime-Text中添加代码片段/" title="如何在Sublime Text中添加代码片段">http://dunizb.com/2016/05/26/如何在Sublime-Text中添加代码片段/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/05/26/如何在Sublime-Text中添加代码片段/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/05/14/CSS行高(line-height)及文本垂直居中原理/">
+                    CSS行高(line-height)及文本垂直居中原理
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"如何在Sublime Text中添加代码片段　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/05/14/CSS行高(line-height)及文本垂直居中原理/" title="上一篇: CSS行高(line-height)及文本垂直居中原理">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="下一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/《她理财·蜜财周刊》怎样开源怎样花钱/">《她理财·蜜财周刊》怎样开源怎样花钱</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/31/《Web全栈工程师的自我修养》浓缩笔记（下）/">《Web全栈工程师的自我修养》浓缩笔记（下）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/《Web全栈工程师的自我修养》浓缩笔记（上）/">《Web全栈工程师的自我修养》浓缩笔记（上）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/响应式图片实战/">响应式图片实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/如何正确高效的使用群聊？/">如何正确高效的使用群聊？</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/Vue.js常用开发知识简要入门(三)/">Vue.js常用开发知识简要入门（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/Vue.js常用开发知识简要入门(一)/">Vue.js常用开发知识简要入门（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">使用SpringMVC+Mybatis搭建高性能安全站点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/如何在Sublime-Text中添加代码片段/">如何在Sublime Text中添加代码片段</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/CSS行高(line-height)及文本垂直居中原理/">CSS行高(line-height)及文本垂直居中原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/windows自带画板工具使用技巧/">windows自带画板工具使用技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/08/为什么你应该从现在开始使用云笔记？/">为什么你应该从现在开始使用云笔记？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/JavaScript的Number类型详解/">JavaScript的Number类型详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/GitHub中Issue的使用/">GitHub中Issue的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/小技巧！在GitHub中查看分支差别/">小技巧！在GitHub中查看分支差别</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/14/GitHub中Graphs和Settings详解/">GitHub中Graphs和Settings详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/12/GitHub中的Pull-Request和Pulse详解/">GitHub中的Pull Request和Pulse详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/02/《如何阅读一本书》之公正的评断一本书/">《如何阅读一本书》之公正的评断一本书</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/31/《如何阅读一本书》之主题阅读精华摘要/">《如何阅读一本书》之主题阅读精华摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/《如何阅读一本书》之如何透视一本书/">《如何阅读一本书》之如何透视一本书</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/">《如何阅读一本书》之阅读一本书的四个层次</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/主动选择与方法论/">主动选择与方法论</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/《我们怎样读书》之为什么要学，怎么学/">《我们怎样读书》之为什么要学，怎么学</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/《我们怎样读书》之为学与做人/">《我们怎样读书》之为学与做人</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/20/Sublime-Text3插件安装图文教程/">Sublime Text3插件安装图文教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/31/LESS-CSS使用及语法入门/">LESS CSS使用及语法入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/31/Review-of-2015-年度回顾/">Review of 2015 年度回顾</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/04/JS检测图片的宽高和Image对象/">JS检测图片的宽高和Image对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/02/JavaScript-Object-Oriented-Programming-Basics/">JavaScript面向对象程序设计基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/JavaScript中的数据类型回顾/">JavaScript中的数据类型回顾</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/强大的Http监控工具Fidder简单介绍/">强大的Http监控工具Fidder简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/29/jQuery-Core-Style-Guide/">jQuery Core Style Guide（规范）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/18/Java-final修饰符梳理/">Java-final修饰符梳理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/05/Java的方法详解/">Java的方法详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/28/对象的this引用/">对象的this引用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/数组与内存分配/">数组与内存分配</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/26/CSS常见问题(三)/">CSS常见问题(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/25/CSS的常见问题(二)/">CSS的常见问题(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/">CSS的低权重原则—避免滥用子选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/24/CSS的常见问题(一)/">CSS的常见问题(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/18/JavaScript中的继承入门/">JavaScript中的继承入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/15/利用jQuery克隆对象实例/">利用jQuery克隆对象实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/11/08/cookie-and-session-distinction-and-contact/">Cookie和Session的区别与联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/Talking-about-the-development-of-AOP-development/">漫谈AOP开发之开发Spring AOP程序</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/28/漫谈AOP开发之谈谈AOP那些学术概念/">漫谈AOP开发之谈谈AOP那些学术概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/">漫谈AOP开发之初探AOP及AspectJ的用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/09/06/javascript-event/">JavaScript事件探秘</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/08/24/数据库设计的一些问题/">数据库设计的一些问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/27/Spring：一切都是Bean(二)/">Spring：一切都是Bean(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/24/Spring：一切都是Bean(一)/">Spring：一切都是Bean(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/13/把头像图片以二进制形式保存到数据库（Hibernate实现）/">把头像图片以二进制形式保存到数据库（Hibernate实现）</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/10/根据分组依据对Java集合元素进行分组/">根据分组依据对Java集合元素进行分组</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">JDBC操作数据库的元数据信息，JDBC复习(四) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/">JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/">使用JDBC调用存储过程，JDBC复习(二) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/06/24/localhost-and-ip/">localhost、127.0.0.1和本机ip三者的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/16/JavaScript-this/">JavaScript中的this妙用</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/09/使用POI组件导出数据为Excel文件/">使用POI组件导出数据为Excel文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/28/Tomcat-study-notes/">Tomcat学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/08/Struts2-xml-result-in-the-transmission-of-multiple-parameters/">Struts2.xml的result里传多个参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/07/Java-io-FTP-FileZill-Server设置/">Java I/O FTP同步代码及FileZilla Server设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/11/15/使用JXL组件导入Excel文件数据到数据库/">使用JXL组件导入Excel文件数据到数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/">Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/09/21/Struts2-view-forwarding-type-summary/">Struts2的视图转发类型总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/09/19/使用jquery-from-js-Struts2实现图片异步上传/">使用jquery.from.js+Struts2实现图片异步上传</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/">Spring IOC(依赖注入、控制反转)概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/14/数据库优化(一)索引及索引合理利用/">数据库优化(一)：索引及索引合理利用</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/08/02/手把手教你GlassFish与Eclipse的集成安装、配置/">手把手教你GlassFish与Eclipse的集成安装、配置</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017 张兵
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
