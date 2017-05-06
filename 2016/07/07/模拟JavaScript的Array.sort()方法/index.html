@@ -15,22 +15,17 @@
 
 
 
-<meta name="description" content="很多时候，CSS在IE下的解释十分奇怪，明明在Firefox下显示的非常正确，但到了IE下却出现了问题，有时候，这些问题甚至表的非常诡异——例如，一个比较经典的BUG就是设置`border`的时候，有时候`border`会断开，刷新页面或者滚动页面的时候，断掉的部分又会重新连接起来。">
-<meta name="keywords" content="css">
+<meta name="description" content="在JavaScript中，Array对象的sort()方法是用来排序的，但是这个方法在默认情况下可能不是我们想要的，比如对于如下数组">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS的常见问题(二)">
-<meta property="og:url" content="http://dunizb.com/2015/05/25/CSS的常见问题(二)/index.html">
+<meta property="og:title" content="模拟JavaScript的Array.sort()方法">
+<meta property="og:url" content="http://dunizb.com/2016/07/07/模拟JavaScript的Array.sort()方法/index.html">
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
-<meta property="og:description" content="很多时候，CSS在IE下的解释十分奇怪，明明在Firefox下显示的非常正确，但到了IE下却出现了问题，有时候，这些问题甚至表的非常诡异——例如，一个比较经典的BUG就是设置`border`的时候，有时候`border`会断开，刷新页面或者滚动页面的时候，断掉的部分又会重新连接起来。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-6a8369f91245e8fb.png">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-559a5012de973dcf.png">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-1d071a966396c018.png">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-ec80ce3a0608ca5f.png">
-<meta property="og:updated_time" content="2017-05-06T06:22:32.000Z">
+<meta property="og:description" content="在JavaScript中，Array对象的sort()方法是用来排序的，但是这个方法在默认情况下可能不是我们想要的，比如对于如下数组">
+<meta property="og:updated_time" content="2017-05-06T16:09:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS的常见问题(二)">
-<meta name="twitter:description" content="很多时候，CSS在IE下的解释十分奇怪，明明在Firefox下显示的非常正确，但到了IE下却出现了问题，有时候，这些问题甚至表的非常诡异——例如，一个比较经典的BUG就是设置`border`的时候，有时候`border`会断开，刷新页面或者滚动页面的时候，断掉的部分又会重新连接起来。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-6a8369f91245e8fb.png">
+<meta name="twitter:title" content="模拟JavaScript的Array.sort()方法">
+<meta name="twitter:description" content="在JavaScript中，Array对象的sort()方法是用来排序的，但是这个方法在默认情况下可能不是我们想要的，比如对于如下数组">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -62,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>CSS的常见问题(二) | Dunizb，张兵的个人技术博客</title>
+<title>模拟JavaScript的Array.sort()方法 | Dunizb，张兵的个人技术博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -287,11 +282,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-CSS的常见问题(二)" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-模拟JavaScript的Array.sort()方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/05/25/CSS的常见问题(二)/" class="article-date">
-      <time datetime="2015-05-25T10:47:10.000Z" itemprop="datePublished">2015-05-25</time>
+      <a href="/2016/07/07/模拟JavaScript的Array.sort()方法/" class="article-date">
+      <time datetime="2016-07-07T14:19:00.000Z" itemprop="datePublished">2016-07-07</time>
 </a>
 
 
@@ -306,7 +301,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CSS的常见问题(二)
+      模拟JavaScript的Array.sort()方法
     </h1>
   
 
@@ -321,7 +316,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -331,28 +326,25 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="hasLayout"><a href="#hasLayout" class="headerlink" title="hasLayout"></a>hasLayout</h2><p>很多时候，CSS在IE下的解释十分奇怪，明明在Firefox下显示的非常正确，但到了IE下却出现了问题，有时候，这些问题甚至表的非常诡异——例如，一个比较经典的BUG就是设置<code>border</code>的时候，有时候<code>border</code>会断开，刷新页面或者滚动页面的时候，断掉的部分又会重新连接起来。</p>
-<p>这些诡异的问题往往大部分和IE下的一个神秘的属性相关——hasLayout。</p>
-<p>hasLayout是IE下的一个转有属性，用于CSS的解释引擎。有时候在IE下一些复杂的CSS设置解释起来会出现BUG，其原因可能是与hasLayout没有被自动触发有关，我们通过一些技巧，手动触发hasLayout属性就可以解决BUG了。这也算是针对IE下疑难杂症的特殊偏方了，很多时候，触发了hasLayout就可以药到病除了。</p>
-<p>hasLayout的触发方法有很多种，例如设置<code>width</code>、<code>height</code>值，设置<code>position</code>为<code>relative</code>等。但如果设置了<code>width</code>、<code>height</code>或<code>position</code>都会触发hasLayout的同时带来一些副作用的。早期的工程师推荐使用<code>height：1%</code>来触发hasLayout，那时候还没有出现IE7，而height属性在IE6下其实是按照<code>min-height</code>来解释的，所以只要针对IE6进行hack，<code>* html{height:1%}</code>就可以触发hasLayout，同时又不带来副作用。后来出现的IE7任然存在很多hasLayout方面的问题，但IE7已经能够正确识别height属性了，<code>height：1%</code>的方法也就不再适用了。</p>
-<p>于是，一个更好的方法开始流行了，它使用了一个生僻的CSS属性zoom来触发hasLayout——<code>zoom：1</code>可以触发hasLayout，并且不会像height等属性一样引入副作用，更妙的是，我们可以不用CSS hack了。但<code>zoom</code>并不是一定可以触发hasLayout的，在极少数的情况下，例如非常复杂的CSS设置，特别是使用DHTML的时候，使用“zoom：1”有时候也会无效，这时，我们可能需要借助更为强大的<code>position：relative</code>来帮助触发hasLayout，总之，<code>zoom</code>是最常用、最安全、成本最小的触发hasLayout的方式，一般情况下，使用它完全可以触发hasLayout了。如果遇到很特殊的情况，<code>zoom：1</code>无效的情况下，我们可以通过设置<code>position：relative</code>来触发hasLayout，尽管他会带来一点副作用。</p>
-<p>值得强调的是，hasLayout的涉及初衷是用于辅助块级元素的盒模型解释的，他是用于块级元素的。如果用于行内元素，会引发一些特殊的效果。</p>
-<p>值得庆幸的是，随着微软window10的推出，与之相伴的新浏览器斯巴达横空出世，IE成为永远的历史，不得不说，专治IE的各种私人解决方案会失效，我们不再需要为IE的各种诡异问题感到头痛，拥抱Webkit等新浏览器内核，相信前端WEB页面的工作会随Firefox一样，令人舒服（本人觉得Firefox是最懂开发者心的浏览器）。</p>
-<h2 id="块级元素和行内元素的区别"><a href="#块级元素和行内元素的区别" class="headerlink" title="块级元素和行内元素的区别"></a>块级元素和行内元素的区别</h2><p>块级元素和行内元素是布局的最基本的两种元素，常见的块级元素有<code>div</code>、<code>p</code>、<code>form</code>、<code>ul</code>、<code>li</code>、<code>ol</code>等，常见的额行内元素有<code>span</code>、<code>strong</code>、<code>em</code>等。</p>
-<p>块级元素和行内元素有什么区别呢？块级元素会独占一行，默认情况下，其宽度自动填满其父容器元素宽度，行内元素不会独占一行，相邻的元素排列在同一行中，直到一行拍不下才会换行，其宽度随元素的内容而变化。如如下代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;style type="text/css"&gt;</div><div class="line">p&#123;background-color: red;&#125;</div><div class="line">div&#123;background-color: yellow&#125;</div><div class="line">span&#123;background-color: blue&#125;</div><div class="line">strong&#123;background-color: green&#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">&lt;p&gt;块级元素P&lt;/p&gt;&lt;div&gt;块级元素DIV&lt;/div&gt;&lt;span&gt;行内元素span&lt;/span&gt;&lt;strong&gt;行内元素strong&lt;/strong&gt;</div></pre></td></tr></table></figure></p>
-<p>在浏览器中的效果如下图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-6a8369f91245e8fb.png" alt="Paste_Image.png"></p>
-<p>块级元素可以设置width、height属性，行内元素设置width、height属性无效。如下面代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;style type="text/css"&gt;</div><div class="line">p&#123;background-color: red;width: 200px;height: 200px;&#125;</div><div class="line">div&#123;background-color: yellow;width: 400px;height: 10px;&#125;</div><div class="line">span&#123;background-color: blue;width: 200px;height: 200px;&#125;</div><div class="line">strong&#123;background-color: green;width: 400px;height: 100px;&#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">&lt;p&gt;块级元素P&lt;/p&gt;&lt;div&gt;块级元素DIV&lt;/div&gt;&lt;span&gt;行内元素span&lt;/span&gt;&lt;strong&gt;行内元素strong&lt;/strong&gt;</div></pre></td></tr></table></figure></p>
-<p>在浏览器中的效果如下图:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-559a5012de973dcf.png" alt="Paste_Image.png"></p>
-<p>注意，块级元素即使设置了宽度，任然是独占一行的。</p>
-<p>块级元素可以设置<code>margin</code>和<code>padding</code>属性。行内元素的<code>margin</code>、<code>padding</code>属性很奇怪，水平方向的<code>padding-left</code>、<code>padding-right</code>、<code>margin-left</code>、<code>margin-right</code>都产生边距效果，但 6方向的<code>padding-top</code>、<code>padding-bottom</code>、<code>margin-top</code>、<code>margin-bottom</code>却不会产生边距效果。如下代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;style type="text/css"&gt;</div><div class="line">p&#123;background-color: red;padding: 20px;margin: 20px;&#125;</div><div class="line">div&#123;background-color: yellow;padding: 20px;&#125;</div><div class="line">span&#123;background-color: blue;padding: 20px;margin: 20px;&#125;</div><div class="line">strong&#123;background-color: green;padding: 20px;margin: 20px;&#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">&lt;p&gt;块级元素P&lt;/p&gt;&lt;div&gt;块级元素DIV&lt;/div&gt;&lt;span&gt;行内元素span&lt;/span&gt;&lt;strong&gt;行内元素strong&lt;/strong&gt;</div></pre></td></tr></table></figure></p>
-<p>在浏览器中的效果如图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-1d071a966396c018.png" alt="Paste_Image.png"></p>
-<p>如上图所示，竖直方向的<code>margin</code>看不到任何效果，竖直方向的<code>padding</code>虽然增加了，但却并没有和相邻的元素拉开距离。</p>
-<p>块级元素和行内元素的CSS相关属性是<code>display</code>，其中块级元素对应于<code>display：block</code>，行内元素对应于<code>display：inline</code>。我们可以通过修改display属性来切换块级元素和行内元素，如下面代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;style type="text/css"&gt;</div><div class="line">p&#123;background-color: red;display: inline;&#125;</div><div class="line">div&#123;background-color: yellow;display: inline;&#125;</div><div class="line">span&#123;background-color: blue;display: block;&#125;</div><div class="line">strong&#123;background-color: green;display: block;&#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">&lt;p&gt;块级元素P&lt;/p&gt;&lt;div&gt;块级元素DIV&lt;/div&gt;&lt;span&gt;行内元素span&lt;/span&gt;&lt;strong&gt;行内元素strong&lt;/strong&gt;</div></pre></td></tr></table></figure></p>
-<p>在浏览器中的效果如图：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-ec80ce3a0608ca5f.png" alt="Paste_Image.png"></p>
+        <p>在JavaScript中，Array对象的sort()方法是用来排序的，但是这个方法在默认情况下可能不是我们想要的，比如对于如下数组<br><a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">20</span>,<span class="number">7</span>,<span class="number">15</span>];</div></pre></td></tr></table></figure></p>
+<p>使用sort排序会得到如下结果：<br>[10, 15, 2, 20, 5, 7]</p>
+<p>在不传递参数的情况下，它是按字符的Unicode编码来排序的。</p>
+<p>为了解决这个问题，可以为sort()方法传递一个参数，这个参数ECMAScript是这么定义的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">@param &#123;function&#125; [compareFn]</div><div class="line">@return &#123;Array.&lt;T&gt;&#125;</div><div class="line">*/</div><div class="line"><span class="built_in">Array</span>.prototype.sort = <span class="function"><span class="keyword">function</span>(<span class="params">compareFn</span>) </span>&#123;&#125;;</div></pre></td></tr></table></figure></p>
+<p>参数为一个function，具体叫比较函数。我们可以改写为如下形式，传递一个比较函数：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> a - b;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>a和b即是要比较的两个数，其返回值如下：</p>
+<ul>
+<li>若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。</li>
+<li>若 a 等于 b，则返回 0。</li>
+<li>若 a 大于 b，则返回一个大于 0 的值。 </li>
+</ul>
+<p>对于返回值的三种结果，我们可以直接使用“a-b”，这样就可以正确得到结果<br>[2, 5, 7, 10, 15, 20]</p>
+<p>那么，接下来我们就来模拟一下这个方法和比较函数的实现。</p>
+<p>首先，如果我们不用这个方法，而是自己实现排序，那么我们可以使用传统的冒泡排序方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">array</span>)</span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;array.length - <span class="number">1</span>; i++)&#123;</div><div class="line">            <span class="comment">// 假设数组已经排好序了</span></div><div class="line">            <span class="keyword">var</span> isSorted = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>; j&lt;array.length - <span class="number">1</span> - i; j++)&#123;</div><div class="line">                <span class="keyword">if</span>(array[j] &gt; array[j + <span class="number">1</span>])&#123;</div><div class="line">                    <span class="keyword">var</span> temp = array[j];</div><div class="line">                    array[j] = array[j + <span class="number">1</span>];</div><div class="line">                    array[j + <span class="number">1</span>] = temp;</div><div class="line">                    <span class="comment">// 还有比较，说明排序还未结束</span></div><div class="line">                    isSorted = <span class="literal">false</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 如果排序已经完成，跳出循环</span></div><div class="line">            <span class="keyword">if</span>(isSorted)&#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>这是一个循环次数最少的排序方法，但是，这个排序的适应性不强，对于字符串数组就不行了，假设有如下字符串数组，要求按字符串个数排序该如何实现？<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arry = [<span class="string">"aaa"</span>,<span class="string">"aa"</span>,<span class="string">"c"</span>,<span class="string">"bb"</span>.<span class="string">"xxxxxxxx"</span>];</div></pre></td></tr></table></figure></p>
+<p>这样的数组我们不得不重新写一个方法来对字符串数组进行排序，需要改动上面冒泡排序的第6行的判断条件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(array[j].length &gt; array[j+<span class="number">1</span>].length)&#123;&#125;</div></pre></td></tr></table></figure></p>
+<p>那么，既然只需要改动这一句，我们可以把这一句作为参数传递，以后想怎么排就传什么样的参数，这个参数就是一个函数，回调函数。下面重新改写上面的冒泡排序，传递一个回调函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 模拟sort()</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">array,fn</span>)</span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;array.length - <span class="number">1</span>; i++)&#123;</div><div class="line">        <span class="keyword">var</span> isSorted = <span class="literal">true</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=<span class="number">0</span>; j&lt;array.length - <span class="number">1</span> - i; j++)&#123;</div><div class="line">            <span class="keyword">if</span>(fn(array[j], array[j + <span class="number">1</span>]) &gt; <span class="number">0</span>)&#123;</div><div class="line">                <span class="keyword">var</span> temp = array[j];</div><div class="line">                array[j] = array[j + <span class="number">1</span>];</div><div class="line">                array[j + <span class="number">1</span>] = temp;</div><div class="line">                    isSorted = <span class="literal">false</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(isSorted)&#123;</div><div class="line">           <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注意第2行和第6行，给sort传递了一个fn参数，这是一个函数，然后在第6行调用，array[j]和array[j+1]分别就是回调函数的a,b两个比较值。用这个改写的方法即可对数值数组排序也可以对字符串数组排序了。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">"aaa"</span>,<span class="string">"a"</span>,<span class="string">"xxxxxx"</span>,<span class="string">"abcd"</span>,<span class="string">"ab"</span>];</div><div class="line">sort(arr, <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a.length - b.length;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(arr);</div></pre></td></tr></table></figure></p>
+<p>输出：[“a”, “ab”, “aaa”, “abcd”, “xxxxxx”]</p>
 
       
     </div>
@@ -361,13 +353,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2015/05/25/CSS的常见问题(二)/">CSS的常见问题(二)</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/07/模拟JavaScript的Array.sort()方法/">模拟JavaScript的Array.sort()方法</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
-        <p><span>发布时间:</span>2015-05-25, 18:47:10</p>
-        <p><span>最后更新:</span>2017-05-06, 14:22:32</p>
+        <p><span>发布时间:</span>2016-07-07, 22:19:00</p>
+        <p><span>最后更新:</span>2017-05-07, 00:09:59</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2015/05/25/CSS的常见问题(二)/" title="CSS的常见问题(二)">http://dunizb.com/2015/05/25/CSS的常见问题(二)/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2015/05/25/CSS的常见问题(二)/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/07/模拟JavaScript的Array.sort()方法/" title="模拟JavaScript的Array.sort()方法">http://dunizb.com/2016/07/07/模拟JavaScript的Array.sort()方法/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/07/07/模拟JavaScript的Array.sort()方法/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -380,15 +372,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/">
-                    CSS的低权重原则—避免滥用子选择器
+                <a href="/2016/07/04/jQuery的三组基本动画与自定义动画总结/">
+                    jQuery的三组基本动画与自定义动画总结
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2015/05/26/CSS常见问题(三)/">
-                    CSS常见问题(三)
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
                 </a>
             </div>
         
@@ -400,7 +392,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hasLayout"><span class="toc-number">1.</span> <span class="toc-text">hasLayout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块级元素和行内元素的区别"><span class="toc-number">2.</span> <span class="toc-text">块级元素和行内元素的区别</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -436,7 +428,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"CSS的常见问题(二)　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"模拟JavaScript的Array.sort()方法　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -456,7 +448,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/" title="上一篇: CSS的低权重原则—避免滥用子选择器">
+            <a href="/2016/07/04/jQuery的三组基本动画与自定义动画总结/" title="上一篇: jQuery的三组基本动画与自定义动画总结">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -464,7 +456,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2015/05/26/CSS常见问题(三)/" title="下一篇: CSS常见问题(三)">
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="下一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
                 <i class="fa fa-angle-right"></i>
             </a>
         
