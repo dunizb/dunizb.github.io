@@ -15,27 +15,26 @@
 
 
 
-<meta name="description" content="在CSS中，line-height 属性设置两段段文本之间的距离，也就是行高，如果我们把一段文本的line-height设置为父容器的高度就可以实现文本垂直居中了。那么，它怎么就垂直居中了？为了弄清楚它，下面我们先来看几个概念。">
-<meta name="keywords" content="css">
+<meta name="description" content="本文将从宏观上对计算机做一个介绍，不讨论硬件底层细节，请放心，完全看得懂。并且简单介绍一下计算机的进化">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS行高(line-height)及文本垂直居中原理">
-<meta property="og:url" content="http://dunizb.com/2016/05/14/CSS行高(line-height)及文本垂直居中原理/index.html">
+<meta property="og:title" content="计算机的三大原则与计算机的进化">
+<meta property="og:url" content="http://dunizb.com/2016/06/11/计算机的三大原则与计算机的进化/index.html">
 <meta property="og:site_name" content="Dunizb">
-<meta property="og:description" content="在CSS中，line-height 属性设置两段段文本之间的距离，也就是行高，如果我们把一段文本的line-height设置为父容器的高度就可以实现文本垂直居中了。那么，它怎么就垂直居中了？为了弄清楚它，下面我们先来看几个概念。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-a07e7b8f4ad6ac46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-a287041aba8e8217.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-31f6657bf046e8a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-c6cf627c0fb2f809.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-99eddf2299822240.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-4332babc588af34c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-f0b6c800786190db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-d67694bb8ccd7396.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-fbf1797892333859.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-05-06T06:25:45.000Z">
+<meta property="og:description" content="本文将从宏观上对计算机做一个介绍，不讨论硬件底层细节，请放心，完全看得懂。并且简单介绍一下计算机的进化">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-9f4e93dfc009c820.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-ede216fe6dc0727c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-7a4f770fb3d8e036.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-ebea0293c44f3da3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-1039e89cfd657643.jpg">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-496b5a7e4e1b7216.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-be48011de0c1a1f9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-88cffc33cd03f002.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-05-06T10:39:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS行高(line-height)及文本垂直居中原理">
-<meta name="twitter:description" content="在CSS中，line-height 属性设置两段段文本之间的距离，也就是行高，如果我们把一段文本的line-height设置为父容器的高度就可以实现文本垂直居中了。那么，它怎么就垂直居中了？为了弄清楚它，下面我们先来看几个概念。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-a07e7b8f4ad6ac46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="计算机的三大原则与计算机的进化">
+<meta name="twitter:description" content="本文将从宏观上对计算机做一个介绍，不讨论硬件底层细节，请放心，完全看得懂。并且简单介绍一下计算机的进化">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-9f4e93dfc009c820.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -67,7 +66,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>CSS行高(line-height)及文本垂直居中原理 | Dunizb</title>
+<title>计算机的三大原则与计算机的进化 | Dunizb</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -288,11 +287,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-CSS行高(line-height)及文本垂直居中原理" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-计算机的三大原则与计算机的进化" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/14/CSS行高(line-height)及文本垂直居中原理/" class="article-date">
-      <time datetime="2016-05-14T04:02:00.000Z" itemprop="datePublished">2016-05-14</time>
+      <a href="/2016/06/11/计算机的三大原则与计算机的进化/" class="article-date">
+      <time datetime="2016-06-10T16:02:57.000Z" itemprop="datePublished">2016-06-11</time>
 </a>
 
 
@@ -307,7 +306,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CSS行高(line-height)及文本垂直居中原理
+      计算机的三大原则与计算机的进化
     </h1>
   
 
@@ -316,15 +315,11 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+    <a class="article-category-link" href="/categories/随笔扯谈/">随笔扯谈</a>
     </div>
 
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -332,25 +327,48 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在CSS中，line-height 属性设置两段段文本之间的距离，也就是行高，如果我们把一段文本的line-height设置为父容器的高度就可以实现文本垂直居中了，比如下面的例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">       <span class="selector-tag">div</span> &#123;</div><div class="line">           <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">           <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">           <span class="attribute">border</span>: <span class="number">1px</span> solid red;</div><div class="line">       &#125;</div><div class="line">       <span class="selector-tag">span</span> &#123;</div><div class="line">           <span class="attribute">line-height</span>: <span class="number">200px</span>;</div><div class="line">       &#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">span</span>&gt;</span>文本垂直居中原理<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>这样，span标签中的文字就相对于div垂直方向居中了，想要文本水平居中设置text-align：center即可。<br><img src="http://upload-images.jianshu.io/upload_images/68937-a07e7b8f4ad6ac46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br>那么，它怎么就垂直居中了？为了弄清楚它，下面我们先来看几个概念。</p>
-<h2 id="1-行框"><a href="#1-行框" class="headerlink" title="1. 行框"></a>1. 行框</h2><p>在浏览器中，会将给每一段文本生成一个<strong>行框</strong>，行框的高度就是行高。行框由上间距、文本高度、下间距组成，上间距的距离与下间距的距离是相等的。<br><img src="http://upload-images.jianshu.io/upload_images/68937-a287041aba8e8217.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"><br>默认情况下一行文本的行高分为：上间距，文本的高度，下间距，并且上间距是等于下间距的，所以文字默认在这一行中是垂直居中的。</p>
-<h2 id="2-文本中的几条线"><a href="#2-文本中的几条线" class="headerlink" title="2. 文本中的几条线"></a>2. 文本中的几条线</h2><p><img src="http://upload-images.jianshu.io/upload_images/68937-31f6657bf046e8a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"><br>几条线与行高的关系图解：<br><img src="http://upload-images.jianshu.io/upload_images/68937-c6cf627c0fb2f809.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"><br>文本的行高也可以看成是基线到基线的距离。<br><img src="http://upload-images.jianshu.io/upload_images/68937-99eddf2299822240.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"><br>如果一段文本的高度为16px，如果给他设置line-height的高度为200，那么相当于，文本的上下间距的高度增加了，但是文本本身的高度依然是16是不变的，并且一直默认在行框中垂直居中，而上间距和下间距平分了200px的高度并且减去文本本身的高度。所以，容器被这一行文本占满，而本身文字在自己的一行中是垂直居中的，所以看起来就像是在容器中垂直居中。</p>
-<h2 id="3-Chrome浏览器的默认值"><a href="#3-Chrome浏览器的默认值" class="headerlink" title="3. Chrome浏览器的默认值"></a>3. Chrome浏览器的默认值</h2><p>谷歌浏览器字体的默认大小是：16px，字体的最小值为：12px，默认行高为：18px；默认情况下如果没有给div设置高度，那么这个div的高度会比其中文本的大小大一点（这个大多少现在没有办法确定）</p>
-<h2 id="4-行高的单位"><a href="#4-行高的单位" class="headerlink" title="4. 行高的单位"></a>4. 行高的单位</h2><p><strong>px(像素)</strong><br>设置起来是最直接的，同时也最方便的。</p>
-<p><strong>%(百分号)</strong><br>如果line-height单位设置为%，那么将来在计算的时候，基数是当前标签中的文本的字体的大小。<br>如果是%,%之前的数据一定是整数 ：150% ，200%</p>
-<p><strong>em</strong><br>效果跟%是一样一样的。<br>注意：一行em的大小相当于是当前标签中的font-size的大小。<br>如果是em,em之前的数据一定是：1.2em ,1.5em ,2em</p>
-<p><strong>不带单位</strong><br>如果不涉及到继承，那么带不带单位（em）都是一样的效果，但是如果涉及到继承的话，那么就有很大的区别了：</p>
+        <p>本文将从宏观上对计算机做一个介绍，不讨论硬件底层细节，请放心，完全看得懂。并且简单介绍一下计算机的进化<br><a id="more"></a></p>
+<h1 id="原则一：输入、运算、输出是硬件的基础"><a href="#原则一：输入、运算、输出是硬件的基础" class="headerlink" title="原则一：输入、运算、输出是硬件的基础"></a>原则一：输入、运算、输出是硬件的基础</h1><p>从硬件上来讲，可以说计算机是执行输入、运算、输出三种操作的机器。计算机的硬件由大量的IC（集成电路）组成，每块IC上都有大量的引脚，这些引脚有些用于输入，有些用于输出。IC会在其内部对外部输入的信息进行运算，并把运算结果输出到外部。运算这个词听起来也许有些难以理解，但实际上就是计算的意思。举例来说，1+2=3，计算机所做的事就是“输入”数据1和2，然后对它们进行加法“运算”，最后“输出”计算结果3。<br><img src="http://upload-images.jianshu.io/upload_images/68937-9f4e93dfc009c820.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" IC的引脚中有些用于输入，有些用于输出"></p>
+<p>其实计算机就是一台简单的机器，它也只能做这三件事。输入、运算、输出必须成套出现，缺一不可。</p>
 <ul>
-<li>如果单位是em，那么将来在继承的时候，我们的浏览器会先将行高对应的具体的数值计算出来以后再继承。</li>
-<li>如果没有单位，那么将来在继承的时候，我们的浏览器会先将line-height这个属性继承给子元素，再在子元素的font-size来计算。line-height: 1.5。</li>
+<li>第一，现在的计算机还没有发展到能通过自发的思考创造出信息的地步，因此不输入信息就算计就不能工作。如果</li>
+<li>第二，计算机不能不执行任何运算，如果只是使输入的信息绕过运算环节直接输出，那么这就是电线而不是计算机了，如果不进行运算，计算机也就没有什么存在的意义了。</li>
+<li>第三，如果不输出结果，那么这也不是计算机而只是堆积信息的垃圾箱了，所以输出也必不可少。</li>
 </ul>
-<h2 id="5-行高可以被继承"><a href="#5-行高可以被继承" class="headerlink" title="5.行高可以被继承"></a>5.行高可以被继承</h2><p>我们知道，CSS的三大特性是继承、层叠、优先级。line-height也是可以被继承的，如下面的示例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">	<span class="selector-class">.father</span> &#123;</div><div class="line">    	<span class="comment">/*line-height: 20px;*/</span></div><div class="line">	&#125;</div><div class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"father"</span>&gt;</span></div><div class="line">    	  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"children"</span>&gt;</span>丰趣海淘<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>在不给.father设置行高的情况下，.children的文字行高默认为18<br><img src="http://upload-images.jianshu.io/upload_images/68937-4332babc588af34c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=".children的文字行高默认为18"><br>接着我们给div设置一个行高等于20px<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.father</span> &#123;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">20px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>我们再来看看.children标签的的变化，.children标签的文字行高变成20px了<br><img src="http://upload-images.jianshu.io/upload_images/68937-f0b6c800786190db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=".children标签的文字行高变成20px了"><br>而且，不管我们给行高设置什么单位（px、%、em、不带单位）都可以被继承。</p>
-<h2 id="6-行高计算的基数"><a href="#6-行高计算的基数" class="headerlink" title="6. 行高计算的基数"></a>6. 行高计算的基数</h2><p>如果行高的单位不是px，那么将来行高要进行计算：这个计算需要一个基数，这个基数是当前标签的字体大小，而不是浏览器默认字体大小。以上面的例子为例，我们并没有设置任何字体大小，此时我们把line-height设置为150%，那么文字的行高将变为24px（16px*1.5=24）。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">150%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>效果如下<br><img src="http://upload-images.jianshu.io/upload_images/68937-d67694bb8ccd7396.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.png"><br>此时我们在给div设置一个font-size等于20px：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">   <span class="attribute">line-height</span>: <span class="number">150%</span>;</div><div class="line">   <span class="attribute">font-size</span>:<span class="number">20px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>那么文字行高将会变成30px，20px*1.5=30px;<br><img src="http://upload-images.jianshu.io/upload_images/68937-fbf1797892333859.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
+<h1 id="原则二：软件是指令和数据的集合"><a href="#原则二：软件是指令和数据的集合" class="headerlink" title="原则二：软件是指令和数据的集合"></a>原则二：软件是指令和数据的集合</h1><p>什么是程序？所谓程序，其实非常简单，只不过是指令和数据的集合。无论程序多么高深多么复杂，其内容也都是指令和数据。</p>
+<p>那什么是指令？所谓指令，就是控制计算进行输入、运算、输出的命令。</p>
+<p>程序中的数据分为两类，一类是作为指令执行对象的输入数据， 一类是从指令的执行结果得到的输出数据。一般在编写程序的过程中，都要先编译再执行，所谓编译就是把用编译型语言如C、Java、C#等编写的源文件转换成字节码文件，也可以说是机器语言或原生代码。因为计算机只认识二进制，只认识0和1，由一大堆的二进制代码组成的程序就叫机器码、机器语言。</p>
+<h1 id="原则三：计算的处理方式有时与人们的思维习惯不同"><a href="#原则三：计算的处理方式有时与人们的思维习惯不同" class="headerlink" title="原则三：计算的处理方式有时与人们的思维习惯不同"></a>原则三：计算的处理方式有时与人们的思维习惯不同</h1><p>计算机有计算机的处理方法，这是三大原则中的最后一点。计算机本身只不过是为我们处理特定工作的机器。如果计算机能自己干活的话，那么我们的生活太美好了，我一定买很多台。不过遗憾的是目前还没有这样的计算机，现在的计算机终究是受人支配的工具。</p>
+<p>对计算机来说什么都是数字。用数字表示所有信息，这就是一个很具代表性的计算机式的处理方式，这一点正是和人类的思维习惯不一样的地方。例如，人们会用”蓝色“”红色“之类的词语描述有关的颜色信息。可是换做计算机的话，就不得不用数字表示颜色信息。例如：用”0,0,255“表示蓝色，用”255,0,0“表示红色，用”255,0,255“表示由蓝色和红色混合而成的紫色。不光是颜色，计算机对文字的处理也是如此。计算机内部会先把文字转换成相应的数字再做处理，这样的数字叫做”字符编码“。总之，计算机会什么都用数字来表示。</p>
+<h1 id="计算机的进化"><a href="#计算机的进化" class="headerlink" title="计算机的进化"></a>计算机的进化</h1><p>计算机的进化只有一个目的——与人类更加相近。要想更加贴近人类，就必须从计算机的处理方式中摒弃不符合人类思维习惯的部分，其实按照这么一来，计算机的进化最终形态就是机器人了，与着人类一样的外表，可以使用人类的语言。说到机器人，推荐一部印度科幻电影《宝莱坞机器人之恋》，讲的就是机器人拥有了人类的思维和感情后机器人做出的疯狂行为，无论从哪个角度这都是一部非常棒的科幻电影，浓郁的印度阿三风格，看惯了好莱坞来看这部电影，会给你重新认识印度的电影水准，简直秒杀我们中国科幻电影好几条街！<br><img src="http://upload-images.jianshu.io/upload_images/68937-ede216fe6dc0727c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="宝莱坞机器人之恋"></p>
+<p>如果与前几十年相比，我们身边的个人计算机一直在进化，在逐渐贴近人类。上个世纪80年代中期盛行的计算机操作系统是MS-DOS，它的操作方法是在全黑的画面上敲入字符，把命令传给计算机。进入90年代后，MS-DOS进化成了windows，1995年，微软发布了划时代的windows95操作系统，用户开始可以在图形界面上通过鼠标操作直观的下达命令。</p>
+<p><strong>算盘</strong><br>从广义上上说，世界上第一台计算机大约是4000年前被发明的，你知道是什么吗？就是算盘！这是第一种被设计帮助人类计数和计算的机器。<br><img src="http://upload-images.jianshu.io/upload_images/68937-7a4f770fb3d8e036.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="算盘"></p>
+<p>算盘勉强也符合计算机三大原则的输入、运算、输出，所以算盘也可以称为是计算机，其实更符合的叫法应该叫计算器。他是人力驱动的。</p>
+<p>关于算盘是不是计算机，是不是第一台计算机是有争议的，不同的的资料可能有不同的说法，但是我们没必要去纠结这个，一点意义都没有，关键是要弄懂当人们在讨论计算机的时候到底在谈论什么。</p>
+<p><strong>巴贝奇与差分机</strong><br>更加复杂的计算器有英国人查尔斯·巴贝奇与1822年制造了一台能进行8位数的数学运算的机器，叫做”差分机“。</p>
+<p>关于巴贝奇这个人，他几乎是一个全才，他本身是一个数学家，他还是一个文学家、哲学家、天文学家以及经济学家，不过他赖以成名的是因为发明差分机和分析机。</p>
+<p>差分机的”差分“是什么意思呢？所谓”差分”的含义，是指把函数表的复杂算式转化为差分运算，用简单的加法代替平方运算。1834年设计了更强大的分析机，不是仅仅能够制表的差分机，而是一种通用的数学计算机。但是它的制造要求有非常高的机械工程技术，第二台差分机大约有25000个零件，主要零件的误差不得超过每英寸千分之一，即使用现在的加工设备和技术，要想造出这种高精度的机械也绝非易事。以至于后来它的分析机根本就没法造出来，从来没有真正的使用过分析机。<br><img src="http://upload-images.jianshu.io/upload_images/68937-ebea0293c44f3da3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" 巴贝奇与他的差分机"></p>
+<p>不管是是差分机还是分析机，主要都是由机器齿轮来驱动运转，以蒸汽机来提供动力，那时候电发现没多久，还没有用电力来驱动机器的方法。</p>
+<p>算盘跟这种大型机器比的话简直low的不行，但是算盘也是一个非常精妙的东西。</p>
+<p><strong>ABC机</strong><br>那么世界上真正第一台电子计算机是什么呢，注意，是”电子“计算机。我姑且把之前的那些什么算盘、巴贝奇差分机叫做齿轮计算机吧，这是我个人的说法。大家以为ENIAC是世界第一台电子计算机吗？其实不是的，世界上第一台电子计算机叫”阿塔纳索夫-贝瑞计算机“，也简称ABC机，它是1937年设计的不可编程，仅仅设计用于求解线性方程组的计算机。<br><img src="http://upload-images.jianshu.io/upload_images/68937-1039e89cfd657643.jpg" alt=" ABC机"></p>
+<p>它的特点：<br>第一，采用电能与电子元件，在当时就是电子真空管；<br>第二，采用二进位制，而非通常的十进位制；<br>第三，采用电容器作为存储器，可再生而且避免错误；<br>第四，进行直接的逻辑运算，而非通常的数字算术。</p>
+<p>从ABC开始，人类的计算从模拟向数字挺进。</p>
+<p><strong>ENIAC</strong><br>那么接下来说的这个计算机就是世界上第一台”通用电子计算机“，它于1946年在美国宾夕法尼亚大学诞生，它的诞生是为了战争而生的，专门为了计算弹道和射击特性表面而研制的。没错他就是ENIAC。它是图灵完全的电子计算机，能够重新编程，解决各种计算问题。注意“通用”“图灵完全”“重新编程”这三个词语，这是它的特点。</p>
+<p>这台计算机主要元器件采用的是电子管 。</p>
+<p><strong>冯·诺依曼与冯·诺依曼计算机</strong><br>提到计算机，就不能不提到冯诺依曼这个人，被称为计算机之父。它提出程序存储的思想，明确规定用二进制替代十进制运算，并将计算机分成五大组件（运算器、控制器、存储器和输入输出设备），计算机应该按照程序顺序执行。人们把冯诺依曼的这个理论称为冯诺依曼体系结构，根据这些原理制造的计算机被称为冯·诺依曼结构计算机，从EDVAC到当前最先进的计算机都采用的是冯诺依曼体系结构。世界上第一台冯·诺依曼式计算机是1949年研制的EDVAC，也是为美国陆军弹道研究实验室研制。</p>
+<p>上面提到了好多个世界第一，第一台计算机是算盘，第一台电子计算是ABC机，第一台通用电子计算机是ENIAC，第一台冯诺依曼计算机是EDVAC。</p>
+<p><strong>阿兰·图灵与图灵机</strong><br>除了冯诺依曼，提到计算机还要提到另一个神仙，它就是阿兰·图灵。图灵是一个英国数学家和逻辑学，注意，是数学家，数学家，数学家，重要的事情说三遍，前面说的巴贝奇也是数学家，在计算机研究这个行当里，一定程度上就是数学研究，玩计算机就是玩数学，很多情况下，计算机的重大突破都是由某些数学理论的成功应用，特别是算法，TMD的就是数学，所以搞计算的数学要好，对于我们非英语国家来说，还要加上英语好，我们真的很苦逼….他居然还是逻辑学家，简直牛逼的不要不要的，更看不懂的是他后来一直在搞数理生物学方面的研究，正因为这么牛逼上帝也看上了他，于是1954在他41岁的时候上帝终于把他弄天上去了，上天了……。逻辑学在计算机中也是很重要的应用，特别是硬件底层，硬件里面其实就是一堆开关，一堆继电器，一堆逻辑门，一堆true和false，一堆0和1.<br><img src="http://upload-images.jianshu.io/upload_images/68937-496b5a7e4e1b7216.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="阿兰·图灵"></p>
+<p>阿兰·图灵在二战的时候是为英国搞密码破译的，专门破译德国密码，做出过很多重大贡献，一定程度上左右了英国当时的战争局势，关于图灵还有很多秘密，现在有一本书叫《图灵的秘密》，由图灵教育公司出版的，专门介绍他的生平、思想及论文解读，大家有兴趣可以买来看看。<br><img src="http://upload-images.jianshu.io/upload_images/68937-be48011de0c1a1f9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" 图灵的秘密"></p>
+<p>好了，上面扯了一堆题外话，那么，图灵在计算机上到底有什么贡献呢？他有很多理论，比如可计算性、判定问题，这个说起来就复杂了，我就不细讲了，其实我根本就搞不懂，太烧闹了。简而言之，图灵的基本思想是用机器来模拟人们用纸笔进行数学运算的过程，他是一种抽象的计算模型，符合这个模型的就叫图灵机。他还人工智能方面有一个有意思的东西，叫图灵测试。图灵测试就是说，如果一台机器能够与人类展开对话（通过电传设备）而不能被辨别出其机器身份，那么称这台机器具有智能。举例说比如你隔壁老王家有一台能说话的计算机，而且声音跟老王一样，那么你跟他隔墙喊话，你问一句他回答一句，你如果不能区分这次喊话到底是老王本人在回答，还是他的电脑在回答，那么就说这个电脑通过了图灵测试，具有智能。<br><img src="http://upload-images.jianshu.io/upload_images/68937-88cffc33cd03f002.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图灵测试示意图"></p>
+<h3 id="计算机的代际"><a href="#计算机的代际" class="headerlink" title="计算机的代际"></a>计算机的代际</h3><p>最后再说一下计算机的代际。</p>
+<p>第一代计算机被称为电子管计算机，为什么要叫电子管计算机呢？因为这一阶段计算机的主要特征是采用电子管元件作基本器件，代表计算机是ENIAC和ABC机。</p>
+<p>第二代计算机被称为晶体管计算机，晶体管的出现使计算机生产技术得到了根本性的发展，同时程序语言也相应的出现了，如Fortran ，Cobol ，Algo160等计算机高级语言。</p>
+<p>第三代计算机成为中小规模集成电路计算机，随着半导体工艺的发展，中小规模集成电路成为计算机的主要部件，使计算机的体积更小，大大降低了计算机计算时的功耗。在软件方面，有了标准化的程序设计语言和人机会话式的Basic 语言，其应用领域也进一步扩大。</p>
+<p>第四代计算机成为大规模和超大规模集成电路计算机，这一带计算机的体积进一步缩小，性能进一步提高。发展了并行技术和多机系统，出现了精简指令集计算机 （RISC），软件系统工程化、理论化，程序设计自动化。我们现在就是处于第四代计算机向第五代过度的阶段。</p>
+<p>第五代计算机，指具有人工智能的新一代计算机，它具有推理、联想、判断、决策、学习等功能。</p>
+<p><strong>参考资料：</strong></p>
+<hr>
+<p>《计算机是怎么跑起来的》[日]矢泽久雄，人民邮电出版社，2015.5<br><a href="http://baike.baidu.com/view/11592253.htm" target="_blank" rel="external">http://baike.baidu.com/view/11592253.htm</a><br><a href="http://baike.baidu.com/view/3240731.htm" target="_blank" rel="external">http://baike.baidu.com/view/3240731.htm</a><br><a href="http://www.baike.com/wiki/计算机发展史" target="_blank" rel="external">http://www.baike.com/wiki/计算机发展史</a><br><a href="http://baike.baidu.com/view/593829.htm" target="_blank" rel="external">http://baike.baidu.com/view/593829.htm</a><br><a href="http://baike.baidu.com/view/22486.htm" target="_blank" rel="external">http://baike.baidu.com/view/22486.htm</a><br><a href="http://baike.baidu.com/view/94296.htm" target="_blank" rel="external">http://baike.baidu.com/view/94296.htm</a></p>
 
       
     </div>
@@ -359,13 +377,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/05/14/CSS行高(line-height)及文本垂直居中原理/">CSS行高(line-height)及文本垂直居中原理</a></p>
+        <p><span>本文标题:</span><a href="/2016/06/11/计算机的三大原则与计算机的进化/">计算机的三大原则与计算机的进化</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">张兵</a></p>
-        <p><span>发布时间:</span>2016-05-14, 12:02:00</p>
-        <p><span>最后更新:</span>2017-05-06, 14:25:45</p>
+        <p><span>发布时间:</span>2016-06-11, 00:02:57</p>
+        <p><span>最后更新:</span>2017-05-06, 18:39:25</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/05/14/CSS行高(line-height)及文本垂直居中原理/" title="CSS行高(line-height)及文本垂直居中原理">http://dunizb.com/2016/05/14/CSS行高(line-height)及文本垂直居中原理/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/05/14/CSS行高(line-height)及文本垂直居中原理/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/11/计算机的三大原则与计算机的进化/" title="计算机的三大原则与计算机的进化">http://dunizb.com/2016/06/11/计算机的三大原则与计算机的进化/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/06/11/计算机的三大原则与计算机的进化/　　作者: 张兵" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -378,15 +396,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/05/13/windows自带画板工具使用技巧/">
-                    windows自带画板工具使用技巧
+                <a href="/2016/05/26/如何在Sublime-Text中添加代码片段/">
+                    如何在Sublime Text中添加代码片段
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/05/26/如何在Sublime-Text中添加代码片段/">
-                    如何在Sublime Text中添加代码片段
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
                 </a>
             </div>
         
@@ -398,7 +416,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-行框"><span class="toc-number">1.</span> <span class="toc-text">1. 行框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-文本中的几条线"><span class="toc-number">2.</span> <span class="toc-text">2. 文本中的几条线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Chrome浏览器的默认值"><span class="toc-number">3.</span> <span class="toc-text">3. Chrome浏览器的默认值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-行高的单位"><span class="toc-number">4.</span> <span class="toc-text">4. 行高的单位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-行高可以被继承"><span class="toc-number">5.</span> <span class="toc-text">5.行高可以被继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-行高计算的基数"><span class="toc-number">6.</span> <span class="toc-text">6. 行高计算的基数</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#原则一：输入、运算、输出是硬件的基础"><span class="toc-number">1.</span> <span class="toc-text">原则一：输入、运算、输出是硬件的基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原则二：软件是指令和数据的集合"><span class="toc-number">2.</span> <span class="toc-text">原则二：软件是指令和数据的集合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原则三：计算的处理方式有时与人们的思维习惯不同"><span class="toc-number">3.</span> <span class="toc-text">原则三：计算的处理方式有时与人们的思维习惯不同</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机的进化"><span class="toc-number">4.</span> <span class="toc-text">计算机的进化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机的代际"><span class="toc-number">4.0.1.</span> <span class="toc-text">计算机的代际</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -434,7 +452,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"CSS行高(line-height)及文本垂直居中原理　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"计算机的三大原则与计算机的进化　| Dunizb　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -454,7 +472,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/05/13/windows自带画板工具使用技巧/" title="上一篇: windows自带画板工具使用技巧">
+            <a href="/2016/05/26/如何在Sublime-Text中添加代码片段/" title="上一篇: 如何在Sublime Text中添加代码片段">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -462,7 +480,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/05/26/如何在Sublime-Text中添加代码片段/" title="下一篇: 如何在Sublime Text中添加代码片段">
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="下一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
                 <i class="fa fa-angle-right"></i>
             </a>
         
