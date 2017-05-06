@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=http://dunizb.com/browseupdate/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Dunizb" />
+
+
+
+<meta name="description" content="本文将使用HTML5提供的VideoAPI做一个自定义的视频播放器，需要用到HTML5提供的video标签、以及HTML5提供的对JavascriptAPI的扩展。">
+<meta name="keywords" content="HTML5,HTML,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5 VideoAPI，打造自己的Web视频播放器">
+<meta property="og:url" content="http://dunizb.com/2016/08/04/HTML5-VideoAPI，打造自己的Web视频播放器/index.html">
+<meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
+<meta property="og:description" content="本文将使用HTML5提供的VideoAPI做一个自定义的视频播放器，需要用到HTML5提供的video标签、以及HTML5提供的对JavascriptAPI的扩展。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-2499781ec1b7afb2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-05-06T16:25:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5 VideoAPI，打造自己的Web视频播放器">
+<meta name="twitter:description" content="本文将使用HTML5提供的VideoAPI做一个自定义的视频播放器，需要用到HTML5提供的video标签、以及HTML5提供的对JavascriptAPI的扩展。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-2499781ec1b7afb2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Dunizb，张兵的个人技术博客" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>HTML5 VideoAPI，打造自己的Web视频播放器 | Dunizb，张兵的个人技术博客</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.gif" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Dunizb</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/obook/">商店</a></li>
+                        
+                            <li><a href="/demo/">Demo</a></li>
+                        
+                            <li><a href="/categories/前端开发/">前端开发</a></li>
+                        
+                            <li><a href="/categories/读书笔记/">读书笔记</a></li>
+                        
+                            <li><a href="/categories/随笔扯谈/">随笔扯谈</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/FileZill/">FileZill</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mybatis/">Mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SublimeText/">SublimeText</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ftp/">ftp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javase/">javase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javaweb/">javaweb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdbc/">jdbc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/less/">less</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sql/">sql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/struts/">struts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/this/">this</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/响应式/">响应式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/备忘/">备忘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储过程/">存储过程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习笔记/">学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件上传/">文件上传</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统设计/">系统设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/组件使用/">组件使用</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/规范/">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/集合/">集合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象编程/">面向对象编程</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Dunizb</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.gif" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Dunizb</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">这世间唯有梦想和好姑娘不可辜负</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/obook/">商店</a></li>
+                
+                    <li><a href="/demo/">Demo</a></li>
+                
+                    <li><a href="/categories/前端开发/">前端开发</a></li>
+                
+                    <li><a href="/categories/读书笔记/">读书笔记</a></li>
+                
+                    <li><a href="/categories/随笔扯谈/">随笔扯谈</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa GitHub" target="_blank" href="https://www.github.com/dunizb" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="//www.jianshu.com/u/737d8047278d" title="简书"></a>
+                            
+                                <a class="fa SegmentFault" target="_blank" href="//segmentfault.com/u/dunizb" title="SegmentFault"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-HTML5-VideoAPI，打造自己的Web视频播放器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/04/HTML5-VideoAPI，打造自己的Web视频播放器/" class="article-date">
+      <time datetime="2016-08-04T04:53:00.000Z" itemprop="datePublished">2016-08-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTML5 VideoAPI，打造自己的Web视频播放器
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>本文将使用HTML5提供的VideoAPI做一个自定义的视频播放器，需要用到HTML5提供的video标签、以及HTML5提供的对JavascriptAPI的扩展。<br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/68937-2499781ec1b7afb2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="video.jpg"></p>
+</blockquote>
+<h2 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h2><h3 id="1-用法"><a href="#1-用法" class="headerlink" title="1.用法"></a>1.用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;video src=&quot;./video/mv.mp4&quot;&gt;&lt;/video&gt;</div></pre></td></tr></table></figure>
+<p>注意：audio和video元素必须同时包含开始和结束标签，不能使用<code>&lt;audio /&gt;</code>这样的空元素语法形式。</p>
+<h3 id="2-重要HTML属性"><a href="#2-重要HTML属性" class="headerlink" title="2.重要HTML属性"></a>2.重要HTML属性</h3><p><strong>controls</strong>：ontrol：如果出现该属性，则向用户显示控件，比如播放按钮。每个浏览器中的播放控件都不太一样，但用途都一样，都可以控制开始和结束，跳到新位置和调节音量<br><strong>autoplay</strong>：autoplay：如果出现该属性，则视频在就绪后马上播放。如果不设置autoplay属性，必须是用户单击播放按钮才会播放音频文件。<br><strong>loop</strong>：loop：(循环播放)告诉浏览器在音频到达末尾时，再从头开始重新播放<br><strong>preload</strong>：auto、mete、none：告诉浏览器如何下载音频  </p>
+<ul>
+<li>auto：让浏览器下载整个文件，以便用户单击播放按钮时就能播放。当然，下载过程是后台进行的，网页访客不必等待下载完成，而且仍然可以随意查看网页。</li>
+<li>meta：告诉浏览器先获取音频文件开头的数据块，从而足以确定一些基本信息（比如音频的总时长） </li>
+<li>none：**告诉浏览器不必预先下载。恰当地利用这些值，可以节省带宽。</li>
+</ul>
+<p>如果没有设置preload属性，浏览器就自己决定是否预先下载了。对这一点，不同浏览器的处理方式也不一样。多数浏览器将auto作为默认值，但Firefox的默认值是metadata。不过，也请大家注意，这个preload属性也不是必须严格执行的规则，而只是你对浏览器的建议。根据具体情况，浏览器可以忽略你的设置。（有些旧版本浏览器根据不会在意preload属性。）</p>
+<h3 id="3-常用事件"><a href="#3-常用事件" class="headerlink" title="3.常用事件"></a>3.常用事件</h3><p>事件名称 ： 解释<br><strong>oncanplay</strong>：当文件就绪可以开始播放时运行的脚本（缓冲已足够开始时）。<br><strong>ontimeupdate</strong>： 当播放位置改变时（比如当用户快进到媒介中一个不同的位置时）运行的脚本。<br><strong>onended</strong>：当媒介已到达结尾时运行的脚本（可发送类似“感谢观看”之类的消息）。    </p>
+<h3 id="4-常用方法"><a href="#4-常用方法" class="headerlink" title="4.常用方法"></a>4.常用方法</h3><p>方法名称 ：解释<br><strong>play()</strong>：开始播放音频/视频<br><strong>pause()</strong>：暂停当前播放的音频/视频    </p>
+<h3 id="5-常用API属性"><a href="#5-常用API属性" class="headerlink" title="5.常用API属性"></a>5.常用API属性</h3><p>属性名称 ： 解释<br><strong>duration</strong>：返回当前音频/视频的长度（以秒计）<br><strong>paused</strong>：设置或返回音频/视频是否暂停<br><strong>currentTime</strong>：设置或返回音频/视频中的当前播放位置（以秒计）<br><strong>ended</strong>：返回音频/视频的播放是否已结束    </p>
+<p>更多属性、事件、方法请查看<a href="http://www.w3school.com.cn/tags/html_ref_audio_video_dom.asp" target="_blank" rel="external">w3school</a></p>
+<h2 id="二、打造自己的播放器"><a href="#二、打造自己的播放器" class="headerlink" title="二、打造自己的播放器"></a>二、打造自己的播放器</h2><p>我们使用JavaScript控制播放控件的行为（自定义播放控件），实现如下功能：</p>
+<ul>
+<li>利用HTML+CSS制作一个自己的播放控件条，然后定位到视频最下方</li>
+<li>视频加载loading效果</li>
+<li>播放、暂停</li>
+<li>总时长和当前播放时长显示</li>
+<li>播放进度条</li>
+<li>全屏显示</li>
+</ul>
+<h3 id="1-播放控件"><a href="#1-播放控件" class="headerlink" title="1.播放控件"></a>1.播放控件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>视频播放器<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"player"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">"./video/mv.mp4"</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"controls"</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!-- 播放/暂停 --&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">class</span>=<span class="string">"switch fa fa-play"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!-- 全屏 --&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">class</span>=<span class="string">"expand fa fa-expand"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!-- 进度条 --&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"progress"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"loaded"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"line"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!-- 时间 --&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"timer"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"current"</span>&gt;</span>00:00:00<span class="tag">&lt;/<span class="name">span</span>&gt;</span> /</div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"total"</span>&gt;</span>00:00:00<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!-- 声音 --&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>上面是全部HTML代码，<code>.controls</code>类就是播放控件HTML，引用CSS代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./css/font-awesome.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./css/player.css"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>为了显示播放按钮等图标我使用了字体图标</p>
+<h3 id="2-视频加载loading效果"><a href="#2-视频加载loading效果" class="headerlink" title="2.视频加载loading效果"></a>2.视频加载loading效果</h3><p>一开始先隐藏视频，用一个背景图片替代，等到视频加载完成可以播放时在显示视频<br>CSS：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.player</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">720px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">360px</span>;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</div><div class="line">    <span class="attribute">background</span>: <span class="number">#000</span> <span class="built_in">url</span>(../images/loading.gif) center/<span class="number">300px</span> no-repeat;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="selector-tag">video</span> &#123;</div><div class="line">    <span class="attribute">display</span>: none;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="3-播放功能"><a href="#3-播放功能" class="headerlink" title="3.播放功能"></a>3.播放功能</h3><p>让我们开始写javascript代码吧，首先我们先获取要用到的DOM元素：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> video = <span class="built_in">document</span>.querySelector(<span class="string">"video"</span>);</div><div class="line"><span class="keyword">var</span> isPlay = <span class="built_in">document</span>.querySelector(<span class="string">".switch"</span>);</div><div class="line"><span class="keyword">var</span> expand = <span class="built_in">document</span>.querySelector(<span class="string">".expand"</span>);</div><div class="line"><span class="keyword">var</span> progress = <span class="built_in">document</span>.querySelector(<span class="string">".progress"</span>);</div><div class="line"><span class="keyword">var</span> loaded = <span class="built_in">document</span>.querySelector(<span class="string">".progress &gt; .loaded"</span>);</div><div class="line"><span class="keyword">var</span> currPlayTime = <span class="built_in">document</span>.querySelector(<span class="string">".timer &gt; .current"</span>);</div><div class="line"><span class="keyword">var</span> totalTime = <span class="built_in">document</span>.querySelector(<span class="string">".timer &gt; .total"</span>);</div></pre></td></tr></table></figure></p>
+<p>当视频可以播放时，显示视频<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//当视频可播放的时候</span></div><div class="line">video.oncanplay = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="comment">//显示视频</span></div><div class="line">      <span class="keyword">this</span>.style.display = <span class="string">"block"</span>;</div><div class="line">      <span class="comment">//显示视频总时长</span></div><div class="line">      totalTime.innerHTML = getFormatTime(<span class="keyword">this</span>.duration);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="4-播放、暂停"><a href="#4-播放、暂停" class="headerlink" title="4.播放、暂停"></a>4.播放、暂停</h3><p>点击播放按钮时显示暂停图标，在播放和暂停状态之间切换图标<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//播放按钮控制</span></div><div class="line">isPlay.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(video.paused) &#123;</div><div class="line">            video.play();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            video.pause();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">this</span>.classList.toggle(<span class="string">"fa-pause"</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="5-总时长和当前播放时长显示"><a href="#5-总时长和当前播放时长显示" class="headerlink" title="5.总时长和当前播放时长显示"></a>5.总时长和当前播放时长显示</h3><p>前面代码中其实已经设置了相关代码，此时我们只需要把获取到的毫秒数转换成我们需要的时间格式即可，提供<code>getFormatTime()</code>函数：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFormatTime</span>(<span class="params">time</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> time = time  <span class="number">0</span>;</div><div class="line"> </div><div class="line">        <span class="keyword">var</span> h = <span class="built_in">parseInt</span>(time/<span class="number">3600</span>),</div><div class="line">            m = <span class="built_in">parseInt</span>(time%<span class="number">3600</span>/<span class="number">60</span>),</div><div class="line">            s = <span class="built_in">parseInt</span>(time%<span class="number">60</span>);</div><div class="line">        h = h &lt; <span class="number">10</span> ? <span class="string">"0"</span>+h : h;</div><div class="line">        m = m &lt; <span class="number">10</span> ? <span class="string">"0"</span>+m : m;</div><div class="line">        s = s &lt; <span class="number">10</span> ? <span class="string">"0"</span>+s : s;</div><div class="line"> </div><div class="line">        <span class="keyword">return</span> h+<span class="string">":"</span>+m+<span class="string">":"</span>+s;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="6-播放进度条"><a href="#6-播放进度条" class="headerlink" title="6.播放进度条"></a>6.播放进度条</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//播放进度</span></div><div class="line">video.ontimeupdate = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> currTime = <span class="keyword">this</span>.currentTime,    <span class="comment">//当前播放时间</span></div><div class="line">    duration = <span class="keyword">this</span>.duration;       <span class="comment">// 视频总时长</span></div><div class="line">    <span class="comment">//百分比</span></div><div class="line">    <span class="keyword">var</span> pre = currTime / duration * <span class="number">100</span> + <span class="string">"%"</span>;</div><div class="line">    <span class="comment">//显示进度条</span></div><div class="line">    loaded.style.width = pre;</div><div class="line"> </div><div class="line">     <span class="comment">//显示当前播放进度时间</span></div><div class="line">    currPlayTime.innerHTML = getFormatTime(currTime);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>这样就可以实时显示进度条了，此时，我们还需要点击进度条进行跳跃播放，即我们点击任意时间点视频跳转到当前时间点播放：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//跳跃播放</span></div><div class="line">progress.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> event = e  <span class="built_in">window</span>.event;</div><div class="line">    video.currentTime = (event.offsetX / <span class="keyword">this</span>.offsetWidth) * video.duration;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="7-全屏显示"><a href="#7-全屏显示" class="headerlink" title="7.全屏显示"></a>7.全屏显示</h3><p>这个功能可以使用HTML5提供的全局API：<code>webkitRequestFullScreen</code>实现，跟<code>video</code>无关：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//全屏</span></div><div class="line">expand.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">     video.webkitRequestFullScreen();</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p><a href="http://dunizb.com/demo/html-css/HTML5%E8%A7%86%E9%A2%91API%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">完整示例和源码请点这里</a><br><a href="https://github.com/dunizb/CodeTest/tree/master/HTML%26CSS/html5/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8" target="_blank" rel="external">github</a></p>
+<p>经测试在firefox、IE下全屏功能不可用，这样正常了，全屏API是针对webkit内核的。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/08/04/HTML5-VideoAPI，打造自己的Web视频播放器/">HTML5 VideoAPI，打造自己的Web视频播放器</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
+        <p><span>发布时间:</span>2016-08-04, 12:53:00</p>
+        <p><span>最后更新:</span>2017-05-07, 00:25:33</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/08/04/HTML5-VideoAPI，打造自己的Web视频播放器/" title="HTML5 VideoAPI，打造自己的Web视频播放器">http://dunizb.com/2016/08/04/HTML5-VideoAPI，打造自己的Web视频播放器/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/08/04/HTML5-VideoAPI，打造自己的Web视频播放器/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/07/20/CSS3聊天气泡框以及inherit、currentColor关键字/">
+                    CSS3聊天气泡框以及inherit、currentColor关键字
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、基础知识"><span class="toc-number">1.</span> <span class="toc-text">一、基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-用法"><span class="toc-number">1.1.</span> <span class="toc-text">1.用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-重要HTML属性"><span class="toc-number">1.2.</span> <span class="toc-text">2.重要HTML属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-常用事件"><span class="toc-number">1.3.</span> <span class="toc-text">3.常用事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-常用方法"><span class="toc-number">1.4.</span> <span class="toc-text">4.常用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-常用API属性"><span class="toc-number">1.5.</span> <span class="toc-text">5.常用API属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、打造自己的播放器"><span class="toc-number">2.</span> <span class="toc-text">二、打造自己的播放器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-播放控件"><span class="toc-number">2.1.</span> <span class="toc-text">1.播放控件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-视频加载loading效果"><span class="toc-number">2.2.</span> <span class="toc-text">2.视频加载loading效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-播放功能"><span class="toc-number">2.3.</span> <span class="toc-text">3.播放功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-播放、暂停"><span class="toc-number">2.4.</span> <span class="toc-text">4.播放、暂停</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-总时长和当前播放时长显示"><span class="toc-number">2.5.</span> <span class="toc-text">5.总时长和当前播放时长显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-播放进度条"><span class="toc-number">2.6.</span> <span class="toc-text">6.播放进度条</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-全屏显示"><span class="toc-number">2.7.</span> <span class="toc-text">7.全屏显示</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"HTML5 VideoAPI，打造自己的Web视频播放器　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/07/20/CSS3聊天气泡框以及inherit、currentColor关键字/" title="上一篇: CSS3聊天气泡框以及inherit、currentColor关键字">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="下一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/22/《她理财·蜜财周刊》怎样开源怎样花钱/">《她理财·蜜财周刊》怎样开源怎样花钱</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/31/《Web全栈工程师的自我修养》浓缩笔记（下）/">《Web全栈工程师的自我修养》浓缩笔记（下）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/《Web全栈工程师的自我修养》浓缩笔记（上）/">《Web全栈工程师的自我修养》浓缩笔记（上）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/12/响应式图片实战/">响应式图片实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/如何正确高效的使用群聊？/">如何正确高效的使用群聊？</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/Vue.js常用开发知识简要入门(三)/">Vue.js常用开发知识简要入门（三）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/Vue.js常用开发知识简要入门(一)/">Vue.js常用开发知识简要入门（一）</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">使用SpringMVC+Mybatis搭建高性能安全站点</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/04/HTML5-VideoAPI，打造自己的Web视频播放器/">HTML5 VideoAPI，打造自己的Web视频播放器</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/20/CSS3聊天气泡框以及inherit、currentColor关键字/">CSS3聊天气泡框以及inherit、currentColor关键字</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/15/书写高质量jQuery代码的12条经验/">书写高质量jQuery代码的12条经验</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/07/模拟JavaScript的Array.sort()方法/">模拟JavaScript的Array.sort()方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/04/jQuery的三组基本动画与自定义动画总结/">jQuery的三组基本动画与自定义动画总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/JavaScript的“&&”与“||”操作符总结/">JavaScript的“&&”与“||”操作符总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/11/计算机的三大原则与计算机的进化/">计算机的三大原则与计算机的进化</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/26/如何在Sublime-Text中添加代码片段/">如何在Sublime Text中添加代码片段</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/14/CSS行高(line-height)及文本垂直居中原理/">CSS行高(line-height)及文本垂直居中原理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/13/windows自带画板工具使用技巧/">windows自带画板工具使用技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/08/为什么你应该从现在开始使用云笔记？/">为什么你应该从现在开始使用云笔记？</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/01/JavaScript的Number类型详解/">JavaScript的Number类型详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/28/GitHub中Issue的使用/">GitHub中Issue的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/18/小技巧！在GitHub中查看分支差别/">小技巧！在GitHub中查看分支差别</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/14/GitHub中Graphs和Settings详解/">GitHub中Graphs和Settings详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/12/GitHub中的Pull-Request和Pulse详解/">GitHub中的Pull Request和Pulse详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/02/《如何阅读一本书》之公正的评断一本书/">《如何阅读一本书》之公正的评断一本书</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/31/《如何阅读一本书》之主题阅读精华摘要/">《如何阅读一本书》之主题阅读精华摘要</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/28/《如何阅读一本书》之如何透视一本书/">《如何阅读一本书》之如何透视一本书</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/26/《如何阅读一本书》之阅读一本书的四个层次/">《如何阅读一本书》之阅读一本书的四个层次</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/主动选择与方法论/">主动选择与方法论</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/24/《我们怎样读书》之为什么要学，怎么学/">《我们怎样读书》之为什么要学，怎么学</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/18/《我们怎样读书》之为学与做人/">《我们怎样读书》之为学与做人</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/20/Sublime-Text3插件安装图文教程/">Sublime Text3插件安装图文教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/31/LESS-CSS使用及语法入门/">LESS CSS使用及语法入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/31/Review-of-2015-年度回顾/">Review of 2015 年度回顾</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/01/04/JS检测图片的宽高和Image对象/">JS检测图片的宽高和Image对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/09/02/JavaScript-Object-Oriented-Programming-Basics/">JavaScript面向对象程序设计基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/JavaScript中的数据类型回顾/">JavaScript中的数据类型回顾</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/30/强大的Http监控工具Fidder简单介绍/">强大的Http监控工具Fidder简单介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/08/29/jQuery-Core-Style-Guide/">jQuery Core Style Guide（规范）</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/18/Java-final修饰符梳理/">Java-final修饰符梳理</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/05/Java的方法详解/">Java的方法详解</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/28/对象的this引用/">对象的this引用</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/06/27/数组与内存分配/">数组与内存分配</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/26/CSS常见问题(三)/">CSS常见问题(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/25/CSS的常见问题(二)/">CSS的常见问题(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/24/CSS的低权重原则—避免滥用子选择器/">CSS的低权重原则—避免滥用子选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/24/CSS的常见问题(一)/">CSS的常见问题(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/18/JavaScript中的继承入门/">JavaScript中的继承入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/12/15/利用jQuery克隆对象实例/">利用jQuery克隆对象实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/11/08/cookie-and-session-distinction-and-contact/">Cookie和Session的区别与联系</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/29/Talking-about-the-development-of-AOP-development/">漫谈AOP开发之开发Spring AOP程序</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/28/漫谈AOP开发之谈谈AOP那些学术概念/">漫谈AOP开发之谈谈AOP那些学术概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/10/26/漫谈AOP开发之初探AOP及AspectJ的用法/">漫谈AOP开发之初探AOP及AspectJ的用法</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/09/06/javascript-event/">JavaScript事件探秘</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/08/24/数据库设计的一些问题/">数据库设计的一些问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/27/Spring：一切都是Bean(二)/">Spring：一切都是Bean(二)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/24/Spring：一切都是Bean(一)/">Spring：一切都是Bean(一)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/13/把头像图片以二进制形式保存到数据库（Hibernate实现）/">把头像图片以二进制形式保存到数据库（Hibernate实现）</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/10/根据分组依据对Java集合元素进行分组/">根据分组依据对Java集合元素进行分组</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">JDBC操作数据库的元数据信息，JDBC复习(四) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/">JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/07/使用JDBC调用存储过程，JDBC复习(二)/">使用JDBC调用存储过程，JDBC复习(二) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/07/06/JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一)/">JDBC编程与SQL注入、大数据、事物处理，JDBC复习(一) </a></li><li class="post-list-item"><a class="post-list-link" href="/2014/06/24/localhost-and-ip/">localhost、127.0.0.1和本机ip三者的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/16/JavaScript-this/">JavaScript中的this妙用</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/04/09/使用POI组件导出数据为Excel文件/">使用POI组件导出数据为Excel文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/28/Tomcat-study-notes/">Tomcat学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/08/Struts2-xml-result-in-the-transmission-of-multiple-parameters/">Struts2.xml的result里传多个参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/12/07/Java-io-FTP-FileZill-Server设置/">Java I/O FTP同步代码及FileZilla Server设置</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/11/15/使用JXL组件导入Excel文件数据到数据库/">使用JXL组件导入Excel文件数据到数据库</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/29/System-out-println与System-err-println的区别/">System.out.println与System.err.println的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/26/BigDecimal-conversion-Integer/">BigDecimal互转Integer</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/10/12/Struts2图片上传-回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列/">Struts2图片上传(回显、多图上传、格式控制、多图上传分别保存路径到数据库不同的列)</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/09/21/Struts2-view-forwarding-type-summary/">Struts2的视图转发类型总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/09/19/使用jquery-from-js-Struts2实现图片异步上传/">使用jquery.from.js+Struts2实现图片异步上传</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/21/Spring-IOC-依赖注入、控制反转-概念理解/">Spring IOC(依赖注入、控制反转)概念理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/18/String、StringBuffer、StringBuilder/">String、StringBuffer、StringBuilder的性能区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2013/08/14/数据库优化(一)索引及索引合理利用/">数据库优化(一)：索引及索引合理利用</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/08/abstract-class-and-interface/">抽象类与接口完全释疑</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a></li><li class="post-list-item"><a class="post-list-link" href="/2012/08/02/手把手教你GlassFish与Eclipse的集成安装、配置/">手把手教你GlassFish与Eclipse的集成安装、配置</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017 Dunizb
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
