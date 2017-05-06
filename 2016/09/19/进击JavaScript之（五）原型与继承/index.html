@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="无论是静态工厂方法，还是实例工厂方法，都需要增加一个factory-method属性。实例工厂方法，还需要指定factory-bean属性">
-<meta name="keywords" content="Spring">
+<meta name="description" content="一句话说明什么是原型：原型能存储我们的方法，构造函数创建出来的实例对象能够引用原型中的方法。">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring：一切都是Bean(二)">
-<meta property="og:url" content="http://dunizb.com/2014/07/27/Spring：一切都是Bean(二)/index.html">
+<meta property="og:title" content="进击JavaScript之（五）原型与继承">
+<meta property="og:url" content="http://dunizb.com/2016/09/19/进击JavaScript之（五）原型与继承/index.html">
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
-<meta property="og:description" content="无论是静态工厂方法，还是实例工厂方法，都需要增加一个factory-method属性。实例工厂方法，还需要指定factory-bean属性">
-<meta property="og:image" content="http://img2.ph.126.net/e4U_CudXzU8GZlsaiGceFA==/6619306289816177318.png">
-<meta property="og:updated_time" content="2017-04-15T16:48:50.000Z">
+<meta property="og:description" content="一句话说明什么是原型：原型能存储我们的方法，构造函数创建出来的实例对象能够引用原型中的方法。">
+<meta property="og:image" content="http://img.imooc.com/57d226440001674106910470.png">
+<meta property="og:updated_time" content="2017-05-06T16:51:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring：一切都是Bean(二)">
-<meta name="twitter:description" content="无论是静态工厂方法，还是实例工厂方法，都需要增加一个factory-method属性。实例工厂方法，还需要指定factory-bean属性">
-<meta name="twitter:image" content="http://img2.ph.126.net/e4U_CudXzU8GZlsaiGceFA==/6619306289816177318.png">
+<meta name="twitter:title" content="进击JavaScript之（五）原型与继承">
+<meta name="twitter:description" content="一句话说明什么是原型：原型能存储我们的方法，构造函数创建出来的实例对象能够引用原型中的方法。">
+<meta name="twitter:image" content="http://img.imooc.com/57d226440001674106910470.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Spring：一切都是Bean(二) | Dunizb，张兵的个人技术博客</title>
+<title>进击JavaScript之（五）原型与继承 | Dunizb，张兵的个人技术博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -284,11 +284,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Spring：一切都是Bean(二)" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-进击JavaScript之（五）原型与继承" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/07/27/Spring：一切都是Bean(二)/" class="article-date">
-      <time datetime="2014-07-27T10:49:22.000Z" itemprop="datePublished">2014-07-27</time>
+      <a href="/2016/09/19/进击JavaScript之（五）原型与继承/" class="article-date">
+      <time datetime="2016-09-19T01:08:00.000Z" itemprop="datePublished">2016-09-19</time>
 </a>
 
 
@@ -303,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Spring：一切都是Bean(二)
+      进击JavaScript之（五）原型与继承
     </h1>
   
 
@@ -312,13 +312,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
+    <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -328,68 +328,139 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="实例化Bean的3种方式"><a href="#实例化Bean的3种方式" class="headerlink" title="实例化Bean的3种方式"></a>实例化Bean的3种方式</h2><ul>
-<li>通过bean元素来驱动调用有参数或无参数的构造器。</li>
-<li>通过驱动静态工厂方法来创建Bean<ul>
-<li>使用静态工厂方法创建Bean实例时，class指定创建Bean实例的静态工厂类。</li>
-<li>使用factory-method属性来指定静态工厂方法名，Spring将调用静态工厂方法（可能包含一组参数），来返回一个Bean实例。</li>
-<li>使用<code>&lt;constructor-arg.../&gt;</code>元素为工厂方法指定参数值。</li>
+        <h1 id="一、原型"><a href="#一、原型" class="headerlink" title="一、原型"></a>一、原型</h1><p>一句话说明什么是原型：原型能存储我们的方法，构造函数创建出来的实例对象能够引用原型中的方法。</p>
+<h2 id="1-1-JS的对象比较"><a href="#1-1-JS的对象比较" class="headerlink" title="1.1 JS的对象比较"></a>1.1 JS的对象比较</h2><p>由于JS是解析执行的语言，那么在代码中出现函数与对象如果重复执行，会创建多个副本。</p>
+<ol>
+<li>在代码中重复执行的代码容易出现重复的对象</li>
+<li>传统的构造函数定义方式会影响性能</li>
+<li>可以考虑将方法全部放到外面但是会有安全问题<ul>
+<li>在开发中会引入各种框架和库，自定义的成员越多，出现命名冲突的几率越大</li>
+<li>在开发中可能会有多个构造函数，每一个构造函数应该有多个方法，那么就会变得不容易维护。</li>
 </ul>
 </li>
-<li>通过驱动实例工厂方法来创建Bean<br>与静态工厂方法创建Bean的配置几乎是相同的。唯一的区别是，如果使用静态工厂方法创建Bean，只要用class属性指定静态工厂类的类名即可。<br>如果使用实例工厂方法创建Bean，只要用factory-bean属性指定工厂bean的名字即可。</li>
+<li>任意一个对象都会默认的链接到它的原型中    <ul>
+<li>创建一个函数，会附带的创建一个特殊的对象，该对象使用函数<code>.prototype</code>引用。称其为函数的<strong>原型属性</strong></li>
+<li>每一个由该函数作为构造函数创建的对象，都会默认的连接到该对象上</li>
+<li>在该对象访问某一个方法或属性时的时候，如果该对象中没有，就会到这个原型中去查找。</li>
 </ul>
-<p><strong>结论：无论是静态工厂方法，还是实例工厂方法，都需要增加一个factory-method属性。实例工厂方法，还需要指定factory-bean属性。</strong></p>
-<h2 id="Bean继承与子Bean"><a href="#Bean继承与子Bean" class="headerlink" title="Bean继承与子Bean"></a>Bean继承与子Bean</h2><p>作用是简化配置文件，提高应用的可维护性。</p>
-<p>如果Spring配置文件中有多个Bean，它们的部分配置信息是重复的</p>
-<ol>
-<li>配置就很臃肿。</li>
-<li>如果有天需要修改，就需要同时修改多个地方，不利于维护。  </li>
+</li>
 </ol>
-<p>Spring允许先为一批具有大致相同配置的Bean配置一个Bean模板——将这批Bean中相同的配置信息配置成Bean模板，Bean模板通常配成抽象Bean——就是配置Bean模板。</p>
-<p>Bean模板配置完成后，将实际的Bean实例配置成该Bean模板的子Bean即可。子Bean定义可以从父Bean继承实现类、构造器参数、属性值等配置信息，除此之外，子Bean配置可以增加新的配置信息，并可指定新的配置信息覆盖父Bean的定义。</p>
-<p>如果有一批Bean配置的大量配置信息完全相同，只有少量配置不同。</p>
-<p>可以将这批Bean中大量相同的配置信息抽取成Bean模板（抽象Bean）。各子Bean则可以只需继承该Bean模板，即可获得父Bean的大量配置参数。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dog"</span> <span class="attr">class</span>=<span class="string">"com.idealsh.test.service.Dog"</span> <span class="attr">parent</span>=<span class="string">"dogCatTemplate"</span></span></div><div class="line"><span class="attr">p:bark</span>=<span class="string">"旺，旺!!"</span> /&gt;</div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"cat"</span> <span class="attr">class</span>=<span class="string">"com.idealsh.test.service.Cat"</span> <span class="attr">parent</span>=<span class="string">"dogCatTemplate"</span></span></div><div class="line"><span class="attr">p:bark</span>=<span class="string">"苗，苗~~"</span> /&gt;</div><div class="line"><span class="comment">&lt;!-- 因为Bean模板只是一些通用配置，</span></div><div class="line">因此要通知Spring容器不需要创建Bean模板的实例，因此要增加abstract=“true”</div><div class="line"> --&gt;</div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dogCatTemplate"</span> <span class="attr">abstract</span>=<span class="string">"true"</span> <span class="attr">p:name</span>=<span class="string">"旺财"</span> <span class="attr">p:age</span>=<span class="string">"3"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
-<p>使用<code>abstract=”true”</code>，该bean配置不会被创建实例。如果程序试图获取抽象Bean，就会包异常。</p>
-<p>子Bean，使用parent=”父Bean”即可。子Bean就会从父Bean那里继承得到大量的配置信息。</p>
-<h2 id="FactoryBean-：-标准工厂Bean接口"><a href="#FactoryBean-：-标准工厂Bean接口" class="headerlink" title="FactoryBean ： 标准工厂Bean接口"></a>FactoryBean ： 标准工厂Bean接口</h2><ul>
-<li>他是一个接口，该接口里有三个方法。</li>
-<li>如果一个Bean实现类实现了该接口，并在容器中配置了该Bean。</li>
-<li>接下来程序获取Bean时，实际返回的只是该Bean的getObject方法的返回值。</li>
-<li>由于getObject方法由程序员自己实现，因此我们想要在这个方法里做什么操作就可以做什么操作。</li>
-</ul>
-<h2 id="获取Bean配置ID"><a href="#获取Bean配置ID" class="headerlink" title="获取Bean配置ID"></a>获取Bean配置ID</h2><p>在有些时候，程序需要在写Bean类时，就能【预知】Bean的配置ID，此时就可借助于BeanNameAware接口。</p>
-<p>和ApplicationContextAware有点相似，实现BeanNameAware接口，必须实现setBeanName方法。</p>
-<p>setBeanName方法由Spring调用，Spring调用该方法时会将该Bean的配置id作为参数传入。</p>
-<h2 id="Bean的生命周期行为"><a href="#Bean的生命周期行为" class="headerlink" title="Bean的生命周期行为"></a>Bean的生命周期行为</h2><p>对于singleton Bean来说，容器可以跟踪该Bean的产生和销毁。</p>
-<p>开发者可以定制Bean的生命周期行为。</p>
-<p>Bean完成所有依赖关系的注入后有2种方式可以管理Bean的行为：</p>
-<ol>
-<li>使用init-method或default-init-method属性配置。<br>init-method所指定的方法，会在Bean实例化、所有属性被注入之后，被Spring自动调用。</li>
-<li>实现InitializingBean接口<br>InitializingBean接口中定义的方法，会在Bean实例化、所有属性被注入之后，被Spring自动调用(调用该接口的afterPropertiesSet方法)。</li>
-</ol>
-<p><strong>注意：上面两种方式只需要使用一种即可，但是我们推荐使用第一种方式更好。第二种方式会侮辱代码。</strong></p>
-<p>Bean销毁前也可以通过2种方式来管理Bean：</p>
-<ol>
-<li>配置destroy-method/default-destory-method属性；</li>
-<li>实现DisposableBean接口；    </li>
-</ol>
-<p>在JavaSE项目中，Spring容器销毁地太快，容器中的Bean来不及调用生命周期方法回收自己。<strong>需要为Spring容器注册关闭钩子，保证Spring容器以优雅的方式销毁自己</strong>,——容器中的Bean都会调用生命周期方法来执行回收操作。</p>
-<p>在Java Web项目中，Spring容器默认就会以优雅的方式销毁。</p>
-<p><img src="http://img2.ph.126.net/e4U_CudXzU8GZlsaiGceFA==/6619306289816177318.png" alt=""></p>
-<h2 id="作用域不同步的Bean"><a href="#作用域不同步的Bean" class="headerlink" title="作用域不同步的Bean"></a>作用域不同步的Bean</h2><p>当singleton Bean依赖propotype Bean时，singleton Bean会把propotype Bean也变成singleton作用域。</p>
-<p>为了解决该问题，解决思路是：</p>
+<h2 id="1-2-传统构造函数的问题"><a href="#1-2-传统构造函数的问题" class="headerlink" title="1.2 传统构造函数的问题"></a>1.2 传统构造函数的问题</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>放弃依赖注入。<br>自定义一个方法，改方法<ol>
-<li>获取Spring容器</li>
-<li>获取、并返回prototype Bean</li>
-</ol>
+<li>由于对象是调用<code>new Foo()</code>所创建出来的，因此每一个对象在创建的时候，函数sayHello都会呗创建一次</li>
+<li>那么没一个对象都含有一个独立的，不同的，但是功能逻辑一样的函数，比如：<code>{} == {}</code></li>
+<li>在代码中方法就会消耗性能，最典型的资源就越是内存</li>
+<li>这里最好的方法就是将函数放在构造函数之外，那么在构造函数中引用该函数即可    </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span> (<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.say = sayHello；</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>会在开发中变得困难：引入框架危险，代码繁冗不好维护。解决方法就是如果外面的函数不占用其名字，而且在函数名下</li>
+<li>每一个函数在定义的时候，有一个神秘对象（即原型）被创建出来。</li>
+<li>每一个由构造函数创建的对象都会默认的连接到该神秘对象上。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Foo();</div><div class="line"><span class="keyword">var</span> f2 = <span class="keyword">new</span> Foo();</div><div class="line">f1.sayHello();    <span class="comment">//如果f1没有sayHello那么就会在Foo.prototype中去找</span></div></pre></td></tr></table></figure>
+<ul>
+<li>由构造函数创建出来的众多对象共享一个对象就是构造函数.prototype</li>
+<li>只需要将共享的东西，重复会多占用内存的东西放到构造函数.prototype中，那么所有的对象就可以共享了。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">Foo.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"...."</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> f1 = <span class="keyword">new</span> Foo();</div><div class="line">f1.sayHello();</div><div class="line"><span class="keyword">var</span> f2 = <span class="keyword">new</span> Foo();</div><div class="line">f2.sayHello();</div><div class="line"><span class="built_in">console</span>.log(f1.sayHello === f2.sayHello);</div></pre></td></tr></table></figure>
+<p>下面写一个构造函数 Student, 有 name, age, gender, sayHello, study. 构造函数带参数.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Student = <span class="function"><span class="keyword">function</span>(<span class="params">name,age,gender</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">    <span class="keyword">this</span>.gender = gender;</div><div class="line">&#125;</div><div class="line">Student.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"你好，我是："</span>+<span class="keyword">this</span>.name;</div><div class="line">&#125;</div><div class="line">Student.prototype.study = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"我正在学习JavaScript"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> stu1 = <span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>,<span class="number">19</span>,<span class="string">"man"</span>);</div><div class="line"><span class="built_in">console</span>.log(stu1);</div><div class="line"><span class="built_in">console</span>.log(stu1.sayHello());</div><div class="line"><span class="keyword">var</span> stu2 = <span class="keyword">new</span> Student(<span class="string">"李四"</span>,<span class="number">20</span>,<span class="string">"woman"</span>);</div><div class="line"><span class="built_in">console</span>.log(stu2);</div><div class="line"><span class="built_in">console</span>.log(stu2.study());</div></pre></td></tr></table></figure>
+<h2 id="1-3-常见错误"><a href="#1-3-常见错误" class="headerlink" title="1.3 常见错误"></a>1.3 常见错误</h2><p>写 构造函数<code>.prototype</code> 的时候, 将属性也加到里面.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">Person.prototype.name = <span class="string">'张三'</span>;</div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</div></pre></td></tr></table></figure>
+<p>赋值的错误</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">Person.prototype.name = <span class="string">'张三'</span>;</div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person();</div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person();</div><div class="line">p1.name = <span class="string">'李四'</span>;</div><div class="line"><span class="built_in">console</span>.log( p1.name );</div><div class="line"><span class="built_in">console</span>.log( p2.name );</div><div class="line"><span class="comment">// 如果是访问数据, 当前对象中如果没有该数据就到构造函数的原型属性中去找</span></div><div class="line"><span class="comment">// 如果是写数据, 当对象中有该数据的时候, 就是修改值; 如果对象没有该数据, 那么就添加值</span></div></pre></td></tr></table></figure>
+<h2 id="1-4-原型相关的概念"><a href="#1-4-原型相关的概念" class="headerlink" title="1.4 原型相关的概念"></a>1.4 原型相关的概念</h2><h3 id="1-4-1-关于面向对象的概念"><a href="#1-4-1-关于面向对象的概念" class="headerlink" title="1.4.1 关于面向对象的概念"></a>1.4.1 关于面向对象的概念</h3><ul>
+<li>类class：在JS中就是构造函数<ul>
+<li>在传统的面向对象语言中，使用一个叫类的东西定义模板，然后使用模板创建对象。</li>
+<li>在构造方法中也具有类似的功能，因此也称其为类</li>
+</ul>
 </li>
-<li>使用lookup方法注入。<ol>
-<li>将Bean类定义成一个抽象类。</li>
-<li>配置<code>&lt;lookup_method.../&gt;</code>子元素让Spring去实现抽象Ban类。</li>
-</ol>
+<li>实例（instance）与对象（object）<ul>
+<li>实例一般是指某一个构造函数创建出来的对象，我们称为XXXX 构造函数的实例</li>
+<li>实例就是对象。对象是一个泛称</li>
+<li>实例与对象是一个近义词</li>
+</ul>
+</li>
+<li>键值对与属性和方法<ul>
+<li>在JS中键值对的集合称为对象</li>
+<li>如果值为数据（非函数），就称该键值对为属性</li>
+<li>如果值为函数（方法），就称该键值对为方法method</li>
+<li>父类与子类（基类和派生类）</li>
+<li>传统的面向对象语言中使用类来实现继承那么就有父类、子类的概念</li>
+<li>父类又称为基类，子类又称为派生类</li>
+<li>在JS中没有类的概念，在JS中常常称为父对象，子对象，基对象，派生对象。</li>
+</ul>
 </li>
 </ul>
+<h3 id="1-4-2-原型相关的概念"><a href="#1-4-2-原型相关的概念" class="headerlink" title="1.4.2 原型相关的概念"></a>1.4.2 原型相关的概念</h3><ul>
+<li>原型针对构造函数称为原型属性<ul>
+<li>原型就是构造函数的原型属性，简称<strong>原型</strong></li>
+</ul>
+</li>
+<li>原型与构造函数创造出来的对象也有一定的关系：<ul>
+<li>原型针对构造函数创建出来的对象称为原型对象，简称原型</li>
+<li>对象继承自其原型</li>
+<li>构造函数创建的对象 继承自 构造函数的原型属性</li>
+<li>构造函数创建的对象 继承自 该对象的原型对象</li>
+<li>构造函数所创建出来的对象与构造函数的原型属性表示的对象是两个不同的对象    </li>
+<li>原型中的成员，可以直接被实例对象所使用</li>
+<li>也就是说实例对象直接含有原型中的成员</li>
+<li>因此实例对象继承自原型</li>
+<li>这样的继承就是原型继承</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-5-如何使用原型"><a href="#1-5-如何使用原型" class="headerlink" title="1.5 如何使用原型"></a>1.5 如何使用原型</h2><p>为什么要使用原型？——提高函数的复用性。<br>为什么属性不放在原型上而方法要放在原型上？</p>
+<ol>
+<li>利用对象的动态特性<ul>
+<li>构造函数.prototype.xxxx = vvv;</li>
+</ul>
+</li>
+<li>利用直接替换</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Student.prototype = &#123;</div><div class="line">    <span class="attr">sayHello</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</div><div class="line">    <span class="attr">study</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="1-6-——proto——"><a href="#1-6-——proto——" class="headerlink" title="1.6 ——proto——"></a>1.6 <code>——proto——</code></h2><p>以前要访问原型，必须使用构造函数来实现，无法直接使用实例对象来访问原型。<br>火狐最早引入属性<code>__proto__</code>表示使用实例对象引用原型。但是早期是非标准的。<br>通过该属性可以允许使用实例对象直接访问原型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="comment">// 神秘对象就是Person.prototype</span></div><div class="line"><span class="comment">//那么只有使用构造函数才可以访问它</span></div><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> Person();</div><div class="line"><span class="comment">//以前不能直接使用o来访问神秘对象</span></div><div class="line"><span class="comment">//现在有了__proto__后，</span></div><div class="line">o.__proto__也可以直接访问神秘对象</div><div class="line"><span class="comment">//那么o.__proto__ === Person.prototype</span></div></pre></td></tr></table></figure>
+<ol>
+<li>神秘对象（原型）中都有一个属性<code>constructor</code>，翻译为 构造器 。表示该原型是与什么构造函数联系起来的。</li>
+<li><code>__proto__</code>有什么用?<ul>
+<li>可以访问原型</li>
+<li>由于在开发中除非特殊要求，不要使用实例去修改原型的成员，因此该属性开发时使用较少。</li>
+<li>但是在调试过程中非常方便，可以轻易的访问原型进行查看成员</li>
+</ul>
+</li>
+<li><p>如果在早期的浏览器中使用实例需要访问原型如何处理？</p>
+<ul>
+<li>可以使用实例对象访问构造器，然后使用构造器访问原型<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> Person();</div><div class="line">o.constructor.prototype</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>如果给实例继承自原型的属性赋值</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>);</span></div><div class="line"><span class="title">Foo</span>.<span class="title">prototype</span>.<span class="title">name</span> = "<span class="title">test</span>";</div><div class="line"><span class="title">var</span> <span class="title">o1</span> = <span class="title">new</span> <span class="title">Foo</span>(<span class="params"></span>);</div><div class="line"><span class="title">var</span> <span class="title">o2</span> = <span class="title">new</span> <span class="title">Foo</span>(<span class="params"></span>);</div><div class="line"><span class="title">o1</span>.<span class="title">name</span> = "张三";    // 不是修改原型中的<span class="title">name</span>而是自己增加了一个<span class="title">name</span>属性</div><div class="line"><span class="title">console</span>.<span class="title">log</span>(<span class="params">o1.name + <span class="string">'，'</span>+ o2.name</span>);    // 张三，<span class="title">test</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="二、继承"><a href="#二、继承" class="headerlink" title="二、继承"></a>二、继承</h1><ol>
+<li>最简单的继承就是将别的对象的属性强加到我身上，那么我就有这个成员了。</li>
+<li>利用原型也可以实现继承，不需要在我身上添加任何成员，只要原型有了我就有了。</li>
+</ol>
+<p><strong>结论</strong><br>将属性，方法等成员利用混入的办法，加到构造器函数的原型上，那么构造器函数的实例就具有该方法了。</p>
+<h2 id="2-1-混合式继承的简单描述"><a href="#2-1-混合式继承的简单描述" class="headerlink" title="2.1 混合式继承的简单描述"></a>2.1 混合式继承的简单描述</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"><span class="keyword">var</span> extend = <span class="function"><span class="keyword">function</span> (<span class="params"> o1, o2 </span>) </span>&#123;</div><div class="line">      <span class="keyword">for</span> ( <span class="keyword">var</span> k <span class="keyword">in</span> o2 ) &#123;</div><div class="line">           o1[ k ] = o2[ k ];</div><div class="line">      &#125;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">extend( Person.prototype, &#123;</div><div class="line">     <span class="attr">run</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log( <span class="string">'我能跑了'</span> ); &#125;,</div><div class="line">     <span class="attr">eat</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log( <span class="string">'我可以吃了'</span> ); &#125;,</div><div class="line">     <span class="attr">sayHello</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log( <span class="string">'我吃饱了'</span> ); &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>改良<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">Person.prototype.extend = <span class="function"><span class="keyword">function</span> (<span class="params"> o </span>) </span>&#123;</div><div class="line">     <span class="keyword">for</span> ( <span class="keyword">var</span> k <span class="keyword">in</span> o ) &#123;</div><div class="line">          <span class="keyword">this</span>[ k ] = o[ k ];</div><div class="line">     &#125;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">Person.prototype.extend(&#123;</div><div class="line">      <span class="attr">run</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log( <span class="string">'我能跑了'</span> ); &#125;,</div><div class="line">      <span class="attr">eat</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log( <span class="string">'我可以吃了'</span> ); &#125;,</div><div class="line">      <span class="attr">sayHello</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log( <span class="string">'我吃饱了'</span> ); &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="2-2-细节"><a href="#2-2-细节" class="headerlink" title="2.2 细节"></a>2.2 细节</h2><p>使用点语法给原型添加成员与直接替换修改原型对象有什么区别？</p>
+<ol>
+<li>原型指向发生了变化</li>
+<li>构造函数所创建的对象所继承的原型不同</li>
+<li>新增的对象默认是没有<code>constructor</code>属性</li>
+</ol>
+<p>注意：在使用替换方式修改原型的时候，一般都会添加constructor属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">Person.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span>: Person</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 拆解</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> o = &#123;&#125;;</div><div class="line">o.constructor = Person;    <span class="comment">// 属性中就存储着函数的地址</span></div><div class="line"></div><div class="line">Person.prototype = o;</div><div class="line"></div><div class="line">Person = <span class="number">123</span>;</div></pre></td></tr></table></figure></p>
+<h2 id="2-3-静态成员与实例成员的概念"><a href="#2-3-静态成员与实例成员的概念" class="headerlink" title="2.3 静态成员与实例成员的概念"></a>2.3 静态成员与实例成员的概念</h2><p>也是从面向对象的语言中引入的</p>
+<ol>
+<li>静态成员表示的是 静态方法和静态属性的概念，所谓的静态，就是由构造函数所提供的。</li>
+<li>实例成员表示的是 实例方法 和 实例属性，所谓实例就是由构造函数所创建的对象。</li>
+</ol>
+<p>一般工具型方法都有静态成员提供，一般与实例对象有关的方法有实例成员表示。</p>
+<h2 id="2-4-构造、原型、实例三角结构图"><a href="#2-4-构造、原型、实例三角结构图" class="headerlink" title="2.4 构造、原型、实例三角结构图"></a>2.4 构造、原型、实例三角结构图</h2><p><img src="http://img.imooc.com/57d226440001674106910470.png" alt="构造、原型、实例三角结构图"></p>
 
       
     </div>
@@ -398,13 +469,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2014/07/27/Spring：一切都是Bean(二)/">Spring：一切都是Bean(二)</a></p>
+        <p><span>本文标题:</span><a href="/2016/09/19/进击JavaScript之（五）原型与继承/">进击JavaScript之（五）原型与继承</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
-        <p><span>发布时间:</span>2014-07-27, 18:49:22</p>
-        <p><span>最后更新:</span>2017-04-16, 00:48:50</p>
+        <p><span>发布时间:</span>2016-09-19, 09:08:00</p>
+        <p><span>最后更新:</span>2017-05-07, 00:51:11</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2014/07/27/Spring：一切都是Bean(二)/" title="Spring：一切都是Bean(二)">http://dunizb.com/2014/07/27/Spring：一切都是Bean(二)/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2014/07/27/Spring：一切都是Bean(二)/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/09/19/进击JavaScript之（五）原型与继承/" title="进击JavaScript之（五）原型与继承">http://dunizb.com/2016/09/19/进击JavaScript之（五）原型与继承/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/09/19/进击JavaScript之（五）原型与继承/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -417,15 +488,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2014/07/24/Spring：一切都是Bean(一)/">
-                    Spring：一切都是Bean(一)
+                <a href="/2016/09/06/进击JavaScript之（四）玩转递归与数列/">
+                    进击JavaScript之（四）玩转递归与数列
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2014/08/24/数据库设计的一些问题/">
-                    数据库设计的一些问题
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
                 </a>
             </div>
         
@@ -437,7 +508,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实例化Bean的3种方式"><span class="toc-number">1.</span> <span class="toc-text">实例化Bean的3种方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean继承与子Bean"><span class="toc-number">2.</span> <span class="toc-text">Bean继承与子Bean</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FactoryBean-：-标准工厂Bean接口"><span class="toc-number">3.</span> <span class="toc-text">FactoryBean ： 标准工厂Bean接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取Bean配置ID"><span class="toc-number">4.</span> <span class="toc-text">获取Bean配置ID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bean的生命周期行为"><span class="toc-number">5.</span> <span class="toc-text">Bean的生命周期行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域不同步的Bean"><span class="toc-number">6.</span> <span class="toc-text">作用域不同步的Bean</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、原型"><span class="toc-number">1.</span> <span class="toc-text">一、原型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-JS的对象比较"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 JS的对象比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-传统构造函数的问题"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 传统构造函数的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-常见错误"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 常见错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-原型相关的概念"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 原型相关的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-1-关于面向对象的概念"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.4.1 关于面向对象的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-2-原型相关的概念"><span class="toc-number">1.4.2.</span> <span class="toc-text">1.4.2 原型相关的概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-如何使用原型"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 如何使用原型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-——proto——"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 ——proto——</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、继承"><span class="toc-number">2.</span> <span class="toc-text">二、继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-混合式继承的简单描述"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 混合式继承的简单描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-细节"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 细节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-静态成员与实例成员的概念"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 静态成员与实例成员的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-构造、原型、实例三角结构图"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 构造、原型、实例三角结构图</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -473,7 +544,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Spring：一切都是Bean(二)　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"进击JavaScript之（五）原型与继承　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -493,7 +564,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2014/07/24/Spring：一切都是Bean(一)/" title="上一篇: Spring：一切都是Bean(一)">
+            <a href="/2016/09/06/进击JavaScript之（四）玩转递归与数列/" title="上一篇: 进击JavaScript之（四）玩转递归与数列">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -501,7 +572,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2014/08/24/数据库设计的一些问题/" title="下一篇: 数据库设计的一些问题">
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="下一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
                 <i class="fa fa-angle-right"></i>
             </a>
         
