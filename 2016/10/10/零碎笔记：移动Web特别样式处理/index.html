@@ -15,17 +15,20 @@
 
 
 
-<meta name="description" content="Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。 当使用==来判断两个变量是否相等时，如果两个变量都是基本类型变量，且都是数字类型（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。 但对于两个引用类型变量，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来">
-<meta name="keywords" content="java,javase">
+<meta name="description" content="高清图片跟我们平时下的那种电影高清图片是不一样的，移动Web的高清图片的概念是我这张图这么大，清晰度这么多，那么我们在移动设备上就该展示这么清晰。那么为什么会产生模糊呢？假如一张图片 `100px * 100px` 那我们在移动设备上就以 `100px * 100px` 去展示，这想想也是没有问题的。">
+<meta name="keywords" content="总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="==和equals方法终极解析">
-<meta property="og:url" content="http://dunizb.com/2012/09/02/==和equals方法终极解析/index.html">
+<meta property="og:title" content="零碎笔记：移动Web特别样式处理">
+<meta property="og:url" content="http://dunizb.com/2016/10/10/零碎笔记：移动Web特别样式处理/index.html">
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
-<meta property="og:description" content="Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。 当使用==来判断两个变量是否相等时，如果两个变量都是基本类型变量，且都是数字类型（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。 但对于两个引用类型变量，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来">
-<meta property="og:updated_time" content="2017-04-13T17:33:55.000Z">
+<meta property="og:description" content="高清图片跟我们平时下的那种电影高清图片是不一样的，移动Web的高清图片的概念是我这张图这么大，清晰度这么多，那么我们在移动设备上就该展示这么清晰。那么为什么会产生模糊呢？假如一张图片 `100px * 100px` 那我们在移动设备上就以 `100px * 100px` 去展示，这想想也是没有问题的。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-49a43d786521310a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://img.mukewang.com/57fa57ac000171eb02870090.jpg">
+<meta property="og:updated_time" content="2017-05-12T15:58:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="==和equals方法终极解析">
-<meta name="twitter:description" content="Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。 当使用==来判断两个变量是否相等时，如果两个变量都是基本类型变量，且都是数字类型（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。 但对于两个引用类型变量，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来">
+<meta name="twitter:title" content="零碎笔记：移动Web特别样式处理">
+<meta name="twitter:description" content="高清图片跟我们平时下的那种电影高清图片是不一样的，移动Web的高清图片的概念是我这张图这么大，清晰度这么多，那么我们在移动设备上就该展示这么清晰。那么为什么会产生模糊呢？假如一张图片 `100px * 100px` 那我们在移动设备上就以 `100px * 100px` 去展示，这想想也是没有问题的。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-49a43d786521310a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>==和equals方法终极解析 | Dunizb，张兵的个人技术博客</title>
+<title>零碎笔记：移动Web特别样式处理 | Dunizb，张兵的个人技术博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -282,11 +285,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-==和equals方法终极解析" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-零碎笔记：移动Web特别样式处理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2012/09/02/==和equals方法终极解析/" class="article-date">
-      <time datetime="2012-09-02T03:38:57.000Z" itemprop="datePublished">2012-09-02</time>
+      <a href="/2016/10/10/零碎笔记：移动Web特别样式处理/" class="article-date">
+      <time datetime="2016-10-10T12:49:00.000Z" itemprop="datePublished">2016-10-10</time>
 </a>
 
 
@@ -301,7 +304,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ==和equals方法终极解析
+      零碎笔记：移动Web特别样式处理
     </h1>
   
 
@@ -310,13 +313,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
+    <a class="article-category-link" href="/categories/前端开发/">前端开发</a><a class="article-category-link" href="/categories/前端开发/移动Web/">移动Web</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -326,27 +329,34 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。</p>
-<p>当使用==来判断两个变量是否相等时，<strong>如果两个变量都是基本类型变量，且都是数字类型</strong>（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。</p>
-<p><strong>但对于两个引用类型变量</strong>，他们必须指向同一个对象时，==判断才会返回true。==可用于比较两个类型上没有父子关系的两个对象。下面的程序示范了使用==来判断两种类型变量对否相等的结果。<br><a id="more"></a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EqualsTest</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> it = <span class="number">65</span>;</div><div class="line">        <span class="keyword">float</span> fl=<span class="number">65.0f</span>;</div><div class="line">        System.out.println(<span class="string">"65和65.0f是否相等？"</span>+(it == fl));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        <span class="keyword">char</span> ch = <span class="string">'A'</span>;</div><div class="line">        System.out.println(<span class="string">"65和'A'是否相等？"</span>+(it == ch));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        String str1= <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line">        String str2 = <span class="keyword">new</span> String(<span class="string">"hello"</span>);</div><div class="line">        System.out.println(<span class="string">"str1和str2是否相等？"</span>+(str1 == str2));      <span class="comment">//输出false;</span></div><div class="line">        System.out.println(<span class="string">"str1是否equals str2？"</span>+(str1.equals(str2)));      <span class="comment">//输出true;</span></div><div class="line"></div><div class="line">        <span class="comment">//由于java.lang.string与EqualsTest类没有继承关系</span></div><div class="line">        <span class="comment">//所以下面的语句导致编译错误</span></div><div class="line">        <span class="comment">// System.out.println("hello"==new EqualsTest());</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>运行上面的程序，可以看到65、65.0f和’A’相等。但对于str1和str2，因为他们都是引用类型变量，他们分别指向两个通过new关键字创建的String对象，因此str1和str2两个变量不相等。</p>
-<p>对于Java菜鸟而言，String还有一个非常容易迷惑人的地方：’’hello’’直接量和 new String(“hello”)有什么区别呢？当Java程序中直接使用形如“hello”的字符串直接量（包括子编译时就可以计算出来的字符串值）时，JVM将会使用常量池来管理这些字符串；当使用new String(“hello”)时，JVM先会使用常量池来管理”hello”直接量，再调用String类的构造器来创建一个新的String对象，新创建的String对象被保存在对内存中。换句话说<code>new String(&quot;hello&quot;)</code>一共产生了两个对象。</p>
-<p><strong>提示</strong> </p>
-<blockquote>
-<p>常量池，专门用于管理在编译期被确定并保存在编译的.class文件中的一些数据，它包括了关于类、方法、接口中的常量，还包括字符串常量。</p>
-</blockquote>
-<p>下面程序示范了JVM使用常量池管理字符串直接量的情形。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">stringCompareTest</span></span>&#123;</div><div class="line">    <span class="comment">//下面程序示范了JVM使用常量池管理字符串直接量的情形</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="comment">//s1直接引用常量池中的''你好Java"</span></div><div class="line">        String s1 = <span class="string">"你好Java"</span>;</div><div class="line">        String s2 = <span class="string">"你好"</span>;</div><div class="line">        String s3 = <span class="string">"Java"</span>;</div><div class="line"></div><div class="line">            <span class="comment">//s4后面的字符串值可以在编译期就确定下来</span></div><div class="line">            <span class="comment">//s4直接引用常量池中的“你好Java”</span></div><div class="line">        String  s4=<span class="string">"你好"</span>+<span class="string">"Java"</span>;</div><div class="line"></div><div class="line">        <span class="comment">//s5后面的字符串值可以在编译期就确定下来</span></div><div class="line">        <span class="comment">//s5直接引用常量池中的“你好Java”</span></div><div class="line">        String s5 = <span class="string">"你"</span> + <span class="string">"好"</span> + <span class="string">"Java"</span>;</div><div class="line"></div><div class="line">        <span class="comment">//s6后面的字符串值不能在编译期就确定下来</span></div><div class="line">        <span class="comment">//不能引用常量池中字符串</span></div><div class="line">        String s6 =s2+s3;</div><div class="line"></div><div class="line">        <span class="comment">//使用new调用构造器将会创建一个新的string对象</span></div><div class="line">        <span class="comment">//s7引用对内存中新创建的string对象</span></div><div class="line">        String s7 = <span class="keyword">new</span> String(<span class="string">"你好Java"</span>);</div><div class="line"></div><div class="line">        System.out.println(s1==s4);   <span class="comment">//true</span></div><div class="line">        System.out.println(s1==s5);   <span class="comment">//true</span></div><div class="line">        System.out.println(s1==s6);   <span class="comment">//false</span></div><div class="line">        System.out.println(s1==s7);   <span class="comment">//false</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>JVM常量池保证相同的字符串直接量只有一个，不会产生多个副本。例子中的s1、s4、s5所引用的字符串可以在编译期就确定下来，因此他们都讲引用常量池的同一个字符窜对象。</p>
-<p>使用<code>new String()</code>创建的字符串对象是运行时创建出来的，他被保存在运行时内存内（即对内存），不会放入常量池中。</p>
-<p>但在很多时候，程序判断两个引用变量是否相等时，也希望有一种类似于“值相等”的判断规则，并不严格要求两个引用变量指向同一个对象。例如对于两个字符串变量，可能只是要求他们的引用字符串对象里包含的字符串序列相同即可认为相等。此时就可以利用String对象的equals反法来进行判断，例如上面程序中<code>str1.equals(str2)</code>将返回true。</p>
-<p>equals方法是Object类提供的一个实例方法，因此所有引用变量都可以调用该方法来判断是否与其他引用变量相等。但是用这个方法判断两个对象相等的标准与==运输符没有区别，同样要求两个引用变量指向同一个对象才会返回true。因此这个Object类提供的equals反法没有太大的意义，如果希望采用自定义的相等标准，则可采用重写equals方法来实现。  </p>
-<p><strong>提示</strong></p>
-<blockquote>
-<p>String已经重写了Object的equals()方法，String的equals()方法判断两个字符串相等的标准是：只要两个字符串所包含的字符序列相同，通过equals比较将返回true，否则将返回false。</p>
-<p>网上很多地方和书上都说equals反法是判断两个对象值相等。这个说法是相当错误的，什么叫对象值呢？对象的值如何相等？实际上，重写equals方法就提供了自定义相等标准，你认为怎样是相等，那就怎样相等，一切都是你做主！</p>
-</blockquote>
-<p>重写equals反法就不再说明，写着太累了、、、。</p>
-<p>Object默认提供的<code>equals()</code>只是比较地址，即Object类的equals方法比较的结果与==比较的结果完全相同。因此，在实际应用中常常需要重写equals方法，重写equals方法时，相等条件是又系统要求决定的，因此equals方法的实现也是又系统要求决定的。</p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/68937-49a43d786521310a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="零碎笔记：移动Web特别样式处理"></p>
+<h2 id="高清图片问题"><a href="#高清图片问题" class="headerlink" title="高清图片问题"></a>高清图片问题</h2><p>高清图片跟我们平时下的那种电影高清图片是不一样的，移动Web的高清图片的概念是我这张图这么大，清晰度这么多，那么我们在移动设备上就该展示这么清晰。那么为什么会产生模糊呢？假如一张图片 <code>100px * 100px</code> 那我们在移动设备上就以 <code>100px * 100px</code> 去展示，这想想也是没有问题的。</p>
+<p>但我们想想，在Retina屏幕，一个px等于两个dp，那你拿 <code>100px*100px</code> 实际上是拿了 <code>200dp * 200dp</code> 物理像素去渲染，图片就会被拉大被模糊。</p>
+<p>在移动Web页面上渲染图片，为了避免图片产生模糊，图片的宽高应该用物理像素单位渲染，即是 <code>100 * 100</code> 的图片，应该使用 <code>100dp * 100dp。</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">width:(w_value/dpr) px;</div><div class="line">height:(h_value/dpr) px;</div></pre></td></tr></table></figure>
+<p>那说白了，在高清屏幕下，假如100<em>100的图片，那么我们就应该使用50</em>50的px去渲染，那如果在iPhone6 Plus下这时候dpr大于2的话，那我们就应该除以它的dpr(3)这样的方式。</p>
+<h2 id="一像素边框"><a href="#一像素边框" class="headerlink" title="一像素边框"></a>一像素边框</h2><p>一像素的边框的问题其实最根本的问题还是Retina屏幕的问题，那我们设置了border:1px，那1px就等于2个dp，那它实际上这个1像素边框拿了2个dp来渲染，所以那条线就不是很细，如果我们拿1dp来渲染的话就会更加精致更加细腻。</p>
+<p>那怎么解决呢？</p>
+<p>如果把border:0.5px可以不可以呢？答案是不可以的，因为它仅仅是ios8可以用。</p>
+<p>实际上更通用的方案是使用sacleY(0.5)来进行缩放处理：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.sidbar</span> <span class="selector-class">.folder</span> <span class="selector-tag">li</span>&#123;</div><div class="line">    <span class="attribute">padding</span>:<span class="number">8px</span> <span class="number">0</span> <span class="number">8px</span> <span class="number">15px</span>;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#7c7c7c</span>;</div><div class="line">    <span class="attribute">cursor</span>:pointer;</div><div class="line">    <span class="attribute">position</span>:relative;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.folder</span> <span class="selector-tag">li</span> + <span class="selector-tag">li</span><span class="selector-pseudo">:before</span>&#123;</div><div class="line">    <span class="attribute">position</span>:absolute;</div><div class="line">    <span class="attribute">top</span>:-<span class="number">1px</span>;</div><div class="line">    <span class="attribute">left</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">content</span>:<span class="string">''</span>,</div><div class="line">    width:<span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>:<span class="number">1px</span>;</div><div class="line">    <span class="attribute">border-top</span>:<span class="number">1px</span> solid <span class="number">#ddd</span>;</div><div class="line">    <span class="attribute">-webkit-transform</span>:<span class="built_in">scaleY</span>(0.5);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，网上还有其他方案可以选择。</p>
+<h2 id="相对单位rem"><a href="#相对单位rem" class="headerlink" title="相对单位rem"></a>相对单位rem</h2><p>为了适应各大屏幕的手机，px略显固定，不能根据尺寸的大小而改变，使用相对单位更能体验页面的兼容性。相对单位有两个：</p>
+<ul>
+<li>em：是根据父节点的font-size为相对单位</li>
+<li>rem：是根据html的font-size为相对单位</li>
+</ul>
+<p>em在多层嵌套下，变得非常难以使用和维护了，rem更加能作为全局同意设置的度量，我们推荐使用rem。</p>
+<p>rem的基值设置多少好？回归我们的目的：为了适应各大手机屏幕，我们可以这样： rem = screen.width / 20 ，或者除以10等。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 默认320px</div><div class="line">html&#123; font-size: 32px; &#125;</div><div class="line">// iphone6</div><div class="line">@media (min-device-wdith : 375px) &#123;</div><div class="line">    html&#123;font-size: 37.5px;&#125;</div><div class="line">&#125;</div><div class="line">// ihpone6 plus</div><div class="line">@media (min-device-width : 414px) &#123;</div><div class="line">    html&#123;font-size: 41.4px;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如iphone5上的rem基值为32px，渲染一张64<em>64px的div，则用2rem</em>2rem去渲染。换算公式非常简单：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">width: px/rem基值</div><div class="line">height: px/rem基值</div></pre></td></tr></table></figure></p>
+<h2 id="不使用rem的情况：font-size"><a href="#不使用rem的情况：font-size" class="headerlink" title="不使用rem的情况：font-size"></a>不使用rem的情况：font-size</h2><p>一般来讲font-size是并不应该使用rem等相对单位的。因为字体的大小是趋于阅读的实用性，并不适合与排版布局。</p>
+<p>同理，趋向于一些固定的元素的特性。我们不使用rem而改为使用px去确保在不同的屏幕上表现一致（跟rem的目的相反）。</p>
+<h2 id="多行文本溢出…"><a href="#多行文本溢出…" class="headerlink" title="多行文本溢出…"></a>多行文本溢出…</h2><p><img src="http://img.mukewang.com/57fa57ac000171eb02870090.jpg" alt="图片描述"><br>单行文本溢出，对title类的使用非常多，而多行文本类，在详情介绍则用的比较多。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*单行文本溢出*/</span></div><div class="line"><span class="selector-class">.inaline</span>&#123;</div><div class="line">      <span class="attribute">overflow</span>: hidden;</div><div class="line">      <span class="attribute">white-space</span>: nowrap;</div><div class="line">      <span class="attribute">text-overflow</span>: ellipsis;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*多行文本溢出*/</span></div><div class="line"><span class="selector-class">.intwoline</span>&#123;</div><div class="line">      <span class="attribute">display</span>: -webkit-box <span class="meta">!important</span>;</div><div class="line">      <span class="attribute">overflow</span>: hidden;</div><div class="line">      <span class="attribute">text-overflow</span>: ellipsis;</div><div class="line">      <span class="attribute">word-break</span>: break-all;</div><div class="line">      <span class="attribute">-webkit-box-orient</span>:vertical;</div><div class="line">      <span class="attribute">-webkit-line-clamp</span>:<span class="number">4</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>属性-webkit-line-clamp就可以控制几行溢出，4就是第四行进行截断加“…”</p>
+<hr>
+<p><strong>参考资料：</strong><br><a href="http://www.imooc.com/learn/494" target="_blank" rel="external">Hello，移动Web</a></p>
 
       
     </div>
@@ -355,13 +365,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2012/09/02/==和equals方法终极解析/">==和equals方法终极解析</a></p>
+        <p><span>本文标题:</span><a href="/2016/10/10/零碎笔记：移动Web特别样式处理/">零碎笔记：移动Web特别样式处理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
-        <p><span>发布时间:</span>2012-09-02, 11:38:57</p>
-        <p><span>最后更新:</span>2017-04-14, 01:33:55</p>
+        <p><span>发布时间:</span>2016-10-10, 20:49:00</p>
+        <p><span>最后更新:</span>2017-05-12, 23:58:54</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2012/09/02/==和equals方法终极解析/" title="==和equals方法终极解析">http://dunizb.com/2012/09/02/==和equals方法终极解析/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2012/09/02/==和equals方法终极解析/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/10/零碎笔记：移动Web特别样式处理/" title="零碎笔记：移动Web特别样式处理">http://dunizb.com/2016/10/10/零碎笔记：移动Web特别样式处理/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2016/10/10/零碎笔记：移动Web特别样式处理/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -374,15 +384,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2012/08/02/手把手教你GlassFish与Eclipse的集成安装、配置/">
-                    手把手教你GlassFish与Eclipse的集成安装、配置
+                <a href="/2016/10/08/零碎笔记：浏览器访问一个网站所经历的步骤/">
+                    零碎笔记：浏览器访问一个网站所经历的步骤
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2012/09/08/abstract-class-and-interface/">
-                    抽象类与接口完全释疑
+                <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/">
+                    使用SpringMVC+Mybatis搭建高性能安全站点
                 </a>
             </div>
         
@@ -394,7 +404,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#高清图片问题"><span class="toc-number">1.</span> <span class="toc-text">高清图片问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一像素边框"><span class="toc-number">2.</span> <span class="toc-text">一像素边框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相对单位rem"><span class="toc-number">3.</span> <span class="toc-text">相对单位rem</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不使用rem的情况：font-size"><span class="toc-number">4.</span> <span class="toc-text">不使用rem的情况：font-size</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多行文本溢出…"><span class="toc-number">5.</span> <span class="toc-text">多行文本溢出…</span></a></li></ol>
         
     </div>
     <style>
@@ -430,7 +440,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"==和equals方法终极解析　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"零碎笔记：移动Web特别样式处理　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -450,7 +460,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2012/08/02/手把手教你GlassFish与Eclipse的集成安装、配置/" title="上一篇: 手把手教你GlassFish与Eclipse的集成安装、配置">
+            <a href="/2016/10/08/零碎笔记：浏览器访问一个网站所经历的步骤/" title="上一篇: 零碎笔记：浏览器访问一个网站所经历的步骤">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -458,7 +468,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2012/09/08/abstract-class-and-interface/" title="下一篇: 抽象类与接口完全释疑">
+            <a href="/2016/11/01/使用SpringMVC-Mybatis搭建高性能安全站点/" title="下一篇: 使用SpringMVC+Mybatis搭建高性能安全站点">
                 <i class="fa fa-angle-right"></i>
             </a>
         
