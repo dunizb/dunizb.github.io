@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
 <meta property="og:description" content="什么是动态组件绑定？简单的说，就是几个组件放在一个挂载点下，然后根据父组件的某个变量来决定显示哪个，或者都不显示。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-9dc1cd5e606ff6fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-19T14:47:55.000Z">
+<meta property="og:updated_time" content="2017-06-19T14:50:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js动态组件解析">
 <meta name="twitter:description" content="什么是动态组件绑定？简单的说，就是几个组件放在一个挂载点下，然后根据父组件的某个变量来决定显示哪个，或者都不显示。">
@@ -330,10 +330,10 @@
           
         <p><img src="http://upload-images.jianshu.io/upload_images/68937-9dc1cd5e606ff6fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Vue.js"><br>此前的Vue.js系列文章：</p>
 <ul>
-<li><a href="http://dunizb.com/2016/12/18/Vue.js常用开发知识简要入门（一">Vue.js常用开发知识简要入门（一）</a>)</li>
+<li><a href="http://dunizb.com/2016/12/18/Vue.js常用开发知识简要入门（一）">Vue.js常用开发知识简要入门（一）</a></li>
 <li><a href="http://www.jianshu.com/p/ce9fc4c8a7ce" target="_blank" rel="external">Vue.js常用开发知识简要入门（二）</a></li>
-<li><a href="http://dunizb.com/2017/02/13/Vue.js常用开发知识简要入门（三">Vue.js常用开发知识简要入门（三）</a>)</li>
-<li><a href="http://dunizb.com/2017/02/13/Vue.js开发常见问题解析">Vue.js开发常见问题解析</a>)</li>
+<li><a href="http://dunizb.com/2017/02/13/Vue.js常用开发知识简要入门（三）">Vue.js常用开发知识简要入门（三）</a></li>
+<li><a href="http://dunizb.com/2017/02/13/Vue.js开发常见问题解析">Vue.js开发常见问题解析</a></li>
 </ul>
 <p>什么是动态组件绑定？简单的说，就是几个组件放在一个挂载点下，然后根据父组件的某个变量来决定显示哪个，或者都不显示。</p>
 <h2 id="is属性"><a href="#is属性" class="headerlink" title="is属性"></a>is属性</h2><p>在挂载点使用component标签，然后使用<code>v-bind:is=&quot;组件名&quot;</code>，会自动去找匹配的组件名，如果没有，则不显示；改变挂载的组件，只需要修改<code>is</code>指令的值即可。<br>HTML：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"one"</span> <span class="attr">value</span>=<span class="string">"fast"</span> <span class="attr">v-model</span>=<span class="string">"currentView"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"one"</span>&gt;</span>fast<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"two"</span> <span class="attr">value</span>=<span class="string">"bus"</span> <span class="attr">v-model</span>=<span class="string">"currentView"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"two"</span>&gt;</span>bus<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">br</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">id</span>=<span class="string">"three"</span> <span class="attr">value</span>=<span class="string">"business"</span> <span class="attr">v-model</span>=<span class="string">"currentView"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"three"</span>&gt;</span>business<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">"currentView"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 组件在 vm.currentView 变化时改变 --&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">component</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -355,7 +355,7 @@
         <p><span>本文标题:</span><a href="/2017/06/19/Vue.js动态组件解析/">Vue.js动态组件解析</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
         <p><span>发布时间:</span>2017-06-19, 22:44:28</p>
-        <p><span>最后更新:</span>2017-06-19, 22:47:55</p>
+        <p><span>最后更新:</span>2017-06-19, 22:50:52</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/06/19/Vue.js动态组件解析/" title="Vue.js动态组件解析">http://dunizb.com/2017/06/19/Vue.js动态组件解析/</a>
             <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2017/06/19/Vue.js动态组件解析/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
