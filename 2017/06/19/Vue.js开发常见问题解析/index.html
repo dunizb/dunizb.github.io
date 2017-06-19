@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="JavaScript关键字this始JS脚本能够根据使用这个关键字的上下文将值传递给函数。 我们先来看如下一个网页，在用户单击链接之后，弹出一个alert框，然后再转到href属性所指的网页">
-<meta name="keywords" content="this">
+<meta name="description" content="《Vue.js权威指南》读书笔记之一">
+<meta name="keywords" content="Vue.js,学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript中的this妙用">
-<meta property="og:url" content="http://dunizb.com/2014/04/16/JavaScript-this/index.html">
+<meta property="og:title" content="Vue.js开发常见问题解析">
+<meta property="og:url" content="http://dunizb.com/2017/06/19/Vue.js开发常见问题解析/index.html">
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
-<meta property="og:description" content="JavaScript关键字this始JS脚本能够根据使用这个关键字的上下文将值传递给函数。 我们先来看如下一个网页，在用户单击链接之后，弹出一个alert框，然后再转到href属性所指的网页">
-<meta property="og:image" content="http://img.imooc.com/56a628240001481209180251.png">
-<meta property="og:updated_time" content="2017-04-16T10:17:09.000Z">
+<meta property="og:description" content="《Vue.js权威指南》读书笔记之一">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-9dc1cd5e606ff6fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-06-19T14:47:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript中的this妙用">
-<meta name="twitter:description" content="JavaScript关键字this始JS脚本能够根据使用这个关键字的上下文将值传递给函数。 我们先来看如下一个网页，在用户单击链接之后，弹出一个alert框，然后再转到href属性所指的网页">
-<meta name="twitter:image" content="http://img.imooc.com/56a628240001481209180251.png">
+<meta name="twitter:title" content="Vue.js开发常见问题解析">
+<meta name="twitter:description" content="《Vue.js权威指南》读书笔记之一">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-9dc1cd5e606ff6fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JavaScript中的this妙用 | Dunizb，张兵的个人技术博客</title>
+<title>Vue.js开发常见问题解析 | Dunizb，张兵的个人技术博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -284,11 +284,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-JavaScript-this" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue.js开发常见问题解析" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/04/16/JavaScript-this/" class="article-date">
-      <time datetime="2014-04-16T09:15:58.000Z" itemprop="datePublished">2014-04-16</time>
+      <a href="/2017/06/19/Vue.js开发常见问题解析/" class="article-date">
+      <time datetime="2017-06-19T14:04:36.000Z" itemprop="datePublished">2017-06-19</time>
 </a>
 
 
@@ -303,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript中的this妙用
+      Vue.js开发常见问题解析
     </h1>
   
 
@@ -312,13 +312,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/">this</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -328,20 +328,33 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>JavaScript关键字this始JS脚本能够根据使用这个关键字的上下文将值传递给函数。</p>
-<p>我们先来看如下一个网页，在用户单击链接之后，弹出一个alert框，然后再转到href属性所指的网页<br><a id="more"></a><br>HTML：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>JavaScript中的this妙用<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/script.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"text-algin:center;"</span>&gt;</span></div><div class="line">        你好，点击这里去<span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"redirect"</span> <span class="attr">href</span>=<span class="string">"http://duni.sinaapp.com/obook/"</span>&gt;</span>旧物商店<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>JS：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = initAll;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initAll</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"redirect"</span>).onclick = initRedirect;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initRedirect</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="string">"这是我创建的旧物商城，欢迎访问！"</span>);</div><div class="line">    <span class="built_in">window</span>.location = <span class="keyword">this</span>;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://sandbox.runjs.cn/show/mp2pnrda" target="_blank" rel="external">在线演示</a></p>
-<p>你可能会主要到，代码中并没有引用特定的网页——这是this关键字的作用之一。this替我们完成的工作之一是从HTML链接获得URL（也就是a标签的href属性）。由于采用这种方式，如果以后脚本改为指向其他的页面而不是旧物商店页面，就不必修改JS。实际上，可以让WEB站点上的所有链接都调用这个相同的JS代码，这一行代码都会自动获得相应的href值。<br>这样写还有一个好处：如果用户的浏览器不理解JavaScript（比如禁用了JS）,那么它只会加载HTML页面，而不显示alert提示，当他们点击链接时，会像一般情况下那样加载页面，不会发生错误，没有任何问题。</p>
-<p>我们在来看一个switch/case例子，创建如下页面：</p>
-<p><img src="http://img.imooc.com/56a628240001481209180251.png" alt="switch/case例子"></p>
-<p>HTML：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>JavaScript中的this妙用<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/script.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>闲置二手图书<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"Java"</span> <span class="attr">value</span>=<span class="string">"Java"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"JavaScript"</span> <span class="attr">value</span>=<span class="string">"JavaScript"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"MySQL"</span> <span class="attr">value</span>=<span class="string">"MySQL"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"Html"</span> <span class="attr">value</span>=<span class="string">"HTML5"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>JS：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = initAll;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initAll</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"Java"</span>).onclick = viewDetail;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"JavaScript"</span>).onclick = viewDetail;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"MySQL"</span>).onclick = viewDetail;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"Html"</span>).onclick = viewDetail;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">viewDetail</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"this.id="</span>+<span class="keyword">this</span>.id);</div><div class="line">    <span class="keyword">switch</span>(<span class="keyword">this</span>.id)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">"Java"</span> : </div><div class="line">            alert(<span class="string">"《Java程序员基本功》这本书是李刚写的，在我的商店售价30元！"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"JavaScript"</span> : </div><div class="line">            alert(<span class="string">"《JavaScript语言精粹》这本书是Yahoo的一位工程师写的，在我的商店售价15元！"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"MySQL"</span> : </div><div class="line">            alert(<span class="string">"《MySQL入门很简单》这本书附带关盘，这个年代其实没什么卵用了，它在我的商店售价28元！"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="string">"Html"</span> : </div><div class="line">            alert(<span class="string">"《HTML5秘籍》这本书是图灵系统的图书，非常值得拥有，它在我的商店售价25元，卖的非常好！"</span>);</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span> : </div><div class="line">            alert(<span class="string">"没有这本书"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://sandbox.runjs.cn/show/wflrmken" target="_blank" rel="external">在线演示</a></p>
-<p>直接用this.id作为switch的参数也是可以的。</p>
-<p><a href="http://dunizb.com/">更多文章&gt;&gt;</a></p>
+        <p><img src="http://upload-images.jianshu.io/upload_images/68937-9dc1cd5e606ff6fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Vue.js"><br>此前的Vue.js系列文章：</p>
+<ul>
+<li><a href="http://dunizb.com/2016/12/18/Vue.js常用开发知识简要入门（一">Vue.js常用开发知识简要入门（一）</a>)</li>
+<li><a href="http://www.jianshu.com/p/ce9fc4c8a7ce" target="_blank" rel="external">Vue.js常用开发知识简要入门（二）</a></li>
+<li><a href="http://dunizb.com/2017/02/13/Vue.js常用开发知识简要入门（三">Vue.js常用开发知识简要入门（三）</a>)</li>
+</ul>
+<h2 id="camelClass-amp-kebab-case"><a href="#camelClass-amp-kebab-case" class="headerlink" title="camelClass &amp; kebab-case"></a>camelClass &amp; kebab-case</h2><p>HTML标签中的属性名不区分大小写。设置prop名字为camelClass形式的时候，需要转换为kebab-case形式（短横线）在HTML中使用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Vue.component(<span class="string">'child'</span>, &#123;</div><div class="line">    <span class="comment">//这里可以是camelClass形式</span></div><div class="line">    props: [<span class="string">'myMessage'</span>],</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;span&gt;&#123;&#123; myMessage &#125;&#125;&lt;/span&gt;'</span></div><div class="line">&#125;);</div><div class="line"><span class="xml"><span class="comment">&lt;!-- 对应在HTML中必须是短横线分隔 --&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">child</span> <span class="attr">my-message</span>=<span class="string">"hello"</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="字面量语法-amp-动态语法"><a href="#字面量语法-amp-动态语法" class="headerlink" title="字面量语法 &amp; 动态语法"></a>字面量语法 &amp; 动态语法</h2><p>这个问题比较绕，也算是一个笔记常犯的一个错误吧，使用字面量语法传递数值：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 传递了一个字符串“1” --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">comp</span> <span class="attr">some-prop</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>因为他是一个字面prop，它的值是字符串“1”，而不是以实际的数字传递下去。如果想传递一个真实的JavaScript类型的数字，则需要使用动态语法，从而让它的值被当做JavaScript表达式计算。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 传递实际的数字 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">comp</span> <span class="attr">:some-prop</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="模板解析"><a href="#模板解析" class="headerlink" title="模板解析"></a>模板解析</h2><p>Vue的模板是DOM模板，使用浏览器原生的解析器而不是自己实现一个。相比字符串模板，DOM模板有一些好处，但是也有问题，它必须是有效的HTML片段。一些HTML元素对什么元素可以放在它里面有限制。常见的限制有：</p>
+<ul>
+<li>a不能包行其他的交互元素（如按钮、链接）</li>
+<li>ul和ol只能直接包含li。</li>
+<li>select只能包含option和optgroup。</li>
+<li>table只能直接包含thead、tbody、ftoot、tr、caption、col、colgroup。</li>
+<li>tr只能直接包含th和td。</li>
+</ul>
+<p>在实际应用中，这些限制会导致意外的结果。尽管再简单的情况下它可能可以工作，但是我们不能依赖自定义组件在浏览器验证之前展开结果。例如<code>&lt;my-select&gt;&lt;option&gt;....&lt;/option&gt;&lt;/my-select&gt;</code>不是有效的模板，即使<code>my-select</code>组件最终展开为<code>&lt;select&gt;...&lt;/select&gt;</code>。</p>
+<p>另一个结果是，自定义标签（包括自定义元素和特殊标签，如<code>&lt;component&gt;</code>、<code>&lt;template&gt;</code>、<code>&lt;partial&gt;</code>）不能用在ul、select、table等对内部元素有限制的标签内。放在这些元素内的自定义标签将被提到元素的外面，因而渲染不正确。</p>
+<p>自定义元素应当使用<code>is</code>特性，如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tr</span> <span class="attr">is</span>=<span class="string">"my-component"</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><code>&lt;template&gt;</code>不能用在<code>&lt;table&gt;</code>内，这时应该使用<code>&lt;tbody&gt;</code>，<code>&lt;table&gt;</code>可以有多个<code>&lt;tbody&gt;</code>。如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tbody</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span>Even row<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span>Odd row<span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="如何解决数据层级结构太深的问题"><a href="#如何解决数据层级结构太深的问题" class="headerlink" title="如何解决数据层级结构太深的问题"></a>如何解决数据层级结构太深的问题</h2><p>在开发业务的时候，经常会出现异步获取数据的情况，有时候数据层次比较深。如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"airport"</span> <span class="attr">v-text</span>=<span class="string">"ticketInfo.flight.fromSegments[ticketInfo.flight.fromSegment - 1].depAirportZh"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>我们可以使用<code>vm.$set</code>手动定义一层数据。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vm.$set(<span class="string">"depAirportZh"</span> ,ticketInfo.flight.fromSegments[ticketInfo.flight.fromSegments - <span class="number">1</span>] .depAirportZh)</div></pre></td></tr></table></figure></p>
+<h2 id="data中没有定义计算属性，它是如何被使用的"><a href="#data中没有定义计算属性，它是如何被使用的" class="headerlink" title="data中没有定义计算属性，它是如何被使用的"></a>data中没有定义计算属性，它是如何被使用的</h2><p>如下代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;div id="example"&gt;</div><div class="line">    a = &#123;&#123; a &#125;&#125;, b = &#123;&#123; b &#125;&#125;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">var vm = new Vue(&#123;</div><div class="line">    el: '#example',</div><div class="line">    data: &#123;</div><div class="line">        a: 1</div><div class="line">    &#125;,</div><div class="line">    computed: &#123;</div><div class="line">        b: function() &#123;</div><div class="line">            return this.a + 1;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>对于上面计算属性b是怎么被使用的？实际上它并没有把计算数据放到<code>$data</code>里，而是通过<code>Object.definePropert(tihs, key, def)</code>直接定义到了实例上。</p>
+<hr>
+<p>《Vue.js权威指南》读书笔记</p>
 
       
     </div>
@@ -350,13 +363,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2014/04/16/JavaScript-this/">JavaScript中的this妙用</a></p>
+        <p><span>本文标题:</span><a href="/2017/06/19/Vue.js开发常见问题解析/">Vue.js开发常见问题解析</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
-        <p><span>发布时间:</span>2014-04-16, 17:15:58</p>
-        <p><span>最后更新:</span>2017-04-16, 18:17:09</p>
+        <p><span>发布时间:</span>2017-06-19, 22:04:36</p>
+        <p><span>最后更新:</span>2017-06-19, 22:47:39</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2014/04/16/JavaScript-this/" title="JavaScript中的this妙用">http://dunizb.com/2014/04/16/JavaScript-this/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2014/04/16/JavaScript-this/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/19/Vue.js开发常见问题解析/" title="Vue.js开发常见问题解析">http://dunizb.com/2017/06/19/Vue.js开发常见问题解析/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2017/06/19/Vue.js开发常见问题解析/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -369,15 +382,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2014/04/09/使用POI组件导出数据为Excel文件/">
-                    使用POI组件导出数据为Excel文件
+                <a href="/2017/05/14/锤子坚果Pro细红线版开箱及使用体验/">
+                    锤子坚果Pro细红线版开箱及使用体验
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2014/06/24/localhost-and-ip/">
-                    localhost、127.0.0.1和本机ip三者的区别
+                <a href="/2017/06/19/Vue.js动态组件解析/">
+                    Vue.js动态组件解析
                 </a>
             </div>
         
@@ -389,7 +402,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#camelClass-amp-kebab-case"><span class="toc-number">1.</span> <span class="toc-text">camelClass & kebab-case</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字面量语法-amp-动态语法"><span class="toc-number">2.</span> <span class="toc-text">字面量语法 & 动态语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模板解析"><span class="toc-number">3.</span> <span class="toc-text">模板解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何解决数据层级结构太深的问题"><span class="toc-number">4.</span> <span class="toc-text">如何解决数据层级结构太深的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#data中没有定义计算属性，它是如何被使用的"><span class="toc-number">5.</span> <span class="toc-text">data中没有定义计算属性，它是如何被使用的</span></a></li></ol>
         
     </div>
     <style>
@@ -425,7 +438,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JavaScript中的this妙用　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Vue.js开发常见问题解析　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -443,8 +456,8 @@
 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://dunizb.com/2014/04/16/JavaScript-this/", 
-    sourceId: "2014/04/16/JavaScript-this/",
+    url: "http://dunizb.com/2017/06/19/Vue.js开发常见问题解析/", 
+    sourceId: "2017/06/19/Vue.js开发常见问题解析/",
     productKey: "832939eafa264c7cb8ab6d6f92af231f",
     target: "cloud-tie-wrapper"
   };
@@ -458,7 +471,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2014/04/09/使用POI组件导出数据为Excel文件/" title="上一篇: 使用POI组件导出数据为Excel文件">
+            <a href="/2017/05/14/锤子坚果Pro细红线版开箱及使用体验/" title="上一篇: 锤子坚果Pro细红线版开箱及使用体验">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -466,7 +479,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2014/06/24/localhost-and-ip/" title="下一篇: localhost、127.0.0.1和本机ip三者的区别">
+            <a href="/2017/06/19/Vue.js动态组件解析/" title="下一篇: Vue.js动态组件解析">
                 <i class="fa fa-angle-right"></i>
             </a>
         
