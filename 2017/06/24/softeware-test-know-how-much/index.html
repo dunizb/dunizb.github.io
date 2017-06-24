@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="1、什么是索引 索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可以快速访问数据库表中特定的信息。索引也是用来定位的。索引分为聚集索引和非聚集索引两种。">
-<meta name="keywords" content="性能优化">
+<meta name="description" content="作为开发同学，一些基本的测试岗位相关知识还是很有必要了解一下，免的某些同学在工作中和测试同学斗嘴、打架、群殴等以及被测试鄙视….。">
+<meta name="keywords" content="软件工程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库优化(一)：索引及索引合理利用">
-<meta property="og:url" content="http://dunizb.com/2013/08/14/数据库优化(一)索引及索引合理利用/index.html">
+<meta property="og:title" content="程序员，软件测试知多少？">
+<meta property="og:url" content="http://dunizb.com/2017/06/24/softeware-test-know-how-much/index.html">
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
-<meta property="og:description" content="1、什么是索引 索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可以快速访问数据库表中特定的信息。索引也是用来定位的。索引分为聚集索引和非聚集索引两种。">
-<meta property="og:updated_time" content="2017-04-16T14:35:20.000Z">
+<meta property="og:description" content="作为开发同学，一些基本的测试岗位相关知识还是很有必要了解一下，免的某些同学在工作中和测试同学斗嘴、打架、群殴等以及被测试鄙视….。">
+<meta property="og:updated_time" content="2017-06-24T14:25:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库优化(一)：索引及索引合理利用">
-<meta name="twitter:description" content="1、什么是索引 索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可以快速访问数据库表中特定的信息。索引也是用来定位的。索引分为聚集索引和非聚集索引两种。">
+<meta name="twitter:title" content="程序员，软件测试知多少？">
+<meta name="twitter:description" content="作为开发同学，一些基本的测试岗位相关知识还是很有必要了解一下，免的某些同学在工作中和测试同学斗嘴、打架、群殴等以及被测试鄙视….。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>数据库优化(一)：索引及索引合理利用 | Dunizb，张兵的个人技术博客</title>
+<title>程序员，软件测试知多少？ | Dunizb，张兵的个人技术博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -275,11 +275,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-数据库优化(一)索引及索引合理利用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-softeware-test-know-how-much" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2013/08/14/数据库优化(一)索引及索引合理利用/" class="article-date">
-      <time datetime="2013-08-14T15:01:01.000Z" itemprop="datePublished">2013-08-14</time>
+      <a href="/2017/06/24/softeware-test-know-how-much/" class="article-date">
+      <time datetime="2017-06-24T14:23:02.000Z" itemprop="datePublished">2017-06-24</time>
 </a>
 
 
@@ -294,7 +294,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数据库优化(一)：索引及索引合理利用
+      程序员，软件测试知多少？
     </h1>
   
 
@@ -303,13 +303,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/数据库-SQL/">数据库&SQL</a>
+    <a class="article-category-link" href="/categories/读书笔记/">读书笔记</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -319,29 +319,54 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong>1、什么是索引</strong></p>
-<p>索引是对数据库表中一列或多列的值进行排序的一种结构，使用索引可以快速访问数据库表中特定的信息。<br>索引也是用来定位的。<br>索引分为聚集索引和非聚集索引两种。<br><a id="more"></a><br><strong>2、索引的优点</strong></p>
-<p>聚集索引是按照数据存放的物理位置为顺序的，而非聚集索引就不样了；聚集索引能提高多行检索的速度，而非聚集索引对单行索引的速度很快。</p>
+        <blockquote>
+<p>送给初级程序员的测试认知文</p>
+</blockquote>
+<p>作为开发同学，一些基本的测试岗位相关知识还是很有必要了解一下，免的某些同学在工作中和测试同学斗嘴、打架、群殴等以及被测试鄙视….。</p>
+<p>我们常常听说的一些测试专业术语，比如白盒、黑盒、单元测试，相信搞作为程序员的你脱口而出的就是这三个词汇吧，笔者在前几年对测试也仅仅停留在这个两个词汇上，更多的就不得而知了。后来在一家做跨境电商的公司学到了一些新术语，也见到了测试岗位的一些日常，比如冒烟测试、测试用例(TC)、回归测试、接口测试以及偶尔和我吵架等等。</p>
+<p>白盒黑盒测试是按测试设计方法分类的，是指软件测试设计的方法，而不是软件测试的方法，注意这个区别。</p>
+<p>黑盒测试是行为测试，即从软件的行为而不是内部结构触发来设计测试，也就是在软件上到处点点等。白盒指的是在设计测试的过程中，设计者可以“看到”软件系统的内部结构，并使用软件的内部结构和知识来选择测试数据及具体的测试方法。</p>
+<h2 id="功能测试和非功能测试"><a href="#功能测试和非功能测试" class="headerlink" title="功能测试和非功能测试"></a>功能测试和非功能测试</h2><p>按测试的目，分为功能测试和非功能测试，单元测试是功能测试里的一种，每种测试的名称和内容如下：<br>|测试名称|测试内容|<br>|:——|:——-|<br>|单元测试|在最基本的功能 / 参数上验证程序的正确性|<br>|功能测试|验证模块的功能|<br>|集成测试|验证几个互相有依赖关系的模块的功能|<br>|场景测试|验证几个模块能否完成一个用户场景|<br>|系统测试|对于整个系统功能的测试|<br>|Alpha/Beta测试|外部软件测试人员（Alpha/Beta测试员）在实际用户环境中对软件进行全面的测试|</p>
+<p>一个软件除了基本功能之外，还有很多功能之外的特性，这些叫非功能需求，或者服务质量需求。然而，若没有软件的基本功能，这些特性都将无从表现出来，因此，我们要在软件开发的适当阶段——基本功能完成后再来做这些非功能测试，非功能测试有如下这些<br>|测试名称|测试内容|<br>|:——|:——-|<br>|压力测试|测试软件在负载情况下能否正常工作|<br>|效能测试|测试软件的效能|<br>|可访问性测试|测试软件是否向残疾用户提供了足够的辅助功能|<br>|本地化/全球化测试|  |<br>|兼容性测试|  |<br>|配置测试|测死软件在各种配置下能否正常工作|<br>|易用性测试|测试软件是否好用|<br>|软件安全性测试|  |</p>
+<h2 id="其他分类下的测试"><a href="#其他分类下的测试" class="headerlink" title="其他分类下的测试"></a>其他分类下的测试</h2><p>在开发软件的过程中，不少测试起着“烽火台”的作用，它们告诉我们软件开发的流程是否顺畅，比如冒烟测试是指测试不通过不能进行下一步工作，是一种基本验证测试，据说是从硬件设计行业流传过来的说法。当年设计电路板的时候，很多情况下，新的电路板一插上电源就冒起白烟，烧坏了。如果插上电源后没有冒烟，那就是通过了“冒烟测试”，可以进一步测试电路板的功能了。还有验证构建是否通过基本测试以及全面考核某方面的功能的验收测试。</p>
+<p>另一些测试名称则是说明不同的测试方法<br>|测试名称|测试内容|<br>|:——|:——-|<br>|回归测试|对一个新的版本，重新运行以往的测试用例，确认新版本相比已知版本有无“退化”|<br>|随机进行的探索性测试|为了某一个特定目的而进行的测试，且就这一次，以后一般也不会重复测试。在软件工程的实践中，“Ad hoc”大多是指随机进行的、探索性的测试。|<br>|Bug大扫荡|全体成员参与的捉“小强”活动|<br>|伙伴测试|开发人员作为测试人员测试特定模块|</p>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>对于开发来讲，最最常用和熟悉的还是单元测试，怎样才算一个好的单元测试？单元测试应该准确、快速地保证程序基本模块的正确性。下面是验证单元测试好坏的一系列标准：</p>
+<ul>
+<li>单元测试应该在最基本的功能/参数上验证程序的正确性。</li>
+<li>单元测试必须由最熟悉代码的人（程序的作者）来写。</li>
+<li>单元测试过后，机器状态保持不变。如果单元测试创建了临时的文件或目录，应该在Teardown(拆卸)阶段删掉。如果单元测试在数据库中创建或修改了记录，那么也许要删除或恢复这些记录，或者每一个单元测试使用一个新的数据库，这样可以保证单元测试不受以前单元测试实例的干扰。</li>
+<li>单元测试要快（一个测试的运行时间是几秒钟，而不是几分钟）。</li>
+<li>单元测试应该产生可重复、一致的结果。</li>
+<li>独立性—单元测试的运行/通过/失败不依赖于别的测试，可以人为构造数据，以保持单元测试的独立性。</li>
+<li>单元测试应该覆盖所有代码路径。</li>
+<li>单元测试应该集成到自动化测试的框架中。</li>
+<li>单元测试必须和产品代码一起保存和维护。</li>
+</ul>
+<p>然并卵！都说国内很多程序员是不写单元测试的，甚至从来都不写，笔者当年做Java的时候也没写过几次（捂脸）。</p>
+<h2 id="回归测试"><a href="#回归测试" class="headerlink" title="回归测试"></a>回归测试</h2><p>在单元测试的基础上，我们就能够建立关于这一模块的回归测试（Regression Test）。Regress：return to a worse or less developed state，是倒退、退化、退步的意思。在软件项目中，如果一个模块或功能以前是正常工作的，但是在一个新的构建中出了问题，那么这个模块就出现了一个“退步”（Regression），从正常工作的状态退化到不正常工作的状态。在一个模块的功能逐步完成的同时，与此功能有关的测试用例也同样在完善中。一旦有关的测试用例通过，我们就得到了此模块的功能基准线（Baseline），一个模块的所有单元测试就是这个模块最初的Baseline。</p>
+<p>针对一个Bug Fix，我们也要做Regression(海退) Test。目的是：</p>
 <ol>
-<li>通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性；</li>
-<li>可以大大加快数据的检索速度，这也是创建索引的最主要的原因；</li>
-<li>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义；</li>
-<li>在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间；</li>
-<li>通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</li>
+<li>验证新的代码的却改正了缺陷。</li>
+<li>同时要验证新的代码有没有破坏模块的现有功能，有没有Regression</li>
 </ol>
-<p><strong>3、索引的缺点</strong></p>
-<p>一是增加了数据库的存储空间，二是在插入和修改数据时要花费较多的时间(因为索引也要随之变动)。</p>
-<ol>
-<li>创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加;</li>
-<li>索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚集索引，那么需要的空间就会更大。</li>
-<li>当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。</li>
-</ol>
-<p><strong>4、哪些列适合建索引？</strong></p>
-<p>1）在经常需要搜索的列上，可以加快搜索的速度；<br>2）在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；<br>3）在经常用在连接的列上，这些列主要是一些外键，可以加快连接的速度；<br>4）在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；<br>5）在经常需要排序的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间；<br>6）在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。  </p>
-<p><strong>5、不应该创建索引的的这些列具有下列特点</strong><br>1）对于那些在查询中很少使用或者参考的列不应该创建索引。这是因为，既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求。</p>
-<p>2）对于那些只有很少数据值的列也不应该增加索引。这是因为，由于这些列的取值很少，例如人事表的性别列，在查询的结果中，结果集的数据行占了表中数据行的很大比例，即需要在表中搜索的数据行的比例很大。增加索引，并不能明显加快检索速度。</p>
-<p>3）对于那些定义为text, image和bit数据类型的列不应该增加索引。这是因为，这些列的数据量要么相当大，要么取值很少,不利于使用索引。</p>
-<p>4）当修改性能远远大于检索性能时，不应该创建索引。这是因为，修改性能和检索性能是互相矛盾的。当增加索引时，会提高检索性能，但是会降低修改性能。当减少索引时，会提高修改性能，降低检索性能。因此，当修改操作远远多于检索操作时，不应该创建索引。</p>
+<p>对于“回归测试”中的“回归”，我们可以将其理解为“回归到以前不正常的状态”。回归测试最好要自动化，因为这样就可以对于每一个构建快速运行所有回归测试，以保证尽早发现问题。单元测试是回归测试的基础。在专注于模块基本功能的单元测试之外，还有功能测试——从用户的角度检查功能完成得怎么样。</p>
+<h2 id="探索性测试"><a href="#探索性测试" class="headerlink" title="探索性测试"></a>探索性测试</h2><p>探索性测试是为了某一个特定目的而进行的测试，且就这一次，以后一般也不会重复测试。在软件工程的实践中，“Ad hoc”大多是指随机进行的、探索性的测试。</p>
+<p>探索式测试的测试流程是不可重复的，因为它的测试都是“特定”测试，没法重复。这一原因，使得探索式测试不能自动化，就这一点而言，还达不到CMMI二级——可重复级。</p>
+<p>作为管理人员来说，如果太多的小强是在探索式测试中找出来的，那我们就要看看测试计划是否基于实际的场景，开发人员的代码逻辑是否完善，等等。</p>
+<h2 id="场景-集成-系统测试"><a href="#场景-集成-系统测试" class="headerlink" title="场景/集成/系统测试"></a>场景/集成/系统测试</h2><p>在软件开发的一定阶段，我们要对一个软件进行全面和系统的测试，以保证软件的各个模块都能共同工作，各方面均能满足用户的要求。这类测试叫系统/集成测试。这一方法的核心思想是：当用户使用一个软件时，他/她并不会独立使用各个模块，而是把软件作为一个整体来使用。我们在做场景测试的时候，就需要考虑在现实环境中用户使用软件的流程是怎样的，然后模拟这个流程，看看软件能不能满足用户的需求。这样，才能使软件符合用户的实际需求。</p>
+<p>应该什么时候做集成测试呢？是不是越早越好？原则上是当一个模块稳定的时候，就可以把它集成到系统中，和整个系统一起进行测试。在模块本身稳定之前就提早做集成测试，可能会报告出很多Bug，但是这些由于提早测试而发现的Bug，有点像汽车司机在等待绿灯时不耐烦而拼命地按喇叭——也就是说，有点像噪音。我们还是要等到适当的时机再开始进行集成测试。</p>
+<p>了解完这些概念后，我们来看看究竟一个测试工程师的职责是怎么样的呢，下面列举一些：</p>
+<ul>
+<li>制定测试计划</li>
+<li>设计与编写测试用例</li>
+<li>实施测试</li>
+<li>BUG跟踪</li>
+<li>测试报告与总结</li>
+<li>其他测试工程活动</li>
+</ul>
+<p>很多测试工作并不是说，有了测试工程师，把测试相关的全部事情扔给他们就完事了，需要开发和测试配合，共同完成某些测试任务，软件测试也不仅仅是为了发现bug然后提给开发，测试=质量保障，提升质量相关的都是测试工程师需要关注和负责的，软件测试的目标是帮助项目打造用户喜欢的产品。</p>
+<hr>
+<p>《构建之法》读书笔记之二</p>
 
       
     </div>
@@ -350,13 +375,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2013/08/14/数据库优化(一)索引及索引合理利用/">数据库优化(一)：索引及索引合理利用</a></p>
+        <p><span>本文标题:</span><a href="/2017/06/24/softeware-test-know-how-much/">程序员，软件测试知多少？</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
-        <p><span>发布时间:</span>2013-08-14, 23:01:01</p>
-        <p><span>最后更新:</span>2017-04-16, 22:35:20</p>
+        <p><span>发布时间:</span>2017-06-24, 22:23:02</p>
+        <p><span>最后更新:</span>2017-06-24, 22:25:19</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2013/08/14/数据库优化(一)索引及索引合理利用/" title="数据库优化(一)：索引及索引合理利用">http://dunizb.com/2013/08/14/数据库优化(一)索引及索引合理利用/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2013/08/14/数据库优化(一)索引及索引合理利用/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/24/softeware-test-know-how-much/" title="程序员，软件测试知多少？">http://dunizb.com/2017/06/24/softeware-test-know-how-much/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2017/06/24/softeware-test-know-how-much/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -369,17 +394,11 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2012/09/08/abstract-class-and-interface/">
-                    抽象类与接口完全释疑
+                <a href="/2017/06/21/bug-report/">
+                    你会靠谱的进行(Bug)错误报告吗？
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2013/08/18/String、StringBuffer、StringBuilder/">
-                    String、StringBuffer、StringBuilder的性能区别
-                </a>
-            </div>
         
     </nav>
 
@@ -389,7 +408,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#功能测试和非功能测试"><span class="toc-number">1.</span> <span class="toc-text">功能测试和非功能测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他分类下的测试"><span class="toc-number">2.</span> <span class="toc-text">其他分类下的测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单元测试"><span class="toc-number">3.</span> <span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回归测试"><span class="toc-number">4.</span> <span class="toc-text">回归测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#探索性测试"><span class="toc-number">5.</span> <span class="toc-text">探索性测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#场景-集成-系统测试"><span class="toc-number">6.</span> <span class="toc-text">场景/集成/系统测试</span></a></li></ol>
         
     </div>
     <style>
@@ -425,7 +444,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"数据库优化(一)：索引及索引合理利用　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"程序员，软件测试知多少？　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -443,8 +462,8 @@
 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://dunizb.com/2013/08/14/数据库优化(一)索引及索引合理利用/", 
-    sourceId: "2013/08/14/数据库优化(一)索引及索引合理利用/",
+    url: "http://dunizb.com/2017/06/24/softeware-test-know-how-much/", 
+    sourceId: "2017/06/24/softeware-test-know-how-much/",
     productKey: "832939eafa264c7cb8ab6d6f92af231f",
     target: "cloud-tie-wrapper"
   };
@@ -458,7 +477,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2012/09/08/abstract-class-and-interface/" title="上一篇: 抽象类与接口完全释疑">
+            <a href="/2017/06/21/bug-report/" title="上一篇: 你会靠谱的进行(Bug)错误报告吗？">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -466,9 +485,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2013/08/18/String、StringBuffer、StringBuilder/" title="下一篇: String、StringBuffer、StringBuilder的性能区别">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
