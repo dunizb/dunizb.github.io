@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="简单的说，元数据（Metadata）就是数据的数据。在数据仓库系统中，元数据可以帮助数据仓库管理员和数据仓库的开发人员非常方便地找到他们所关心的数据；元数据是描述数据仓库内数据的结构和建立方法的数据。">
-<meta name="keywords" content="jdbc">
+<meta name="description" content="要把一个值转换为一个字符串，最常用的就是，使用几乎每个值都有的toString()方法，这个方法唯一要做的就是返回相应值的字符串表现。">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JDBC操作数据库的元数据信息，JDBC复习(四) ">
-<meta property="og:url" content="http://dunizb.com/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/index.html">
+<meta property="og:title" content="JS的String()、toString()、valueOf()的一些隐秘特性">
+<meta property="og:url" content="http://dunizb.com/2017/07/06/js-String-toString-valueOf/index.html">
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
-<meta property="og:description" content="简单的说，元数据（Metadata）就是数据的数据。在数据仓库系统中，元数据可以帮助数据仓库管理员和数据仓库的开发人员非常方便地找到他们所关心的数据；元数据是描述数据仓库内数据的结构和建立方法的数据。">
-<meta property="og:updated_time" content="2017-04-15T14:29:20.000Z">
+<meta property="og:description" content="要把一个值转换为一个字符串，最常用的就是，使用几乎每个值都有的toString()方法，这个方法唯一要做的就是返回相应值的字符串表现。">
+<meta property="og:updated_time" content="2017-07-06T14:08:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JDBC操作数据库的元数据信息，JDBC复习(四) ">
-<meta name="twitter:description" content="简单的说，元数据（Metadata）就是数据的数据。在数据仓库系统中，元数据可以帮助数据仓库管理员和数据仓库的开发人员非常方便地找到他们所关心的数据；元数据是描述数据仓库内数据的结构和建立方法的数据。">
+<meta name="twitter:title" content="JS的String()、toString()、valueOf()的一些隐秘特性">
+<meta name="twitter:description" content="要把一个值转换为一个字符串，最常用的就是，使用几乎每个值都有的toString()方法，这个方法唯一要做的就是返回相应值的字符串表现。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JDBC操作数据库的元数据信息，JDBC复习(四)  | Dunizb，张兵的个人技术博客</title>
+<title>JS的String()、toString()、valueOf()的一些隐秘特性 | Dunizb，张兵的个人技术博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -285,11 +285,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-JDBC操作数据库的元数据信息，JDBC复习(四)" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-js-String-toString-valueOf" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/" class="article-date">
-      <time datetime="2014-07-09T04:14:07.000Z" itemprop="datePublished">2014-07-09</time>
+      <a href="/2017/07/06/js-String-toString-valueOf/" class="article-date">
+      <time datetime="2017-07-06T14:06:50.000Z" itemprop="datePublished">2017-07-06</time>
 </a>
 
 
@@ -304,7 +304,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JDBC操作数据库的元数据信息，JDBC复习(四) 
+      JS的String()、toString()、valueOf()的一些隐秘特性
     </h1>
   
 
@@ -313,13 +313,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
+    <a class="article-category-link" href="/categories/前端开发/">前端开发</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdbc/">jdbc</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -329,43 +329,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p><a href="./#什么是数据库元数据？">什么是数据库元数据？</a><br><a href="./#JDBC中获取数据库元数据信息">JDBC中获取数据库元数据信息</a><br><a href="./#参数的元数据信息">参数的元数据信息</a><br><a href="./#结果集元数据信息">结果集元数据信息</a></p>
-<h2 id="什么是数据库元数据？"><a href="#什么是数据库元数据？" class="headerlink" title="什么是数据库元数据？"></a>什么是数据库元数据？</h2><p>简单的说，元数据（Metadata）就是数据的数据。在数据仓库系统中，元数据可以帮助数据仓库管理员和数据仓库的开发人员非常方便地找到他们所关心的数据；元数据是描述数据仓库内数据的结构和建立方法的数据。</p>
-<p>可将其按用途的不同分为两类：技术元数据（Technical Metadata）和业务元数据（Business Metadata）。</p>
-<p><strong>技术元数据</strong><br>存储关于数据仓库系统技术细节的数据，是用于开发和管理数据仓库使用的数据，它主要包括以下信息：数据仓库结构的描述，包括仓库模式、视图、维、层次结构和导出数据的定义，以及数据集市的位置和内容；业务系统、数据仓库和数据集市的体系结构和模式；汇总用的算法，包括度量和维定义算法，数据粒度、主题领域、聚集、汇总、预定义的查询与报告；；由操作环境到数据仓库环境的映射，包括源数据和它们的内容、数据分割、数据提取、清理、转换规则和数据刷新规则、安全(用户授权和存取控制)。</p>
-<p><strong>业务元数据</strong><br>从业务角度描述了数据仓库中的数据，它提供了介于使用者和实际系统之间的语义层，使得不懂计算机技术的业务人员也能够”读懂”数据仓库中的数据。业务元数据主要包括以下信息：使用者的业务术语所表达的数据模型、对象名和属性名；访问数据的原则和数据的来源；系统所提供的分析方法以及公式和报表的信息。</p>
-<p>更多数据库元数据信息请百度吧，有点复杂深奥………</p>
-<h2 id="JDBC中获取数据库元数据信息"><a href="#JDBC中获取数据库元数据信息" class="headerlink" title="JDBC中获取数据库元数据信息"></a>JDBC中获取数据库元数据信息</h2><p>JDBC中Connection有一个方法getMetaData()方法，可以获的数据库的元数据信息。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DatabaseMetaData meta = connection.getMetaData();</div></pre></td></tr></table></figure></p>
-<p>通过DatabaseMetaData可以获得数据库相关的信息如：数据库版本、数据库名、数据库厂商信息、是否支持事务、是否支持某种事务隔离级别，是否支持滚动结果集等。</p>
-<p>DataBaseMetaData对象：</p>
+        <h2 id="toString-方法"><a href="#toString-方法" class="headerlink" title="toString()方法"></a>toString()方法</h2><p>要把一个值转换为一个字符串，最常用的就是，使用几乎每个值都有的toString()方法，这个方法唯一要做的就是返回相应值的字符串表现。</p>
+<p>数值、布尔值、对象和字符串值（没错，每个字符串也都有一个toString()方法，该方法返回字符串的一个副本）都有<code>toString()</code>方法。但<code>null</code>和<code>undefined</code>值没有这个方法。因此在对一个变量进行了<code>toString()</code>后，如果变量为<code>null</code>或者<code>undefined</code>的时候就会报错。</p>
+<p>多数情况下，调用<code>toString()</code>方法不必传递参数。但是，在调用数值的<code>toString()</code>方法时，可以传递一个参数：输出数值的基数。默认情况下，<code>toString()</code>方法以十进制格式返回数值的字符串表示。而通过传递基数，<code>toString()</code>可以输出以二进制、八进制、十六进制，乃至其他任意有效进制格式表示的字符串值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">10</span>; </div><div class="line"><span class="comment">// "10" </span></div><div class="line">alert(num.toString()); </div><div class="line"><span class="comment">// "1010" </span></div><div class="line">alert(num.toString(<span class="number">2</span>)); </div><div class="line"><span class="comment">// "12" </span></div><div class="line">alert(num.toString(<span class="number">8</span>)); </div><div class="line"><span class="comment">// "10" </span></div><div class="line">alert(num.toString(<span class="number">10</span>)); </div><div class="line"><span class="comment">// "a" </span></div><div class="line">alert(num.toString(<span class="number">16</span>));</div></pre></td></tr></table></figure></p>
+<p>通过这个例子可以看出，通过指定基数，toString()方法会改变输出的值。而数值10根据基数的不同，可以在输出时被转换为不同的数值格式。注意，默认的（没有参数的）输出值与指定基数10时的输出值相同。</p>
+<h2 id="valueOf-方法"><a href="#valueOf-方法" class="headerlink" title="valueOf()方法"></a>valueOf()方法</h2><p>说实话这个方法存在感很低，在JS中对数据进行字符串转型，通常都用<code>toString()</code>方法，或者直接在变量后面加上空字符串。<code>valueOf()</code>方法的返回值通常与<code>toString()</code>都是一样的。但是，在Object上，他们两个表现出了截然不同的形式，在对一个对象类型（Object、Array）进行valueOf()时，valueOf()直接返回原对象，而toString()则返回<code>[object Object]</code>。<strong>在《JavaScript高级程序设计（第三版）》中，作者说valueOf()返回与toString()相同的值，即对Array调用valueOf()返回字符串表现形式，我在多个现代浏览器中（Chrome、Egde）和IE8文档模式下测试均返回原数组对象。所以看到这里的读者要注意了，书中部分内容到现在可能并不准确了。</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = &#123; <span class="string">"a"</span>:<span class="string">"123"</span>, <span class="string">"b"</span>: <span class="string">"456"</span> &#125;;</div><div class="line"><span class="comment">// Object &#123;a: "123", b: "456"&#125;</span></div><div class="line">a.valueOf()</div><div class="line"><span class="comment">// [object object]</span></div><div class="line">a.toString()</div></pre></td></tr></table></figure></p>
+<p>对于数组也一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var b = [1,2,3,45,6];</div><div class="line">// (5) [1, 2, 3, 45, 6]</div><div class="line">b.valueOf()</div><div class="line">// 1,2,3,45,6</div><div class="line">b.toString()</div></pre></td></tr></table></figure></p>
+<h2 id="String-方法"><a href="#String-方法" class="headerlink" title="String()方法"></a>String()方法</h2><p>在不知道要转换的值是不是<code>null</code>或<code>undefined</code>的情况下，还可以使用转型函数<code>String()</code>，这个函数能够将任何类型的值转换为字符串。String()函数遵循下列转换规则：</p>
 <ul>
-<li><strong>getURL()</strong> 返回一个String类对象，代表数据库的URL。 </li>
-<li><strong>getUserName()</strong> 返回连接当前数据库管理系统的用户名。 </li>
-<li><strong>getDatabaseProductName()</strong> 返回数据库的产品名称。 </li>
-<li><strong>getDatabaseProductVersion()</strong> 返回数据库的版本号。</li>
-<li><strong>getDriverName()</strong> 返回驱动驱动程序的名称。 </li>
-<li><strong>getDriverVersion()</strong> 返回驱动程序的版本号。 </li>
-<li><strong>isReadOnly()</strong> 返回一个boolean值，指示数据库是否只允许读操作。</li>
+<li>如果值有toString()方法，则调用该方法（没有参数）并返回相应的结果；</li>
+<li>如果值是null，则返回”null”；</li>
+<li>如果值是undefined，则返回”undefined”。</li>
 </ul>
-<p>获取数据库的元数据信息:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    java.sql.Connection conn = JdbcUtils.getConnenction();</div><div class="line">    DatabaseMetaData dbmd = conn.getMetaData();</div><div class="line">    <span class="comment">//获取使用的数据库是什么数据库  MySQL</span></div><div class="line">    System.out.println(<span class="string">"db name: "</span> + dbmd.getDatabaseProductName());</div><div class="line">    <span class="comment">//是否支持事物  true</span></div><div class="line">    System.out.println(<span class="string">"tx: "</span> + dbmd.supportsTransactions());</div><div class="line">    conn.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="参数的元数据信息"><a href="#参数的元数据信息" class="headerlink" title="参数的元数据信息"></a>参数的元数据信息</h2><p>PreparedStatement.getParameterMetaData()<br>获得代表PreparedStatement元数据的ParameterMetaData对象。<br>ParameterMetaData对象：</p>
-<ul>
-<li><strong>getParameterCount()</strong> 获得指定参数的个数</li>
-<li><strong>getParameterClassName()</strong> 获得参数的类型，比如String等等</li>
-<li><strong>getParameterType() </strong></li>
-<li><strong>getParameterTypeName()</strong> 获得参数对应数据库的数据类型，比如VARCHAR等等</li>
-</ul>
-<p>获取ParameterMetaData元数据信息<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">conn = JdbcUtils.getConnection();</div><div class="line">ps = conn.prepareStatement(sql);</div><div class="line">ParameterMetaData pmd = ps.getParameterMetaData();</div><div class="line"><span class="keyword">int</span> count = pmd.getParameterCount();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= params.length; i++) &#123;</div><div class="line">    System.out.print(pmd.getParameterClassName(i) + <span class="string">"\t"</span>);</div><div class="line">    System.out.print(pmd.getParameterType(i) + <span class="string">"\t"</span>);</div><div class="line">    System.out.println(pmd.getParameterTypeName(i));</div><div class="line">    ps.setObject(i, params[i - <span class="number">1</span>]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="结果集元数据信息"><a href="#结果集元数据信息" class="headerlink" title="结果集元数据信息"></a>结果集元数据信息</h2><p>结果集(ResultSet)是数据中查询结果返回的一种对象，可以说结果集是一个存储查询结果的对象，但是结果集并不仅仅具有存储的功能，他同时还具有操纵数据的功能，可能完成对数据的更新等。</p>
-<p><strong>PreparedStatement中的方法</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function">getMetaData ResultSetMetaData <span class="title">getMetaData</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</span></div></pre></td></tr></table></figure></p>
-<p>获取包含有关 ResultSet 对象列信息的 <code>ResultSetMetaData</code> 对象，ResultSet 对象将在执行此 <code>PreparedStatement</code>对象时返回。</p>
-<p>因为 <code>PreparedStatement</code> 对象被预编译，所以不必执行就可以知道它将返回的 ResultSet 对象。因此，可以对 <code>PreparedStatement</code> 对象调用 getMetaData 方法，而不必等待执行该对象，然后再对返回的 ResultSet 对象调用 <code>ResultSet.getMetaData</code> 方法。  </p>
-<blockquote>
-<p>注：对于某些缺乏底层 DBMS 支持的驱动程序，使用此方法开销可能很大。 </p>
-</blockquote>
-<p><strong>ResultSet中</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function">getMetaData</span></div><div class="line">ResultSetMetaData <span class="title">getMetaData</span><span class="params">()</span> <span class="keyword">throws</span> SQLException</div></pre></td></tr></table></figure></p>
-<p>获取此 ResultSet 对象的列的编号、类型和属性。<br>返回： 此 ResultSet 对象的列的描述 </p>
-<p>获取ResultSetMetaData元数据信息:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> List&lt;Map&lt;String, Object&gt;&gt; read(String sql,Object[] params)&#123;   </div><div class="line">    <span class="keyword">try</span> &#123;    </div><div class="line">	ps = conn.prepareStatement(sql);    </div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;params.length;i++)&#123;     </div><div class="line">	    ps.setObject(i+<span class="number">1</span>, params[i]);     </div><div class="line">	&#125;     </div><div class="line">	rs=ps.executeQuery();     </div><div class="line">	ResultSetMetaData rsm=rs.getMetaData();    </div><div class="line">	<span class="comment">//获取查询结果有多少列     </span></div><div class="line">	<span class="keyword">int</span> count=rsm.getColumnCount();     </div><div class="line">	<span class="comment">//存储查询结果的列名     </span></div><div class="line">	String[] strColumns=<span class="keyword">new</span> String[rsm.getColumnCount()];    </div><div class="line">	<span class="comment">//循环遍历结果集       </span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=count;i++)&#123; </div><div class="line">	    <span class="comment">//返回构造其实例的 Java 类的完全限定名称//    </span></div><div class="line">	    System.out.print(rsm.getColumnClassName(i)+<span class="string">"\t"</span>); <span class="comment">//   </span></div><div class="line">	    <span class="comment">//获取指定列的 SQL 类型,返回值为int类型  //    </span></div><div class="line">	    System.out.print(rsm.getColumnType(i)+<span class="string">"\t"</span>); <span class="comment">//    </span></div><div class="line">	    <span class="comment">//获取指定列的数据库特定的类型名称。  //    </span></div><div class="line">	    System.out.print(rsm.getColumnTypeName(i)+<span class="string">"\t"</span>); <span class="comment">//    </span></div><div class="line">	    <span class="comment">//获取指定列的名称。  //    </span></div><div class="line">	    System.out.print(rsm.getColumnName(i)+<span class="string">"\t"</span>); <span class="comment">//       </span></div><div class="line">	    <span class="comment">/*获取用于打印输出和显示的指定列的建议标题。 </span></div><div class="line">	    //     * 建议标题通常由 SQL AS 子句来指定。  //     </div><div class="line">	    * 如果未指定 SQL AS，则从 getColumnLabel 返回的值将和 //     </div><div class="line">	    *  getColumnName 方法返回的值相同。 */  <span class="comment">//    </span></div><div class="line">	    System.out.println(rsm.getColumnLabel(i));     </div><div class="line">	    strColumns[i-<span class="number">1</span>]=rsm.getColumnLabel(i);     </div><div class="line">	&#125;     </div><div class="line">	List&lt;Map&lt;String, Object&gt;&gt; datas=<span class="keyword">new</span> ArrayList&lt;Map&lt;String,Object&gt;&gt;();    </div><div class="line">        <span class="keyword">while</span>(rs.next())&#123;     </div><div class="line">	    Map&lt;String, Object&gt; data=<span class="keyword">new</span> HashMap&lt;String, Object&gt;();     </div><div class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;strColumns.length;i++)&#123;       </div><div class="line">	        data.put(strColumns[i], rs.getObject(strColumns[i]));      </div><div class="line">	    &#125;      </div><div class="line">	    datas.add(data);     </div><div class="line">        &#125;     </div><div class="line">        <span class="keyword">return</span> datas;    </div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;     </div><div class="line">        e.printStackTrace();    </div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;    </div><div class="line">    &#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>toString()与String()的区别就在于String()还能转换<code>null</code>和<code>undefined</code>值，可以说是toString()的增强版。在开发中直接使用String()似乎更好，这样能避免潜在的转换风险。</p>
+<hr>
+<p>《JavaScript高级程序设计》笔记之一</p>
 
       
     </div>
@@ -374,13 +352,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/">JDBC操作数据库的元数据信息，JDBC复习(四) </a></p>
+        <p><span>本文标题:</span><a href="/2017/07/06/js-String-toString-valueOf/">JS的String()、toString()、valueOf()的一些隐秘特性</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
-        <p><span>发布时间:</span>2014-07-09, 12:14:07</p>
-        <p><span>最后更新:</span>2017-04-15, 22:29:20</p>
+        <p><span>发布时间:</span>2017-07-06, 22:06:50</p>
+        <p><span>最后更新:</span>2017-07-06, 22:08:30</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/" title="JDBC操作数据库的元数据信息，JDBC复习(四) ">http://dunizb.com/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/06/js-String-toString-valueOf/" title="JS的String()、toString()、valueOf()的一些隐秘特性">http://dunizb.com/2017/07/06/js-String-toString-valueOf/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2017/07/06/js-String-toString-valueOf/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -393,17 +371,11 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/">
-                    JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)
+                <a href="/2017/06/27/user-experience-design-and-evaluation/">
+                    用户体验设计及评判
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2014/07/10/根据分组依据对Java集合元素进行分组/">
-                    根据分组依据对Java集合元素进行分组
-                </a>
-            </div>
         
     </nav>
 
@@ -413,7 +385,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是数据库元数据？"><span class="toc-number">2.</span> <span class="toc-text">什么是数据库元数据？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBC中获取数据库元数据信息"><span class="toc-number">3.</span> <span class="toc-text">JDBC中获取数据库元数据信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参数的元数据信息"><span class="toc-number">4.</span> <span class="toc-text">参数的元数据信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果集元数据信息"><span class="toc-number">5.</span> <span class="toc-text">结果集元数据信息</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#toString-方法"><span class="toc-number">1.</span> <span class="toc-text">toString()方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#valueOf-方法"><span class="toc-number">2.</span> <span class="toc-text">valueOf()方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-方法"><span class="toc-number">3.</span> <span class="toc-text">String()方法</span></a></li></ol>
         
     </div>
     <style>
@@ -449,7 +421,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JDBC操作数据库的元数据信息，JDBC复习(四) 　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"JS的String()、toString()、valueOf()的一些隐秘特性　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -467,8 +439,8 @@
 <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://dunizb.com/2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/", 
-    sourceId: "2014/07/09/JDBC操作数据库的元数据信息，JDBC复习(四)/",
+    url: "http://dunizb.com/2017/07/06/js-String-toString-valueOf/", 
+    sourceId: "2017/07/06/js-String-toString-valueOf/",
     productKey: "832939eafa264c7cb8ab6d6f92af231f",
     target: "cloud-tie-wrapper"
   };
@@ -482,7 +454,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2014/07/08/JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)/" title="上一篇: JDBC的批处理、可滚动和可更新结果集，JDBC复习(三)">
+            <a href="/2017/06/27/user-experience-design-and-evaluation/" title="上一篇: 用户体验设计及评判">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -490,9 +462,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2014/07/10/根据分组依据对Java集合元素进行分组/" title="下一篇: 根据分组依据对Java集合元素进行分组">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
