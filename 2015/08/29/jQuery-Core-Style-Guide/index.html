@@ -178,8 +178,6 @@
                         
                             <li><a href="/categories/读书笔记/">读书笔记</a></li>
                         
-                            <li><a href="/categories/随笔扯谈/">随笔扯谈</a></li>
-                        
                             <li><a href="/archives/">所有文章</a></li>
                         
                         </ul>
@@ -260,8 +258,6 @@
                     <li><a href="/categories/前端开发/">前端开发</a></li>
                 
                     <li><a href="/categories/读书笔记/">读书笔记</a></li>
-                
-                    <li><a href="/categories/随笔扯谈/">随笔扯谈</a></li>
                 
                     <li><a href="/archives/">所有文章</a></li>
                 
@@ -472,18 +468,19 @@ JQuery团队还发表了一些开发<a href="http://learn.jquery.com/style-guide
 
 
     
-      <div class="duoshuo" id="comments">
-<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://dunizb.com/2015/08/29/jQuery-Core-Style-Guide/", 
-    sourceId: "2015/08/29/jQuery-Core-Style-Guide/",
-    productKey: "832939eafa264c7cb8ab6d6f92af231f",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-</div>
+        <section class="youyan" id="comments">
+    <script>
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=1728932';
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+    <div id="uyan_frame"></div>
+</section>
     
 
 
