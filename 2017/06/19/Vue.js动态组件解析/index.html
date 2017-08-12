@@ -24,7 +24,7 @@
 <meta property="og:description" content="什么是动态组件绑定？简单的说，就是几个组件放在一个挂载点下，然后根据父组件的某个变量来决定显示哪个，或者都不显示。">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-9dc1cd5e606ff6fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-4b8b1cbd73a8fd1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-08-11T15:27:52.000Z">
+<meta property="og:updated_time" content="2017-08-12T05:23:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js动态组件解析">
 <meta name="twitter:description" content="什么是动态组件绑定？简单的说，就是几个组件放在一个挂载点下，然后根据父组件的某个变量来决定显示哪个，或者都不显示。">
@@ -345,7 +345,7 @@
 <p>具体用法来说，activate是和template、data等属性平级的一个属性，形式是一个函数，函数里默认有一个参数，而这个参数是一个函数，执行这个函数时，才会切换组件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Vue.component(<span class="string">'activate-example'</span>, &#123;</div><div class="line">    activate(done) &#123;</div><div class="line">        <span class="keyword">let</span> _this = <span class="keyword">this</span>;</div><div class="line">        loadDataAsync(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">            _this.someData = data;</div><div class="line">            done();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p><code>activate</code>钩子只作用于动态组件切换或静态组件初始化渲染的过程中，不作用于使用实例方法手工插入的过程中。</p>
 <hr>
-<p>本人出售《Vue.js权威指南》，二手价20元！点击下图购买<br><a href="http://dunizb.com/obook/"><img src="http://upload-images.jianshu.io/upload_images/68937-4b8b1cbd73a8fd1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Vue.js权威指南"></a></p>
+<p><strong>++++++++++<a href="http://dunizb.com/obook/">本人出售《Vue.js权威指南》，二手价20元！</a>++++++++++</strong><br><a href="http://dunizb.com/obook/"><img src="http://upload-images.jianshu.io/upload_images/68937-4b8b1cbd73a8fd1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Vue.js权威指南"></a></p>
 
       
     </div>
@@ -357,7 +357,7 @@
         <p><span>本文标题:</span><a href="/2017/06/19/Vue.js动态组件解析/">Vue.js动态组件解析</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Dunizb</a></p>
         <p><span>发布时间:</span>2017-06-19, 22:44:28</p>
-        <p><span>最后更新:</span>2017-08-11, 23:27:52</p>
+        <p><span>最后更新:</span>2017-08-12, 13:23:55</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/06/19/Vue.js动态组件解析/" title="Vue.js动态组件解析">http://dunizb.com/2017/06/19/Vue.js动态组件解析/</a>
             <span class="copy-path" data-clipboard-text="原文: http://dunizb.com/2017/06/19/Vue.js动态组件解析/　　作者: Dunizb" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
