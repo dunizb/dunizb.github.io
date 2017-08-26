@@ -2230,7 +2230,7 @@
     <entry>
       <title><![CDATA[CSS3聊天气泡框以及inherit、currentColor关键字]]></title>
       <url>/2016/07/20/CSS3%E8%81%8A%E5%A4%A9%E6%B0%94%E6%B3%A1%E6%A1%86%E4%BB%A5%E5%8F%8Ainherit%E3%80%81currentColor%E5%85%B3%E9%94%AE%E5%AD%97/</url>
-      <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/68937-c44b8974ccd96d0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br>效果如上图所示，主要用到CSS3的伪类<code>::after</code>、<code>::before</code>，以及圆角边框<code>border-radius</code>属性。对于下面的气泡框，可以有两种方式实现小三角：</p>
+      <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/68937-8642008c12f3ddf0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="聊天气泡框"><br>效果如上图所示，主要用到CSS3的伪类<code>::after</code>、<code>::before</code>，以及圆角边框<code>border-radius</code>属性。对于下面的气泡框，可以有两种方式实现小三角：</p>
 <ul>
 <li>传统方式，利用CSS画小三角，利用到了透明背景和边框属性<code>transparent</code>的应用。</li>
 <li>CSS3的<code>transform</code>属性的使用</li>
