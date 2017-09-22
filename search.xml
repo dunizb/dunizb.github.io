@@ -3,6 +3,39 @@
   
     
     <entry>
+      <title><![CDATA[小技巧|CSS如何实现文字两端对齐]]></title>
+      <url>/2017/09/17/text-align-justify/</url>
+      <content type="html"><![CDATA[<p><img src="http://dunizb.b0.upaiyun.com/article/201709/text-align-justify/banner.png" alt="小技巧|CSS文字两端对齐效果实现"></p>
+<p>需求如下，红框所在的文字有四个字的、三个字的、两个字的，如果不两端对齐可以选择居中对齐，或者右对齐。但是如果要像下面这样两端对齐呢？<br><img src="http://dunizb.b0.upaiyun.com/article/201709/text-align-justify/1.png" alt=""></p>
+<p>我相信以前很多人都这么干过：两个字中间使用&nbsp;来隔开达到四个字的宽度，三个字也可以，但是，像上图中“122账号”“122密码”这样的，就不好计算该用几个空格了。</p>
+<p>假如我们有如下HTML：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>这世间唯有梦想和好姑娘不可辜负！<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>给它加点样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span>&#123;</div><div class="line">  <span class="attribute">width</span>:<span class="number">500px</span>;</div><div class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid red;</div><div class="line">  <span class="attribute">text-align</span>: justify;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>初始效果是这样的<br><img src="http://dunizb.b0.upaiyun.com/article/201709/text-align-justify/2.png" alt=""></p>
+<p><code>text-align: justify</code>这是什么东西？CSS2中<code>text-align</code>有一个属性值为<code>justify</code>，为对齐之意。其实现的效果就是可以让一行文字两端对齐显示（文字内容要超过一行）。</p>
+<p>但是光使用它依然没什么卵用…..</p>
+<p>要使文字两端对齐，我们还得使用一个行内空标签来助阵，比如<code>&lt;span&gt;</code>、<code>&lt;i&gt;</code>等等，这里是我用<code>&lt;i&gt;</code>标签<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>这世间唯有梦想和好姑娘不可辜负！<span class="tag">&lt;<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>给这个<code>i</code>标签设置如下样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> <span class="selector-tag">i</span>&#123;</div><div class="line">  <span class="attribute">display</span>:inline-block;</div><div class="line">  <span class="comment">/*padding-left: 100%;*/</span></div><div class="line">  <span class="attribute">width</span>:<span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>padding-left: 100%</code>和<code>width:100%</code>都可以达到效果，选用其一即可。效果如下<br><img src="http://dunizb.b0.upaiyun.com/article/201709/text-align-justify/3.png" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 前端开发 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> HTML </tag>
+            
+            <tag> CSS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[我遇到的前端面试题2017]]></title>
       <url>/2017/09/08/interview-questions-2017/</url>
       <content type="html"><![CDATA[<p><img src="http://dunizb.b0.upaiyun.com/article/201709/interview-questions-2017.png" alt=""></p>
@@ -257,6 +290,8 @@
 <h2 id="28-判断一个变量是否是数组"><a href="#28-判断一个变量是否是数组" class="headerlink" title="28.判断一个变量是否是数组"></a>28.判断一个变量是否是数组</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = []; </div><div class="line"><span class="comment">// 1.基于instanceof </span></div><div class="line">a <span class="keyword">instanceof</span> <span class="built_in">Array</span>; </div><div class="line"><span class="comment">// 2.基于constructor </span></div><div class="line">a.constructor === <span class="built_in">Array</span>; </div><div class="line"><span class="comment">// 3.基于Object.prototype.isPrototypeOf </span></div><div class="line"><span class="built_in">Array</span>.prototype.isPrototypeOf(a); </div><div class="line"><span class="comment">// 4.基于getPrototypeOf </span></div><div class="line"><span class="built_in">Object</span>.getPrototypeOf(a) === <span class="built_in">Array</span>.prototype; </div><div class="line"><span class="comment">// 5.基于Object.prototype.toString </span></div><div class="line"><span class="built_in">Object</span>.prototype.toString.apply(a) === <span class="string">'[object Array]'</span>;</div><div class="line"><span class="comment">// 6.Array.isArray</span></div><div class="line"><span class="built_in">Array</span>.isArray([]); <span class="comment">// true</span></div></pre></td></tr></table></figure>
 <p>以上，除了<code>Object.prototype.toString</code>外，其它方法都不能正确判断变量的类型。</p>
 <h2 id="29-UTF-8和Unicode的区别"><a href="#29-UTF-8和Unicode的区别" class="headerlink" title="29.UTF-8和Unicode的区别"></a>29.UTF-8和Unicode的区别</h2><p>UTF-8就是在互联网上使用最广的一种unicode的实现方式。<br>Unicode的出现是为了统一地区性文字编码方案，为解决unicode如何在网络上传输的问题，于是面向传输的众多 UTF（UCS Transfer Format）标准出现了，顾名思义，UTF-8就是每次8个位传输数据，而UTF-16就是每次16个位。<br>ASCII –&gt; 地区性编码（GBK） –&gt; Unicode –&gt; UTF-8<br><a href="https://www.zhihu.com/question/23374078" target="_blank" rel="external">知乎回答</a></p>
+<hr>
+<p>如果评论区无法展示，可以到 <a href="https://github.com/dunizb/blog-article/issues/16" target="_blank" rel="external">这里</a> 提交评论</p>
 ]]></content>
       
         <categories>
@@ -6104,7 +6139,7 @@ JQuery团队还发表了一些开发<a href="http://learn.jquery.com/style-guide
     </entry>
     
     <entry>
-      <title><![CDATA[==和equals方法终极解析]]></title>
+      <title><![CDATA[【Java】==和equals方法终极解析]]></title>
       <url>/2012/09/02/==%E5%92%8Cequals%E6%96%B9%E6%B3%95%E7%BB%88%E6%9E%81%E8%A7%A3%E6%9E%90/</url>
       <content type="html"><![CDATA[<p>Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。</p>
 <p>当使用==来判断两个变量是否相等时，<strong>如果两个变量都是基本类型变量，且都是数字类型</strong>（不要求数据类严格相同），则只要两个变量的值相等，就会返回true。</p>
