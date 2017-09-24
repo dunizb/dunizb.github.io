@@ -6,7 +6,7 @@
       <title><![CDATA[小技巧|H5禁止手机虚拟键盘弹出]]></title>
       <url>/2017/09/24/disable-the-phone-virtual-keyboard-up/</url>
       <content type="html"><![CDATA[<p><img src="http://dunizb.b0.upaiyun.com/article/201709/disable-virtual-keyboard-up/banner.png" alt="小技巧|CSS文字两端对齐效果实现"></p>
-<p>实现如下需求，点击输入框弹出自定义弹窗，输入框是input标签：<br><img src="http://dunizb.b0.upaiyun.com/article/201709/disable-virtual-keyboard-up/1.gif" alt=""><br>但是在移动端，input会默认触发手机的虚拟键盘，如何阻止手机虚拟键盘弹起呢？目前我试过有两个方案，一个是给input添加<code>readonly</code>属性,另一个就是在input事件处理方法前面添加一句<code>document.activeElement.blur()</code>  。  </p>
+<p>工作中遇到如下需求，点击输入框弹出自定义弹窗，输入框是input标：<br><img src="http://dunizb.b0.upaiyun.com/article/201709/disable-virtual-keyboard-up/1.gif" alt=""><br>但是在移动端，input会默认触发手机的虚拟键盘，如何阻止手机虚拟键盘弹起呢？目前我试过有两个方案，一个是给input添加<code>readonly</code>属性,另一个就是在input事件处理方法前面添加一句<code>document.activeElement.blur()</code>  。  </p>
 <h2 id="readonly"><a href="#readonly" class="headerlink" title="readonly"></a>readonly</h2><p>使用readonly方式来阻止虚拟键盘弹出应该是最简单最优雅的方式了。readonly 属性规定输入字段为只读。只读字段是不能修改的。不过，用户仍然可以使用 tab 键切换到该字段，还可以选中或拷贝其文本。</p>
 <p>值得一提的是它的取值，只要声明了readonly属性，不管取什么值都可以，比如<code>readonly=&quot;&quot;</code>、<code>readonly=&quot;readonly&quot;</code>、<code>readonly=&quot;abc&quot;</code>都是一样的</p>
 <h2 id="document-activeElement-blur"><a href="#document-activeElement-blur" class="headerlink" title="document.activeElement.blur()"></a>document.activeElement.blur()</h2><p>这是个什么玩意儿？<code>document.activeElement</code>是一个Web API接口。<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/activeElement" target="_blank" rel="external">MDN</a>上的解释是：它返回当前页面中获得焦点的元素，也就是说，如果此时用户按下了键盘上某个键，会在该元素上触发键盘事件，该属性是只读的。</p>
