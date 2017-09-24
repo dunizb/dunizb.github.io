@@ -3,6 +3,39 @@
   
     
     <entry>
+      <title><![CDATA[小技巧|H5禁止手机虚拟键盘弹出]]></title>
+      <url>/2017/09/24/disable-the-phone-virtual-keyboard-up/</url>
+      <content type="html"><![CDATA[<p><img src="http://dunizb.b0.upaiyun.com/article/201709/disable-virtual-keyboard-up/banner.png" alt="小技巧|CSS文字两端对齐效果实现"></p>
+<p>实现如下需求，点击输入框弹出自定义弹窗，输入框是input标签：<br><img src="http://dunizb.b0.upaiyun.com/article/201709/disable-virtual-keyboard-up/1.gif" alt=""><br>但是在移动端，input会默认触发手机的虚拟键盘，如何阻止手机虚拟键盘弹起呢？目前我试过有两个方案，一个是给input添加<code>readonly</code>属性,另一个就是在input事件处理方法前面添加一句<code>document.activeElement.blur()</code>  。  </p>
+<h2 id="readonly"><a href="#readonly" class="headerlink" title="readonly"></a>readonly</h2><p>使用readonly方式来阻止虚拟键盘弹出应该是最简单最优雅的方式了。readonly 属性规定输入字段为只读。只读字段是不能修改的。不过，用户仍然可以使用 tab 键切换到该字段，还可以选中或拷贝其文本。</p>
+<p>值得一提的是它的取值，只要声明了readonly属性，不管取什么值都可以，比如<code>readonly=&quot;&quot;</code>、<code>readonly=&quot;readonly&quot;</code>、<code>readonly=&quot;abc&quot;</code>都是一样的</p>
+<h2 id="document-activeElement-blur"><a href="#document-activeElement-blur" class="headerlink" title="document.activeElement.blur()"></a>document.activeElement.blur()</h2><p>这是个什么玩意儿？<code>document.activeElement</code>是一个Web API接口。<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/activeElement" target="_blank" rel="external">MDN</a>上的解释是：它返回当前页面中获得焦点的元素，也就是说，如果此时用户按下了键盘上某个键，会在该元素上触发键盘事件，该属性是只读的。</p>
+<p><code>document.activeElement</code>属性始终会引用DOM中当前获得了焦点的元素。元素获得焦点的方式有用户输入(通常是按Tab键)、在代码中调用focus()方法和页面加载。</p>
+<p>它里面有很多方法，在浏览器控制台查看，可以看到有很都方法：<br><img src="http://dunizb.b0.upaiyun.com/article/201709/disable-virtual-keyboard-up/2.gif" alt=""><br>MDN上还展示了一个有意思的示例，<a href="http://jsfiddle.net/w9gFj/" target="_blank" rel="external">看这里</a></p>
+<p>那么<code>document.activeElement.blur()</code>为什么可以阻止虚拟键盘弹出呢？原因是：当你点击input的时候，<code>document.activeElement</code>获得了DOM中被聚焦的元素，也就是你点击的input，而调用<code>.blur()</code>方法，<code>blur</code>我相信大家都知道吧，就是取消聚焦。获得被聚焦的元素然后强制blur以达到没有聚焦的样子、、、感觉绕了。</p>
+<p>这句代码加在什么地方？加入有如下HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"calendar"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"datePicker"</span> <span class="attr">class</span>=<span class="string">"date_picker"</span> <span class="attr">placeholder</span>=<span class="string">"点击选择入住日期"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>那么这句JS加在事件处理方法中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#datePicker"</span>).focus(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">document</span>.activeElement.blur();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>就当前需求来说，用<code>document.activeElement.blur()</code>确实是在绕弯子，直接使用<code>readonly</code>是最佳方案。但是<code>document.activeElement</code>很强大，可以做很多事。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 前端开发 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> HTML </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[小技巧|CSS如何实现文字两端对齐]]></title>
       <url>/2017/09/17/text-align-justify/</url>
       <content type="html"><![CDATA[<p><img src="http://dunizb.b0.upaiyun.com/article/201709/text-align-justify/banner.png" alt="小技巧|CSS文字两端对齐效果实现"></p>
