@@ -15,20 +15,19 @@
 
 
 
-<meta name="description" content="正统的面相对象的语言都会提供extend之类的方法用于出来类的继承，但Javascript并不提供extend方法，在Javascript中使用继承需要用点技巧。">
-<meta name="keywords">
+<meta name="description" content="和我一起读书是一个系列，读书笔记系列。这篇是吴军《智能时代》第四、五章内容的的笔记。">
+<meta name="keywords" content="人工智能,AI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript中的继承入门">
-<meta property="og:url" content="http://dunizb.com/2015/05/18/JavaScript中的继承入门/index.html">
+<meta property="og:title" content="和我一起读书|吴军《智能时代》（中）">
+<meta property="og:url" content="http://dunizb.com/2017/10/13/intelligent-age-reading-notes-2/index.html">
 <meta property="og:site_name" content="Dunizb，张兵的个人技术博客">
-<meta property="og:description" content="正统的面相对象的语言都会提供extend之类的方法用于出来类的继承，但Javascript并不提供extend方法，在Javascript中使用继承需要用点技巧。">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-9a7695ca97de0a85.png">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/68937-eb90342a9dfb167a.png">
-<meta property="og:updated_time" content="2017-04-16T10:24:10.000Z">
+<meta property="og:description" content="和我一起读书是一个系列，读书笔记系列。这篇是吴军《智能时代》第四、五章内容的的笔记。">
+<meta property="og:image" content="https://img3.doubanio.com/lpic/s29142393.jpg">
+<meta property="og:updated_time" content="2017-10-13T03:30:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript中的继承入门">
-<meta name="twitter:description" content="正统的面相对象的语言都会提供extend之类的方法用于出来类的继承，但Javascript并不提供extend方法，在Javascript中使用继承需要用点技巧。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/68937-9a7695ca97de0a85.png">
+<meta name="twitter:title" content="和我一起读书|吴军《智能时代》（中）">
+<meta name="twitter:description" content="和我一起读书是一个系列，读书笔记系列。这篇是吴军《智能时代》第四、五章内容的的笔记。">
+<meta name="twitter:image" content="https://img3.doubanio.com/lpic/s29142393.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -60,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JavaScript中的继承入门 | Dunizb，张兵的个人技术博客</title>
+<title>和我一起读书|吴军《智能时代》（中） | Dunizb，张兵的个人技术博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -267,11 +266,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-JavaScript中的继承入门" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-intelligent-age-reading-notes-2" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/05/18/JavaScript中的继承入门/" class="article-date">
-      <time datetime="2015-05-18T10:10:57.000Z" itemprop="datePublished">2015-05-18</time>
+      <a href="/2017/10/13/intelligent-age-reading-notes-2/" class="article-date">
+      <time datetime="2017-10-13T03:17:19.000Z" itemprop="datePublished">2017-10-13</time>
 </a>
 
 
@@ -286,7 +285,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript中的继承入门
+      和我一起读书|吴军《智能时代》（中）
     </h1>
   
 
@@ -295,11 +294,15 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    <a class="article-category-link" href="/categories/和我一起读书/">和我一起读书</a>
     </div>
 
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人工智能/">人工智能</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -307,38 +310,50 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>正统的面相对象的语言都会提供extend之类的方法用于出来类的继承，但Javascript并不提供extend方法，在Javascript中使用继承需要用点技巧。<br><a id="more"></a><br>Javascript中的实例的属性和行为是由构造函数和原型两部分组成的，我们定义两个类：Person和zhangsan，它们在内存中的表现如下图1：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-9a7695ca97de0a85.png" alt="Person和zhangsan，它们在内存中的表现"></p>
-<p>如果想让Zhangsan继承Person，那么我们需要把Person构造函数和原型中的属性和行为全部传给Zhangsan的构造函数和原型，如下图2所示：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/68937-eb90342a9dfb167a.png" alt="Zhangsan的构造函数和原型"></p>
-<p>Are you Ok？了解了继承的思路后，那么我们一步步完成Person和Zhangsan的继承功能。首先，我们需要定义Person类，如下代码：</p>
-<p>[代码1]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义Person类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.type = <span class="string">"人"</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">	<span class="attr">say</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.info(<span class="string">"我是一个"</span>+ <span class="keyword">this</span>.type +<span class="string">"，我的名字叫"</span> + <span class="keyword">this</span>.name);</div><div class="line">	&#125;</div><div class="line">&#125;	</div><div class="line"><span class="comment">//定义Zhangsan类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Zhangsan</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">&#125;</div><div class="line">Zhangsan.prototype=&#123;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>Zhangsan虽然有自己特有的属性和行为，但它大部分属性和行为和Person相同，需要继承自Person类。如前所述，JavaScript中继承是要分别继承构造函数和原型中的属性和行为的。我们先让Zhangsan继承Person的构造函数中的行为和属性，如下代码：</p>
-<p>[代码2]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义Person类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.type = <span class="string">"黄"</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">	<span class="attr">say</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.info(<span class="string">"我是一个"</span>+ <span class="keyword">this</span>.type +<span class="string">"种人，我的名字叫"</span> + <span class="keyword">this</span>.name);</div><div class="line">	&#125;</div><div class="line">&#125;	</div><div class="line"><span class="comment">//定义Zhangsan类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Zhangsan</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.type = <span class="string">"黄"</span>;</div><div class="line">&#125;</div><div class="line">Zhangsan.prototype=&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">//实例化Zhangsan对象</span></div><div class="line"><span class="keyword">var</span> zs = <span class="keyword">new</span> Zhangsan(<span class="string">"张三"</span>);</div><div class="line"><span class="built_in">console</span>.info(zs.type);    <span class="comment">// 黄</span></div></pre></td></tr></table></figure></p>
-<p>运行正常，但我们怎么没看到继承的“味道”呢？我们在Zhangsan的构造函数中将Person的属性和行为复制了一份，与其说是继承不如说是“真巧，这两个类的构造函数除了函数名不同，其他地方都长得一样”。她的缺点很明显：如果Person类的构造函数有任何变动，我们也需要手动的同步修改Zhangsan类的构造函数，同样一份代码，我们复制了一份写在了程序中 的不同地方，这违法了DRY原则，降低了代码的可维护性。</p>
-<p>好了，让我们来改进它：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义Person类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.type = <span class="string">"黄"</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">	<span class="attr">say</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.info(<span class="string">"我是一个"</span>+ <span class="keyword">this</span>.type +<span class="string">"种人，我的名字叫"</span> + <span class="keyword">this</span>.name);</div><div class="line">	&#125;</div><div class="line">&#125;	</div><div class="line"><span class="comment">// 定义Zhangsan类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Zhangsan</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	Person(name);</div><div class="line">&#125;</div><div class="line">Zhangsan.prototype=&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 实例化Zhangsan对象</span></div><div class="line"><span class="keyword">var</span> zs = <span class="keyword">new</span> Zhangsan(<span class="string">"张三"</span>);</div><div class="line"><span class="built_in">console</span>.info(zs.type);        <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
-<p>我们在Zhangsan的构造函数里调用Person()函数，希望它内部的<code>ths.xxx</code>可以在Zhangsan类的构造函数里执行一遍，但奇怪的是，出现<code>console.info(zs.type);</code>时，输出的是undefined，这是怎么回事呢？</p>
-<p>这和Person的调用方式有关。在JavaScript中，function有两种不同的调用方法：</p>
-<ol>
-<li>作为函数存在，直接用<code>()</code>调用，例如<code>function test(){}; test();</code>test被用作函数，直接被<code>()</code>符号调用。</li>
-<li>作为类的构造函数存在，使用new调用，例如<code>function test(){}; new test();</code>test作为类的构造函数，通过new进行test类的实例化。这两种方法的调用，function内部的this指向会有所不同—作为函数的function，其this指向的是window，而作为构造函数的function，其this指向的实例对象。</li>
-</ol>
-<p>上面代码中，Zhangsan类构造函数中的Person是通过函数方式调用的，它内部的this指向的是window对象，起效果等同于如下代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义Person类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.type = <span class="string">"黄"</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">	<span class="attr">say</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.info(<span class="string">"我是一个"</span>+ <span class="keyword">this</span>.type +<span class="string">"种人，我的名字叫"</span> + <span class="keyword">this</span>.name);</div><div class="line">	&#125;</div><div class="line">&#125;	</div><div class="line"><span class="comment">// 定义Zhangsan类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Zhangsan</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="built_in">window</span>.name = name;</div><div class="line">    <span class="built_in">window</span>.type = <span class="string">"黄"</span>;</div><div class="line">&#125;</div><div class="line">Zhangsan.prototype=&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 实例化Zhangsan对象</span></div><div class="line"><span class="keyword">var</span> zs = <span class="keyword">new</span> Zhangsan(<span class="string">"张三"</span>);</div><div class="line"><span class="built_in">console</span>.info(zs.type);	<span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.info(type);		<span class="comment">// 黄 (window.type可以省略写成type)</span></div></pre></td></tr></table></figure></p>
-<p>如果想达到[代码3]的效果，让Person内部this指向Zhangsan类的实例，可以通过call或apply方法实现，如下：<br>[代码5]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义Person类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.type = <span class="string">"黄"</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">	<span class="attr">say</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.info(<span class="string">"我是一个"</span>+ <span class="keyword">this</span>.type +<span class="string">"种人，我的名字叫"</span> + <span class="keyword">this</span>.name);</div><div class="line">	&#125;</div><div class="line">&#125;	</div><div class="line"><span class="comment">// 定义Zhangsan类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Zhangsan</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	Person.call(<span class="keyword">this</span>,name);</div><div class="line">&#125;</div><div class="line">Zhangsan.prototype=&#123;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 实例化Zhangsan对象</span></div><div class="line"><span class="keyword">var</span> zs = <span class="keyword">new</span> Zhangsan(<span class="string">"张三"</span>);</div><div class="line"><span class="built_in">console</span>.info(zs.type);		<span class="comment">// 黄</span></div></pre></td></tr></table></figure></p>
-<p>构造函数的属性和行为已经成功实现了继承，接下来我们要实现原型中的属性和行为的继承。既然Zhangsan类需要和Person类原型中同样的属性和行为，那么能否将Person类的原型直接传给Zhangsan类的原型，如下代码：</p>
-<p>[代码6]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义Person类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.type = <span class="string">"黄"</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">	<span class="attr">say</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.info(<span class="string">"我是一个"</span>+ <span class="keyword">this</span>.type +<span class="string">"种人，我的名字叫"</span> + <span class="keyword">this</span>.name);</div><div class="line">	&#125;</div><div class="line">&#125;	</div><div class="line"><span class="comment">// 定义Zhangsan类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Zhangsan</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	Person.call(<span class="keyword">this</span>,name);</div><div class="line">&#125;</div><div class="line">Zhangsan.prototype = Person.prototype;</div><div class="line"><span class="comment">// 实例化Zhangsan对象</span></div><div class="line"><span class="keyword">var</span> zs = <span class="keyword">new</span> Zhangsan(<span class="string">"张三"</span>);</div><div class="line"><span class="comment">// 我是一个黄种人，我的名字叫张三</span></div><div class="line">zs.say();</div></pre></td></tr></table></figure></p>
-<p>通过Person类的原型传给Zhangsan类的原型，Zhangsan类成功获得了say行为，但事情并不像想象中的那么简单，如果我们要给Zhangsan类添加run行为呢？如下代码：</p>
-<p>[代码7：添加run行为]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义Person类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.type = <span class="string">"黄"</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">	<span class="attr">say</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.info(<span class="string">"我是一个"</span>+ <span class="keyword">this</span>.type +<span class="string">"种人，我的名字叫"</span> + <span class="keyword">this</span>.name);</div><div class="line">	&#125;</div><div class="line">&#125;	</div><div class="line"><span class="comment">// 定义Zhangsan类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Zhangsan</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	Person.call(<span class="keyword">this</span>,name);</div><div class="line">&#125;</div><div class="line">Zhangsan.prototype = Person.prototype;</div><div class="line">Zhangsan.prototype.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.info(<span class="string">"我100米短跑只要10秒！"</span>);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 实例化Zhangsan对象</span></div><div class="line"><span class="keyword">var</span> zs = <span class="keyword">new</span> Zhangsan(<span class="string">"张三"</span>);</div><div class="line">zs.say();   <span class="comment">// 我是一个黄种人，我的名字叫张三</span></div><div class="line">zs.run();   <span class="comment">//我100米短跑只要10秒！</span></div><div class="line"><span class="keyword">var</span> zs2 = <span class="keyword">new</span> Person(<span class="string">"张三2"</span>);</div><div class="line">zs2.run();	<span class="comment">//我100米短跑只要10秒！</span></div></pre></td></tr></table></figure></p>
-<p>我们只想给Zhangsan类添加run行为，为什么Person类也获得了run行为了呢？这涉及传值和传址的两个问题—-在JavaScript中，赋值语句会用传值和传地址两种不同的方式进行赋值，如果是数值型、不尔型、字符型等基本数据类型，在进行赋值时会将数据直接赋值一份，将赋值的那一份数据进行赋值，也就是通常所说的传值；如果是数组、hash对象等复杂数据类型，在进行赋值时会直接用内存地址赋值，而不是将数据赋值一份，这就是传址赋值，就是传数据的映射地址。</p>
-<p>[代码8：传值与传址]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=<span class="number">10</span>;		<span class="comment">// 基本数据类型</span></div><div class="line"><span class="keyword">var</span> b=a;		<span class="comment">// 将变量a保存的值赋值一份，传给变量b，b和a各保存一份数据</span></div><div class="line"><span class="keyword">var</span> c=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];	<span class="comment">// 复杂数据类型</span></div><div class="line"><span class="keyword">var</span> d=c;		<span class="comment">// 将变量c指向的数据内存地址传给变量d，c和d指向同一份数据</span></div><div class="line">b++;</div><div class="line">d.push(<span class="number">4</span>);</div><div class="line"><span class="built_in">console</span>.info(a);	<span class="comment">// 10</span></div><div class="line"><span class="built_in">console</span>.info(b);	<span class="comment">// 11		变量b保存的数据更改不会影响到变量a</span></div><div class="line"><span class="built_in">console</span>.info(c);	<span class="comment">// 1,2,3,4	变量c和d指向同一份数据，数据更改会相互影响</span></div><div class="line"><span class="built_in">console</span>.info(d);	<span class="comment">// 1,2,3,4</span></div></pre></td></tr></table></figure></p>
-<p>在原生JavaScript中，选择传值还是传地址是根据数据类型来自动判断的，但传地址有时候会给我们带来意想不到的麻烦，所以我们需要对复杂数据类型的赋值进行控制，让复杂数据类型也可以进行传值。</p>
-<p>最简单的做法是遍历数组或者Hash对象，将数组或者Hash对象这种复杂的数据拆分成一个个简单数据，然后分别赋值，如下面代码：</p>
-<p>[代码9：对复杂数据类型进行传值]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] ,b = &#123;<span class="attr">name</span>:<span class="string">'张三'</span>,<span class="attr">sex</span>:<span class="string">'男'</span>,<span class="attr">tel</span>:<span class="string">'1383838438'</span>&#125;;</div><div class="line"><span class="keyword">var</span> c = [] ,d = &#123;&#125;;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> a)&#123;</div><div class="line">	c[p] = a[p]; </div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> b)&#123;</div><div class="line">	d[p] = b[p];</div><div class="line">&#125;</div><div class="line">c.push(<span class="string">'4'</span>);</div><div class="line">d.email = <span class="string">'ibing@outlook.com'</span>;</div><div class="line"><span class="built_in">console</span>.info(a);			<span class="comment">// [1, 2, 3]</span></div><div class="line"><span class="built_in">console</span>.info(c);            <span class="comment">// [1, 2, 3, "4"]</span></div><div class="line"><span class="built_in">console</span>.info(b.email);		<span class="comment">// undefined</span></div><div class="line"><span class="built_in">console</span>.info(d.email);		<span class="comment">// ibing@outlook.com</span></div></pre></td></tr></table></figure></p>
-<p>值得一提的是，对于数组的传值还可以使用数组类的slice或者concat方法实现，如下面代码：</p>
-<p>[代码10：数组传值的简单方法]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> b = a.slice(), c = a.concat();</div><div class="line">b.pop();</div><div class="line">c.push(<span class="number">4</span>);</div><div class="line"><span class="built_in">console</span>.info(a);		<span class="comment">// [1, 2, 3]</span></div><div class="line"><span class="built_in">console</span>.info(b);        <span class="comment">// [1, 2]</span></div><div class="line"><span class="built_in">console</span>.info(c);		<span class="comment">// [1, 2, 3, 4]</span></div></pre></td></tr></table></figure></p>
-<p>prototype本质上也是一个hash对象，所以直接用它赋值时会进行传址，这也是为什么[代码7：添加润行为]中，zs2居然会run的原因。我们可以用for in来遍历prototype，从而实现prototype的传值。但因为prototype和function（用做类的function）的关系，我们还有另外一种方法实现prototype的传值—-<code>new SomeFunction()</code>，如下面代码：</p>
-<p>[代码11]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义Person类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.type = <span class="string">"黄"</span>;</div><div class="line">&#125;</div><div class="line">Person.prototype=&#123;</div><div class="line">	<span class="attr">say</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.info(<span class="string">"我是一个"</span>+ <span class="keyword">this</span>.type +<span class="string">"种人，我的名字叫"</span> + <span class="keyword">this</span>.name);</div><div class="line">	&#125;</div><div class="line">&#125;	</div><div class="line"><span class="comment">// 定义Zhangsan类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Zhangsan</span> (<span class="params">name</span>)</span>&#123;</div><div class="line">	Person.call(<span class="keyword">this</span>,name);</div><div class="line">&#125;</div><div class="line">Zhangsan.prototype = <span class="keyword">new</span> Person();</div><div class="line">Zhangsan.prototype.constructor = Person;</div><div class="line">Zhangsan.prototype.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.info(<span class="string">"我100米短跑只要10秒！"</span>);</div><div class="line">&#125;</div><div class="line">	</div><div class="line"><span class="comment">// 实例化Zhangsan对象</span></div><div class="line"><span class="keyword">var</span> zs = <span class="keyword">new</span> Zhangsan(<span class="string">"张三"</span>);</div><div class="line">zs.say();   <span class="comment">// 我是一个黄种人，我的名字叫张三</span></div><div class="line">zs.run();   <span class="comment">// 我100米短跑只要10秒！</span></div><div class="line"><span class="keyword">var</span> zs2 = <span class="keyword">new</span> Person(<span class="string">"张三2"</span>);</div><div class="line">zs2.run();	<span class="comment">// TypeError: zs2.run is not a function</span></div></pre></td></tr></table></figure></p>
-<p>您是否注意到上面这句<code>Zhangsan.prototype.constructor = Person;</code>，这是因为<code>Zhangsan.prototype = new Person();</code>时，<code>Zhangsan.prototype.constructor</code>指向了Person，我们需要将它纠正，重新指向Zhangsan。</p>
+        <blockquote>
+<p>和我一起读书是一个系列，读书笔记系列。这篇是吴军《智能时代》第四、五章内容的的笔记。<br>吴军是我这几年来我最喜欢的作家，跨界，我只服吴军。之前我也读过吴军的《浪潮之巅》《硅谷之谜》《数学之美》，《硅谷之谜》也写过两篇读书笔记，分别是<a href="http://mp.weixin.qq.com/s/IF0-moAkmp0MVs-a-UuwiQ" target="_blank" rel="external">《从硅谷之谜中能学到什么？》</a>和<a href="http://mp.weixin.qq.com/s/hfqjjhMJU7HdketvzJZ4sg" target="_blank" rel="external">《硅谷之谜：别人的工程师文化》</a>，可以在我的微信公号（做工程师不做码农）历史文章和菜单“专栏-读书笔记”中查找。</p>
+</blockquote>
+<div align="center"><img src="https://img3.doubanio.com/lpic/s29142393.jpg" alt="智能时代"></div>
+
+<h2 id="四、大数据与商业"><a href="#四、大数据与商业" class="headerlink" title="四、大数据与商业"></a>四、大数据与商业</h2><p>在未来我们可以看到，大数据和机器智能的工具就如同水和电这样么资源，由专门的公司提供给全社会使用。</p>
+<p>从大数据中找出规律，大数据思维的几个案例：</p>
+<ul>
+<li>美国警察把居民的用电模式进行对比圈定在家种植大麻的犯罪嫌疑人。</li>
+<li>查处偷税漏税的情况</li>
+<li>美国第二大零售商店利用大数据做生意的故事</li>
+</ul>
+<p>大数据思维在办案中的三个亮点：</p>
+<ul>
+<li>第一是用统计规律和个案对比，做到精确定位</li>
+<li>第二是社会其实已经默认了在取证时利用相关性代替直接证据，即我们在前面说过的强相关性代替因果关系</li>
+<li>第三是执法成本，或者更广泛地讲，运营成本，在大数据时代会大幅下降。</li>
+</ul>
+<p>传统利用数据的流向是从局部到整体，而当我们利用从大数据得到的规律指导商业行为和其他行为时，数据的流向则是从整体到局部。</p>
+<p>现代商业中所需的重要信息：相关性、时效性和个性化，多数可以从大数据中提取。无目的的原始数据经过大量的收集，然后经过选择和处理，建立数学模型，推广到应用，或者机器学习，进一步推广应用。eg. 普拉达（Prada）的智能试衣间、金风科技的发电机、亚马逊的客户推荐书等等。</p>
+<p>一项技术带动整个社会变革通常遵循一个模式：新技术+原有产业＝新产业，那些有意无意接受了这个规律的企业家常常在新的时代又站到了浪潮之巅。</p>
+<p>在信息时代，商业模式的变化更加明显，它突出表现在两方面，一是产业链从一种产品扩展到整个IT行业，二是服务业的重要性突显出来。</p>
+<p>安迪-比尔定律的含义是，在计算机领域，软件功能的增加和改进要不断地吃掉硬件性能的提升。虽然今天我们的个人电脑比30年前快了两万倍左右，但因为微软操作系统使用计算和存储的资源比30多年前要多得多，所以给人的感觉是今天的电脑它依然并没有那么快。</p>
+<p>根据历次技术革命中商业模式变迁的分析，可得：</p>
+<ul>
+<li>技术革命导致商业模式的变化，尤其是新的商业模式的诞生</li>
+<li>生产越来越过剩，需求拉动经济增长的模式变得不了逆转。单纯制造业的利润越来越低。</li>
+</ul>
+<p>商业模式的变化既有继承性又有创新性。eg：小米和格力之争。格力自己是制造型企业，因而其看重的是产品核心技术，自主知识产权。这是摩尔时代的思维；小米则并没有把自己定义为制造型企业，其互联网思维是争取用户，然后建立用户理念群（好的，便宜的），这是大数据时代的思维。二者是摩尔时代和大数据时代之争。从这方面来看，小米正在超越。</p>
+<h2 id="五、大数据和智能革命的技术挑战"><a href="#五、大数据和智能革命的技术挑战" class="headerlink" title="五、大数据和智能革命的技术挑战"></a>五、大数据和智能革命的技术挑战</h2><p>大数据的数据量大、维度多、数据完备等特点，使得它从收集开始，到存储和处理，再到应用，都与过去的数据方法有很大的不同。因此，使用好大数据也需要在技术工程上采用与过去不同的方法。</p>
+<p>科学技术的发展并不是匀速的，长时间的相对停顿，某个时间点单点突破，然后科技全面迸发。重要拐点：</p>
+<ul>
+<li>1666年，牛顿发明微积分，发现力学三定律和万有引力定律，完成了光学分析，世界进去科学近代社会</li>
+<li>1905年，爱因斯坦完成分子说，发现光电效应，提出侠义相对论，世界进入科学现代社会</li>
+<li>1965年，摩尔博士提出摩尔定律，出大规模集成电路，世界开始进入信息产业高速发展</li>
+</ul>
+<p>大数据的产生来源有：“电脑”本身、传感器如RFID、过去已经存在的以非数字化形式的数据数字化。大数据兴起的必要条件之一就是存储技术的发展，直到SSD的出现使用大数据的时机才成熟。</p>
+<p>应用大数据的一个前提是能够有将一个大的计算任务分到很多台便宜的服务器上去做并行计算，直到云计算兴起才实现了大规模并行计算，大数据处理才成为可能。</p>
+<p>大数据实际上是对科学、电机工程、通信、应用数学和认知科学发展的一个综合考量，这些技术难题目前并不一定有最佳解决方案，甚至不存在什么绝对好的解决办法，但是这些问题必须得到解决才能保证大数据的普及应用。</p>
+<p>数据收集是一个看似简单的难题，首先传统的收集数据的方法常常是先有一个目的然后才开始收集数据，但是大数据时代常常没有预先设定的目标，靠大数据分析才能带给我们很多预想不到的惊喜。为了收集数据有时候需要间接的曲线救国方式来做。</p>
+<p>数据存储的压力：摩尔定律固然使的存储成本大幅下降，但是大数据的出现数据量增长的速度可能超过摩尔定律增长速度，原本不打算存储的数据被存储下来。</p>
+<p>大数据的难题：如何节省存储量、如何便于使用、如何标准化数据格式以便于共享、并行计算和实时处理、数据挖掘、数据安全。这些挑战并非简单增加处理器就能够解决的。</p>
+<p>数据安全有两层含义：首先是要保证用户的数据不损坏、不丢失。其次要保证数据不会被偷走或者盗用。</p>
+<p>为了在使用大数据的同时尽可能地保护隐私，数据从采集到使用都需要是双向知情的，也就是说不再是数据的所有者暴露在大庭广众之下，数据的采集者和使用者也是同样被监督，或许这样是最有效地保护隐私的方式。</p>
 
       
     </div>
@@ -347,13 +362,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2015/05/18/JavaScript中的继承入门/">JavaScript中的继承入门</a></p>
+        <p><span>Title:</span><a href="/2017/10/13/intelligent-age-reading-notes-2/">和我一起读书|吴军《智能时代》（中）</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Dunizb</a></p>
-        <p><span>Created:</span>2015-05-18, 18:10:57</p>
-        <p><span>Updated:</span>2017-04-16, 18:24:10</p>
+        <p><span>Created:</span>2017-10-13, 11:17:19</p>
+        <p><span>Updated:</span>2017-10-13, 11:30:27</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2015/05/18/JavaScript中的继承入门/" title="JavaScript中的继承入门">http://dunizb.com/2015/05/18/JavaScript中的继承入门/</a>
-            <span class="copy-path" data-clipboard-text="From http://dunizb.com/2015/05/18/JavaScript中的继承入门/　　By Dunizb" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2017/10/13/intelligent-age-reading-notes-2/" title="和我一起读书|吴军《智能时代》（中）">http://dunizb.com/2017/10/13/intelligent-age-reading-notes-2/</a>
+            <span class="copy-path" data-clipboard-text="From http://dunizb.com/2017/10/13/intelligent-age-reading-notes-2/　　By Dunizb" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -366,17 +381,11 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2014/12/15/利用jQuery克隆对象实例/">
-                    利用jQuery克隆对象实例
+                <a href="/2017/10/09/intelligent-age-reading-notes-1/">
+                    和我一起读书|吴军《智能时代》（上）
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2015/05/24/CSS的常见问题(一)/">
-                    CSS的常见问题(一)
-                </a>
-            </div>
         
     </nav>
 
@@ -386,7 +395,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#四、大数据与商业"><span class="toc-number">1.</span> <span class="toc-text">四、大数据与商业</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、大数据和智能革命的技术挑战"><span class="toc-number">2.</span> <span class="toc-text">五、大数据和智能革命的技术挑战</span></a></li></ol>
         
     </div>
     <style>
@@ -422,7 +431,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JavaScript中的继承入门　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"和我一起读书|吴军《智能时代》（中）　| Dunizb，张兵的个人技术博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -456,7 +465,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2014/12/15/利用jQuery克隆对象实例/" title="Pre: 利用jQuery克隆对象实例">
+            <a href="/2017/10/09/intelligent-age-reading-notes-1/" title="Pre: 和我一起读书|吴军《智能时代》（上）">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -464,9 +473,7 @@
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2015/05/24/CSS的常见问题(一)/" title="Next: CSS的常见问题(一)">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
     </div>
 
