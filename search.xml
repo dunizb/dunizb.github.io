@@ -3,7 +3,7 @@
   
     
     <entry>
-      <title><![CDATA[移动网页调试神器Erdua使用技巧]]></title>
+      <title><![CDATA[小技巧|移动网页调试神器Erdua使用技巧]]></title>
       <url>/2017/10/16/erdua/</url>
       <content type="html"><![CDATA[<p><img src="http://dunizb.b0.upaiyun.com/article/201710/erdua/banner.png" alt="移动网页调试神器Erdua使用技巧"></p>
 <p>做移动端Web开发的一大痛点就是，在真机运行下无法查看console.log日志和其他信息如网络请求、显示本地存储等信息。如果网页是运行在手机浏览器中还算好，可以把网址在电脑上打开查看console信息，但是如果是做APP的内嵌H5页面，那就只能靠开发阶段在浏览器模拟环境中尽量没有Bug，但是，一旦H5上线后报错那就比较麻烦了，而且还依赖APP环境才能跑的网页，更加难以查找问题。如果让移动端也拥有类似Chrome DevTools工具那岂不是很愉快么？</p>
